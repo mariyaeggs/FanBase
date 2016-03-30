@@ -63,10 +63,8 @@
     FNBTwitterPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
     
     NSURL *picURL = [NSURL URLWithString:self.tweetsOfArtistNews[indexPath.row][@"user"][@"profile_image_url"]];
-    NSData *picDATA = [NSData dataWithContentsOfURL:picURL];
-    UIImage *userPic = [[UIImage alloc] initWithData:picDATA];
+    [cell.userPicture setImageWithURL:picURL];
     
-    cell.userPicture.image = userPic;
     cell.userName.text = [NSString stringWithFormat:@"@%@",self.tweetsOfArtistNews[indexPath.row][@"user"][@"screen_name"]];
     cell.userTweet.text = self.tweetsOfArtistNews[indexPath.row][@"text"];
     

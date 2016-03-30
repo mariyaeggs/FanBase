@@ -10,6 +10,8 @@
 #import <STTwitter/STTwitter.h>
 #import "FNBTwitterAPIClient.h"
 #import "FNBTwitterPostTableViewCell.h"
+#import <AFNetworking/AFNetworking.h>
+#import <UIImageView+AFNetworking.h>
 
 @interface FNBFanFeedTableViewController : UITableViewController
 
