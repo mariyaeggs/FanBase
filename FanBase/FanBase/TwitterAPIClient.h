@@ -12,7 +12,9 @@
 
 @interface TwitterAPIClient : NSObject
 
-+(void)generateTweetsWithCompletion:(void(^)(NSArray *))block;
++(void)generateTweetsForKeyword:(NSString *)keyword completion:(void(^)(NSArray *))completionBlock;
++(void)generateTweetsOfUsername:(NSString *)username completion:(void(^)(NSArray *))completionBlock;
+
 
 
 @end

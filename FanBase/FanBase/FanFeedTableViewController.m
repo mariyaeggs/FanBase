@@ -19,17 +19,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Outside client req");
-    [TwitterAPIClient generateTweetsWithCompletion:^(NSArray *returnArray) {
+    [TwitterAPIClient generateTweetsForKeyword:@"Adele" completion:^(NSArray *returnedArray) {
         NSLog(@"Inside client req");
-        
-        NSLog(@"%@",returnArray);
-        self.tweetsOfArtistNews = returnArray;
+        NSLog(@"%@",returnedArray);
+        self.tweetsOfArtistNews = returnedArray;
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
         }];
-        
     }];
+    
+//    [TwitterAPIClient generateTweetsOfUsername:@"Adele" completion:^(NSArray *returnedArray) {
+//        NSLog(@"Inside the client for Username req");
+//        NSLog(@"%@",returnedArray);
+//        self.tweetsOfArtistNews = returnedArray;
+//        
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//            [self.tableView reloadData];
+//        }];
+//        
+//    }];
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,9 +66,17 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
+    TwitterPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.tweetsOfArtistNews[indexPath.row][@"text"];
+    
+    
+    NSURL *picURL = [NSURL URLWithString:self.tweetsOfArtistNews[indexPath.row][@"user"][@"profile_image_url"]];
+    NSData *picDATA = [NSData dataWithContentsOfURL:picURL];
+    UIImage *userPic = [[UIImage alloc] initWithData:picDATA];
+    
+    cell.userPicture.image = userPic;
+    cell.userName.text = [NSString stringWithFormat:@"@%@",self.tweetsOfArtistNews[indexPath.row][@"user"][@"screen_name"]];
+    cell.userTweet.text = self.tweetsOfArtistNews[indexPath.row][@"text"];
     
     return cell;
 }
