@@ -23,7 +23,7 @@
 -(instancetype)init{
     self = [super init];
     if (self) {
-        _artistsDictionary = [[NSDictionary alloc] init];
+        _artistsDictionary = [[NSMutableDictionary alloc] init];
         _userID = @"";
         _email = @"";
     }

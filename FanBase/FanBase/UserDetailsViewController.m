@@ -8,8 +8,6 @@
 
 #import "UserDetailsViewController.h"
 
-
-
 @interface UserDetailsViewController()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
@@ -62,8 +60,11 @@
 - (IBAction)addArtistTapped:(id)sender {
     // if there is text
     if (self.addArtistField.text.length > 0) {
-        //add artist to users database
-        [FNBFirebaseClient addArtist:self.addArtistField.text ToDatabaseOfUser:self.currentUser];
+        //create instance of FNBArtist with that name
+        //eventually with other stuff too
+        FNBArtist *newArtist = [[FNBArtist alloc] initWithName:self.addArtistField.text];
+        
+        [FNBFirebaseClient addUser:self.currentUser ToArtistDatabase:newArtist];
     }
 }
 

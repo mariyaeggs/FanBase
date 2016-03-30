@@ -10,6 +10,7 @@
 #import <Firebase/Firebase.h>
 #import "Secrets.h"
 #import "FNBUser.h"
+#import "FNBArtist.h"
 
 @interface FNBFirebaseClient : NSObject
 //@property (strong, nonatomic) Firebase *ref;
@@ -24,6 +25,13 @@
 + (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL updateHappened))updateBlock;
 + (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL updateHappened))updateBlockOfLoggedInUser;
 + (void) logoutUser;
-+ (void) addArtist:(NSString *)artistName ToDatabaseOfUser:(FNBUser *)user;
++ (void) addArtist:(FNBArtist *)artist ToDatabaseOfUser:(FNBUser *)user;
+
+//Artist methods
++ (void) createNewArtistDatabaseEntry:(FNBArtist *)artist createdByUser:(FNBUser *)user;
++ (void) addUser: (FNBUser *)user ToExistingArtistDatabase:(FNBArtist *)artist;
++ (void) checkDatabaseEntryForArtist:(FNBArtist *) artist withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
++ (void) addUser: (FNBUser *)inputtedUser ToArtistDatabase:(FNBArtist *)artist;
+
 
 @end

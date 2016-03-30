@@ -11,7 +11,7 @@
 
 
 @interface FNBUser : NSObject
-@property (strong, nonatomic) NSDictionary *artistsDictionary;
+@property (strong, nonatomic) NSMutableDictionary *artistsDictionary;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *email;
 

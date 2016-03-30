@@ -11,6 +11,7 @@
 #import <Firebase/Firebase.h>
 #import "Secrets.h"
 #import "FNBFirebaseClient.h"
+#import "FNBArtist.h"
 
 @interface UserDetailsViewController : UIViewController
 @property (strong, nonatomic) FNBUser *currentUser;

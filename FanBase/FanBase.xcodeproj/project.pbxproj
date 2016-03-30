@@ -15,6 +15,7 @@
 		A1E7A93C1CAC28A900A9B968 /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9381CAC28A900A9B968 /* UserDetailsViewController.m */; };
 		A1E7A93D1CAC28A900A9B968 /* CreateNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A93A1CAC28A900A9B968 /* CreateNewAccountViewController.m */; };
 		A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */; };
+		A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */; };
 		BD0A5A821CAAFCF300FFF623 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A811CAAFCF300FFF623 /* main.m */; };
 		BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A841CAAFCF300FFF623 /* AppDelegate.m */; };
 		BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A871CAAFCF300FFF623 /* ViewController.m */; };
@@ -38,6 +39,8 @@
 		A1E7A9391CAC28A900A9B968 /* CreateNewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewAccountViewController.h; sourceTree = "<group>"; };
 		A1E7A93A1CAC28A900A9B968 /* CreateNewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewAccountViewController.m; sourceTree = "<group>"; };
 		A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Firebase.storyboard; sourceTree = "<group>"; };
+		A1E7A9411CAC49FE00A9B968 /* FNBArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtist.h; sourceTree = "<group>"; };
+		A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtist.m; sourceTree = "<group>"; };
 		BD0A5A7D1CAAFCF300FFF623 /* FanBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0A5A811CAAFCF300FFF623 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BD0A5A831CAAFCF300FFF623 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 				A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */,
 				A1E7A9301CAC284700A9B968 /* FNBUser.h */,
 				A1E7A9311CAC284700A9B968 /* FNBUser.m */,
+				A1E7A9411CAC49FE00A9B968 /* FNBArtist.h */,
+				A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */,
 				A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */,
 				A1E7A93E1CAC28B300A9B968 /* ViewControllers */,
 			);
@@ -279,6 +284,7 @@
 				A1E7A93C1CAC28A900A9B968 /* UserDetailsViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* CreateNewAccountViewController.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
+				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* LoginViewController.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
