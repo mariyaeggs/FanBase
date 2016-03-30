@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 @property (weak, nonatomic) IBOutlet UILabel *label4;
-@property (strong, nonatomic) Firebase *ref;
 
 @end
 
@@ -24,10 +23,6 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-
-    //initialize ref Firebase
-    self.ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
-    
     
     self.label1.text = @"1";
     self.label2.text = @"2";
@@ -47,34 +42,19 @@
         if (updateHappened) {
             self.label1.text = self.currentUser.email;
             self.label2.text = self.currentUser.userID;
-            self.label3.text = [self.currentUser.artistsDictionary allKeys][0];
+            
+            // get all artists in the artistsDictionary
+            NSMutableString *allArtistsString = [NSMutableString new];
+            for (NSString *artist in [self.currentUser.artistsDictionary allKeys]) {
+                [allArtistsString appendString:artist];
+            }
+            self.label3.text = allArtistsString;
         }
     }];
-    NSLog(@"current user: %@", self.currentUser);
-//    self.label1.text = self.currentUser.email;
-//    self.label2.text = self.currentUser.userID;
-//    self.label3.text = [self.currentUser.artistsDictionary allKeys][0];
-//    self.label4.text = @"4";
-    
-    
-//    //setup user property
-//    [self.ref observeAuthEventWithBlock:^(FAuthData *authData) {
-//        if (authData != nil) {
-//            self.user = [[FNBUser alloc] initWithAuthData:authData];
-//            
-//            [FNBFirebaseClient getPropertiesOfUserWithUID:authData.uid];
-//            
-//            
-//            self.label1.text = self.user.email;
-//            self.label2.text = self.user.userID;
-////            self.label3.text = [self.user.artistsDictionary allKeys][0];
-//            self.label4.text = @"4";
-//        }
-//    }];
 }
 
 - (IBAction)logoutTapped:(id)sender {
-    [self.ref unauth];
+    [FNBFirebaseClient logoutUser];
     [self performSegueWithIdentifier:@"LogoutSegue" sender:nil];
 }
 

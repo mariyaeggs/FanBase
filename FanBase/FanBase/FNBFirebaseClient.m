@@ -119,7 +119,7 @@
     }];
 }
 
-// This method sets the properties of the FNBUser based on the logged in user. 
+// This method sets the properties of the FNBUser based on the logged in user.
 + (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL updateHappened))updateBlockOfLoggedInUser{
     Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
     [ref observeAuthEventWithBlock:^(FAuthData *authData) {
@@ -133,6 +133,11 @@
             NSLog(@"authData is nil");
         }
     }];
+}
+
++ (void) logoutUser {
+    Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
+    [ref unauth];
 }
 
 @end
