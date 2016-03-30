@@ -8,3 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@interface Secrets : NSObject
+
+extern NSString *const ourFirebaseURL;
+
+@end
