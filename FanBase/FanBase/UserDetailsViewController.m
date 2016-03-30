@@ -64,7 +64,10 @@
         //eventually with other stuff too
         FNBArtist *newArtist = [[FNBArtist alloc] initWithName:self.addArtistField.text];
         
-        [FNBFirebaseClient addUser:self.currentUser ToArtistDatabase:newArtist];
+        [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:newArtist];
+        
+//        [FNBFirebaseClient addUser:self.currentUser ToArtistDatabase:newArtist];
+//        [FNBFirebaseClient addArtist:newArtist ToDatabaseOfUser:self.currentUser];
     }
 }
 

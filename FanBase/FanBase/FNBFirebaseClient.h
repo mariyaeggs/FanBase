@@ -33,5 +33,8 @@
 + (void) checkDatabaseEntryForArtist:(FNBArtist *) artist withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
 + (void) addUser: (FNBUser *)inputtedUser ToArtistDatabase:(FNBArtist *)artist;
 
+//User and Artist methods
++ (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(FNBArtist *)newArtist;
+
 
 @end

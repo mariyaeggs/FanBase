@@ -188,6 +188,9 @@
 
 #pragma mark - User and Artist Methods
 
-//+ (void) user:(FNBUser *)
++ (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(FNBArtist *)newArtist {
+    [self addUser:currentUser ToArtistDatabase:newArtist];
+    [self addArtist:newArtist ToDatabaseOfUser:currentUser];
+}
 
 @end
