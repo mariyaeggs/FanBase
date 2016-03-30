@@ -7,9 +7,7 @@
 //
 
 #import "CreateNewAccountViewController.h"
-#import <Firebase/Firebase.h>
-#import "Secrets.h"
-#import "FNBFirebaseClient.h"
+
 
 @interface CreateNewAccountViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;

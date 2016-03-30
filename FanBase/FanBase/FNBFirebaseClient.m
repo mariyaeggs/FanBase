@@ -69,6 +69,7 @@
     NSLog(@"Added user to database");
 }
 
+// helper method for getPropertiesOfLoggedInUser
 + (void) getPropertiesOfUserWithUID:(NSString *)uid {
     NSLog(@"this is the uid: %@", uid);
     Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
@@ -81,12 +82,6 @@
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
     }];
-//
-//    [usersRef observeAuthEventWithBlock:^(FAuthData *authData) {
-//        if (authData != nil) {
-//            NSString *newUserUID = authData.uid;
-//            NSLog(@")
-//            FNBUser *currentUser = [[FNBUser alloc] initWithAuthData:authData];
 }
 
 + (void) getPropertiesOfLoggedInUser {
@@ -101,5 +96,12 @@
         }
     }];
 }
+
+//+ (FNBUser *) createUserFromLoggedInUser {
+//    [self getPropertiesOfLoggedInUser];
+//    //somehow get user
+//    // FNBUser *createdUser = [[FNBUser alloc] initWithEmail: Password: ArtistsDictionary:];
+//    // return createdUser;
+//}
 
 @end

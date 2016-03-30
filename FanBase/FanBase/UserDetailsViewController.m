@@ -38,9 +38,9 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSLog(@"before getPropertiesOfLoggedInUser");
+
     [FNBFirebaseClient getPropertiesOfLoggedInUser];
-    NSLog(@"after getPropertiesOfLoggedInUser");
+
     
 //    //setup user property
 //    [self.ref observeAuthEventWithBlock:^(FAuthData *authData) {

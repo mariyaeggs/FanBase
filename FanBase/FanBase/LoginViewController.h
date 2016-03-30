@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
+#import "Secrets.h"
+#import "FNBFirebaseClient.h"
 
 @interface LoginViewController : UIViewController
 

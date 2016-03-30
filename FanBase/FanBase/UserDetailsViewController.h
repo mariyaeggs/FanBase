@@ -13,5 +13,5 @@
 #import "FNBFirebaseClient.h"
 
 @interface UserDetailsViewController : UIViewController
-@property (strong, nonatomic) FNBUser *user;
+@property (strong, nonatomic) FNBUser *currentUser;
 @end
