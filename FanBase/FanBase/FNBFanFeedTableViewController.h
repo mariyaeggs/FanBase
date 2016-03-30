@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <STTwitter/STTwitter.h>
-#import "TwitterAPIClient.h"
-#import "TwitterPostTableViewCell.h"
+#import "FNBTwitterAPIClient.h"
+#import "FNBTwitterPostTableViewCell.h"
 
-@interface FanFeedTableViewController : UITableViewController
-
+@interface FNBFanFeedTableViewController : UITableViewController
 
 
 @end

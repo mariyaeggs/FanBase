@@ -14,11 +14,11 @@
 		BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A891CAAFCF300FFF623 /* Main.storyboard */; };
 		BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */; };
 		BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */; };
-		BD869C0A1CAB6B9D008166E4 /* TwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD869C091CAB6B9D008166E4 /* TwitterAPIClient.m */; };
-		BD9C557D1CAC20D0005EA981 /* TwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9C557C1CAC20D0005EA981 /* TwitterPostTableViewCell.m */; };
-		BDB73EF21CAAFEAE00F6B3EB /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */; };
-		BDCBD2581CAB067A00EB4347 /* FanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCBD2571CAB067A00EB4347 /* FanFeed.storyboard */; };
-		BDCBD25B1CAB06BA00EB4347 /* FanFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCBD25A1CAB06BA00EB4347 /* FanFeedTableViewController.m */; };
+		BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */; };
+		BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */; };
+		BDB73EF21CAAFEAE00F6B3EB /* FNBSecrets.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB73EF11CAAFEAE00F6B3EB /* FNBSecrets.m */; };
+		BDCBD2581CAB067A00EB4347 /* FNBFanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */; };
+		BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,15 +34,15 @@
 		BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD0A5A8F1CAAFCF300FFF623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD0A5A911CAAFCF300FFF623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD869C081CAB6B9D008166E4 /* TwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAPIClient.h; sourceTree = "<group>"; };
-		BD869C091CAB6B9D008166E4 /* TwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAPIClient.m; sourceTree = "<group>"; };
-		BD9C557B1CAC20D0005EA981 /* TwitterPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterPostTableViewCell.h; sourceTree = "<group>"; };
-		BD9C557C1CAC20D0005EA981 /* TwitterPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterPostTableViewCell.m; sourceTree = "<group>"; };
-		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
-		BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
-		BDCBD2571CAB067A00EB4347 /* FanFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FanFeed.storyboard; sourceTree = "<group>"; };
-		BDCBD2591CAB06BA00EB4347 /* FanFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanFeedTableViewController.h; sourceTree = "<group>"; };
-		BDCBD25A1CAB06BA00EB4347 /* FanFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanFeedTableViewController.m; sourceTree = "<group>"; };
+		BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterAPIClient.h; sourceTree = "<group>"; };
+		BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterAPIClient.m; sourceTree = "<group>"; };
+		BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterPostTableViewCell.h; sourceTree = "<group>"; };
+		BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterPostTableViewCell.m; sourceTree = "<group>"; };
+		BDB73EF01CAAFEAE00F6B3EB /* FNBSecrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSecrets.h; sourceTree = "<group>"; };
+		BDB73EF11CAAFEAE00F6B3EB /* FNBSecrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSecrets.m; sourceTree = "<group>"; };
+		BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBFanFeed.storyboard; sourceTree = "<group>"; };
+		BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFanFeedTableViewController.h; sourceTree = "<group>"; };
+		BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFanFeedTableViewController.m; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,15 +105,15 @@
 				BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */,
 				BD0A5A911CAAFCF300FFF623 /* Info.plist */,
 				BD0A5A801CAAFCF300FFF623 /* Supporting Files */,
-				BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */,
-				BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */,
-				BDCBD2571CAB067A00EB4347 /* FanFeed.storyboard */,
-				BDCBD2591CAB06BA00EB4347 /* FanFeedTableViewController.h */,
-				BDCBD25A1CAB06BA00EB4347 /* FanFeedTableViewController.m */,
-				BD869C081CAB6B9D008166E4 /* TwitterAPIClient.h */,
-				BD869C091CAB6B9D008166E4 /* TwitterAPIClient.m */,
-				BD9C557B1CAC20D0005EA981 /* TwitterPostTableViewCell.h */,
-				BD9C557C1CAC20D0005EA981 /* TwitterPostTableViewCell.m */,
+				BDB73EF01CAAFEAE00F6B3EB /* FNBSecrets.h */,
+				BDB73EF11CAAFEAE00F6B3EB /* FNBSecrets.m */,
+				BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */,
+				BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */,
+				BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */,
+				BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */,
+				BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */,
+				BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */,
+				BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */,
 			);
 			path = FanBase;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 			files = (
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
-				BDCBD2581CAB067A00EB4347 /* FanFeed.storyboard in Resources */,
+				BDCBD2581CAB067A00EB4347 /* FNBFanFeed.storyboard in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,12 +248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDCBD25B1CAB06BA00EB4347 /* FanFeedTableViewController.m in Sources */,
-				BD869C0A1CAB6B9D008166E4 /* TwitterAPIClient.m in Sources */,
+				BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */,
+				BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
-				BDB73EF21CAAFEAE00F6B3EB /* Secrets.m in Sources */,
+				BDB73EF21CAAFEAE00F6B3EB /* FNBSecrets.m in Sources */,
 				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
-				BD9C557D1CAC20D0005EA981 /* TwitterPostTableViewCell.m in Sources */,
+				BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

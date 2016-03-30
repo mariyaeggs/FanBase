@@ -11,17 +11,17 @@
         <!--Fan Feed Table View Controller-->
         <scene sceneID="PAr-1C-atd">
             <objects>
-                <tableViewController id="itw-86-AZh" customClass="FanFeedTableViewController" sceneMemberID="viewController">
+                <tableViewController id="itw-86-AZh" customClass="FNBFanFeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="O5h-Xi-0Qc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="97" id="3bH-Q4-KO2" customClass="TwitterPostTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="97" id="3bH-Q4-KO2" customClass="FNBTwitterPostTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="600" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3bH-Q4-KO2" id="5t3-jG-a8c">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="97"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4IK-N0-FC5">

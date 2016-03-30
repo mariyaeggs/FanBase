@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TwitterPostTableViewCell : UITableViewCell
+@interface FNBTwitterPostTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *userPicture;
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) IBOutlet UILabel *userTweet;
 
 @end
+

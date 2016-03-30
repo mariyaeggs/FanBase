@@ -6,9 +6,9 @@
 //  Copyright © 2016 Angelica Bato. All rights reserved.
 //
 
-#import "TwitterPostTableViewCell.h"
+#import "FNBTwitterPostTableViewCell.h"
 
-@implementation TwitterPostTableViewCell
+@implementation FNBTwitterPostTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

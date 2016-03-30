@@ -6,12 +6,12 @@
 //  Copyright © 2016 Angelica Bato. All rights reserved.
 //
 
-#import "TwitterAPIClient.h"
-#import "Secrets.h"
+#import "FNBTwitterAPIClient.h"
+#import "FNBSecrets.h"
 
-@implementation TwitterAPIClient
+@implementation FNBTwitterAPIClient
 
-+(void)generateTweetsForKeyword:(NSString *)keyword completion:(void(^)(NSArray *))completionBlock {
++ (void) generateTweetsForKeyword:(NSString *)keyword completion:(void(^)(NSArray *))completionBlock {
     
     STTwitterAPI *twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:STTwitterClientID consumerSecret:STTwitterSecret];
     
@@ -21,7 +21,7 @@
     
 }
 
-+(void)generateTweetsOfUsername:(NSString *)username completion:(void(^)(NSArray *))completionBlock {
++ (void) generateTweetsOfUsername:(NSString *)username completion:(void(^)(NSArray *))completionBlock {
     STTwitterAPI *twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:STTwitterClientID consumerSecret:STTwitterSecret];
     [twitterAPI getUserTimelineWithScreenName:username
                               successBlock:^(NSArray *statuses) {
