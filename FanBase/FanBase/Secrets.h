@@ -8,3 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString const *STTwitterClientID;
+extern NSString const *STTwitterSecret;
