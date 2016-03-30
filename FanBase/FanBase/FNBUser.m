@@ -10,12 +10,22 @@
 @implementation FNBUser
 
 //initialize existing user from Firebase
--(instancetype)initWithAuthData:(FAuthData *)authData {
+//-(instancetype)initWithAuthData:(FAuthData *)authData {
+//    self = [super init];
+//    if (self) {
+//        _userID = authData.uid;
+//        _email = authData.providerData[@"email"];
+//        _artistsDictionary = [[NSDictionary alloc] init];
+//    }
+//    return self;
+//}
+
+-(instancetype)init{
     self = [super init];
     if (self) {
-        _userID = authData.uid;
-        _email = authData.providerData[@"email"];
         _artistsDictionary = [[NSDictionary alloc] init];
+        _userID = @"";
+        _email = @"";
     }
     return self;
 }

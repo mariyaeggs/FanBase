@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *email;
 
--(instancetype)initWithAuthData:(FAuthData *)authData;
+-(instancetype)init;
+//-(instancetype)initWithAuthData:(FAuthData *)authData;
 
 @end

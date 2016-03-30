@@ -69,8 +69,38 @@
     NSLog(@"Added user to database");
 }
 
-// helper method for getPropertiesOfLoggedInUser
-+ (void) getPropertiesOfUserWithUID:(NSString *)uid {
+
+
+//// helper method for getPropertiesOfLoggedInUser
+//+ (void) getPropertiesOfUserWithUID:(NSString *)uid {
+//    NSLog(@"this is the uid: %@", uid);
+//    Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
+//    Firebase *usersRef = [ref childByAppendingPath:@"users"];
+//    Firebase *newUserRef = [usersRef childByAppendingPath:uid];
+//    
+//    // This block gets called for any change in this users data
+//    [newUserRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        NSLog(@"Snapshot of Users values: %@", snapshot.value);
+//    } withCancelBlock:^(NSError *error) {
+//        NSLog(@"%@", error.description);
+//    }];
+//}
+
+//+ (void) getPropertiesOfLoggedInUser {
+//    Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
+//    [ref observeAuthEventWithBlock:^(FAuthData *authData) {
+//        NSLog(@"this is the authData of getpropofLoggedInUser: %@", authData);
+//        if (authData != nil) {
+//            [self getPropertiesOfUserWithUID:authData.uid];
+//        }
+//        else {
+//            NSLog(@"authData is nil");
+//        }
+//    }];
+//}
+
+// This method sets the properties of the FNBUser whenever an update happens. Helper method for setPropertiesOfLoggedInUserToUser.
++ (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL updateHappened))updateBlock {
     NSLog(@"this is the uid: %@", uid);
     Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
     Firebase *usersRef = [ref childByAppendingPath:@"users"];
@@ -79,29 +109,30 @@
     // This block gets called for any change in this users data
     [newUserRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"Snapshot of Users values: %@", snapshot.value);
+        user.email = snapshot.value[@"email"];
+        user.userID = snapshot.value[@"UID"];
+        user.artistsDictionary = snapshot.value[@"artistsDictionary"];
+        updateBlock(YES);
+        
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
     }];
 }
 
-+ (void) getPropertiesOfLoggedInUser {
+// This method sets the properties of the FNBUser based on the logged in user. 
++ (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL updateHappened))updateBlockOfLoggedInUser{
     Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
     [ref observeAuthEventWithBlock:^(FAuthData *authData) {
-        NSLog(@"this is hte authData of getpropofLoggedInUser: %@", authData);
+        NSLog(@"this is the authData of getpropofLoggedInUser: %@", authData);
         if (authData != nil) {
-            [self getPropertiesOfUserWithUID:authData.uid];
+            [self setPropertiesOfUser:user WithUID:authData.uid withCompletionBlock:^(BOOL updateHappened) {
+                updateBlockOfLoggedInUser(YES);
+            }];
         }
         else {
             NSLog(@"authData is nil");
         }
     }];
 }
-
-//+ (FNBUser *) createUserFromLoggedInUser {
-//    [self getPropertiesOfLoggedInUser];
-//    //somehow get user
-//    // FNBUser *createdUser = [[FNBUser alloc] initWithEmail: Password: ArtistsDictionary:];
-//    // return createdUser;
-//}
 
 @end

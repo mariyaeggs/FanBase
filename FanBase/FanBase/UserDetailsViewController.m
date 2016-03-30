@@ -38,9 +38,24 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-
-    [FNBFirebaseClient getPropertiesOfLoggedInUser];
-
+    
+    //initialize user for this ViewController
+    self.currentUser = [[FNBUser alloc] init];
+    
+    //Set the properties of this user
+    [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL updateHappened) {
+        if (updateHappened) {
+            self.label1.text = self.currentUser.email;
+            self.label2.text = self.currentUser.userID;
+            self.label3.text = [self.currentUser.artistsDictionary allKeys][0];
+        }
+    }];
+    NSLog(@"current user: %@", self.currentUser);
+//    self.label1.text = self.currentUser.email;
+//    self.label2.text = self.currentUser.userID;
+//    self.label3.text = [self.currentUser.artistsDictionary allKeys][0];
+//    self.label4.text = @"4";
+    
     
 //    //setup user property
 //    [self.ref observeAuthEventWithBlock:^(FAuthData *authData) {
