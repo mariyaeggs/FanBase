@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 @property (weak, nonatomic) IBOutlet UILabel *label4;
+@property (weak, nonatomic) IBOutlet UITextField *addArtistField;
 
 @end
 
@@ -56,6 +57,14 @@
 - (IBAction)logoutTapped:(id)sender {
     [FNBFirebaseClient logoutUser];
     [self performSegueWithIdentifier:@"LogoutSegue" sender:nil];
+}
+
+- (IBAction)addArtistTapped:(id)sender {
+    // if there is text
+    if (self.addArtistField.text.length > 0) {
+        //add artist to users database
+        [FNBFirebaseClient addArtist:self.addArtistField.text ToDatabaseOfUser:self.currentUser];
+    }
 }
 
 @end

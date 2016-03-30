@@ -140,4 +140,13 @@
     [ref unauth];
 }
 
++ (void) addArtist:(NSString *)artistName ToDatabaseOfUser:(FNBUser *)user {
+    Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
+    Firebase *usersRef = [ref childByAppendingPath:@"users"];
+    Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
+    Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
+    
+    NSDictionary *newArtistDictionary = @{artistName : @0};
+    [usersArtistRef updateChildValues:newArtistDictionary];
+}
 @end

@@ -125,10 +125,23 @@
                                     <action selector="logoutTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="Zif-HI-0b5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qM-Pr-rDi">
+                                <rect key="frame" x="211" y="462" width="69" height="30"/>
+                                <state key="normal" title="Add Artist"/>
+                                <connections>
+                                    <action selector="addArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="dHR-3x-GCB"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqv-np-zaa">
+                                <rect key="frame" x="134" y="417" width="223" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addArtistField" destination="lqv-np-zaa" id="hE5-hb-oHE"/>
                         <outlet property="label1" destination="Lgj-fm-Mnh" id="X3b-be-yth"/>
                         <outlet property="label2" destination="baG-ff-NER" id="a4x-F4-gri"/>
                         <outlet property="label3" destination="taP-r0-MMy" id="7cm-o2-uZE"/>
