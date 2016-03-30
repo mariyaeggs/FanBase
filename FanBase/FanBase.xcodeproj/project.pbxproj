@@ -14,9 +14,10 @@
 		BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A891CAAFCF300FFF623 /* Main.storyboard */; };
 		BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */; };
 		BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */; };
+		BD3EC2861CAC913F0063D912 /* FNBInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */; };
 		BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */; };
 		BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */; };
-		BDB73EF21CAAFEAE00F6B3EB /* FNBSecrets.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB73EF11CAAFEAE00F6B3EB /* FNBSecrets.m */; };
+		BDB73EF21CAAFEAE00F6B3EB /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */; };
 		BDCBD2581CAB067A00EB4347 /* FNBFanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */; };
 		BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -34,12 +35,14 @@
 		BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD0A5A8F1CAAFCF300FFF623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD0A5A911CAAFCF300FFF623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD3EC2841CAC913F0063D912 /* FNBInstagramAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBInstagramAPIClient.h; sourceTree = "<group>"; };
+		BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBInstagramAPIClient.m; sourceTree = "<group>"; };
 		BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterAPIClient.h; sourceTree = "<group>"; };
 		BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterAPIClient.m; sourceTree = "<group>"; };
 		BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterPostTableViewCell.h; sourceTree = "<group>"; };
 		BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterPostTableViewCell.m; sourceTree = "<group>"; };
-		BDB73EF01CAAFEAE00F6B3EB /* FNBSecrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSecrets.h; sourceTree = "<group>"; };
-		BDB73EF11CAAFEAE00F6B3EB /* FNBSecrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSecrets.m; sourceTree = "<group>"; };
+		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
+		BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBFanFeed.storyboard; sourceTree = "<group>"; };
 		BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFanFeedTableViewController.h; sourceTree = "<group>"; };
 		BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFanFeedTableViewController.m; sourceTree = "<group>"; };
@@ -105,13 +108,15 @@
 				BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */,
 				BD0A5A911CAAFCF300FFF623 /* Info.plist */,
 				BD0A5A801CAAFCF300FFF623 /* Supporting Files */,
-				BDB73EF01CAAFEAE00F6B3EB /* FNBSecrets.h */,
-				BDB73EF11CAAFEAE00F6B3EB /* FNBSecrets.m */,
+				BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */,
+				BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */,
 				BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */,
 				BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */,
 				BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */,
 				BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */,
 				BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */,
+				BD3EC2841CAC913F0063D912 /* FNBInstagramAPIClient.h */,
+				BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */,
 				BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */,
 				BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */,
 			);
@@ -251,10 +256,11 @@
 				BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */,
 				BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
-				BDB73EF21CAAFEAE00F6B3EB /* FNBSecrets.m in Sources */,
+				BDB73EF21CAAFEAE00F6B3EB /* Secrets.m in Sources */,
 				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
 				BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
+				BD3EC2861CAC913F0063D912 /* FNBInstagramAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
