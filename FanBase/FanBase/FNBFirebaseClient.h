@@ -22,19 +22,20 @@
 //+ (void) getPropertiesOfUserWithUID:(NSString *)uid;
 //+ (void) getPropertiesOfLoggedInUser;
 
-+ (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL updateHappened))updateBlock;
+//+ (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL updateHappened))updateBlock;
 + (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL updateHappened))updateBlockOfLoggedInUser;
 + (void) logoutUser;
-+ (void) addArtist:(FNBArtist *)artist ToDatabaseOfUser:(FNBUser *)user;
+//+ (void) addArtist:(FNBArtist *)artist ToDatabaseOfUser:(FNBUser *)user;
+//+ (void) deleteArtist:(FNBArtist *)artist FromUser:(FNBUser *)user;
 
-//Artist methods
-+ (void) createNewArtistDatabaseEntry:(FNBArtist *)artist createdByUser:(FNBUser *)user;
-+ (void) addUser: (FNBUser *)user ToExistingArtistDatabase:(FNBArtist *)artist;
-+ (void) checkDatabaseEntryForArtist:(FNBArtist *) artist withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
-+ (void) addUser: (FNBUser *)inputtedUser ToArtistDatabase:(FNBArtist *)artist;
+// Private artist methods
+//+ (void) createNewArtistDatabaseEntry:(FNBArtist *)artist createdByUser:(FNBUser *)user;
+//+ (void) addUser: (FNBUser *)user ToExistingArtistDatabase:(FNBArtist *)artist;
+//+ (void) checkDatabaseEntryForArtist:(FNBArtist *) artist withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
+//+ (void) addUser: (FNBUser *)inputtedUser ToArtistDatabase:(FNBArtist *)artist;
+//+ (void) deleteUser:(FNBUser *)user FromArtist:(FNBArtist *)artist;
 
 //User and Artist methods
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(FNBArtist *)newArtist;
-
-
++ (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist;
 @end

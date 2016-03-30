@@ -127,7 +127,6 @@
 }
 
 + (void) addArtist:(FNBArtist *)artist ToDatabaseOfUser:(FNBUser *)user {
-//    Firebase *ref = [[Firebase alloc] initWithUrl:ourFirebaseURL];
     Firebase *usersRef = [self setupUserFirebase];
     Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
     Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
@@ -136,6 +135,14 @@
     [usersArtistRef updateChildValues:newArtistDictionary];
 }
 
++ (void) deleteArtist:(FNBArtist *)artist FromUser:(FNBUser *)user {
+    Firebase *usersRef = [self setupUserFirebase];
+    Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
+    Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
+    Firebase *specificArtistRef = [usersArtistRef childByAppendingPath:artist.name];
+    
+    [specificArtistRef removeValue];
+}
 
 #pragma mark - Artist Methods
 
@@ -186,11 +193,23 @@
     }];
 }
 
++ (void) deleteUser:(FNBUser *)user FromArtist:(FNBArtist *)artist{
+    Firebase *artistsRef = [self setupArtistFirebase];
+    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artist.name];
+    Firebase *artistsSubscribedUsersRef = [currentArtistRef childByAppendingPath:@"subscribedUsers"];
+    Firebase *specificUserRef = [artistsSubscribedUsersRef childByAppendingPath:user.userID];
+    [specificUserRef removeValue];
+}
+
 #pragma mark - User and Artist Methods
 
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(FNBArtist *)newArtist {
     [self addUser:currentUser ToArtistDatabase:newArtist];
     [self addArtist:newArtist ToDatabaseOfUser:currentUser];
+}
++ (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist {
+    [self deleteUser:currentUser FromArtist:newArtist];
+    [self deleteArtist:newArtist FromUser:currentUser];
 }
 
 @end

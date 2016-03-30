@@ -65,9 +65,16 @@
         FNBArtist *newArtist = [[FNBArtist alloc] initWithName:self.addArtistField.text];
         
         [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:newArtist];
-        
-//        [FNBFirebaseClient addUser:self.currentUser ToArtistDatabase:newArtist];
-//        [FNBFirebaseClient addArtist:newArtist ToDatabaseOfUser:self.currentUser];
+    }
+}
+- (IBAction)deleteArtistTapped:(id)sender {
+    if (self.addArtistField.text.length > 0) {
+        //create instance of FNBArtist with that name
+        //eventually with other stuff too
+        FNBArtist *newArtist = [[FNBArtist alloc] initWithName:self.addArtistField.text];
+//        [FNBFirebaseClient deleteArtist:newArtist FromUser:self.currentUser];
+//        [FNBFirebaseClient deleteUser:self.currentUser FromArtist:newArtist];
+        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:newArtist];
     }
 }
 

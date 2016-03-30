@@ -137,6 +137,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-RE-oeK">
+                                <rect key="frame" x="203" y="513" width="86" height="30"/>
+                                <state key="normal" title="Delete Artist"/>
+                                <connections>
+                                    <action selector="deleteArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="y7p-5m-ndE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
