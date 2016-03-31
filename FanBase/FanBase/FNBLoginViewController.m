@@ -45,6 +45,10 @@
         }
     }];
 }
+- (IBAction)continueAsGuestTapped:(id)sender {
+    //Just transition to next VC
+    [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];   
+}
 
 
 @end

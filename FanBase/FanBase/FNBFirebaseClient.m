@@ -104,11 +104,6 @@
     }];
 }
 
-
-
-
-
-
 + (void) logoutUser {
     Firebase *ref =  [self setupBaseFirebase];
     [ref unauth];
@@ -153,7 +148,18 @@
     }];
 }
 
-
+// This method sets the properties of the FNBUser based on the logged in user.
++ (void) checkIfUserIsAuthenticatedWithCompletionBlock: (void (^) (BOOL isAuthenticUser))blockOfAuthUserCheck{
+    Firebase *ref = [self setupBaseFirebase];
+        if (ref.authData != nil) {
+            NSLog(@"this is a logged in user");
+            blockOfAuthUserCheck(YES);
+        }
+        else {
+            NSLog(@"This is a guest");
+            blockOfAuthUserCheck(NO);
+        }
+}
 
 + (void) addArtist:(FNBArtist *)artist ToDatabaseOfUser:(FNBUser *)user {
     Firebase *usersRef = [self setupUserFirebase];
@@ -207,6 +213,26 @@
         }
     }];
 }
+
++ (void) setPropertiesOfArtist:(FNBArtist *)artist withCompletionBlock: (void (^) (BOOL setPropertiesUpdated)) setArtistPropertiesUpdatedBlock {
+    Firebase *artistsRef = [self setupArtistFirebase];
+    Firebase *specificArtistRef = [artistsRef childByAppendingPath:artist.name];
+    
+    // This block gets called for any change in this artists data
+    [specificArtistRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        NSLog(@"Snapshot of Users values: %@", snapshot.value);
+        artist.name = snapshot.value[@"name"];
+        artist.spotifyID = snapshot.value[@"spotifyID"];
+        artist.twitterHandle = snapshot.value[@"twitterHandle"];
+        artist.subscribedUsers = snapshot.value[@"subscribedUsers"];
+        setArtistPropertiesUpdatedBlock(YES);
+        
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
+
+}
+
 
 + (void) addUser: (FNBUser *)inputtedUser ToArtistDatabase:(FNBArtist *)artist {
     [self checkDatabaseEntryForArtist:artist withCompletionBlock:^(BOOL artistDatabaseExists) {
