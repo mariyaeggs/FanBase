@@ -29,4 +29,8 @@
     }
     return self;
 }
+
+
+//-(instancetype)makeDummyUser
+
 @end
