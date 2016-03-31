@@ -6,9 +6,9 @@
 //  Copyright © 2016 Andy Novak. All rights reserved.
 //
 
-#import "UserDetailsViewController.h"
+#import "FNBUserDetailsViewController.h"
 
-@interface UserDetailsViewController()
+@interface FNBUserDetailsViewController()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
@@ -18,7 +18,7 @@
 @end
 
 
-@implementation UserDetailsViewController
+@implementation FNBUserDetailsViewController
 
 -(void)viewDidLoad {
     [super viewDidLoad];

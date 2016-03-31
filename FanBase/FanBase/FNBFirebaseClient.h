@@ -17,8 +17,10 @@
 
 + (void) loginWithEmail:(NSString *)email Password:(NSString *)password;
 + (void) isUserAuthenticatedWithCompletionBlock:(void  (^)(BOOL isAuthenticatedUser))block;
-+ (void) createNewUserWithEmail:(NSString *)email Password:(NSString *)password WithBlockIfSuccessful:(void (^) (BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID)) successBlock;
-+ (void) addNewUserToDatabaseWithEmail:(NSString *)email Password:(NSString *)password UID:(NSString *)uid;
++ (void) createANewUserWithEmail:(NSString *)email Password:(NSString *)password;
+
+//+ (void) createNewUserWithEmail:(NSString *)email Password:(NSString *)password WithBlockIfSuccessful:(void (^) (BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID)) successBlock;
+//+ (void) addNewUserToDatabaseWithEmail:(NSString *)email Password:(NSString *)password UID:(NSString *)uid;
 //+ (void) getPropertiesOfUserWithUID:(NSString *)uid;
 //+ (void) getPropertiesOfLoggedInUser;
 

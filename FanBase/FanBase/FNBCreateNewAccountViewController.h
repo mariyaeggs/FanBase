@@ -11,6 +11,6 @@
 #import "Secrets.h"
 #import "FNBFirebaseClient.h"
 
-@interface CreateNewAccountViewController : UIViewController
+@interface FNBCreateNewAccountViewController : UIViewController
 
 @end

@@ -6,16 +6,16 @@
 //  Copyright © 2016 Andy Novak. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "FNBLoginViewController.h"
 
 
-@interface LoginViewController ()
+@interface FNBLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
 
-@implementation LoginViewController
+@implementation FNBLoginViewController
 
 
 - (void) viewDidAppear:(BOOL)animated {

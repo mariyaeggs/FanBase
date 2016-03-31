@@ -26,7 +26,7 @@
     return [ref childByAppendingPath:@"artists"];
 }
 
-#pragma mark - User Methods
+#pragma mark - User Login Methods
 
 + (void) loginWithEmail:(NSString *)email Password:(NSString *)password {
     Firebase *ref = [self setupBaseFirebase];
@@ -86,6 +86,30 @@
     NSLog(@"Added user to database");
 }
 
++ (void) createANewUserWithEmail:(NSString *)email Password:(NSString *)password {
+    [self createNewUserWithEmail:email Password:password WithBlockIfSuccessful:^(BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID) {
+        //if successfully created new user, add them to database and login that user
+        if (successfulCreationOfNewUser) {
+            NSLog(@"created user!!!!! emails: %@", receivedEmail);
+            
+            // add user to database
+            [self addNewUserToDatabaseWithEmail:receivedEmail Password:receivedPassword UID:createdUID];
+            
+            // login user
+            [self loginWithEmail:receivedEmail Password:receivedPassword];
+            NSLog(@"logged in user");
+        }
+    }];
+}
+
++ (void) logoutUser {
+    Firebase *ref =  [self setupBaseFirebase];
+    [ref unauth];
+}
+
+#pragma mark - User Methods
+
+
 // This method sets the properties of the FNBUser whenever an update happens. Helper method for setPropertiesOfLoggedInUserToUser.
 + (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL updateHappened))updateBlock {
 //    NSLog(@"this is the uid: %@", uid);
@@ -121,10 +145,7 @@
     }];
 }
 
-+ (void) logoutUser {
-    Firebase *ref =  [self setupBaseFirebase];
-    [ref unauth];
-}
+
 
 + (void) addArtist:(FNBArtist *)artist ToDatabaseOfUser:(FNBUser *)user {
     Firebase *usersRef = [self setupUserFirebase];
@@ -211,5 +232,13 @@
     [self deleteUser:currentUser FromArtist:newArtist];
     [self deleteArtist:newArtist FromUser:currentUser];
 }
+
+#pragma mark - Methods For Us to Test App
+
+//+ (FNBUser *)makeDummyUser {
+//    NSString *usersEmail = @"iAmADummy@email.com";
+//    NSString *password = @"dummyPassword";
+//    
+//}
 
 @end

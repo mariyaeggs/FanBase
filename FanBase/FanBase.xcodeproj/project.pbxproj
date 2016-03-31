@@ -11,9 +11,9 @@
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
 		A1E7A9341CAC289500A9B968 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9331CAC289500A9B968 /* Secrets.m */; };
-		A1E7A93B1CAC28A900A9B968 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* LoginViewController.m */; };
-		A1E7A93C1CAC28A900A9B968 /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9381CAC28A900A9B968 /* UserDetailsViewController.m */; };
-		A1E7A93D1CAC28A900A9B968 /* CreateNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A93A1CAC28A900A9B968 /* CreateNewAccountViewController.m */; };
+		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
+		A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */; };
+		A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */; };
 		A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */; };
 		A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */; };
 		BD0A5A821CAAFCF300FFF623 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A811CAAFCF300FFF623 /* main.m */; };
@@ -32,12 +32,12 @@
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
 		A1E7A9311CAC284700A9B968 /* FNBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUser.m; sourceTree = "<group>"; };
 		A1E7A9331CAC289500A9B968 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
-		A1E7A9351CAC28A900A9B968 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		A1E7A9361CAC28A900A9B968 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		A1E7A9371CAC28A900A9B968 /* UserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailsViewController.h; sourceTree = "<group>"; };
-		A1E7A9381CAC28A900A9B968 /* UserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = "<group>"; };
-		A1E7A9391CAC28A900A9B968 /* CreateNewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewAccountViewController.h; sourceTree = "<group>"; };
-		A1E7A93A1CAC28A900A9B968 /* CreateNewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewAccountViewController.m; sourceTree = "<group>"; };
+		A1E7A9351CAC28A900A9B968 /* FNBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBLoginViewController.h; sourceTree = "<group>"; };
+		A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBLoginViewController.m; sourceTree = "<group>"; };
+		A1E7A9371CAC28A900A9B968 /* FNBUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUserDetailsViewController.h; sourceTree = "<group>"; };
+		A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUserDetailsViewController.m; sourceTree = "<group>"; };
+		A1E7A9391CAC28A900A9B968 /* FNBCreateNewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBCreateNewAccountViewController.h; sourceTree = "<group>"; };
+		A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBCreateNewAccountViewController.m; sourceTree = "<group>"; };
 		A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Firebase.storyboard; sourceTree = "<group>"; };
 		A1E7A9411CAC49FE00A9B968 /* FNBArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtist.h; sourceTree = "<group>"; };
 		A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtist.m; sourceTree = "<group>"; };
@@ -102,12 +102,12 @@
 		A1E7A93E1CAC28B300A9B968 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1E7A9351CAC28A900A9B968 /* LoginViewController.h */,
-				A1E7A9361CAC28A900A9B968 /* LoginViewController.m */,
-				A1E7A9371CAC28A900A9B968 /* UserDetailsViewController.h */,
-				A1E7A9381CAC28A900A9B968 /* UserDetailsViewController.m */,
-				A1E7A9391CAC28A900A9B968 /* CreateNewAccountViewController.h */,
-				A1E7A93A1CAC28A900A9B968 /* CreateNewAccountViewController.m */,
+				A1E7A9351CAC28A900A9B968 /* FNBLoginViewController.h */,
+				A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */,
+				A1E7A9371CAC28A900A9B968 /* FNBUserDetailsViewController.h */,
+				A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */,
+				A1E7A9391CAC28A900A9B968 /* FNBCreateNewAccountViewController.h */,
+				A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -281,12 +281,12 @@
 			files = (
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
-				A1E7A93C1CAC28A900A9B968 /* UserDetailsViewController.m in Sources */,
-				A1E7A93D1CAC28A900A9B968 /* CreateNewAccountViewController.m in Sources */,
+				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
+				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
-				A1E7A93B1CAC28A900A9B968 /* LoginViewController.m in Sources */,
+				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
 				A1E7A9341CAC289500A9B968 /* Secrets.m in Sources */,
 			);
