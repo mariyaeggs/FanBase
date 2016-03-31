@@ -17,7 +17,10 @@
 		BD3EC2861CAC913F0063D912 /* FNBInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */; };
 		BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */; };
 		BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */; };
+		BDA163711CAD66CA00AFC375 /* FNBInstagramLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA163701CAD66CA00AFC375 /* FNBInstagramLoginViewController.m */; };
+		BDA163761CAD724000AFC375 /* FNBInstagramCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA163751CAD724000AFC375 /* FNBInstagramCollectionViewController.m */; };
 		BDB73EF21CAAFEAE00F6B3EB /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */; };
+		BDC9A2151CAD7FD400636C45 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC9A2141CAD7FD400636C45 /* NSURL+QueryString.m */; };
 		BDCBD2581CAB067A00EB4347 /* FNBFanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */; };
 		BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -41,8 +44,14 @@
 		BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterAPIClient.m; sourceTree = "<group>"; };
 		BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterPostTableViewCell.h; sourceTree = "<group>"; };
 		BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterPostTableViewCell.m; sourceTree = "<group>"; };
+		BDA1636F1CAD66CA00AFC375 /* FNBInstagramLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBInstagramLoginViewController.h; sourceTree = "<group>"; };
+		BDA163701CAD66CA00AFC375 /* FNBInstagramLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBInstagramLoginViewController.m; sourceTree = "<group>"; };
+		BDA163741CAD724000AFC375 /* FNBInstagramCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBInstagramCollectionViewController.h; sourceTree = "<group>"; };
+		BDA163751CAD724000AFC375 /* FNBInstagramCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBInstagramCollectionViewController.m; sourceTree = "<group>"; };
 		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
+		BDC9A2131CAD7FD400636C45 /* NSURL+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryString.h"; sourceTree = "<group>"; };
+		BDC9A2141CAD7FD400636C45 /* NSURL+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryString.m"; sourceTree = "<group>"; };
 		BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBFanFeed.storyboard; sourceTree = "<group>"; };
 		BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFanFeedTableViewController.h; sourceTree = "<group>"; };
 		BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFanFeedTableViewController.m; sourceTree = "<group>"; };
@@ -99,6 +108,8 @@
 		BD0A5A7F1CAAFCF300FFF623 /* FanBase */ = {
 			isa = PBXGroup;
 			children = (
+				BDA163731CAD677F00AFC375 /* APIs */,
+				BDA163721CAD675E00AFC375 /* FanFeed */,
 				BD0A5A831CAAFCF300FFF623 /* AppDelegate.h */,
 				BD0A5A841CAAFCF300FFF623 /* AppDelegate.m */,
 				BD0A5A861CAAFCF300FFF623 /* ViewController.h */,
@@ -110,15 +121,8 @@
 				BD0A5A801CAAFCF300FFF623 /* Supporting Files */,
 				BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */,
 				BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */,
-				BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */,
-				BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */,
-				BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */,
-				BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */,
-				BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */,
-				BD3EC2841CAC913F0063D912 /* FNBInstagramAPIClient.h */,
-				BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */,
-				BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */,
-				BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */,
+				BDC9A2131CAD7FD400636C45 /* NSURL+QueryString.h */,
+				BDC9A2141CAD7FD400636C45 /* NSURL+QueryString.m */,
 			);
 			path = FanBase;
 			sourceTree = "<group>";
@@ -129,6 +133,33 @@
 				BD0A5A811CAAFCF300FFF623 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDA163721CAD675E00AFC375 /* FanFeed */ = {
+			isa = PBXGroup;
+			children = (
+				BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */,
+				BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */,
+				BDA1636F1CAD66CA00AFC375 /* FNBInstagramLoginViewController.h */,
+				BDA163701CAD66CA00AFC375 /* FNBInstagramLoginViewController.m */,
+				BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */,
+				BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */,
+				BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */,
+				BDA163741CAD724000AFC375 /* FNBInstagramCollectionViewController.h */,
+				BDA163751CAD724000AFC375 /* FNBInstagramCollectionViewController.m */,
+			);
+			name = FanFeed;
+			sourceTree = "<group>";
+		};
+		BDA163731CAD677F00AFC375 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */,
+				BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */,
+				BD3EC2841CAC913F0063D912 /* FNBInstagramAPIClient.h */,
+				BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */,
+			);
+			name = APIs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,11 +284,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDC9A2151CAD7FD400636C45 /* NSURL+QueryString.m in Sources */,
+				BDA163761CAD724000AFC375 /* FNBInstagramCollectionViewController.m in Sources */,
 				BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */,
 				BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				BDB73EF21CAAFEAE00F6B3EB /* Secrets.m in Sources */,
 				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
+				BDA163711CAD66CA00AFC375 /* FNBInstagramLoginViewController.m in Sources */,
 				BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				BD3EC2861CAC913F0063D912 /* FNBInstagramAPIClient.m in Sources */,

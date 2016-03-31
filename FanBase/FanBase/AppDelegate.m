@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <AFOAuth2Manager.h>
+#import "NSURL+QueryString.h"
 
 @interface AppDelegate ()
 
@@ -40,6 +42,27 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(BOOL)application:(UIApplication *)app
+           openURL:(NSURL *)url
+           options:(NSDictionary<NSString *,id> *)options {
+    
+    NSLog(@"HEYYYY");
+    NSLog(@"%@",url);
+    NSString *token = [url valueForFragment];
+    
+    NSLog(@"%@", token);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginCompleted" object:nil];
+    
+    AFOAuthCredential *credential = [[AFOAuthCredential alloc] initWithOAuthToken:token tokenType:@"access_token"];
+    [AFOAuthCredential storeCredential:credential withIdentifier:@"IGCredential"];
+    
+    AFOAuthCredential *testCheck = [AFOAuthCredential retrieveCredentialWithIdentifier:@"IGCredential"];
+    NSLog(@"testCheck access token: %@", testCheck.accessToken);
+    
+    return YES;
 }
 
 @end

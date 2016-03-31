@@ -7,7 +7,7 @@
 //
 
 #import "FNBTwitterAPIClient.h"
-#import "FNBSecrets.h"
+#import "Secrets.h"
 
 @implementation FNBTwitterAPIClient
 

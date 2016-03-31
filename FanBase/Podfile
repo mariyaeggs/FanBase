@@ -6,9 +6,10 @@
 target 'FanBase' do
 
 	pod 'STTwitter'
-	pod 'AFNetworking', '~> 3.0'
-	pod 'AFOAuth2Manager', :git => 'https://github.com/AFNetworking/AFOAuth2Manager.git', :branch => '3_0_0_branch'
+
 	pod 'Firebase', '>= 2.5.1'
+	pod 'AFNetworking'
+	pod 'AFOAuth2Manager'
 
 end
 

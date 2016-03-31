@@ -10,4 +10,8 @@
 
 @interface FNBInstagramAPIClient : NSObject
 
++(void) generateInstagramPostsByKeyword:(NSString *)keyword completion:(void (^)(NSDictionary *))completionBlock;
+
++(void) generateInstagramPostsByUser:(NSString *)userName completion:(void (^)(NSDictionary *))completionBlock;
+
 @end
