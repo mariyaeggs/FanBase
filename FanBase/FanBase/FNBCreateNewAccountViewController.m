@@ -28,20 +28,6 @@
 }
 
 - (IBAction)submitTapped:(id)sender {
-//    //create new user
-//    [FNBFirebaseClient createNewUserWithEmail:self.emailField.text Password:self.passwordField.text WithBlockIfSuccessful:^(BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID) {
-//        //if successfully created new user, add them to database and login that user
-//            if (successfulCreationOfNewUser) {
-//                NSLog(@"created user!!!!! emails: %@", receivedEmail);
-//                
-//                // add user to database
-//                [FNBFirebaseClient addNewUserToDatabaseWithEmail:receivedEmail Password:receivedPassword UID:createdUID];
-//                
-//                // login user
-//                [FNBFirebaseClient loginWithEmail:self.emailField.text Password:self.passwordField.text];
-//                NSLog(@"logged in user");
-//            }
-//        }];
 
     [FNBFirebaseClient createANewUserWithEmail:self.emailField.text Password:self.passwordField.text];
 

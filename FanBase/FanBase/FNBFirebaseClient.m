@@ -58,9 +58,10 @@
     }];
 }
 
+// helper method for creating a new user
 // this method creates new user, and passes email, password, UID, and a completion bool to the block
 + (void) createNewUserWithEmail:(NSString *)email Password:(NSString *)password WithBlockIfSuccessful:(void (^) (BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID)) successBlock {
-    Firebase *ref =  [self setupBaseFirebase];
+    Firebase *ref = [self setupBaseFirebase];
     
     [ref createUser:email password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         if (error) {
@@ -76,6 +77,7 @@
     }];
 }
 
+// helper method for creating a new user
 + (void) addNewUserToDatabaseWithEmail:(NSString *)email Password:(NSString *)password UID:(NSString *)uid {
     Firebase *usersRef = [self setupUserFirebase];
     Firebase *newUserRef = [usersRef childByAppendingPath:uid];
@@ -102,6 +104,11 @@
     }];
 }
 
+
+
+
+
+
 + (void) logoutUser {
     Firebase *ref =  [self setupBaseFirebase];
     [ref unauth];
@@ -109,8 +116,8 @@
 
 #pragma mark - User Methods
 
-
-// This method sets the properties of the FNBUser whenever an update happens. Helper method for setPropertiesOfLoggedInUserToUser.
+// Helper method for setPropertiesOfLoggedInUserToUser.
+// This method sets the properties of the FNBUser whenever an update happens.
 + (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL updateHappened))updateBlock {
 //    NSLog(@"this is the uid: %@", uid);
     Firebase *usersRef = [self setupUserFirebase];
@@ -121,6 +128,7 @@
 //        NSLog(@"Snapshot of Users values: %@", snapshot.value);
         user.email = snapshot.value[@"email"];
         user.userID = snapshot.value[@"UID"];
+        user.password = snapshot.value[@"password"];
         user.artistsDictionary = snapshot.value[@"artistsDictionary"];
         updateBlock(YES);
         
@@ -226,7 +234,9 @@
 
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(FNBArtist *)newArtist {
     [self addUser:currentUser ToArtistDatabase:newArtist];
+    NSLog(@"added user to artist database");
     [self addArtist:newArtist ToDatabaseOfUser:currentUser];
+    NSLog(@"added artist to users database");
 }
 + (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist {
     [self deleteUser:currentUser FromArtist:newArtist];
@@ -235,10 +245,80 @@
 
 #pragma mark - Methods For Us to Test App
 
-//+ (FNBUser *)makeDummyUser {
-//    NSString *usersEmail = @"iAmADummy@email.com";
-//    NSString *password = @"dummyPassword";
-//    
-//}
+// helper method for makeDummyUser
++ (void) getUIDFromEmail:(NSString *)email withCompletionBlock: (void (^) (BOOL foundUID, NSString *UID))block{
+    Firebase *usersRef = [self setupUserFirebase];
+    //    NSMutableString *UID = [@"" mutableCopy];
+    [usersRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"trying to get the users UID from email");
+        for (NSDictionary *usersDictionary in snapshot.value) {
+            NSDictionary *subDictionary = [snapshot.value objectForKey:usersDictionary];
+            if ([subDictionary[@"email"] isEqualToString:email]) {
+                block(YES, subDictionary[@"UID"]);
+            }
+        }
+        NSLog(@"couldn't find stuff in getUIDmethod");
+    }];
+}
+
++ (void)fillUser:(FNBUser *)user WithDummyDataWithCompletionBlock: (void (^) (BOOL madeDummyUser))completionBlock{
+    // create random new user on database
+    NSUInteger randomNumber = arc4random() %100000;
+    NSString *usersEmail = [NSString stringWithFormat: @"iAmDummy%lu@email.com", (unsigned long)randomNumber];
+    NSString *usersPassword = @"dummyPassword";
+    
+    //create users database entry
+    [self createNewUserWithEmail:usersEmail Password:usersPassword WithBlockIfSuccessful:^(BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID) {
+        //if successfully created new user, add them to database and login that user
+        if (successfulCreationOfNewUser) {
+            NSLog(@"created user!!!!! emails: %@", receivedEmail);
+            
+            // add user to database
+            [self addNewUserToDatabaseWithEmail:receivedEmail Password:receivedPassword UID:createdUID];
+            [self getUIDFromEmail:usersEmail withCompletionBlock:^(BOOL foundUID, NSString *UID) {
+                if (foundUID) {
+                    NSLog(@"found UID: %@", UID);
+                    // create new FNBUser from database
+                    [self setPropertiesOnceOfUser:user withUID:UID withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                        // add some artists to user
+                        FNBArtist *artist1 = [[FNBArtist alloc] initWithName:@"Adele"];
+                        FNBArtist *artist2 = [[FNBArtist alloc] initWithName:@"Nsync"];
+                        FNBArtist *artist3 = [[FNBArtist alloc] initWithName:@"Backstreet Boys"];
+                        [self addCurrentUser:user andArtistToEachOthersDatabases:artist1];
+                        [self addCurrentUser:user andArtistToEachOthersDatabases:artist2];
+                        [self addCurrentUser:user andArtistToEachOthersDatabases:artist3];
+                        [self setPropertiesOnceOfUser:user withUID:UID withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                            completionBlock(YES);
+                        }];
+                    }];
+                }
+                else {
+                    NSLog(@"could not find users UID from email");
+                }
+            }];
+        }
+    }];
+}
+
+// helper method for making Dummy Data method
++ (void) setPropertiesOnceOfUser:(FNBUser *)user withUID:uid withCompletionBlock: (void (^) (BOOL completedSettingUsersProperties))setPropCompletionBlock {
+    Firebase *usersRef = [self setupUserFirebase];
+    Firebase *newUserRef = [usersRef childByAppendingPath:uid];
+    
+    // This block gets called for any change in this users data
+    [newUserRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        //        NSLog(@"Snapshot of Users values: %@", snapshot.value);
+        user.email = snapshot.value[@"email"];
+        user.userID = snapshot.value[@"UID"];
+        user.password = snapshot.value[@"password"];
+        user.artistsDictionary = snapshot.value[@"artistsDictionary"];
+        setPropCompletionBlock(YES);
+        
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
+}
+
+
 
 @end

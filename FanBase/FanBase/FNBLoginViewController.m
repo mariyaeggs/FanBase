@@ -32,6 +32,18 @@
 
 - (IBAction)loginTapped:(id)sender {
     [FNBFirebaseClient loginWithEmail:self.emailField.text Password:self.passwordField.text];
+
+}
+- (IBAction)continueAsDummyTapped:(id)sender {
+    FNBUser *myDummyUser = [[FNBUser alloc] init];
+    [FNBFirebaseClient fillUser:myDummyUser WithDummyDataWithCompletionBlock:^(BOOL madeDummyUser) {
+        if (madeDummyUser) {
+            // THIS IS WHERE YOU CAN GET THE DUMMY USER DATA
+            NSLog(@"Filled user with dummy data");
+            NSLog(@"myDummyUser: %@", myDummyUser.artistsDictionary);
+            [FNBFirebaseClient loginWithEmail:myDummyUser.email Password:myDummyUser.password];
+        }
+    }];
 }
 
 

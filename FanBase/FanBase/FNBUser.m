@@ -26,11 +26,9 @@
         _artistsDictionary = [[NSMutableDictionary alloc] init];
         _userID = @"";
         _email = @"";
+        _password = @"";
     }
     return self;
 }
-
-
-//-(instancetype)makeDummyUser
 
 @end

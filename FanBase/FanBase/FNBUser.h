@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSMutableDictionary *artistsDictionary;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *password;
 
 -(instancetype)init;
 //-(instancetype)initWithAuthData:(FAuthData *)authData;
