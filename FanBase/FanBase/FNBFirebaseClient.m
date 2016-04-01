@@ -199,16 +199,31 @@
     [artistsSubscribedUsersRef updateChildValues:newUserDictionary];
 }
 
-+ (void) checkDatabaseEntryForArtist:(FNBArtist *) artist withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block {
+//+ (void) checkDatabaseEntryForArtist:(FNBArtist *) artist withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block {
+//    Firebase *artistsRef = [self setupArtistFirebase];
+//    Firebase *newArtistRef = [artistsRef childByAppendingPath:artist.name];
+//    [newArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        if ([snapshot.value isKindOfClass:[NSMutableDictionary class]]) {
+////            NSLog(@"value true");
+//            block(TRUE);
+//        }
+//        else {
+////            NSLog(@"value false");
+//            block(FALSE);
+//        }
+//    }];
+//}
+
++ (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block {
     Firebase *artistsRef = [self setupArtistFirebase];
-    Firebase *newArtistRef = [artistsRef childByAppendingPath:artist.name];
+    Firebase *newArtistRef = [artistsRef childByAppendingPath:artistName];
     [newArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if ([snapshot.value isKindOfClass:[NSMutableDictionary class]]) {
-//            NSLog(@"value true");
+            //            NSLog(@"value true");
             block(TRUE);
         }
         else {
-//            NSLog(@"value false");
+            //            NSLog(@"value false");
             block(FALSE);
         }
     }];
@@ -235,7 +250,7 @@
 
 
 + (void) addUser: (FNBUser *)inputtedUser ToArtistDatabase:(FNBArtist *)artist {
-    [self checkDatabaseEntryForArtist:artist withCompletionBlock:^(BOOL artistDatabaseExists) {
+    [self checkExistanceOfDatabaseEntryForArtistName:artist.name withCompletionBlock:^(BOOL artistDatabaseExists) {
         if (artistDatabaseExists) {
             NSLog(@"Artist database already exists");
             // add user to existing artist database
@@ -255,6 +270,26 @@
     Firebase *specificUserRef = [artistsSubscribedUsersRef childByAppendingPath:user.userID];
     [specificUserRef removeValue];
 }
+
+#pragma mark - Spotify Related Methods
+
++ (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary {
+    Firebase *artistsRef = [self setupArtistFirebase];
+    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistSpotifyDictionary[@"name"]];
+    NSDictionary *initialArtistValues = @{@"name" : artistSpotifyDictionary[@"name"],
+                                          @"spotifyID": artistSpotifyDictionary[@"id"] ,
+                                          @"twitterHandle": @"", @"subscribedUsers" : [NSMutableDictionary new],
+                                          @"imageURLSize640" : artistSpotifyDictionary[@"images"][1][@"url"],
+                                          @"imageURLSize64" : artistSpotifyDictionary[@"images"][3][@"url"]};
+    [currentArtistRef setValue:initialArtistValues];
+    NSLog(@"Added Spotify artist to database");
+}
+
+//+ (void) checkIfArtistDatabaseExists:(NSString *)artistName withCompletionBlock: (void (^) (BOOL databaseExists)) completionBlock{
+//    Firebase *artistsRef = [self setupArtistFirebase];
+//    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistName];
+//    
+//}
 
 #pragma mark - User and Artist Methods
 

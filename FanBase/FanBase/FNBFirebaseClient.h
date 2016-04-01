@@ -26,6 +26,10 @@
 
 #pragma mark - Artist Methods
 + (void) setPropertiesOfArtist:(FNBArtist *)artist withCompletionBlock: (void (^) (BOOL setPropertiesUpdated)) setArtistPropertiesUpdatedBlock;
++ (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
+
+#pragma mark - Spotify Related Methods
++ (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary;
 
 #pragma mark - User and Artist Methods
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(FNBArtist *)newArtist;

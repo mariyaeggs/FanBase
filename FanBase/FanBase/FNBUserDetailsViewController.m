@@ -7,6 +7,8 @@
 //
 
 #import "FNBUserDetailsViewController.h"
+//#import <AFNetworking/AFNetworking.h>
+#import "FNBSpotifySearch.h"
 
 @interface FNBUserDetailsViewController()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
@@ -104,6 +106,59 @@
             NSLog(@"Adele Subscribers: %@", adele.subscribedUsers);
         }
     }];
+}
+
+- (IBAction)checkIfArtistIsInSpotifyTapped:(id)sender {
+    NSString *inputtedArtistName = self.addArtistField.text;
+    
+    [FNBSpotifySearch getArrayOfMatchingArtistsFromSearch:inputtedArtistName withCompletionBlock:^(BOOL gotMatchingArtists, NSArray *matchingArtistsArray) {
+        if (gotMatchingArtists) {
+            // make an alert
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Select Artist" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            // if there are matching Artists
+            if (matchingArtistsArray.count > 0) {
+                // add every matched artist to alert
+                for (NSDictionary *artist in matchingArtistsArray) {
+                    UIAlertAction *artistButton = [UIAlertAction actionWithTitle:artist[@"name"] style:UIAlertActionStyleDefault
+                                                                         handler:^(UIAlertAction * action) {
+                                                                             [self addArtist:artist];
+                                                                         }];
+                    [alert addAction:artistButton];
+                }
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
+                                                               handler:^(UIAlertAction * action) {}];
+                [alert addAction:cancel];
+            }
+            // if matchingArtistsArray has no entries
+            else {
+                UIAlertAction *noMatchingArtistsButton = [UIAlertAction actionWithTitle:@"No Matching Artists Found" style:UIAlertActionStyleDestructive
+                                                               handler:^(UIAlertAction * action) {}];
+                [alert addAction:noMatchingArtistsButton];
+            }
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        else {
+            NSLog(@"got nothing");
+            return;
+        }
+    }];
+}
+
+- (void) addArtist:(NSDictionary *)artist {
+    NSLog(@"You selected %@", artist);
+    FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:<#(FNBArtist *)#>
+    
+//    [FNBFirebaseClient checkExistanceOfDatabaseEntryForArtistName:artist[@"name"] withCompletionBlock:^(BOOL artistDatabaseExists) {
+//        if (artistDatabaseExists) {
+//            NSLog(@"Artist Database already exists");
+//        }
+//        else {
+//            [FNBFirebaseClient makeDatabaseEntryForArtistFromSpotifyDictionary:artist];
+//        }
+//    }];
 }
 
 @end

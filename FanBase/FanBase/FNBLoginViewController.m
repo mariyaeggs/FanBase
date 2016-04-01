@@ -24,6 +24,7 @@
     [FNBFirebaseClient isUserAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
         //if the user is an authenticated user, segue to next screen
         if (isAuthenticatedUser) {
+            NSLog(@"isAuthenticateUser");
             [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
         }
     }];
@@ -42,6 +43,7 @@
             NSLog(@"Filled user with dummy data");
             NSLog(@"myDummyUser: %@", myDummyUser.artistsDictionary);
             [FNBFirebaseClient loginWithEmail:myDummyUser.email Password:myDummyUser.password];
+            NSLog(@"logged in");
         }
     }];
 }
