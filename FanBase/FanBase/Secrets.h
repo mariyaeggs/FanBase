@@ -14,3 +14,5 @@ extern NSString const *TwitterSecret;
 extern NSString const *InstagramClientID;
 extern NSString const *InstagramClientSecret;
 extern NSString const *InstagramRedirectURL;
+extern NSString *const ourFirebaseURL;
+
