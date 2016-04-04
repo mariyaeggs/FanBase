@@ -24,7 +24,7 @@
     self = [super init];
     if (self) {
         _artistsDictionary = [[NSMutableDictionary alloc] init];
-        _userID = @"";
+        _userID = @"firebaseFred";
         _email = @"";
         _password = @"";
     }

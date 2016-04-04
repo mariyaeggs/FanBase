@@ -113,13 +113,6 @@
                                     <action selector="logoutTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="Zif-HI-0b5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qM-Pr-rDi">
-                                <rect key="frame" x="211" y="400" width="69" height="30"/>
-                                <state key="normal" title="Add Artist"/>
-                                <connections>
-                                    <action selector="addArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="dHR-3x-GCB"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqv-np-zaa">
                                 <rect key="frame" x="135" y="362" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -130,13 +123,6 @@
                                 <state key="normal" title="Delete Artist"/>
                                 <connections>
                                     <action selector="deleteArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="y7p-5m-ndE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-9V-pQH">
-                                <rect key="frame" x="192" y="562" width="109" height="30"/>
-                                <state key="normal" title="Go to next page"/>
-                                <connections>
-                                    <segue destination="1ol-1n-4h2" kind="show" id="hV5-sy-1q4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDO-jr-ReQ">
@@ -153,10 +139,24 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-LK-AJU">
-                                <rect key="frame" x="155" y="503" width="183" height="30"/>
-                                <state key="normal" title="Check If Artist Is In Spotify"/>
+                                <rect key="frame" x="185" y="407" width="122" height="30"/>
+                                <state key="normal" title="Add Spotify Artist"/>
                                 <connections>
-                                    <action selector="checkIfArtistIsInSpotifyTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="m8u-GH-ApD"/>
+                                    <action selector="addSpotifyArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="7Yx-2g-AAl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odS-e0-EdQ">
+                                <rect key="frame" x="135" y="540" width="220" height="30"/>
+                                <state key="normal" title="Get Array Of Artists In Database"/>
+                                <connections>
+                                    <action selector="getArrayOfArtistsTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="dJ7-NY-Ld8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-9V-pQH">
+                                <rect key="frame" x="191" y="489" width="109" height="30"/>
+                                <state key="normal" title="Go to next page"/>
+                                <connections>
+                                    <segue destination="1ol-1n-4h2" kind="show" id="hV5-sy-1q4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -164,7 +164,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="BKX-Je-mAU"/>
                     <connections>
-                        <outlet property="addArtistButton" destination="1qM-Pr-rDi" id="Jnk-Vb-KOl"/>
                         <outlet property="addArtistField" destination="lqv-np-zaa" id="hE5-hb-oHE"/>
                         <outlet property="deleteArtistButton" destination="BA1-RE-oeK" id="H9P-3U-54K"/>
                         <outlet property="label1" destination="Lgj-fm-Mnh" id="X3b-be-yth"/>
