@@ -345,7 +345,7 @@
 }
 
 // get array of all artists from database
-+ (void) getArrayOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSArray *artistsArray))block{
++ (void) getDictionaryOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSDictionary *artistsDictionary))block{
     Firebase *artistsRef = [self setupArtistFirebase];
     [artistsRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
 //        NSLog(@"%@", snapshot.value);

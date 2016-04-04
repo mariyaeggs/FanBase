@@ -12,7 +12,6 @@
 		A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
-		A1E7A9341CAC289500A9B968 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9331CAC289500A9B968 /* Secrets.m */; };
 		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
 		A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */; };
 		A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */; };
@@ -24,6 +23,13 @@
 		BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A891CAAFCF300FFF623 /* Main.storyboard */; };
 		BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */; };
 		BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */; };
+		ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730091CB2DC2E001C48DB /* Secrets.m */; };
+		ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300D1CB2DE0A001C48DB /* APIClient.m */; };
+		ED7730171CB2DE0A001C48DB /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300F1CB2DE0A001C48DB /* Constants.m */; };
+		ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730111CB2DE0A001C48DB /* CVCell.m */; };
+		ED7730191CB2DE0A001C48DB /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7730121CB2DE0A001C48DB /* NibCell.xib */; };
+		ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */; };
+		ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +43,6 @@
 		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
 		A1E7A9311CAC284700A9B968 /* FNBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUser.m; sourceTree = "<group>"; };
-		A1E7A9331CAC289500A9B968 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		A1E7A9351CAC28A900A9B968 /* FNBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBLoginViewController.h; sourceTree = "<group>"; };
 		A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBLoginViewController.m; sourceTree = "<group>"; };
 		A1E7A9371CAC28A900A9B968 /* FNBUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUserDetailsViewController.h; sourceTree = "<group>"; };
@@ -59,6 +64,17 @@
 		BD0A5A911CAAFCF300FFF623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
+		ED7730091CB2DC2E001C48DB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
+		ED77300C1CB2DE0A001C48DB /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		ED77300D1CB2DE0A001C48DB /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
+		ED77300E1CB2DE0A001C48DB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		ED77300F1CB2DE0A001C48DB /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		ED7730101CB2DE0A001C48DB /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCell.h; sourceTree = "<group>"; };
+		ED7730111CB2DE0A001C48DB /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVCell.m; sourceTree = "<group>"; };
+		ED7730121CB2DE0A001C48DB /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
+		ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverPage.storyboard; sourceTree = "<group>"; };
+		ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBDiscoverViewController.h; sourceTree = "<group>"; };
+		ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBDiscoverViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +166,7 @@
 		BD0A5A7F1CAAFCF300FFF623 /* FanBase */ = {
 			isa = PBXGroup;
 			children = (
+				ED77300B1CB2DD63001C48DB /* Discover Page */,
 				A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */,
 				A1E7A92C1CAC281600A9B968 /* FirebaseFiles */,
 				BD0A5A831CAAFCF300FFF623 /* AppDelegate.h */,
@@ -162,7 +179,7 @@
 				BD0A5A911CAAFCF300FFF623 /* Info.plist */,
 				BD0A5A801CAAFCF300FFF623 /* Supporting Files */,
 				BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */,
-				A1E7A9331CAC289500A9B968 /* Secrets.m */,
+				ED7730091CB2DC2E001C48DB /* Secrets.m */,
 			);
 			path = FanBase;
 			sourceTree = "<group>";
@@ -173,6 +190,24 @@
 				BD0A5A811CAAFCF300FFF623 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED77300B1CB2DD63001C48DB /* Discover Page */ = {
+			isa = PBXGroup;
+			children = (
+				ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */,
+				ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */,
+				ED7730101CB2DE0A001C48DB /* CVCell.h */,
+				ED7730111CB2DE0A001C48DB /* CVCell.m */,
+				ED77300C1CB2DE0A001C48DB /* APIClient.h */,
+				ED77300D1CB2DE0A001C48DB /* APIClient.m */,
+				ED77300E1CB2DE0A001C48DB /* Constants.h */,
+				ED77300F1CB2DE0A001C48DB /* Constants.m */,
+				ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */,
+				ED7730121CB2DE0A001C48DB /* NibCell.xib */,
+			);
+			name = "Discover Page";
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +273,9 @@
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
+				ED7730191CB2DE0A001C48DB /* NibCell.xib in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
+				ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,12 +339,16 @@
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				A14F2D7C1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
+				ED7730171CB2DE0A001C48DB /* Constants.m in Sources */,
+				ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
+				ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
+				ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
+				ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
-				A1E7A9341CAC289500A9B968 /* Secrets.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -151,13 +151,13 @@
     NSLog(@"You selected %@", artist);
     [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:artist];
 }
-- (IBAction)getArrayOfArtistsTapped:(id)sender {
-    [FNBFirebaseClient getArrayOfAllArtistsInDatabaseWithCompletionBlock:^(BOOL completed, NSArray *artistsArray) {
-        if (completed) {
-            NSLog(@"in block. Here is the array: %@", artistsArray);
-        }
-    }];
-}
+//- (IBAction)getArrayOfArtistsTapped:(id)sender {
+//    [FNBFirebaseClient getArrayOfAllArtistsInDatabaseWithCompletionBlock:^(BOOL completed, NSArray *artistsArray) {
+//        if (completed) {
+//            NSLog(@"in block. Here is the array: %@", artistsArray);
+//        }
+//    }];
+//}
 //- (IBAction)pressOnce:(id)sender {
 //    NSArray *classical = @[ @"James Horner", @"Gyorgy Ligeti", @"James Rhodes ", @"George Frideric Handel ", @"Giuseppe Verde ", @"Claude Debussy ", @"Howard Shore", @"Johannes Brahms ", @"Aaron Copland ", @"Richard Wagner ", @"Ludwig van Beethoven ", @"Nico Muhly ", @"Hans Zimmer ", @"Charles Ives ", @"Sergei Prokofiev", @"Arvo Part", @"Wolfgan Amadeus Motzart ", @"John Adams", @"Steve Reich", @"Frederic Chopin ", @"Franz Joseph Haydn", @"Erik Satie ", @"Bela Bartok", @"Ennio Morricone ", @"Franz Schubert ", @"Max Richter ", @"Johann Sebastian Bach", @"John Williams ", @"Claudio Monteverdi ", @"Igor Stravinsky" ];
 //    NSArray *jazz = @[@"Art Blakey", @"Chic Cores ", @"Diana Krall ", @"Herbie Hancock", @"Sonny Rollins ", @"Miles Davis ", @"Keith Jarret ", @"John Coltrane ", @"Ella Fitzgerald", @"Benny Goodman", @"Bill Evans ", @"Norah Jones ", @"Mary Lou Williams ", @"Art Tatum ", @"Thelonious Monk", @"Frank Sinatra", @"Duke Ellington", @"Charles Mingus ", @"Louis Armstrong", @"Sarah Vaughan", @"Coleman Hawkins ", @"Kurt Elling", @"Max Roach", @"Nat King Cole ", @"Count Basie", @"Dizzy GIllespie", @"Charlie Parker ", @"Dave Brubeck", @"Billie Hoiday ", @"Lester Young"];
