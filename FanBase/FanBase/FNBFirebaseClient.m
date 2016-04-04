@@ -237,18 +237,11 @@
                                           @"spotifyID": artistSpotifyDictionary[@"id"] ,
                                           @"twitterHandle": @"", @"subscribedUsers" : [NSMutableDictionary new],
                                           @"images" : artistSpotifyDictionary[@"images"],
-//                                          @"imageURLSize200" : artistSpotifyDictionary[@"images"][2][@"url"],
-//                                          @"imageURLSize64" : artistSpotifyDictionary[@"images"][3][@"url"],
                                           @"genres" : artistSpotifyDictionary[@"genres"]};
     [currentArtistRef setValue:initialArtistValues];
     NSLog(@"Added Spotify artist to database");
 }
 
-//+ (void) checkIfArtistDatabaseExists:(NSString *)artistName withCompletionBlock: (void (^) (BOOL databaseExists)) completionBlock{
-//    Firebase *artistsRef = [self setupArtistFirebase];
-//    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistName];
-//    
-//}
 
 #pragma mark - User and Artist Methods
 

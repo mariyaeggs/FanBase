@@ -159,6 +159,13 @@
                                     <segue destination="1ol-1n-4h2" kind="show" id="hV5-sy-1q4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPN-Y8-hGM">
+                                <rect key="frame" x="35" y="446" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="pressOnce:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="RYL-gC-gwC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
