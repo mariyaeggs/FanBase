@@ -183,7 +183,7 @@
 //    NSArray *blues = @[ @"Mississippi John Hurt", @"Albert King ", @"Robert Johnson", @"Eric Clapton", @"Howlin' Wolf", @"Muddy Waters ", @"John Lee Hooker ", @"Sonny Boy Williamson II ", @"John Mayall ", @"Jimmy Reed ", @"Lead Belly ", @"B.B. King", @"The Derek Trucks Band ", @"Keb' Mo'", @"Robert Cray", @"Lightnin' Hopkins", @"Son House ", @"Elmore James ", @"Peter Green ", @"Bo Diddley", @"Freddie King ", @"Stevie Ray Vaughan", @"The Allman Brothers Band ", @"Skip James ", @"Joe Bonamassa", @"Blind Willie Johnson", @"Bessie Smith", @"Kenny Wayne Shepherd ", @"T-Bone Walker ", @"Buddy Guy"];
 //    
 //    
-//    NSArray *arrayOfGenres = @[comedy];
+//    NSArray *arrayOfGenres = @[funk, blues];
 //    for (NSArray *artistsArray in arrayOfGenres) {
 //        [FNBFirebaseClient fillDatabaseWithArrayOfArtists:artistsArray];
 //    }
