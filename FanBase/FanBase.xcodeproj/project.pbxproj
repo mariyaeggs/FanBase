@@ -27,7 +27,6 @@
 		ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300D1CB2DE0A001C48DB /* APIClient.m */; };
 		ED7730171CB2DE0A001C48DB /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300F1CB2DE0A001C48DB /* Constants.m */; };
 		ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730111CB2DE0A001C48DB /* CVCell.m */; };
-		ED7730191CB2DE0A001C48DB /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7730121CB2DE0A001C48DB /* NibCell.xib */; };
 		ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */; };
 		ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */; };
 /* End PBXBuildFile section */
@@ -71,7 +70,6 @@
 		ED77300F1CB2DE0A001C48DB /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		ED7730101CB2DE0A001C48DB /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCell.h; sourceTree = "<group>"; };
 		ED7730111CB2DE0A001C48DB /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVCell.m; sourceTree = "<group>"; };
-		ED7730121CB2DE0A001C48DB /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
 		ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverPage.storyboard; sourceTree = "<group>"; };
 		ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBDiscoverViewController.h; sourceTree = "<group>"; };
 		ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBDiscoverViewController.m; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				ED77300E1CB2DE0A001C48DB /* Constants.h */,
 				ED77300F1CB2DE0A001C48DB /* Constants.m */,
 				ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */,
-				ED7730121CB2DE0A001C48DB /* NibCell.xib */,
 			);
 			name = "Discover Page";
 			path = ..;
@@ -273,7 +270,6 @@
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
-				ED7730191CB2DE0A001C48DB /* NibCell.xib in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
 				ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */,
 			);

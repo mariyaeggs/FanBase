@@ -7,15 +7,14 @@
 //
 
 #import "FNBDiscoverViewController.h"
-#import "CVCell.h"
-#import <Firebase.h>
-#import "FNBFirebaseClient.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "FNBFirebaseClient.h"
+#import <Firebase.h>
+#import "CVCell.h"
 
 @interface FNBDiscoverViewController ()
 
 @property (nonatomic,strong) NSDictionary *artistData;
-
 @property (nonatomic,strong) NSArray *popArtists;
 
 @end

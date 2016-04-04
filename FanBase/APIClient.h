@@ -11,8 +11,4 @@
 
 @interface APIClient : NSObject
 
-+ (void)downloadImageAtUrl:(NSURL *)url
-            withCompletion:(void (^)(UIImage *image, BOOL success))block;
-
-
 @end
