@@ -113,30 +113,16 @@
                                     <action selector="logoutTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="Zif-HI-0b5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qM-Pr-rDi">
-                                <rect key="frame" x="211" y="462" width="69" height="30"/>
-                                <state key="normal" title="Add Artist"/>
-                                <connections>
-                                    <action selector="addArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="dHR-3x-GCB"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqv-np-zaa">
-                                <rect key="frame" x="134" y="417" width="223" height="30"/>
+                                <rect key="frame" x="135" y="362" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-RE-oeK">
-                                <rect key="frame" x="203" y="513" width="86" height="30"/>
+                                <rect key="frame" x="203" y="451" width="86" height="30"/>
                                 <state key="normal" title="Delete Artist"/>
                                 <connections>
                                     <action selector="deleteArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="y7p-5m-ndE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-9V-pQH">
-                                <rect key="frame" x="192" y="562" width="109" height="30"/>
-                                <state key="normal" title="Go to next page"/>
-                                <connections>
-                                    <segue destination="1ol-1n-4h2" kind="show" id="hV5-sy-1q4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDO-jr-ReQ">
@@ -146,10 +132,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9G-xI-zx5">
-                                <rect key="frame" x="126" y="330" width="241" height="30"/>
+                                <rect key="frame" x="125" y="301" width="241" height="30"/>
                                 <state key="normal" title="Get FNBArtist from Adele database"/>
                                 <connections>
                                     <action selector="getAdeleFNBArtist:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="p30-ue-gpb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-LK-AJU">
+                                <rect key="frame" x="185" y="407" width="122" height="30"/>
+                                <state key="normal" title="Add Spotify Artist"/>
+                                <connections>
+                                    <action selector="addSpotifyArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="7Yx-2g-AAl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odS-e0-EdQ">
+                                <rect key="frame" x="135" y="540" width="220" height="30"/>
+                                <state key="normal" title="Get Array Of Artists In Database"/>
+                                <connections>
+                                    <action selector="getArrayOfArtistsTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="dJ7-NY-Ld8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-9V-pQH">
+                                <rect key="frame" x="191" y="489" width="109" height="30"/>
+                                <state key="normal" title="Go to next page"/>
+                                <connections>
+                                    <segue destination="1ol-1n-4h2" kind="show" id="hV5-sy-1q4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -157,7 +164,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="BKX-Je-mAU"/>
                     <connections>
-                        <outlet property="addArtistButton" destination="1qM-Pr-rDi" id="Jnk-Vb-KOl"/>
                         <outlet property="addArtistField" destination="lqv-np-zaa" id="hE5-hb-oHE"/>
                         <outlet property="deleteArtistButton" destination="BA1-RE-oeK" id="H9P-3U-54K"/>
                         <outlet property="label1" destination="Lgj-fm-Mnh" id="X3b-be-yth"/>
@@ -215,34 +221,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fD0-CJ-xeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2906" y="133"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="FaV-zB-Gen">
-            <objects>
-                <tableViewController id="ZEQ-UN-ASE" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KcW-3z-fd8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZTf-f9-Yah">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZTf-f9-Yah" id="dkT-zc-cbE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ZEQ-UN-ASE" id="v8l-JK-gBU"/>
-                            <outlet property="delegate" destination="ZEQ-UN-ASE" id="ef2-hb-8LA"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cfd-hB-C10" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3668" y="149"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">

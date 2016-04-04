@@ -17,6 +17,11 @@
         _spotifyID = @"";
         _subscribedUsers = [NSMutableDictionary new];
         _twitterHandle = @"";
+        _imagesArray = [NSArray new];
+//        _imageURLSize640 = @"";
+//        _imageURLSize200 = @"";
+//        _imageURLSize64 = @"";
+        _genres = @"";
     }
     return self;
 }
@@ -28,6 +33,11 @@
         _spotifyID = @"";
         _subscribedUsers = [NSMutableDictionary new];
         _twitterHandle = @"";
+        _imagesArray = [NSArray new];
+//        _imageURLSize640 = @"";
+//        _imageURLSize200 = @"";
+//        _imageURLSize64 = @"";
+        _genres = @"";
     }
     return self;
 }

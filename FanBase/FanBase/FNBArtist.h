@@ -14,6 +14,13 @@
 @property (strong, nonatomic) NSString *spotifyID;
 @property (strong, nonatomic) NSString *twitterHandle;
 @property (strong, nonatomic) NSMutableDictionary *subscribedUsers;
+@property (strong, nonatomic) NSArray *imagesArray;
+//@property (strong, nonatomic) NSString *imageURLSize640;
+//@property (strong, nonatomic) NSString *imageURLSize200;
+//@property (strong, nonatomic) NSString *imageURLSize64;
+@property (strong, nonatomic) NSString *genres;
+
+
 
 -(instancetype) initWithName:(NSString *)name;
 

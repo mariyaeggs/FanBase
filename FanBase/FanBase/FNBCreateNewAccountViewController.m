@@ -18,10 +18,8 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [FNBFirebaseClient isUserAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
-        //if the user is an authenticated user, segue to next screen
-        if (isAuthenticatedUser) {
+    [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
+        if (isAuthenticUser) {
             [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
         }
     }];
@@ -29,7 +27,7 @@
 
 - (IBAction)submitTapped:(id)sender {
 
-    [FNBFirebaseClient createANewUserWithEmail:self.emailField.text Password:self.passwordField.text];
+    [FNBFirebaseClient createANewUserInDatabaseWithEmail:self.emailField.text Password:self.passwordField.text];
 
 }
 
