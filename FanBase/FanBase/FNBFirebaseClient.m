@@ -194,15 +194,17 @@
 //}
 
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block {
+//    NSLog(@"checking existance of database. aristName = %@", artistName);
     Firebase *artistsRef = [self setupArtistFirebase];
     Firebase *newArtistRef = [artistsRef childByAppendingPath:artistName];
     [newArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"here");
         if ([snapshot.value isKindOfClass:[NSMutableDictionary class]]) {
-            //            NSLog(@"value true");
+//                        NSLog(@"value true");
             block(TRUE);
         }
         else {
-            //            NSLog(@"value false");
+//                        NSLog(@"value false");
             block(FALSE);
         }
     }];
@@ -210,7 +212,7 @@
 
 + (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesUpdated)) setArtistPropertiesUpdatedBlock {
     Firebase *artistsRef = [self setupArtistFirebase];
-    Firebase *specificArtistRef = [artistsRef childByAppendingPath:artist.name];
+    Firebase *specificArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artist.name]];
     
     // This block gets called for any change in this artists data
     [specificArtistRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
@@ -229,8 +231,15 @@
 }
 
 + (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary {
+    NSLog(@"making artist database");
+
+    //get rid of .#$[] characters in artist's name
+    NSString *formatedArtistName = [self formatedArtistName:artistSpotifyDictionary[@"name"] ];
+    
     Firebase *artistsRef = [self setupArtistFirebase];
-    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistSpotifyDictionary[@"name"]];
+    Firebase *currentArtistRef = [artistsRef childByAppendingPath:formatedArtistName];
+    
+    
     NSLog(@"%@", artistSpotifyDictionary[@"name"]);
     
     NSDictionary *initialArtistValues = @{@"name" : artistSpotifyDictionary[@"name"],
@@ -244,11 +253,6 @@
     NSLog(@"Added Spotify artist to database");
 }
 
-//+ (void) checkIfArtistDatabaseExists:(NSString *)artistName withCompletionBlock: (void (^) (BOOL databaseExists)) completionBlock{
-//    Firebase *artistsRef = [self setupArtistFirebase];
-//    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistName];
-//    
-//}
 
 #pragma mark - User and Artist Methods
 
@@ -267,14 +271,14 @@
     Firebase *usersRef = [self setupUserFirebase];
     Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
     Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
-    Firebase *specificArtistRef = [usersArtistRef childByAppendingPath:artistName];
+    Firebase *specificArtistRef = [usersArtistRef childByAppendingPath:[self formatedArtistName: artistName]];
     
     [specificArtistRef removeValue];
 }
 
 // helper method for addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases
 + (void) addUser: (FNBUser *)inputtedUser ToArtistDatabase:(NSDictionary *)artistDictionaryFromSpotify {
-    NSString *artistName = artistDictionaryFromSpotify[@"name"];
+    NSString *artistName = [self formatedArtistName:artistDictionaryFromSpotify[@"name"]];
     [self checkExistanceOfDatabaseEntryForArtistName:artistName withCompletionBlock:^(BOOL artistDatabaseExists) {
         if (artistDatabaseExists) {
             NSLog(@"Artist database already exists");
@@ -293,7 +297,7 @@
 // helper method for addCurrentUser andArtistToEachOthersDatabase
 + (void) addUser:(FNBUser *)user ToExistingArtistDatabase:(NSString *)artistName {
     Firebase *artistsRef = [self setupArtistFirebase];
-    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistName];
+    Firebase *currentArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artistName]];
     Firebase *artistsSubscribedUsersRef = [currentArtistRef childByAppendingPath:@"subscribedUsers"];
     NSDictionary *newUserDictionary = @{user.userID : @0};
     [artistsSubscribedUsersRef updateChildValues:newUserDictionary];
@@ -302,14 +306,14 @@
 // helper method for deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist
 + (void) deleteUser:(FNBUser *)user FromArtist:(NSString *)artistName{
     Firebase *artistsRef = [self setupArtistFirebase];
-    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistName];
+    Firebase *currentArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artistName]];
     Firebase *artistsSubscribedUsersRef = [currentArtistRef childByAppendingPath:@"subscribedUsers"];
     Firebase *specificUserRef = [artistsSubscribedUsersRef childByAppendingPath:user.userID];
     [specificUserRef removeValue];
 }
 
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(NSDictionary *)newArtistDictionary {
-    NSString *artistName = newArtistDictionary[@"name"];
+    NSString *artistName = [self formatedArtistName:newArtistDictionary[@"name"]];
 
     [self addUser:currentUser ToArtistDatabase:newArtistDictionary];
     NSLog(@"added user to artist database");
@@ -359,6 +363,8 @@
         //get array of search results and pick first
         [FNBSpotifySearch getArrayOfMatchingArtistsFromSearch:artistName withCompletionBlock:^(BOOL gotMatchingArtists, NSArray *matchingArtistsArray) {
             if (gotMatchingArtists && matchingArtistsArray.count>0) {
+                NSLog(@"working on artist %@", artistName),
+
                 //select first artist in array (could cause problems down the road with selecting the wrong artist
                 [FNBFirebaseClient addCurrentUser:firebaseFred andArtistToEachOthersDatabases:matchingArtistsArray[0]];
             }
@@ -367,6 +373,13 @@
             }
         }];
     }
+}
+
++ (NSString *) formatedArtistName: (NSString *)artistName {
+    //get rid of .#$[] characters in artist's name
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@".#$[]"];
+    NSLog(@"%@", [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""]);
+    return [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""];
 }
 
 
