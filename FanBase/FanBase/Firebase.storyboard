@@ -76,6 +76,14 @@
             </objects>
             <point key="canvasLocation" x="610" y="-210"/>
         </scene>
+        <!--UserPage-->
+        <scene sceneID="7iY-2z-0Ro">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserPage" id="cGw-6Z-unj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDb-OP-9mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2006.5" y="-270"/>
+        </scene>
         <!--User Details View Controller-->
         <scene sceneID="62D-TM-aJd">
             <objects>
@@ -157,6 +165,13 @@
                                 <state key="normal" title="Go to next page"/>
                                 <connections>
                                     <segue destination="1ol-1n-4h2" kind="show" id="hV5-sy-1q4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-9X-g3r">
+                                <rect key="frame" x="12" y="451" width="119" height="30"/>
+                                <state key="normal" title="User Profile Page"/>
+                                <connections>
+                                    <segue destination="cGw-6Z-unj" kind="show" id="kmB-sw-yBT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -310,6 +325,7 @@
         <!--Navigation Controller-->
         <scene sceneID="mHn-Fe-iPV">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nnC-qu-bsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A9M-JX-HZL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oNB-1e-uLF">
@@ -321,7 +337,6 @@
                         <segue destination="Qqd-AS-9W9" kind="relationship" relationship="rootViewController" id="INO-WV-P3Z"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nnC-qu-bsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1414" y="126"/>
         </scene>

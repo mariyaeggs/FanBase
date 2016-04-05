@@ -27,6 +27,9 @@
         _userID = @"firebaseFred";
         _email = @"";
         _password = @"";
+        _profileImageURL = @"";
+        _userName = @"default username";
+        _detailedArtistInfoArray = [NSMutableArray new];
     }
     return self;
 }
