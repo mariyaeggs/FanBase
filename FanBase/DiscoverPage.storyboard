@@ -11,7 +11,7 @@
             <objects>
                 <collectionViewController id="mgD-C1-a0Y" customClass="FNBDiscoverViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NkU-J1-jIf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ao0-DS-dNn">
                             <size key="itemSize" width="200" height="200"/>
@@ -71,10 +71,35 @@
                             <outlet property="delegate" destination="mgD-C1-a0Y" id="NRy-sy-Q3B"/>
                         </connections>
                     </collectionView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cu-GU-uRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="327" y="417"/>
+        </scene>
+        <!--Discover View Controller2-->
+        <scene sceneID="5uH-PH-diC">
+            <objects>
+                <viewController id="2p3-lY-M1J" customClass="FNBDiscoverViewController2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vFi-Jd-3Nj"/>
+                        <viewControllerLayoutGuide type="bottom" id="YDz-dg-NVH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YVf-un-DTq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Cg-SQ-kdb">
+                                <rect key="frame" x="0.0" y="-5" width="380" height="382"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TPl-gm-DMO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1261.5" y="450.5"/>
         </scene>
     </scenes>
 </document>
