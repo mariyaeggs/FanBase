@@ -6,7 +6,7 @@
 target 'FanBase' do
 
 	pod 'STTwitter'
-
+	pod 'JSQMessagesViewController'
 	pod 'Firebase', '>= 2.5.1'
 	pod 'AFNetworking'
 	pod 'AFOAuth2Manager'

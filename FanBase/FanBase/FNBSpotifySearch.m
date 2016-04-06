@@ -8,6 +8,7 @@
 
 #import "FNBSpotifySearch.h"
 #import <AFNetworking/AFNetworking.h>
+#import <AFHTTPSessionManager.h>
 
 @implementation FNBSpotifySearch
 
@@ -16,7 +17,8 @@
     NSString *stringForURL = [NSString stringWithFormat:@"https://api.spotify.com/v1/search?q=%@&type=artist", inputtedStringWithoutSpaces];
     
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
-    [sessionManager GET:stringForURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    [sessionManager GET:stringForURL parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"no errors from search");
         NSMutableArray *matchingArtists = [NSMutableArray new];
         

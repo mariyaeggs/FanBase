@@ -24,14 +24,16 @@
 		BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A891CAAFCF300FFF623 /* Main.storyboard */; };
 		BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */; };
 		BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */; };
-		BD3EC2861CAC913F0063D912 /* FNBInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */; };
+		BD481EF01CB2DF6E00B6ED31 /* FNBChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD481EEF1CB2DF6E00B6ED31 /* FNBChatViewController.m */; };
+		BD481EF31CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD481EF21CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.m */; };
+		BD481EF61CB412E500B6ED31 /* EventPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD481EF51CB412E500B6ED31 /* EventPostTableViewCell.m */; };
+		BD481EFB1CB557A000B6ED31 /* FNBArtistNewsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD481EFA1CB557A000B6ED31 /* FNBArtistNewsCollectionViewController.m */; };
+		BD481EFE1CB55CE700B6ED31 /* FNBEventCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD481EFD1CB55CE700B6ED31 /* FNBEventCollectionViewCell.m */; };
 		BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */; };
 		BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */; };
-		BDA163711CAD66CA00AFC375 /* FNBInstagramLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA163701CAD66CA00AFC375 /* FNBInstagramLoginViewController.m */; };
-		BDA163761CAD724000AFC375 /* FNBInstagramCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA163751CAD724000AFC375 /* FNBInstagramCollectionViewController.m */; };
 		BDC9A2151CAD7FD400636C45 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC9A2141CAD7FD400636C45 /* NSURL+QueryString.m */; };
-		BDCBD2581CAB067A00EB4347 /* FNBFanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */; };
-		BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */; };
+		BDCBD2581CAB067A00EB4347 /* FNBArtistNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCBD2571CAB067A00EB4347 /* FNBArtistNews.storyboard */; };
+		BDCBD25B1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCBD25A1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,23 +66,27 @@
 		BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD0A5A8F1CAAFCF300FFF623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD0A5A911CAAFCF300FFF623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD3EC2841CAC913F0063D912 /* FNBInstagramAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBInstagramAPIClient.h; sourceTree = "<group>"; };
-		BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBInstagramAPIClient.m; sourceTree = "<group>"; };
+		BD481EEE1CB2DF6E00B6ED31 /* FNBChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBChatViewController.h; sourceTree = "<group>"; };
+		BD481EEF1CB2DF6E00B6ED31 /* FNBChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBChatViewController.m; sourceTree = "<group>"; };
+		BD481EF11CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBBandsInTownAPIClient.h; sourceTree = "<group>"; };
+		BD481EF21CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBBandsInTownAPIClient.m; sourceTree = "<group>"; };
+		BD481EF41CB412E500B6ED31 /* EventPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPostTableViewCell.h; sourceTree = "<group>"; };
+		BD481EF51CB412E500B6ED31 /* EventPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPostTableViewCell.m; sourceTree = "<group>"; };
+		BD481EF91CB557A000B6ED31 /* FNBArtistNewsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistNewsCollectionViewController.h; sourceTree = "<group>"; };
+		BD481EFA1CB557A000B6ED31 /* FNBArtistNewsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistNewsCollectionViewController.m; sourceTree = "<group>"; };
+		BD481EFC1CB55CE700B6ED31 /* FNBEventCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBEventCollectionViewCell.h; sourceTree = "<group>"; };
+		BD481EFD1CB55CE700B6ED31 /* FNBEventCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBEventCollectionViewCell.m; sourceTree = "<group>"; };
 		BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterAPIClient.h; sourceTree = "<group>"; };
 		BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterAPIClient.m; sourceTree = "<group>"; };
 		BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterPostTableViewCell.h; sourceTree = "<group>"; };
 		BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterPostTableViewCell.m; sourceTree = "<group>"; };
-		BDA1636F1CAD66CA00AFC375 /* FNBInstagramLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBInstagramLoginViewController.h; sourceTree = "<group>"; };
-		BDA163701CAD66CA00AFC375 /* FNBInstagramLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBInstagramLoginViewController.m; sourceTree = "<group>"; };
-		BDA163741CAD724000AFC375 /* FNBInstagramCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBInstagramCollectionViewController.h; sourceTree = "<group>"; };
-		BDA163751CAD724000AFC375 /* FNBInstagramCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBInstagramCollectionViewController.m; sourceTree = "<group>"; };
 		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		BDC9A2131CAD7FD400636C45 /* NSURL+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryString.h"; sourceTree = "<group>"; };
 		BDC9A2141CAD7FD400636C45 /* NSURL+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryString.m"; sourceTree = "<group>"; };
-		BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBFanFeed.storyboard; sourceTree = "<group>"; };
-		BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFanFeedTableViewController.h; sourceTree = "<group>"; };
-		BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFanFeedTableViewController.m; sourceTree = "<group>"; };
+		BDCBD2571CAB067A00EB4347 /* FNBArtistNews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBArtistNews.storyboard; sourceTree = "<group>"; };
+		BDCBD2591CAB06BA00EB4347 /* FNBArtistNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistNewsTableViewController.h; sourceTree = "<group>"; };
+		BDCBD25A1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistNewsTableViewController.m; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,13 +213,17 @@
 			children = (
 				BD9C557B1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.h */,
 				BD9C557C1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m */,
-				BDA1636F1CAD66CA00AFC375 /* FNBInstagramLoginViewController.h */,
-				BDA163701CAD66CA00AFC375 /* FNBInstagramLoginViewController.m */,
-				BDCBD2571CAB067A00EB4347 /* FNBFanFeed.storyboard */,
-				BDCBD2591CAB06BA00EB4347 /* FNBFanFeedTableViewController.h */,
-				BDCBD25A1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m */,
-				BDA163741CAD724000AFC375 /* FNBInstagramCollectionViewController.h */,
-				BDA163751CAD724000AFC375 /* FNBInstagramCollectionViewController.m */,
+				BD481EF41CB412E500B6ED31 /* EventPostTableViewCell.h */,
+				BD481EF51CB412E500B6ED31 /* EventPostTableViewCell.m */,
+				BDCBD2571CAB067A00EB4347 /* FNBArtistNews.storyboard */,
+				BDCBD2591CAB06BA00EB4347 /* FNBArtistNewsTableViewController.h */,
+				BDCBD25A1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m */,
+				BD481EEE1CB2DF6E00B6ED31 /* FNBChatViewController.h */,
+				BD481EEF1CB2DF6E00B6ED31 /* FNBChatViewController.m */,
+				BD481EF91CB557A000B6ED31 /* FNBArtistNewsCollectionViewController.h */,
+				BD481EFA1CB557A000B6ED31 /* FNBArtistNewsCollectionViewController.m */,
+				BD481EFC1CB55CE700B6ED31 /* FNBEventCollectionViewCell.h */,
+				BD481EFD1CB55CE700B6ED31 /* FNBEventCollectionViewCell.m */,
 			);
 			name = FanFeed;
 			sourceTree = "<group>";
@@ -223,8 +233,8 @@
 			children = (
 				BD869C081CAB6B9D008166E4 /* FNBTwitterAPIClient.h */,
 				BD869C091CAB6B9D008166E4 /* FNBTwitterAPIClient.m */,
-				BD3EC2841CAC913F0063D912 /* FNBInstagramAPIClient.h */,
-				BD3EC2851CAC913F0063D912 /* FNBInstagramAPIClient.m */,
+				BD481EF11CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.h */,
+				BD481EF21CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.m */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -291,7 +301,7 @@
 			files = (
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
-				BDCBD2581CAB067A00EB4347 /* FNBFanFeed.storyboard in Resources */,
+				BDCBD2581CAB067A00EB4347 /* FNBArtistNews.storyboard in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
 			);
@@ -354,24 +364,25 @@
 			files = (
 				BD02E67D1CAEFFDE00EBE631 /* main.m in Sources */,
 				BD02E67C1CAEFF2B00EBE631 /* Secrets.m in Sources */,
+				BD481EF61CB412E500B6ED31 /* EventPostTableViewCell.m in Sources */,
+				BD481EFB1CB557A000B6ED31 /* FNBArtistNewsCollectionViewController.m in Sources */,
 				BDC9A2151CAD7FD400636C45 /* NSURL+QueryString.m in Sources */,
-				BDA163761CAD724000AFC375 /* FNBInstagramCollectionViewController.m in Sources */,
-				BDCBD25B1CAB06BA00EB4347 /* FNBFanFeedTableViewController.m in Sources */,
+				BDCBD25B1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m in Sources */,
 				BD869C0A1CAB6B9D008166E4 /* FNBTwitterAPIClient.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
+				BD481EF31CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.m in Sources */,
 				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
-				BDA163711CAD66CA00AFC375 /* FNBInstagramLoginViewController.m in Sources */,
 				BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */,
-				BD3EC2861CAC913F0063D912 /* FNBInstagramAPIClient.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				A14F2D7C1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
+				BD481EFE1CB55CE700B6ED31 /* FNBEventCollectionViewCell.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
-				A1E7A9341CAC289500A9B968 /* Secrets.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
+				BD481EF01CB2DF6E00B6ED31 /* FNBChatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

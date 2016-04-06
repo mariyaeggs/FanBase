@@ -23,18 +23,24 @@ PODS:
   - AFOAuth2Manager (2.2.0):
     - AFNetworking/NSURLConnection (~> 2.2)
   - Firebase (2.5.1)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - STTwitter (0.2.3)
 
 DEPENDENCIES:
   - AFNetworking
   - AFOAuth2Manager
   - Firebase (>= 2.5.1)
+  - JSQMessagesViewController
   - STTwitter
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AFOAuth2Manager: 952eb62e8fd8022971e64c6e8fe28b9e999224af
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   STTwitter: 77386cb6f1807fbfc0e321b9233bdecc9786195d
 
 COCOAPODS: 0.39.0
