@@ -41,6 +41,9 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *artist3TableViewCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *artist4TableViewCell;
 
+@property (strong, nonatomic) NSArray *arrayOfArtistLabels;
+@property (strong, nonatomic) NSArray *arrayOfArtistImageViews;
+
 @property (strong, nonatomic) Firebase *userRef;
 
 @end
@@ -50,96 +53,63 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // get user info
-    self.currentUser = [[FNBUser alloc] init];
-    [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
-        
-        if (completedSettingUsersProperties) {
-            [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
-            self.userNameLabel.text = self.currentUser.userName;
-            
-            self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Subscribed Artists: %lu", self.currentUser.artistsDictionary.count];
-            // TODO: put in the biggest fan label here
-            
-            // make an array of detailed artists user is subscribed to and set it to users array property ******************
-            
-            self.currentUser.detailedArtistInfoArray = [NSMutableArray new];
-            for (NSString *artistName in self.currentUser.artistsDictionary) {
-                NSDictionary *specificArtist = [self.currentUser.artistsDictionary objectForKey:artistName];
-                NSLog(@"This is the number of points: %@  for artist: %@", specificArtist, artistName);
-                FNBArtist *artist = [[FNBArtist alloc] initWithName:artistName];
-                [FNBFirebaseClient setPropertiesOfArtist:artist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesUpdated) {
-                    [self.currentUser.detailedArtistInfoArray addObject:artist];
-                    if (setPropertiesUpdated) {
-                        
-                        
-                        switch (self.currentUser.detailedArtistInfoArray.count) {
-                            case 0:
-                                NSLog(@"there are no artists in currentUser.detailedArtistInfoArray");
-                                break;
-                                
-                            case 1:
-                                self.artist1NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).name;
-                                [self.artist1ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).imagesArray[0][@"url"]]];
-                                
-                                
-                                [self.tableView reloadData];
-                                break;
-                                
-                            case 2:
-                                self.artist1NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).name;
-                                self.artist2NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[1]).name;
-                                [self.artist1ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).imagesArray[0][@"url"]]];
-                                [self.artist2ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[1]).imagesArray[0][@"url"]]];
-                                
-                                
-                                [self.tableView reloadData];
-
-                                break;
-                            case 3:
-                                self.artist1NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).name;
-                                self.artist2NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[1]).name;
-                                self.artist3NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[2]).name;
-                                [self.artist1ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).imagesArray[0][@"url"]]];
-                                [self.artist2ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[1]).imagesArray[0][@"url"]]];
-                                [self.artist3ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[2]).imagesArray[0][@"url"]]];
-                                
-                                [self.tableView reloadData];
-                                break;
-                                
-                            // if 4 or more
-                            default:
-                                self.artist1NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).name;
-                                self.artist2NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[1]).name;
-                                self.artist3NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[2]).name;
-                                self.artist4NameLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[3]).name;
-                                [self.artist1ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[0]).imagesArray[0][@"url"]]];
-                                [self.artist2ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[1]).imagesArray[0][@"url"]]];
-                                [self.artist3ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[2]).imagesArray[0][@"url"]]];
-                                [self.artist4ImageView setImageWithURL:[NSURL URLWithString:((FNBArtist *)self.currentUser.detailedArtistInfoArray[3]).imagesArray[0][@"url"]]];
-
-                                
-                                [self.tableView reloadData];
-                                break;
-                        }
-                        
-                    }
-                }];
-                
-//                [self.tableView reloadData];
-            }
-            self.tableView.tableFooterView = [UIView new];
-            [self.tableView reloadData];
-        }
-      
-        
-    }];
+    // set the artistLabels and artistImageViews of the cells
+    self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
+    self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
+    
+    
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    // start listening to changes in the username, userProfileImage, or deleting (or adding?) an artist
-    [self.userRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    
+    // set user info, and then get a detailed array of the artists the user is subscribed to
+    
+    self.currentUser = [[FNBUser alloc] init];
+    [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+        if (completedSettingUsersProperties) {
+            
+            // get an array of artists that the user is subscribed to filled with detailed info
+            [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
+                if (gotDetailedArray) {
+                    self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                    //                    NSLog(@"this is the detailed array of artists: %@", self.currentUser.detailedArtistInfoArray);
+                    [self updateUI];
+                }
+            }];
+        }
+    }];
+
+    
+    // start listening to changes in the username, userProfileImage, or artistDictionary
+    
+    NSString *urlOfUser= [NSString stringWithFormat:@"%@/users/%@", ourFirebaseURL, self.currentUser.userID];
+    NSLog(@"url of user: %@", urlOfUser);
+    self.userRef = [[Firebase alloc] initWithUrl:urlOfUser];
+    [self.userRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"this is the new value: %@, and this is the key: %@", snapshot.value, snapshot.key);
+        // change in username
+        if ([snapshot.key isEqualToString:@"userName"]) {
+            self.currentUser.userName = snapshot.value;
+            [self updateUI];
+        }
+        // change in the profileImageURL
+        else if ([snapshot.key isEqualToString:@"profileImageURL"]){
+            self.currentUser.profileImageURL = snapshot.value;
+            [self updateUI];
+        }
+        // change in the artistDictionary
+        else if ([snapshot.key isEqualToString:@"artistsDictionary"]){
+            self.currentUser.artistsDictionary = snapshot.value;
+            [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
+                if (gotDetailedArray) {
+                    self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                    [self updateUI];
+                }
+            }];
+        }
         
     }];
 }
@@ -148,9 +118,104 @@
     [super viewWillDisappear:animated];
     [self.userRef removeAllObservers];
 }
-// TODO: add a long tap to the username to change their name
+
 // TODO: sort subscribed artists by number of points
 
+
+- (IBAction)userNameDoubleTapped:(id)sender {
+    // pull up an alert to change userName
+    UIAlertController *changeNameAlert = [UIAlertController alertControllerWithTitle:@"Change Username" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [changeNameAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = NSLocalizedString(@"Username Placeholder", @"Username");
+        [textField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    }];
+    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *username = changeNameAlert.textFields.firstObject;
+//        NSLog(@"this is the username: %@", username.text);
+        // change the userName in the Database
+        [FNBFirebaseClient changeUserNameOfUser:self.currentUser toName:username.text withCompletionBlock:^(BOOL completedChangingUserName) {
+            if (completedChangingUserName) {
+                [self updateUI];
+            }
+        }];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    [changeNameAlert addAction:submitAction];
+    [changeNameAlert addAction:cancel];
+    submitAction.enabled = NO;
+    [self presentViewController:changeNameAlert animated:YES completion:nil];
+    
+}
+// makes Submit button disabled unless there is text in the textField
+- (void) alertTextFieldDidChange:(UITextField *)sender {
+    UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
+    if (alertController) {
+        UITextField *userName = alertController.textFields.firstObject;
+        UIAlertAction *submitAction = alertController.actions.firstObject;
+        submitAction.enabled = userName.text.length > 0;
+    }
+}
+- (IBAction)profilePictureDoubleTapped:(id)sender {
+    // pull up an alert to change profilePic
+    UIAlertController *changeProfilePictureAlert = [UIAlertController alertControllerWithTitle:@"Change Profile Picture" message:@"Enter URL:" preferredStyle:UIAlertControllerStyleAlert];
+    [changeProfilePictureAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = NSLocalizedString(@"Image URL Placeholder", @"Image URL (make sure its https");
+        [textField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    }];
+    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *imageURLTextField = changeProfilePictureAlert.textFields.firstObject;
+//        NSLog(@"this is the newImageURL: %@", imageURLTextField.text);
+        // change the profilePicURL in the Database
+        [FNBFirebaseClient changeProfilePictureURLOfUser:self.currentUser toURL:imageURLTextField.text withCompletionBlock:^(BOOL completedChangingProfilePicURL) {
+            if (completedChangingProfilePicURL) {
+                [self updateUI];
+            }
+        }];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    [changeProfilePictureAlert addAction:submitAction];
+    [changeProfilePictureAlert addAction:cancel];
+    submitAction.enabled = NO;
+    [self presentViewController:changeProfilePictureAlert animated:YES completion:nil];
+}
+
+
+- (void) updateUI {
+    self.userNameLabel.text = self.currentUser.userName;
+    [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
+    self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Subscribed Artists: %lu", self.currentUser.artistsDictionary.count];
+    // TODO: put in the biggest fan label here
+    
+    [self setLabelsAndImagesOfArtistCells:self.currentUser.detailedArtistInfoArray];
+
+    self.tableView.tableFooterView = [UIView new];
+    [self.tableView reloadData];
+}
+
+
+- (void)setLabelsAndImagesOfArtistCells:(NSArray *)detailedArtistArray {
+    NSUInteger numberOfArtists = detailedArtistArray.count;
+    if (numberOfArtists == 0) {
+        NSLog(@"there are no artists for this user according to the detailedArtistArray");
+    }
+    // user is subscribed to less than or equal number of artists than there are labels
+    else if (numberOfArtists <= self.arrayOfArtistLabels.count) {
+        for (NSInteger i = 0; i < numberOfArtists; i++) {
+            ((UILabel *)self.arrayOfArtistLabels[i]).text = ((FNBArtist *)detailedArtistArray[i]).name;
+            [((UIImageView *)self.arrayOfArtistImageViews[i]) setImageWithURL:[NSURL URLWithString:((FNBArtist *)detailedArtistArray[i]).imagesArray[0][@"url"]]];
+        }
+    }
+    // user is subscribed to more artists than there are labels
+    else {
+        for (NSInteger i = 0; i < self.arrayOfArtistLabels.count; i++) {
+            ((UILabel *)self.arrayOfArtistLabels[i]).text = ((FNBArtist *)detailedArtistArray[i]).name;
+            [((UIImageView *)self.arrayOfArtistImageViews[i]) setImageWithURL:[NSURL URLWithString:((FNBArtist *)detailedArtistArray[i]).imagesArray[0][@"url"]]];
+        }
+    }
+}
+
+
+// makes height 0 of empty cells
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -174,15 +239,15 @@
     }
     return NO;
 }
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //add code here for when you hit delete
+        // when you hit delete
         NSString *selectedArtistName = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[indexPath.row]).name;
         
+        // delete appropriate things from database
         [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName];
         NSLog(@"you deleted %@", selectedArtistName);
-        [self.tableView reloadData];
+        
     }
 }
 @end

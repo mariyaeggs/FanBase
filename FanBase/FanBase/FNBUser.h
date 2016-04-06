@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *profileImageURL;
-@property (strong, nonatomic) NSMutableArray *detailedArtistInfoArray;
+@property (strong, nonatomic) NSArray *detailedArtistInfoArray;
 
 
 -(instancetype)init;

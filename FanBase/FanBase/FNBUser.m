@@ -29,7 +29,7 @@
         _password = @"";
         _profileImageURL = @"";
         _userName = @"default username";
-        _detailedArtistInfoArray = [NSMutableArray new];
+        _detailedArtistInfoArray = [NSArray new];
     }
     return self;
 }
