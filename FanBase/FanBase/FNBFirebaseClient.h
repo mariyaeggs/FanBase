@@ -25,11 +25,14 @@
 
 #pragma mark - User Methods
 + (void) createANewUserInDatabaseWithEmail:(NSString *)email Password:(NSString *)password;
-+ (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL updateHappened))updateBlockOfLoggedInUser;
++ (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL completedSettingUsersProperties))completionBlockOfLoggedInUser;
++ (void) changeUserNameOfUser: (FNBUser *)user toName:(NSString *)inputtedUserName withCompletionBlock: (void (^) (BOOL completedChangingUserName))completionBlockOfChangeUserName;
++ (void) changeProfilePictureURLOfUser: (FNBUser *)user toURL:(NSString *)inputtedURL withCompletionBlock: (void (^) (BOOL completedChangingProfilePicURL))completionBlockOfChangeProfilePicture;
++ (void) getADetailedArtistArrayFromUserArtistDictionary:(NSDictionary *)userArtistDictionary withCompletionBlock: (void (^) (BOOL gotDetailedArray, NSArray *arrayOfArtists)) completionBlock;
 
 #pragma mark - Artist Methods
-+ (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesUpdated)) setArtistPropertiesUpdatedBlock;
-+ (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary;
++ (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesCompleted)) setArtistPropertiesCompletionBlock;
++ (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary withCompletionBlock: (void (^) (BOOL artistDatabaseCreated)) makeDatabaseCompletionBlock;
 
 
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;

@@ -28,9 +28,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [FNBFirebaseClient getDictionaryOfAllArtistsInDatabaseWithCompletionBlock:^(BOOL completed, NSDictionary *artistsDictionary) {
+        
+
         if (completed) {
             self.artistData = artistsDictionary;
-        
+            
             self.popArtists = [self filterArtistsArray:artistsDictionary ByGenre:@"pop"];
             self.funkArtists = [self filterArtistsArray:artistsDictionary ByGenre:@"funk"];
             
@@ -46,6 +48,13 @@
         }
 
     }];
+    
+    
+    
+    
+    
+    
+    
 }
 -(void)viewWillAppear:(BOOL)animated {
     

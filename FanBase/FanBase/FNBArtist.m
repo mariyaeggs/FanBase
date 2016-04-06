@@ -8,6 +8,7 @@
 
 #import "FNBArtist.h"
 
+
 @implementation FNBArtist
 
 -(instancetype)init {
@@ -38,8 +39,19 @@
 //        _imageURLSize200 = @"";
 //        _imageURLSize64 = @"";
         _genres = @"";
+        
     }
     return self;
+}
+
+//-(instancetype) initWithSnapshot:(FDataSnapshot*)snapshot{
+//   self = [super init];
+//    self.name = snapshot.value[@"name"];
+//}
+
+-(NSDictionary*)firebaseValue{
+    return @{@"name":self.name,
+             @"spotifyID":self.spotifyID};
 }
 
 @end

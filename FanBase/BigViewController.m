@@ -32,6 +32,9 @@
     _genreArtists = [NSMutableDictionary new];
     
     // Do any additional setup after loading the view from its nib.
+    
+    
+    
     [FNBFirebaseClient getDictionaryOfAllArtistsInDatabaseWithCompletionBlock:^(BOOL completed, NSDictionary *artistsDictionary) {
         if (completed) {
             //self.artistData = artistsDictionary;
