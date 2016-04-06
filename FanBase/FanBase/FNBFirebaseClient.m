@@ -10,26 +10,26 @@
 
 @implementation FNBFirebaseClient
 
-#pragma mark - Firebase Constant Methods
+#pragma mark - Firebase Constants
 
-+ (Firebase *) setupBaseFirebase{
++ (Firebase *) getBaseFirebaseRef{
     return [[Firebase alloc] initWithUrl:ourFirebaseURL];
 }
 
-+ (Firebase *) setupUserFirebase {
-    Firebase *ref = [self setupBaseFirebase];
++ (Firebase *) getUserFirebaseRef {
+    Firebase *ref = [self getBaseFirebaseRef];
     return [ref childByAppendingPath:@"users"];
 }
 
-+ (Firebase *) setupArtistFirebase {
-    Firebase *ref = [self setupBaseFirebase];
++ (Firebase *) getArtistFirebaseRef {
+    Firebase *ref = [self getBaseFirebaseRef];
     return [ref childByAppendingPath:@"artists"];
 }
 
 #pragma mark - User Login Methods
 
 + (void) loginWithEmail:(NSString *)email Password:(NSString *)password {
-    Firebase *ref = [self setupBaseFirebase];
+    Firebase *ref = [self getBaseFirebaseRef];
     [ref authUser:email password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
         if (error) {
             // There was an error logging in to this account
@@ -43,13 +43,13 @@
 }
 
 + (void) logoutUser {
-    Firebase *ref =  [self setupBaseFirebase];
+    Firebase *ref =  [self getBaseFirebaseRef];
     [ref unauth];
 }
 
 // This method sets the properties of the FNBUser based on the logged in user.
 + (void) checkOnceIfUserIsAuthenticatedWithCompletionBlock: (void (^) (BOOL isAuthenticUser))blockOfAuthUserCheck{
-    Firebase *ref = [self setupBaseFirebase];
+    Firebase *ref = [self getBaseFirebaseRef];
     if (ref.authData != nil) {
         NSLog(@"this is a logged in user");
         blockOfAuthUserCheck(YES);
@@ -61,7 +61,7 @@
 }
 
 + (void) checkUntilUserisAuthenticatedWithCompletionBlock:(void  (^)(BOOL isAuthenticatedUser))block {
-    Firebase *ref = [self setupBaseFirebase];
+    Firebase *ref = [self getBaseFirebaseRef];
     [ref observeAuthEventWithBlock:^(FAuthData *authData) {
         if (authData != nil) {
             //say we are logged in as authenticated user
@@ -83,7 +83,7 @@
 // helper method for creating a new user
 // this method creates new user, and passes email, password, UID, and a completion bool to the block
 + (void) createNewUserInDatabaseWithEmail:(NSString *)email Password:(NSString *)password WithBlockIfSuccessful:(void (^) (BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID)) successBlock {
-    Firebase *ref = [self setupBaseFirebase];
+    Firebase *ref = [self getBaseFirebaseRef];
     
     [ref createUser:email password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         if (error) {
@@ -101,11 +101,11 @@
 
 // helper method for creating a new user
 + (void) addNewUserToDatabaseWithEmail:(NSString *)email Password:(NSString *)password UID:(NSString *)uid {
-    Firebase *usersRef = [self setupUserFirebase];
+    Firebase *usersRef = [self getUserFirebaseRef];
     Firebase *newUserRef = [usersRef childByAppendingPath:uid];
     
     // this is what the initial user gets as values
-    NSDictionary *initialUserValues = @{@"UID" : uid, @"email": email , @"password": password, @"artistsDictionary" : [NSMutableDictionary new]};
+    NSDictionary *initialUserValues = @{@"UID" : uid, @"email": email , @"userName" : @"defaultUsername", @"profileImageURL" : @"https://ww.deluxe.com/blog/wp-content/uploads/2014/02/cheering-fans_cropped.jpg", @"artistsDictionary" : [NSMutableDictionary new]};
     [newUserRef setValue:initialUserValues];
     NSLog(@"Added user to database");
 }
@@ -127,20 +127,22 @@
 }
 
 // Helper method for setPropertiesOfLoggedInUserToUser.
-// This method sets the properties of the FNBUser whenever an update happens.
-+ (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL updateHappened))updateBlock {
+// This method sets the properties of the FNBUser once.
++ (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL finishedSettingUsersProperties))completionBlock {
 //    NSLog(@"this is the uid: %@", uid);
-    Firebase *usersRef = [self setupUserFirebase];
+    Firebase *usersRef = [self getUserFirebaseRef];
     Firebase *newUserRef = [usersRef childByAppendingPath:uid];
     
-    // This block gets called for any change in this users data
-    [newUserRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    // This block gets called once for this users data
+    [newUserRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
 //        NSLog(@"Snapshot of Users values: %@", snapshot.value);
         user.email = snapshot.value[@"email"];
         user.userID = snapshot.value[@"UID"];
-        user.password = snapshot.value[@"password"];
+//        user.password = snapshot.value[@"password"];
         user.artistsDictionary = snapshot.value[@"artistsDictionary"];
-        updateBlock(YES);
+        user.profileImageURL = snapshot.value[@"profileImageURL"];
+        user.userName = snapshot.value[@"userName"];
+        completionBlock(YES);
         
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
@@ -148,13 +150,13 @@
 }
 
 // This method sets the properties of the FNBUser based on the logged in user.
-+ (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL updateHappened))updateBlockOfLoggedInUser{
-    Firebase *ref = [self setupBaseFirebase];
++ (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL completedSettingUsersProperties))completionBlockOfLoggedInUser{
+    Firebase *ref = [self getBaseFirebaseRef];
     [ref observeAuthEventWithBlock:^(FAuthData *authData) {
         NSLog(@"this is the authData of getpropofLoggedInUser: %@", authData);
         if (authData != nil) {
-            [self setPropertiesOfUser:user WithUID:authData.uid withCompletionBlock:^(BOOL updateHappened) {
-                updateBlockOfLoggedInUser(YES);
+            [self setPropertiesOfUser:user WithUID:authData.uid withCompletionBlock:^(BOOL finishedSettingUsersProperties) {
+                completionBlockOfLoggedInUser(YES);
             }];
         }
         else {
@@ -163,42 +165,56 @@
     }];
 }
 
++ (void) changeUserNameOfUser: (FNBUser *)user toName:(NSString *)inputtedUserName withCompletionBlock: (void (^) (BOOL completedChangingUserName))completionBlockOfChangeUserName {
+    Firebase *usersRef = [self getUserFirebaseRef];
+    Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
+    NSDictionary *newUsername = @{ @"userName" : inputtedUserName};
+    [currentUserRef updateChildValues:newUsername withCompletionBlock:^(NSError *error, Firebase *ref) {
+        if (!error) {
+            completionBlockOfChangeUserName(YES);
+        }
+    }];
+}
 
++ (void) changeProfilePictureURLOfUser: (FNBUser *)user toURL:(NSString *)inputtedURL withCompletionBlock: (void (^) (BOOL completedChangingProfilePicURL))completionBlockOfChangeProfilePicture {
+    Firebase *usersRef = [self getUserFirebaseRef];
+    Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
+    NSDictionary *newProfilePictureURL = @{ @"profileImageURL" : inputtedURL};
+    [currentUserRef updateChildValues:newProfilePictureURL withCompletionBlock:^(NSError *error, Firebase *ref) {
+        if (!error) {
+            completionBlockOfChangeProfilePicture(YES);
+        }
+    }];
+}
+
++ (void) getADetailedArtistArrayFromUserArtistDictionary:(NSDictionary *)userArtistDictionary withCompletionBlock: (void (^) (BOOL gotDetailedArray, NSArray *arrayOfArtists)) completionBlock {
+    NSMutableArray *arrayOfArtists = [NSMutableArray new];
+    
+    __block NSUInteger count = 0;
+    for (NSString *artistName in userArtistDictionary) {
+        NSDictionary *specificArtist = [userArtistDictionary objectForKey:artistName];
+        NSLog(@"This is the number of points: %@  for artist: %@", specificArtist, artistName);
+        FNBArtist *artist = [[FNBArtist alloc] initWithName:artistName];
+        [FNBFirebaseClient setPropertiesOfArtist:artist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
+            if (setPropertiesCompleted){
+                [arrayOfArtists addObject:artist];
+                count ++;
+                // if it is the last one, then say it is completed and send the array of artists
+                if (count == userArtistDictionary.count) {
+                    completionBlock(YES, arrayOfArtists);
+                }
+            }
+        }];
+    }
+}
 
 #pragma mark - Artist Methods
 
-//+ (void) createNewArtistDatabaseEntry:(NSString *)artistName createdByUser:(FNBUser *)user {
-//    Firebase *artistsRef = [self setupArtistFirebase];
-//    Firebase *newArtistRef = [artistsRef childByAppendingPath:artistName];
-//    // this is what the initial artist gets as values
-//    NSDictionary *initialArtistValues = @{@"name" : artistName, @"spotifyID": artist.spotifyID , @"twitterHandle": artist.twitterHandle, @"subscribedUsers" : @{user.userID : @0}};
-//    [newArtistRef setValue:initialArtistValues];
-//    NSLog(@"Added artist to database");
-//    
-//}
-
-
-//+ (void) checkDatabaseEntryForArtist:(FNBArtist *) artist withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block {
-//    Firebase *artistsRef = [self setupArtistFirebase];
-//    Firebase *newArtistRef = [artistsRef childByAppendingPath:artist.name];
-//    [newArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        if ([snapshot.value isKindOfClass:[NSMutableDictionary class]]) {
-////            NSLog(@"value true");
-//            block(TRUE);
-//        }
-//        else {
-////            NSLog(@"value false");
-//            block(FALSE);
-//        }
-//    }];
-//}
-
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block {
 //    NSLog(@"checking existance of database. aristName = %@", artistName);
-    Firebase *artistsRef = [self setupArtistFirebase];
+    Firebase *artistsRef = [self getArtistFirebaseRef];
     Firebase *newArtistRef = [artistsRef childByAppendingPath:artistName];
     [newArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"here");
         if ([snapshot.value isKindOfClass:[NSMutableDictionary class]]) {
 //                        NSLog(@"value true");
             block(TRUE);
@@ -210,19 +226,28 @@
     }];
 }
 
-+ (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesUpdated)) setArtistPropertiesUpdatedBlock {
-    Firebase *artistsRef = [self setupArtistFirebase];
++ (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesCompleted)) setArtistPropertiesCompletionBlock {
+    Firebase *artistsRef = [self getArtistFirebaseRef];
     Firebase *specificArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artist.name]];
-    
-    // This block gets called for any change in this artists data
-    [specificArtistRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        NSLog(@"Snapshot of Users values: %@", snapshot.value);
-        artist.name = snapshot.value[@"name"];
-        artist.spotifyID = snapshot.value[@"spotifyID"];
-        artist.twitterHandle = snapshot.value[@"twitterHandle"];
-        artist.subscribedUsers = snapshot.value[@"subscribedUsers"];
-        artist.genres = snapshot.value[@"genres"];
-        setArtistPropertiesUpdatedBlock(YES);
+    NSLog(@"QUEING UP A SINGLE EVENT OBSERVATION FOR: %@", artist.name);
+    // This block gets called for a single in this artists data
+    [specificArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"OBSERVED SINGLE EVENT FOR: %@", artist.name);
+//        NSLog(@"Snapshot of Artist: %@ values: %@", artist.name, snapshot.value);
+        if (![snapshot.value isKindOfClass:[NSNull class]]) {
+            artist.name = snapshot.value[@"name"];
+            artist.spotifyID = snapshot.value[@"spotifyID"];
+            artist.twitterHandle = snapshot.value[@"twitterHandle"];
+            artist.subscribedUsers = snapshot.value[@"subscribedUsers"];
+            artist.genres = snapshot.value[@"genres"];
+            artist.imagesArray = snapshot.value[@"images"];
+            setArtistPropertiesCompletionBlock(YES);
+        }
+        else {
+            NSLog(@"ERROR: tried to add someone not in our database");
+            // snapshot doesnt have a value, meaning its not a part of our database
+            // TODO: handle this somehow
+        }
         
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
@@ -230,17 +255,17 @@
 
 }
 
-+ (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary {
++ (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary withCompletionBlock: (void (^) (BOOL artistDatabaseCreated)) makeDatabaseCompletionBlock  {
     NSLog(@"making artist database");
 
     //get rid of .#$[] characters in artist's name
     NSString *formatedArtistName = [self formatedArtistName:artistSpotifyDictionary[@"name"] ];
     
-    Firebase *artistsRef = [self setupArtistFirebase];
+    Firebase *artistsRef = [self getArtistFirebaseRef];
     Firebase *currentArtistRef = [artistsRef childByAppendingPath:formatedArtistName];
     
     
-    NSLog(@"%@", artistSpotifyDictionary[@"name"]);
+//    NSLog(@"%@", artistSpotifyDictionary[@"name"]);
     
     NSDictionary *initialArtistValues = @{@"name" : artistSpotifyDictionary[@"name"],
                                           @"spotifyID": artistSpotifyDictionary[@"id"] ,
@@ -249,6 +274,7 @@
                                           @"genres" : artistSpotifyDictionary[@"genres"]};
     [currentArtistRef setValue:initialArtistValues];
     NSLog(@"Added Spotify artist to database");
+    makeDatabaseCompletionBlock(YES);
 }
 
 
@@ -256,22 +282,12 @@
 
 // helper method for addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases
 + (void) addArtist:(NSString *)artistName ToDatabaseOfUser:(FNBUser *)user {
-    Firebase *usersRef = [self setupUserFirebase];
+    Firebase *usersRef = [self getUserFirebaseRef];
     Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
     Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
     
     NSDictionary *newArtistDictionary = @{artistName : @0};
     [usersArtistRef updateChildValues:newArtistDictionary];
-}
-
-// helper method for deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist
-+ (void) deleteArtist:(NSString *)artistName FromUser:(FNBUser *)user {
-    Firebase *usersRef = [self setupUserFirebase];
-    Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
-    Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
-    Firebase *specificArtistRef = [usersArtistRef childByAppendingPath:[self formatedArtistName: artistName]];
-    
-    [specificArtistRef removeValue];
 }
 
 // helper method for addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases
@@ -285,8 +301,13 @@
         }
         else {
             NSLog(@"Artist database does not exist");
-            [self makeDatabaseEntryForArtistFromSpotifyDictionary:artistDictionaryFromSpotify];
-            [self addCurrentUser:inputtedUser andArtistToEachOthersDatabases:artistDictionaryFromSpotify];
+            [self makeDatabaseEntryForArtistFromSpotifyDictionary:artistDictionaryFromSpotify withCompletionBlock:^(BOOL artistDatabaseCreated) {
+                if (artistDatabaseCreated) {
+                    NSLog(@"Artist database created");
+                    [self addUser:inputtedUser ToExistingArtistDatabase:artistDictionaryFromSpotify[@"name"]];
+                }
+            }];
+//            [self addCurrentUser:inputtedUser andArtistToEachOthersDatabases:artistDictionaryFromSpotify];
 //            [self createNewArtistDatabaseEntry:artistName createdByUser:inputtedUser];
         }
     }];
@@ -294,7 +315,7 @@
 
 // helper method for addCurrentUser andArtistToEachOthersDatabase
 + (void) addUser:(FNBUser *)user ToExistingArtistDatabase:(NSString *)artistName {
-    Firebase *artistsRef = [self setupArtistFirebase];
+    Firebase *artistsRef = [self getArtistFirebaseRef];
     Firebase *currentArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artistName]];
     Firebase *artistsSubscribedUsersRef = [currentArtistRef childByAppendingPath:@"subscribedUsers"];
     NSDictionary *newUserDictionary = @{user.userID : @0};
@@ -303,32 +324,44 @@
 
 // helper method for deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist
 + (void) deleteUser:(FNBUser *)user FromArtist:(NSString *)artistName{
-    Firebase *artistsRef = [self setupArtistFirebase];
-    Firebase *currentArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artistName]];
+    Firebase *artistsRef = [self getArtistFirebaseRef];
+    Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistName];
     Firebase *artistsSubscribedUsersRef = [currentArtistRef childByAppendingPath:@"subscribedUsers"];
     Firebase *specificUserRef = [artistsSubscribedUsersRef childByAppendingPath:user.userID];
     [specificUserRef removeValue];
 }
 
+// helper method for deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist
++ (void) deleteArtist:(NSString *)artistName FromUser:(FNBUser *)user {
+    Firebase *usersRef = [self getUserFirebaseRef];
+    Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
+    Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
+    Firebase *specificArtistRef = [usersArtistRef childByAppendingPath:artistName];
+    
+    [specificArtistRef removeValue];
+}
+
+
+
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(NSDictionary *)newArtistDictionary {
     NSString *artistName = [self formatedArtistName:newArtistDictionary[@"name"]];
 
     [self addUser:currentUser ToArtistDatabase:newArtistDictionary];
-    NSLog(@"added user to artist database");
     [self addArtist:artistName ToDatabaseOfUser:currentUser];
-    NSLog(@"added artist to users database");
 }
+
 + (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(NSString *)newArtistName {
+    NSString *artistName = [self formatedArtistName:newArtistName];
     
-    [self deleteUser:currentUser FromArtist:newArtistName];
-    [self deleteArtist:newArtistName FromUser:currentUser];
+    [self deleteUser:currentUser FromArtist:artistName];
+    [self deleteArtist:artistName FromUser:currentUser];
 }
 
 #pragma mark - Methods For Us to Test App
 
 // helper method for makeDummyUser
 + (void) getUIDFromEmail:(NSString *)email withCompletionBlock: (void (^) (BOOL foundUID, NSString *UID))block{
-    Firebase *usersRef = [self setupUserFirebase];
+    Firebase *usersRef = [self getUserFirebaseRef];
     //    NSMutableString *UID = [@"" mutableCopy];
     [usersRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"trying to get the users UID from email");
@@ -344,7 +377,7 @@
 
 // get array of all artists from database
 + (void) getArrayOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSArray *artistsArray))block{
-    Firebase *artistsRef = [self setupArtistFirebase];
+    Firebase *artistsRef = [self getArtistFirebaseRef];
     [artistsRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
 //        NSLog(@"%@", snapshot.value);
         block(YES, snapshot.value);
@@ -379,66 +412,5 @@
     NSLog(@"%@", [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""]);
     return [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""];
 }
-
-
-//+ (void)fillUser:(FNBUser *)user WithDummyDataWithCompletionBlock: (void (^) (BOOL madeDummyUser))completionBlock{
-//    // create random new user on database
-//    NSUInteger randomNumber = arc4random() %100000;
-//    NSString *usersEmail = [NSString stringWithFormat: @"iAmDummy%lu@email.com", (unsigned long)randomNumber];
-//    NSString *usersPassword = @"dummyPassword";
-//    
-//    //create users database entry
-//    [self createNewUserInDatabaseWithEmail:usersEmail Password:usersPassword WithBlockIfSuccessful:^(BOOL successfulCreationOfNewUser, NSString *receivedEmail, NSString *receivedPassword, NSString *createdUID) {
-//        //if successfully created new user, add them to database and login that user
-//        if (successfulCreationOfNewUser) {
-//            NSLog(@"created user!!!!! emails: %@", receivedEmail);
-//            
-//            // add user to database
-//            [self addNewUserToDatabaseWithEmail:receivedEmail Password:receivedPassword UID:createdUID];
-//            [self getUIDFromEmail:usersEmail withCompletionBlock:^(BOOL foundUID, NSString *UID) {
-//                if (foundUID) {
-//                    NSLog(@"found UID: %@", UID);
-//                    // create new FNBUser from database
-//                    [self setPropertiesOnceOfUser:user withUID:UID withCompletionBlock:^(BOOL completedSettingUsersProperties) {
-//                        // add some artists to user
-//                        FNBArtist *artist1 = [[FNBArtist alloc] initWithName:@"Adele"];
-//                        FNBArtist *artist2 = [[FNBArtist alloc] initWithName:@"Nsync"];
-//                        FNBArtist *artist3 = [[FNBArtist alloc] initWithName:@"Backstreet Boys"];
-//                        [self addCurrentUser:user andArtistToEachOthersDatabases:artist1];
-//                        [self addCurrentUser:user andArtistToEachOthersDatabases:artist2];
-//                        [self addCurrentUser:user andArtistToEachOthersDatabases:artist3];
-//                        [self setPropertiesOnceOfUser:user withUID:UID withCompletionBlock:^(BOOL completedSettingUsersProperties) {
-//                            completionBlock(YES);
-//                        }];
-//                    }];
-//                }
-//                else {
-//                    NSLog(@"could not find users UID from email");
-//                }
-//            }];
-//        }
-//    }];
-//}
-//
-//// helper method for making Dummy Data method
-//+ (void) setPropertiesOnceOfUser:(FNBUser *)user withUID:uid withCompletionBlock: (void (^) (BOOL completedSettingUsersProperties))setPropCompletionBlock {
-//    Firebase *usersRef = [self setupUserFirebase];
-//    Firebase *newUserRef = [usersRef childByAppendingPath:uid];
-//    
-//    // This block gets called for any change in this users data
-//    [newUserRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        //        NSLog(@"Snapshot of Users values: %@", snapshot.value);
-//        user.email = snapshot.value[@"email"];
-//        user.userID = snapshot.value[@"UID"];
-//        user.password = snapshot.value[@"password"];
-//        user.artistsDictionary = snapshot.value[@"artistsDictionary"];
-//        setPropCompletionBlock(YES);
-//        
-//    } withCancelBlock:^(NSError *error) {
-//        NSLog(@"%@", error.description);
-//    }];
-//}
-
-
 
 @end

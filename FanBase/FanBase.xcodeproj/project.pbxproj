@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2FD21C22D79D648E02D5CBAD /* libPods-FanBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */; };
-		A14F2D7C1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7B1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m */; };
+		A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E431CB408F90034FBFB /* UserPage.storyboard */; };
+		A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */; };
+		A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */; };
 		A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
@@ -39,8 +41,11 @@
 /* Begin PBXFileReference section */
 		4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.debug.xcconfig"; sourceTree = "<group>"; };
 		9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FanBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A14F2D7A1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUsersArtistsTableViewController.h; sourceTree = "<group>"; };
-		A14F2D7B1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUsersArtistsTableViewController.m; sourceTree = "<group>"; };
+		A14E4E431CB408F90034FBFB /* UserPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPage.storyboard; sourceTree = "<group>"; };
+		A14E4E451CB4110B0034FBFB /* FNBUserProfilePageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUserProfilePageTableViewController.h; sourceTree = "<group>"; };
+		A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUserProfilePageTableViewController.m; sourceTree = "<group>"; };
+		A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBAllSubscribedArtistsTableViewController.h; sourceTree = "<group>"; };
+		A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBAllSubscribedArtistsTableViewController.m; sourceTree = "<group>"; };
 		A14F2D7E1CADC6110093D187 /* FNBSpotifySearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifySearch.h; sourceTree = "<group>"; };
 		A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifySearch.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
@@ -119,6 +124,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A14E4E421CB408D90034FBFB /* UserPage */ = {
+			isa = PBXGroup;
+			children = (
+				A14E4E431CB408F90034FBFB /* UserPage.storyboard */,
+				A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */,
+				A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */,
+				A14E4E451CB4110B0034FBFB /* FNBUserProfilePageTableViewController.h */,
+				A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */,
+			);
+			name = UserPage;
+			sourceTree = "<group>";
+		};
 		A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,8 +169,6 @@
 				A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */,
 				A1E7A9391CAC28A900A9B968 /* FNBCreateNewAccountViewController.h */,
 				A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */,
-				A14F2D7A1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.h */,
-				A14F2D7B1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -181,6 +196,7 @@
 			children = (
 				BDA163731CAD677F00AFC375 /* APIs */,
 				BDA163721CAD675E00AFC375 /* FanFeed */,
+				A14E4E421CB408D90034FBFB /* UserPage */,
 				A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */,
 				A1E7A92C1CAC281600A9B968 /* FirebaseFiles */,
 				BD0A5A831CAAFCF300FFF623 /* AppDelegate.h */,
@@ -299,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */,
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
 				BDCBD2581CAB067A00EB4347 /* FNBArtistNews.storyboard in Resources */,
@@ -374,9 +391,10 @@
 				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
 				BD9C557D1CAC20D0005EA981 /* FNBTwitterPostTableViewCell.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
-				A14F2D7C1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m in Sources */,
+				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
+				A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
 				BD481EFE1CB55CE700B6ED31 /* FNBEventCollectionViewCell.m in Sources */,

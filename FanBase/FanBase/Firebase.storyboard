@@ -76,6 +76,14 @@
             </objects>
             <point key="canvasLocation" x="610" y="-210"/>
         </scene>
+        <!--UserPage-->
+        <scene sceneID="7iY-2z-0Ro">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserPage" id="cGw-6Z-unj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDb-OP-9mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2006.5" y="-270"/>
+        </scene>
         <!--User Details View Controller-->
         <scene sceneID="62D-TM-aJd">
             <objects>
@@ -118,26 +126,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-RE-oeK">
-                                <rect key="frame" x="203" y="451" width="86" height="30"/>
-                                <state key="normal" title="Delete Artist"/>
-                                <connections>
-                                    <action selector="deleteArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="y7p-5m-ndE"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDO-jr-ReQ">
                                 <rect key="frame" x="148" y="61" width="339" height="66"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9G-xI-zx5">
-                                <rect key="frame" x="125" y="301" width="241" height="30"/>
-                                <state key="normal" title="Get FNBArtist from Adele database"/>
-                                <connections>
-                                    <action selector="getAdeleFNBArtist:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="p30-ue-gpb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-LK-AJU">
                                 <rect key="frame" x="185" y="407" width="122" height="30"/>
                                 <state key="normal" title="Add Spotify Artist"/>
@@ -145,18 +139,11 @@
                                     <action selector="addSpotifyArtistTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="7Yx-2g-AAl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odS-e0-EdQ">
-                                <rect key="frame" x="135" y="540" width="220" height="30"/>
-                                <state key="normal" title="Get Array Of Artists In Database"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-9X-g3r">
+                                <rect key="frame" x="187" y="471" width="119" height="30"/>
+                                <state key="normal" title="User Profile Page"/>
                                 <connections>
-                                    <action selector="getArrayOfArtistsTapped:" destination="Qqd-AS-9W9" eventType="touchUpInside" id="dJ7-NY-Ld8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-9V-pQH">
-                                <rect key="frame" x="191" y="489" width="109" height="30"/>
-                                <state key="normal" title="Go to next page"/>
-                                <connections>
-                                    <segue destination="1ol-1n-4h2" kind="show" id="hV5-sy-1q4"/>
+                                    <segue destination="cGw-6Z-unj" kind="show" id="kmB-sw-yBT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -165,7 +152,6 @@
                     <navigationItem key="navigationItem" id="BKX-Je-mAU"/>
                     <connections>
                         <outlet property="addArtistField" destination="lqv-np-zaa" id="hE5-hb-oHE"/>
-                        <outlet property="deleteArtistButton" destination="BA1-RE-oeK" id="H9P-3U-54K"/>
                         <outlet property="label1" destination="Lgj-fm-Mnh" id="X3b-be-yth"/>
                         <outlet property="label2" destination="baG-ff-NER" id="a4x-F4-gri"/>
                         <outlet property="label3" destination="taP-r0-MMy" id="7cm-o2-uZE"/>
@@ -177,50 +163,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uga-Us-qgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2226" y="126"/>
-        </scene>
-        <!--Users Artists Table View Controller-->
-        <scene sceneID="mNC-zp-k8j">
-            <objects>
-                <tableViewController id="1ol-1n-4h2" customClass="FNBUsersArtistsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="p5f-kC-q5D">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" textLabel="wLa-ua-p6Z" detailTextLabel="XoH-ok-zsA" style="IBUITableViewCellStyleValue1" id="gYT-bQ-AVV">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gYT-bQ-AVV" id="ejF-ZR-sfc">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wLa-ua-p6Z">
-                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XoH-ok-zsA">
-                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="1ol-1n-4h2" id="byk-bb-PjW"/>
-                            <outlet property="delegate" destination="1ol-1n-4h2" id="4Xa-VT-gLw"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fD0-CJ-xeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2906" y="133"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -280,13 +222,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgw-d8-UgQ">
-                                <rect key="frame" x="66" y="493" width="176" height="30"/>
-                                <state key="normal" title="Continue As Dummy User"/>
-                                <connections>
-                                    <action selector="continueAsDummyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="imu-pK-sdh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poe-jl-oO3">
                                 <rect key="frame" x="90" y="447" width="128" height="30"/>
                                 <state key="normal" title="Continue As Guest"/>
