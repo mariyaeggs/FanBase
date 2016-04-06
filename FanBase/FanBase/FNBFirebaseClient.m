@@ -105,7 +105,7 @@
     Firebase *newUserRef = [usersRef childByAppendingPath:uid];
     
     // this is what the initial user gets as values
-    NSDictionary *initialUserValues = @{@"UID" : uid, @"email": email , @"password": password, @"userName" : @"defaultUsername", @"profileImageURL" : @"https://ww.deluxe.com/blog/wp-content/uploads/2014/02/cheering-fans_cropped.jpg", @"artistsDictionary" : [NSMutableDictionary new]};
+    NSDictionary *initialUserValues = @{@"UID" : uid, @"email": email , @"userName" : @"defaultUsername", @"profileImageURL" : @"https://ww.deluxe.com/blog/wp-content/uploads/2014/02/cheering-fans_cropped.jpg", @"artistsDictionary" : [NSMutableDictionary new]};
     [newUserRef setValue:initialUserValues];
     NSLog(@"Added user to database");
 }
@@ -138,7 +138,7 @@
 //        NSLog(@"Snapshot of Users values: %@", snapshot.value);
         user.email = snapshot.value[@"email"];
         user.userID = snapshot.value[@"UID"];
-        user.password = snapshot.value[@"password"];
+//        user.password = snapshot.value[@"password"];
         user.artistsDictionary = snapshot.value[@"artistsDictionary"];
         user.profileImageURL = snapshot.value[@"profileImageURL"];
         user.userName = snapshot.value[@"userName"];

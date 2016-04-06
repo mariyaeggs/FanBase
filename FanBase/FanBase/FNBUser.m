@@ -26,7 +26,7 @@
         _artistsDictionary = [[NSMutableDictionary alloc] init];
         _userID = @"firebaseFred";
         _email = @"";
-        _password = @"";
+//        _password = @"";
         _profileImageURL = @"";
         _userName = @"default username";
         _detailedArtistInfoArray = [NSArray new];

@@ -57,14 +57,6 @@
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
     self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
     
-    
-}
-
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    
     // set user info, and then get a detailed array of the artists the user is subscribed to
     
     self.currentUser = [[FNBUser alloc] init];
@@ -81,6 +73,11 @@
             }];
         }
     }];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
 
     
     // start listening to changes in the username, userProfileImage, or artistDictionary
@@ -114,10 +111,10 @@
     }];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self.userRef removeAllObservers];
-}
+//-(void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    [self.userRef removeAllObservers];
+//}
 
 // TODO: sort subscribed artists by number of points
 

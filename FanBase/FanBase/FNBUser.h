@@ -14,7 +14,7 @@
 @property (strong, nonatomic) NSMutableDictionary *artistsDictionary;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *password;
+//@property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *profileImageURL;
 @property (strong, nonatomic) NSArray *detailedArtistInfoArray;
