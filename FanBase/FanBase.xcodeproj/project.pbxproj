@@ -23,7 +23,9 @@
 		BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A891CAAFCF300FFF623 /* Main.storyboard */; };
 		BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */; };
 		BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */; };
-		ED45D9F61CB316C800B83B97 /* FNBDiscoverViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9F51CB316C800B83B97 /* FNBDiscoverViewController2.m */; };
+		ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9F81CB3FEA600B83B97 /* BigViewController.m */; };
+		ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */; };
+		ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */; };
 		ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730091CB2DC2E001C48DB /* Secrets.m */; };
 		ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300D1CB2DE0A001C48DB /* APIClient.m */; };
 		ED7730171CB2DE0A001C48DB /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300F1CB2DE0A001C48DB /* Constants.m */; };
@@ -64,8 +66,11 @@
 		BD0A5A911CAAFCF300FFF623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
-		ED45D9F41CB316C800B83B97 /* FNBDiscoverViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBDiscoverViewController2.h; sourceTree = "<group>"; };
-		ED45D9F51CB316C800B83B97 /* FNBDiscoverViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBDiscoverViewController2.m; sourceTree = "<group>"; };
+		ED45D9F71CB3FEA600B83B97 /* BigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigViewController.h; sourceTree = "<group>"; };
+		ED45D9F81CB3FEA600B83B97 /* BigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigViewController.m; sourceTree = "<group>"; };
+		ED45D9FA1CB3FF1400B83B97 /* GenreCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreCollectionView.h; sourceTree = "<group>"; };
+		ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreCollectionView.m; sourceTree = "<group>"; };
+		ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
 		ED7730091CB2DC2E001C48DB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		ED77300C1CB2DE0A001C48DB /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		ED77300D1CB2DE0A001C48DB /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
@@ -198,15 +203,18 @@
 			children = (
 				ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */,
 				ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */,
-				ED45D9F41CB316C800B83B97 /* FNBDiscoverViewController2.h */,
-				ED45D9F51CB316C800B83B97 /* FNBDiscoverViewController2.m */,
+				ED45D9F71CB3FEA600B83B97 /* BigViewController.h */,
+				ED45D9F81CB3FEA600B83B97 /* BigViewController.m */,
+				ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */,
 				ED7730101CB2DE0A001C48DB /* CVCell.h */,
 				ED7730111CB2DE0A001C48DB /* CVCell.m */,
 				ED77300C1CB2DE0A001C48DB /* APIClient.h */,
 				ED77300D1CB2DE0A001C48DB /* APIClient.m */,
 				ED77300E1CB2DE0A001C48DB /* Constants.h */,
 				ED77300F1CB2DE0A001C48DB /* Constants.m */,
-				ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */,
+				ED45D9FA1CB3FF1400B83B97 /* GenreCollectionView.h */,
+				ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */,
+				ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */,
 			);
 			name = "Discover Page";
 			path = ..;
@@ -246,6 +254,7 @@
 				TargetAttributes = {
 					BD0A5A7C1CAAFCF300FFF623 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 43RAP2A4D4;
 					};
 				};
 			};
@@ -273,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
+				ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
@@ -337,12 +347,12 @@
 			files = (
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
-				ED45D9F61CB316C800B83B97 /* FNBDiscoverViewController2.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				A14F2D7C1CAD9A8E0093D187 /* FNBUsersArtistsTableViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
 				ED7730171CB2DE0A001C48DB /* Constants.m in Sources */,
 				ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */,
+				ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
 				ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
@@ -352,6 +362,7 @@
 				ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
+				ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,10 +475,13 @@
 			baseConfigurationReference = 4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -476,10 +490,13 @@
 			baseConfigurationReference = C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

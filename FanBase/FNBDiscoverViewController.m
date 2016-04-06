@@ -15,7 +15,10 @@
 @interface FNBDiscoverViewController ()
 
 @property (nonatomic,strong) NSDictionary *artistData;
+
 @property (nonatomic,strong) NSArray *popArtists;
+@property (nonatomic,strong) NSArray *funkArtists;
+
 
 @end
 
@@ -27,10 +30,19 @@
     [FNBFirebaseClient getDictionaryOfAllArtistsInDatabaseWithCompletionBlock:^(BOOL completed, NSDictionary *artistsDictionary) {
         if (completed) {
             self.artistData = artistsDictionary;
-            
+        
             self.popArtists = [self filterArtistsArray:artistsDictionary ByGenre:@"pop"];
-            NSLog(@"popArtists: %@", self.popArtists);
-            [self.collectionView reloadData];
+            self.funkArtists = [self filterArtistsArray:artistsDictionary ByGenre:@"funk"];
+            
+            if (self.popArtists) {
+                NSLog(@"popArtists: %@", self.popArtists);
+                [self.collectionView reloadData];
+            } else if (self.funkArtists) {
+                NSLog(@"funkArtists: %@", self.funkArtists);
+                [self.collectionView reloadData];
+            }
+            
+            
         }
 
     }];
@@ -49,6 +61,7 @@
     // Dispose of any resources that can be recreated.
     self.collectionView = nil;
     self.popArtists = nil;
+    self.funkArtists = nil;
 
 }
 #pragma mark collection view
@@ -59,6 +72,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
     return self.popArtists.count;
+    return self.funkArtists.count; 
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -80,7 +94,7 @@
     return cell;
 
 }
-- (NSArray *) filterArtistsArray:(NSDictionary *)artistDictionary ByGenre:(NSString *)genreInput {
+- (NSArray *)filterArtistsArray:(NSDictionary *)artistDictionary ByGenre:(NSString *)genreInput {
     NSMutableArray *genreArray = [NSMutableArray new];
     for (NSString *artistName in artistDictionary) {
         NSDictionary *artistValues = [artistDictionary objectForKey:artistName];
