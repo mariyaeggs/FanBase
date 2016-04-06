@@ -36,6 +36,15 @@
 		BDC9A2151CAD7FD400636C45 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC9A2141CAD7FD400636C45 /* NSURL+QueryString.m */; };
 		BDCBD2581CAB067A00EB4347 /* FNBArtistNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCBD2571CAB067A00EB4347 /* FNBArtistNews.storyboard */; };
 		BDCBD25B1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCBD25A1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m */; };
+		ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9F81CB3FEA600B83B97 /* BigViewController.m */; };
+		ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */; };
+		ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */; };
+		ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730091CB2DC2E001C48DB /* Secrets.m */; };
+		ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300D1CB2DE0A001C48DB /* APIClient.m */; };
+		ED7730171CB2DE0A001C48DB /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300F1CB2DE0A001C48DB /* Constants.m */; };
+		ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730111CB2DE0A001C48DB /* CVCell.m */; };
+		ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */; };
+		ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +102,21 @@
 		BDCBD2591CAB06BA00EB4347 /* FNBArtistNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistNewsTableViewController.h; sourceTree = "<group>"; };
 		BDCBD25A1CAB06BA00EB4347 /* FNBArtistNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistNewsTableViewController.m; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
+		ED45D9F71CB3FEA600B83B97 /* BigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigViewController.h; sourceTree = "<group>"; };
+		ED45D9F81CB3FEA600B83B97 /* BigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigViewController.m; sourceTree = "<group>"; };
+		ED45D9FA1CB3FF1400B83B97 /* GenreCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreCollectionView.h; sourceTree = "<group>"; };
+		ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreCollectionView.m; sourceTree = "<group>"; };
+		ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
+		ED7730091CB2DC2E001C48DB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
+		ED77300C1CB2DE0A001C48DB /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		ED77300D1CB2DE0A001C48DB /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
+		ED77300E1CB2DE0A001C48DB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		ED77300F1CB2DE0A001C48DB /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		ED7730101CB2DE0A001C48DB /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCell.h; sourceTree = "<group>"; };
+		ED7730111CB2DE0A001C48DB /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVCell.m; sourceTree = "<group>"; };
+		ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverPage.storyboard; sourceTree = "<group>"; };
+		ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBDiscoverViewController.h; sourceTree = "<group>"; };
+		ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBDiscoverViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +220,7 @@
 			children = (
 				BDA163731CAD677F00AFC375 /* APIs */,
 				BDA163721CAD675E00AFC375 /* FanFeed */,
+				ED77300B1CB2DD63001C48DB /* Discover Page */,
 				A14E4E421CB408D90034FBFB /* UserPage */,
 				A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */,
 				A1E7A92C1CAC281600A9B968 /* FirebaseFiles */,
@@ -212,6 +237,7 @@
 				BDB73EF11CAAFEAE00F6B3EB /* Secrets.m */,
 				BDC9A2131CAD7FD400636C45 /* NSURL+QueryString.h */,
 				BDC9A2141CAD7FD400636C45 /* NSURL+QueryString.m */,
+				ED7730091CB2DC2E001C48DB /* Secrets.m */,
 			);
 			path = FanBase;
 			sourceTree = "<group>";
@@ -253,6 +279,27 @@
 				BD481EF21CB2F88D00B6ED31 /* FNBBandsInTownAPIClient.m */,
 			);
 			name = APIs;
+
+		ED77300B1CB2DD63001C48DB /* Discover Page */ = {
+			isa = PBXGroup;
+			children = (
+				ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */,
+				ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */,
+				ED45D9F71CB3FEA600B83B97 /* BigViewController.h */,
+				ED45D9F81CB3FEA600B83B97 /* BigViewController.m */,
+				ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */,
+				ED7730101CB2DE0A001C48DB /* CVCell.h */,
+				ED7730111CB2DE0A001C48DB /* CVCell.m */,
+				ED77300C1CB2DE0A001C48DB /* APIClient.h */,
+				ED77300D1CB2DE0A001C48DB /* APIClient.m */,
+				ED77300E1CB2DE0A001C48DB /* Constants.h */,
+				ED77300F1CB2DE0A001C48DB /* Constants.m */,
+				ED45D9FA1CB3FF1400B83B97 /* GenreCollectionView.h */,
+				ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */,
+				ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */,
+			);
+			name = "Discover Page";
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +336,7 @@
 				TargetAttributes = {
 					BD0A5A7C1CAAFCF300FFF623 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 43RAP2A4D4;
 					};
 				};
 			};
@@ -317,10 +365,12 @@
 			files = (
 				A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */,
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
+				ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
 				BDCBD2581CAB067A00EB4347 /* FNBArtistNews.storyboard in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
+				ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +443,11 @@
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
+				ED7730171CB2DE0A001C48DB /* Constants.m in Sources */,
+				ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */,
+				ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
+				ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */,
 				A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
@@ -401,6 +455,13 @@
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
 				BD481EF01CB2DF6E00B6ED31 /* FNBChatViewController.m in Sources */,
+				ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */,
+				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
+				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
+				ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */,
+				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
+				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
+				ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,10 +574,13 @@
 			baseConfigurationReference = 4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -525,10 +589,13 @@
 			baseConfigurationReference = C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

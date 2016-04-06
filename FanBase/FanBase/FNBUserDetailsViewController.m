@@ -124,6 +124,13 @@
     NSLog(@"You selected %@", artist);
     [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:artist];
 }
+//- (IBAction)getArrayOfArtistsTapped:(id)sender {
+//    [FNBFirebaseClient getArrayOfAllArtistsInDatabaseWithCompletionBlock:^(BOOL completed, NSArray *artistsArray) {
+//        if (completed) {
+//            NSLog(@"in block. Here is the array: %@", artistsArray);
+//        }
+//    }];
+//}
 
 //- (IBAction)pressOnce:(id)sender {
 //    NSArray *classical = @[ @"James Horner", @"Gyorgy Ligeti", @"James Rhodes ", @"George Frideric Handel ", @"Giuseppe Verde ", @"Claude Debussy ", @"Howard Shore", @"Johannes Brahms ", @"Aaron Copland ", @"Richard Wagner ", @"Ludwig van Beethoven ", @"Nico Muhly ", @"Hans Zimmer ", @"Charles Ives ", @"Sergei Prokofiev", @"Arvo Part", @"Wolfgan Amadeus Motzart ", @"John Adams", @"Steve Reich", @"Frederic Chopin ", @"Franz Joseph Haydn", @"Erik Satie ", @"Bela Bartok", @"Ennio Morricone ", @"Franz Schubert ", @"Max Richter ", @"Johann Sebastian Bach", @"John Williams ", @"Claudio Monteverdi ", @"Igor Stravinsky" ];

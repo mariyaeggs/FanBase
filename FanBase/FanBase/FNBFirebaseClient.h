@@ -45,7 +45,7 @@
 //+ (void)fillUser:(FNBUser *)user WithDummyDataWithCompletionBlock: (void (^) (BOOL madeDummyUser))completionBlock;
 
 // get array of all artists from database
-+ (void) getArrayOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSArray *artistsArray))block;
++ (void) getDictionaryOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSDictionary *artistsDictionary))block;
 + (void) fillDatabaseWithArrayOfArtists:(NSArray *)artistNames;
 
 @end
