@@ -258,7 +258,7 @@
 + (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary withCompletionBlock: (void (^) (BOOL artistDatabaseCreated)) makeDatabaseCompletionBlock  {
     NSLog(@"making artist database");
     
-    //get rid of .#$[] characters in artist's name
+    //get rid of .#$[]/ characters in artist's name
     NSString *formatedArtistName = [self formatedArtistName:artistSpotifyDictionary[@"name"] ];
     
     Firebase *artistsRef = [self getArtistFirebaseRef];
@@ -409,7 +409,7 @@
 
 + (NSString *) formatedArtistName: (NSString *)artistName {
     //get rid of .#$[] characters in artist's name
-    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@".#$[]"];
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@".#$[]/"];
     NSLog(@"%@", [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""]);
     return [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""];
 }
