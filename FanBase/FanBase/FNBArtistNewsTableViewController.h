@@ -15,8 +15,8 @@
 #import "FNBBandsInTownAPIClient.h"
 #import "EventPostTableViewCell.h"
 
-@interface FNBArtistNewsTableViewController : UITableViewController
+@interface FNBArtistNewsTableViewController : UITableViewController <UIViewControllerPreviewingDelegate>
 
-
+@property (strong, nonatomic) id previewingContext;
 
 @end

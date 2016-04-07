@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "FNBArtistEvent.h"
 
 @interface FNBEventInfoVC : UIViewController
+
+@property (strong, nonatomic) FNBArtistEvent *event;
 
 @end

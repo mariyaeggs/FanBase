@@ -10,13 +10,21 @@
 
 @interface FNBEventInfoVC ()
 
+@property (strong, nonatomic) IBOutlet MKMapView *eventMapView;
+@property (strong, nonatomic) IBOutlet UILabel *eventTitle;
+@property (strong, nonatomic) IBOutlet UILabel *eventVenue;
+@property (strong, nonatomic) IBOutlet UILabel *eventDate;
+@property (strong, nonatomic) IBOutlet UILabel *ticketsAvailable;
+
 @end
 
 @implementation FNBEventInfoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+//    self.eventMapView =
+
 }
 
 - (void)didReceiveMemoryWarning {

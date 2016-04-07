@@ -16,11 +16,6 @@
 @property (strong, nonatomic) NSDictionary *venue;
 @property (assign, nonatomic) BOOL isStarred;
 
--(instancetype)init {
-    self = [super init];
-    if (self) {
-        
-    }
-}
+-(instancetype)initWithEventTitle:(NSString *)eventTitle date:(NSString *)dateOfConcert availability:(BOOL)isTicketsAvailable venue:(NSDictionary *)venue star:(BOOL)isStarred;
 
 @end

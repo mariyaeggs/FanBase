@@ -120,4 +120,14 @@
     return title;
 }
 
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    NSString *twitter = @"Tweets";
+    NSString *events = @"Events";
+    return @[twitter,events];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return index;
+}
+
 @end
