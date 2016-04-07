@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *profileImageURL;
 @property (strong, nonatomic) NSArray *detailedArtistInfoArray;
-@property (strong, nonatomic) NSArray *rankingForEachArtist; 
+@property (strong, nonatomic) NSArray *rankingAndImagesForEachArtist;
 
 -(instancetype)init;
 //-(instancetype)initWithAuthData:(FAuthData *)authData;

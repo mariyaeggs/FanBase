@@ -30,7 +30,7 @@
         _profileImageURL = @"";
         _userName = @"default username";
         _detailedArtistInfoArray = [NSArray new];
-        _rankingForEachArtist = [NSArray new];
+        _rankingAndImagesForEachArtist = [NSArray new];
     }
     return self;
 }

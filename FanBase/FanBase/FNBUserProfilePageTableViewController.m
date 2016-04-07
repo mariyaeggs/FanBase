@@ -84,7 +84,7 @@
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
                     
                     // get users rankings for each of their subscribed artists
-                    self.currentUser.rankingForEachArtist = [self getArtistInfoForLabels:self.currentUser];
+                    self.currentUser.rankingAndImagesForEachArtist = [self getArtistInfoForLabels:self.currentUser];
                     
                     [self updateUI];
                 }
@@ -234,7 +234,7 @@
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
     // TODO: put in the biggest fan label here
     
-    [self setLabelsAndImagesOfArtistCells:self.currentUser.rankingForEachArtist];
+    [self setLabelsAndImagesOfArtistCells:self.currentUser.rankingAndImagesForEachArtist];
 
     self.tableView.tableFooterView = [UIView new];
     [self.tableView reloadData];
