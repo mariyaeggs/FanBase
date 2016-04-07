@@ -16,6 +16,5 @@
 @property (strong, nonatomic) NSDictionary *venue;
 @property (assign, nonatomic) BOOL isStarred;
 
-//-(instancetype)init;
 
 @end
