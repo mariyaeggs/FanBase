@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2FD21C22D79D648E02D5CBAD /* libPods-FanBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */; };
+		321DBED31CB6B571009B9E13 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DBED21CB6B571009B9E13 /* Secrets.m */; };
+		325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */; };
+		325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */; };
+		325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */; };
+		325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA51CB6DC37009F5F27 /* FNBSpotifyTopTracks.m */; };
+		325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA71CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m */; };
+		325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */; };
 		A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E431CB408F90034FBFB /* UserPage.storyboard */; };
 		A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */; };
 		A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */; };
@@ -41,7 +48,6 @@
 		ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9F81CB3FEA600B83B97 /* BigViewController.m */; };
 		ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */; };
 		ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */; };
-		ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730091CB2DC2E001C48DB /* Secrets.m */; };
 		ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300D1CB2DE0A001C48DB /* APIClient.m */; };
 		ED7730171CB2DE0A001C48DB /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300F1CB2DE0A001C48DB /* Constants.m */; };
 		ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730111CB2DE0A001C48DB /* CVCell.m */; };
@@ -50,6 +56,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		321DBED21CB6B571009B9E13 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
+		325FEC9E1CB6DC37009F5F27 /* FNBArtistTop10Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistTop10Cell.h; sourceTree = "<group>"; };
+		325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistTop10Cell.m; sourceTree = "<group>"; };
+		325FECA01CB6DC37009F5F27 /* FNBArtistTop10TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistTop10TableViewController.h; sourceTree = "<group>"; };
+		325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistTop10TableViewController.m; sourceTree = "<group>"; };
+		325FECA21CB6DC37009F5F27 /* FNBSpotifyAPIclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifyAPIclient.h; sourceTree = "<group>"; };
+		325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifyAPIclient.m; sourceTree = "<group>"; };
+		325FECA41CB6DC37009F5F27 /* FNBSpotifyTopTracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifyTopTracks.h; sourceTree = "<group>"; };
+		325FECA51CB6DC37009F5F27 /* FNBSpotifyTopTracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifyTopTracks.m; sourceTree = "<group>"; };
+		325FECA61CB6DC37009F5F27 /* FNBTopTrackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTopTrackDetailViewController.h; sourceTree = "<group>"; };
+		325FECA71CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTopTrackDetailViewController.m; sourceTree = "<group>"; };
+		325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBArtistTop10.storyboard; sourceTree = "<group>"; };
 		4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.debug.xcconfig"; sourceTree = "<group>"; };
 		9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FanBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14E4E431CB408F90034FBFB /* UserPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPage.storyboard; sourceTree = "<group>"; };
@@ -113,7 +131,6 @@
 		ED45D9FA1CB3FF1400B83B97 /* GenreCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreCollectionView.h; sourceTree = "<group>"; };
 		ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreCollectionView.m; sourceTree = "<group>"; };
 		ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
-		ED7730091CB2DC2E001C48DB /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
 		ED77300C1CB2DE0A001C48DB /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		ED77300D1CB2DE0A001C48DB /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		ED77300E1CB2DE0A001C48DB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -138,6 +155,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		325FEC9D1CB6DB96009F5F27 /* Top10 */ = {
+			isa = PBXGroup;
+			children = (
+				325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */,
+				325FEC9E1CB6DC37009F5F27 /* FNBArtistTop10Cell.h */,
+				325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */,
+				325FECA01CB6DC37009F5F27 /* FNBArtistTop10TableViewController.h */,
+				325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */,
+				325FECA21CB6DC37009F5F27 /* FNBSpotifyAPIclient.h */,
+				325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */,
+				325FECA41CB6DC37009F5F27 /* FNBSpotifyTopTracks.h */,
+				325FECA51CB6DC37009F5F27 /* FNBSpotifyTopTracks.m */,
+				325FECA61CB6DC37009F5F27 /* FNBTopTrackDetailViewController.h */,
+				325FECA71CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m */,
+			);
+			name = Top10;
+			sourceTree = "<group>";
+		};
 		71DE2E40FFBA7B1B6B1EF698 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +261,7 @@
 		BD0A5A7F1CAAFCF300FFF623 /* FanBase */ = {
 			isa = PBXGroup;
 			children = (
+				325FEC9D1CB6DB96009F5F27 /* Top10 */,
 				BD3116C81CB5A8F100C47570 /* FanFeed */,
 				BD3116C71CB5A8CB00C47570 /* ArtistNews */,
 				BD3116C61CB5A8A700C47570 /* APIs */,
@@ -243,7 +279,7 @@
 				BD0A5A911CAAFCF300FFF623 /* Info.plist */,
 				BD0A5A801CAAFCF300FFF623 /* Supporting Files */,
 				BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */,
-				ED7730091CB2DC2E001C48DB /* Secrets.m */,
+				321DBED21CB6B571009B9E13 /* Secrets.m */,
 			);
 			path = FanBase;
 			sourceTree = "<group>";
@@ -396,6 +432,7 @@
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
 				ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */,
+				325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,9 +498,9 @@
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				BD3116B71CB5A87D00C47570 /* FNBBandsInTownAPIClient.m in Sources */,
 				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
+				325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
 				ED7730171CB2DE0A001C48DB /* Constants.m in Sources */,
-				ED77300A1CB2DC2E001C48DB /* Secrets.m in Sources */,
 				ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
 				ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */,
@@ -472,18 +509,23 @@
 				BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */,
+				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
 				ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
+				325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */,
 				ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */,
 				BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */,
+				325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
+				325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */,
 				BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */,
 				BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
 				ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */,
 				BD3116B51CB5A87D00C47570 /* FNBArtistNewsCollectionViewController.m in Sources */,
 				BD3116B81CB5A87D00C47570 /* FNBChatViewController.m in Sources */,
+				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
