@@ -1,16 +1,13 @@
 //
-//  ViewController.h
+//  FNBEventInfoVC.h
 //  FanBase
 //
-//  Created by Angelica Bato on 3/29/16.
+//  Created by Angelica Bato on 4/7/16.
 //  Copyright © 2016 Angelica Bato. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface FNBEventInfoVC : UIViewController
 
 @end
-
