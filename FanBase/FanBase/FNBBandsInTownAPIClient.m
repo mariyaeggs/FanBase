@@ -7,6 +7,7 @@
 //
 
 #import "FNBBandsInTownAPIClient.h"
+#import "FNBUser.h"
 
 @implementation FNBBandsInTownAPIClient
 
@@ -18,10 +19,14 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        
+        
         completionBlock(responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Oh No! Something went wrong in the BandsInTown GET request!");
+        NSLog(@"%@",error.description);
     }];
     
 }

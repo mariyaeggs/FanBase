@@ -18,7 +18,7 @@
     
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     
-    [sessionManager GET:stringForURL parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [sessionManager GET:stringForURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"no errors from search");
         NSMutableArray *matchingArtists = [NSMutableArray new];
         
