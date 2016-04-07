@@ -60,8 +60,6 @@
     self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
     self.arrayOfArtistRankingLabels = @[self.artist1XOfTotalFans, self.artist2XOfTotalFans, self.artist3XOfTotalFans, self.artist4XOfTotalFans];
     
-    
-    
     // make user image rounded
     self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height / 2;
     self.userImageView.layer.masksToBounds = YES;
@@ -84,7 +82,7 @@
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
                     
                     // get users rankings for each of their subscribed artists
-                    self.currentUser.rankingAndImagesForEachArtist = [self getArtistInfoForLabels:self.currentUser];
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
                     
                     [self updateUI];
                 }
@@ -121,6 +119,10 @@
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+                    
                     [self updateUI];
                 }
             }];
@@ -134,40 +136,6 @@
 //    [self.userRef removeAllObservers];
 //}
 
-- (NSArray *) getArtistInfoForLabels:(FNBUser *)user {
-    // figure out rank for each artist in array
-    NSMutableArray *arrayToFill = [NSMutableArray new];
-    for (FNBArtist *artist in user.detailedArtistInfoArray) {
-        //                        NSLog(@"this is artist %@, and their subscribed Users: %@", artist.name, artist.subscribedUsers);
-        // create an array of dictionaries
-        NSMutableArray *subscribedUsersArray = [NSMutableArray new];
-        for (NSString *key in artist.subscribedUsers) {
-            NSDictionary *result = @{ @"userID" : key ,
-                                      @"points" : [artist.subscribedUsers objectForKey:key]
-                                      };
-            [subscribedUsersArray addObject:result];
-        }
-        // now sort this array by points
-        NSSortDescriptor *pointsDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"points" ascending:NO];
-        NSArray *sortedArray = [subscribedUsersArray sortedArrayUsingDescriptors:@[pointsDescriptor]];
-        //                        NSLog(@"artist: %@ and their array of users: %@", artist.name, sortedArray);
-        
-        // now find what number current user is in the array
-        NSInteger currentUsersRank = [sortedArray indexOfObjectPassingTest:^BOOL(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
-            return [[dict objectForKey:@"userID"] isEqual:self.currentUser.userID];
-        }];
-        NSDictionary *rankingDictionary = @{
-                                            @"artistName" : artist.name ,
-                                            @"usersRank" : @(currentUsersRank + 1),
-                                            @"numberOfFollowers" : @(sortedArray.count),
-                                            @"artistImageURL" : artist.imagesArray[0][@"url"]
-                                            };
-        [arrayToFill addObject:rankingDictionary];
-//        NSLog(@"users rank for artist: %@ is: %li out of %li", artist.name,currentUsersRank + 1, sortedArray.count);
-    }
-    NSLog(@"%@", arrayToFill);
-    return arrayToFill;
-}
 
 
 - (IBAction)userNameDoubleTapped:(id)sender {

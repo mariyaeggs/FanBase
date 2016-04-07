@@ -8,6 +8,7 @@
 
 #import "FNBAllSubscribedArtistsTableViewController.h"
 #import "FNBFirebaseClient.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface FNBAllSubscribedArtistsTableViewController ()
 
@@ -30,7 +31,10 @@
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
-                    //                    NSLog(@"this is the detailed array of artists: %@", self.currentUser.detailedArtistInfoArray);
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+                    
                     [self updateUI];
                 }
             }];
@@ -54,6 +58,9 @@
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
                     [self updateUI];
                 }
             }];
@@ -82,15 +89,23 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.currentUser.detailedArtistInfoArray.count;
+    return self.currentUser.rankingAndImagesForEachArtist.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[indexPath.row]).name;
+    cell.textLabel.text = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"#%@ of %@", self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"usersRank"], self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"numberOfFollowers"]];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistImageURL"]]];
+
     return cell;
+}
+
+// add header to the tableview
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"All Subscribed Artists";
 }
 
 // Below two methods adds swipe left to show a delete option

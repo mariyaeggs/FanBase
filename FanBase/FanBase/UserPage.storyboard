@@ -37,10 +37,10 @@
                                                     </connections>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYO-qF-21z">
-                                                    <rect key="frame" x="239" y="184" width="123" height="36"/>
+                                                    <rect key="frame" x="239" y="184" width="123" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78g-9s-m06">
-                                                            <rect key="frame" x="0.0" y="4" width="123" height="27"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="123" height="27"/>
                                                             <gestureRecognizers/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                             <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                             <constraints>
                                                 <constraint firstItem="aYh-d4-Aii" firstAttribute="top" secondItem="xha-xS-qAs" secondAttribute="topMargin" id="IpF-TO-zvm"/>
                                                 <constraint firstItem="aYh-d4-Aii" firstAttribute="centerX" secondItem="xha-xS-qAs" secondAttribute="centerX" id="NLC-Zm-I2D"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="zYO-qF-21z" secondAttribute="bottom" constant="-8" id="RSB-3B-wjU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zYO-qF-21z" secondAttribute="bottom" id="RSB-3B-wjU"/>
                                                 <constraint firstItem="aYh-d4-Aii" firstAttribute="height" secondItem="xha-xS-qAs" secondAttribute="height" multiplier="0.8" id="Vav-Tc-qTY"/>
                                                 <constraint firstItem="zYO-qF-21z" firstAttribute="top" secondItem="aYh-d4-Aii" secondAttribute="bottom" id="oNT-Wh-MCm"/>
                                                 <constraint firstItem="zYO-qF-21z" firstAttribute="centerX" secondItem="xha-xS-qAs" secondAttribute="centerX" id="rUC-hi-71C"/>
@@ -92,8 +92,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist #x of total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7xv-Fd-adk">
-                                                    <rect key="frame" x="322" y="14" width="123" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Info about the user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7xv-Fd-adk">
+                                                    <rect key="frame" x="315" y="14" width="137" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>

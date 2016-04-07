@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Firebase/Firebase.h>
-
+#import "FNBArtist.h"
 
 @interface FNBUser : NSObject
 @property (strong, nonatomic) NSMutableDictionary *artistsDictionary;
@@ -22,5 +22,6 @@
 
 -(instancetype)init;
 //-(instancetype)initWithAuthData:(FAuthData *)authData;
+- (NSArray *) getArtistInfoForLabels;
 
 @end
