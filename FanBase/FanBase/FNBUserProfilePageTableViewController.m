@@ -11,6 +11,9 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
 
+//this is to transition to the ArtistTop10 on segue
+#import "FNBArtistTop10TableViewController.h"
+
 @interface FNBUserProfilePageTableViewController ()
 
 @property (strong, nonatomic) FNBUser *currentUser;
@@ -48,6 +51,7 @@
 
 @property (strong, nonatomic) Firebase *userRef;
 
+@property (strong, nonatomic) NSString *selectedArtistSpotifyIDToSendToNextVC;
 @end
 
 @implementation FNBUserProfilePageTableViewController
@@ -233,6 +237,8 @@
 }
 
 
+
+
 // makes height 0 of empty cells
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -267,5 +273,26 @@
         NSLog(@"you deleted %@", selectedArtistName);
         
     }
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    if(selectedIndexPath.section == 2 && selectedIndexPath.row < self.arrayOfArtistLabels.count) {
+        NSString *selectedArist = self.currentUser.rankingAndImagesForEachArtist[selectedIndexPath.row][@"artistName"];
+        NSString *selectedArtistSpotifyID = self.currentUser.rankingAndImagesForEachArtist[selectedIndexPath.row][@"artistSpotifyID"];
+        NSLog(@"this is the selected artist: %@ and this is their Spotify ID: %@", selectedArist, selectedArtistSpotifyID);
+
+        
+        
+        UINavigationController *navControllerOfFNBArtistTop10TableViewController = [segue destinationViewController];
+        FNBArtistTop10TableViewController *nextVC = [navControllerOfFNBArtistTop10TableViewController viewControllers][0];
+        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
+    }
+//    // if any other segue other than from the "See All" button
+//    if (![segue.identifier isEqualToString:@"seeAllSegue"]) {
+//        FNBArtistTop10TableViewController *nextVC = segue.destinationViewController;
+//        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
+//    }
 }
 @end

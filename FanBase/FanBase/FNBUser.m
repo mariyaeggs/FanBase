@@ -61,7 +61,8 @@
                                             @"artistName" : artist.name ,
                                             @"usersRank" : @(currentUsersRank + 1),
                                             @"numberOfFollowers" : @(sortedArray.count),
-                                            @"artistImageURL" : artist.imagesArray[0][@"url"]
+                                            @"artistImageURL" : artist.imagesArray[0][@"url"],
+                                            @"artistSpotifyID" : artist.spotifyID
                                             };
         [arrayToFill addObject:rankingDictionary];
         //        NSLog(@"users rank for artist: %@ is: %li out of %li", artist.name,currentUsersRank + 1, sortedArray.count);

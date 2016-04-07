@@ -31,16 +31,27 @@
     [super viewDidLoad];
     
    self.topTrackCellFolder = [NSMutableArray new];
-   [FNBSpotifyAPIclient getTopTracksWithCompletionBlock:^(BOOL success, NSArray *topTracks) {
-      NSLog(@"Inside API CLIENT");
-             if (success) {
-                 self.topTrackCellFolder = topTracks;
-          
-           [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self.tableView reloadData];
-           }];
-      }   }];
+    [FNBSpotifyAPIclient getTopTracksOfSpotifyID:self.recievedArtistSpotifyID WithCompletionBlock:^(BOOL success, NSArray *topTracks) {
+        NSLog(@"Inside API CLIENT");
+        if (success) {
+            self.topTrackCellFolder = topTracks;
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.tableView reloadData];
+            }];
+        }   }];
 }
+
+//   [FNBSpotifyAPIclient getTopTracksWithCompletionBlock:^(BOOL success, NSArray *topTracks) {
+//      NSLog(@"Inside API CLIENT");
+//             if (success) {
+//                 self.topTrackCellFolder = topTracks;
+//          
+//           [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//            [self.tableView reloadData];
+//           }];
+//      }   }];
+//}
 -(BOOL)prefersStatusBarHidden {
     
     return YES;

@@ -15,12 +15,12 @@
 
 @implementation FNBSpotifyAPIclient
 
-+(void)getTopTracksWithCompletionBlock:(void (^) (BOOL success, NSArray *topTracks))block {
++(void)getTopTracksOfSpotifyID:(NSString *)spotifyID WithCompletionBlock:(void (^) (BOOL success, NSArray *topTracks))block {
     
     NSMutableArray *topTracksFolder = [NSMutableArray new];
 
-    NSString *topTracksUrl = @"https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh/top-tracks?country=US";
-    
+//    NSString *topTracksUrl = @"https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh/top-tracks?country=US";
+     NSString *topTracksUrl = [NSString stringWithFormat:@"https://api.spotify.com/v1/artists/%@/top-tracks?country=US", spotifyID];
     AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
     
    

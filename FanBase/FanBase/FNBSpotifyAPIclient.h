@@ -14,6 +14,7 @@
 
 @interface FNBSpotifyAPIclient : NSObject
 
-+(void)getTopTracksWithCompletionBlock:(void (^) (BOOL success, NSArray *topTracks))block;
+//+(void)getTopTracksWithCompletionBlock:(void (^) (BOOL success, NSArray *topTracks))block;
++(void)getTopTracksOfSpotifyID:(NSString *)spotifyID WithCompletionBlock:(void (^) (BOOL success, NSArray *topTracks))block;
 
 @end

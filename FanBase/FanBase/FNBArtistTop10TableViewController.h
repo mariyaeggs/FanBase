@@ -11,5 +11,5 @@
 #import "FNBSpotifyTopTracks.h"
 
 @interface FNBArtistTop10TableViewController : UITableViewController
-
+@property (strong, nonatomic) NSString *recievedArtistSpotifyID; 
 @end
