@@ -11,6 +11,7 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 //this is to transition to the ArtistTop10 on segue
 #import "FNBArtistTop10TableViewController.h"
+#import "FNBViewAllArtistsTableViewCell.h"
 
 @interface FNBAllSubscribedArtistsTableViewController ()
 
@@ -96,11 +97,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    FNBViewAllArtistsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"#%@ of %@", self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"usersRank"], self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"numberOfFollowers"]];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistImageURL"]]];
+    cell.artistNameLabel.text = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
+    cell.usersRankLabel.text = [NSString stringWithFormat:@"#%@ of %@", self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"usersRank"], self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"numberOfFollowers"]];
+    [cell.artistImageView setImageWithURL:[NSURL URLWithString:self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistImageURL"]]];
 
     return cell;
 }
