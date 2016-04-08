@@ -52,6 +52,7 @@
                 <outlet property="artistImageView" destination="0fj-Bd-91Q" id="aT7-uY-fMy"/>
                 <outlet property="labelTitle" destination="3vz-OW-wD1" id="kbu-tR-qO7"/>
             </connections>
+            <point key="canvasLocation" x="503" y="364"/>
         </collectionViewCell>
     </objects>
 </document>
