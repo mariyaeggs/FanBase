@@ -23,10 +23,13 @@
     
     if ([self isForceTouchAvailable]) {
         self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+        self.longPress.enabled = NO;
     }
     else {
         [self unregisterForPreviewingWithContext:self.previewingContext];
         self.previewingContext = nil;
+        
+        self.longPress.enabled = YES;
     }
     
     self.allNews = [@[@[],@[]] mutableCopy];
@@ -138,6 +141,26 @@
     return isForceTouchAvailable;
 }
 
+-(UILongPressGestureRecognizer *)longPress {
+    if (!_longPress) {
+        _longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showPeek)];
+        [self.tableView addGestureRecognizer:_longPress];
+    }
+    return _longPress;
+}
+-(void)showPeek {
+    CGPoint tapPoint = [self.longPress locationInView:self.tableView];
+    NSIndexPath *path = [self.tableView indexPathForRowAtPoint:tapPoint];
+    
+    if (path && path.section == 1) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil];
+        FNBEventInfoVC *previewVC = [storyboard instantiateViewControllerWithIdentifier:@"eventInfo"];
+        previewVC.event = [self.allNews[1] objectAtIndex:path.row];
+        [self.navigationController showViewController:previewVC sender:nil];
+    }
+    
+}
+
 
 # pragma mark - Previewing Delegate methods
 
@@ -164,14 +187,14 @@
 }
 
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//    
-//    if ([self.tableView indexPathForSelectedRow].section == 1) {
-//        FNBEventInfoVC *destVC = segue.destinationViewController;
-//        destVC.event = self.allNews[1][[self.tableView indexPathForSelectedRow].row];
-//    }
-//    
-//}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    if ([self.tableView indexPathForSelectedRow].section == 1) {
+        FNBEventInfoVC *destVC = segue.destinationViewController;
+        destVC.event = self.allNews[1][[self.tableView indexPathForSelectedRow].row];
+    }
+    
+}
 
 @end

@@ -19,5 +19,6 @@
 @interface FNBArtistNewsTableViewController : UITableViewController <UIViewControllerPreviewingDelegate>
 
 @property (strong, nonatomic) id previewingContext;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
 
 @end
