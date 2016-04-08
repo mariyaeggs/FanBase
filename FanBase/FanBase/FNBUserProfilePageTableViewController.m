@@ -9,6 +9,10 @@
 #import "FNBUserProfilePageTableViewController.h"
 #import "FNBFirebaseClient.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import <QuartzCore/QuartzCore.h>
+
+//this is to transition to the ArtistTop10 on segue
+#import "FNBArtistTop10TableViewController.h"
 
 @interface FNBUserProfilePageTableViewController ()
 
@@ -43,9 +47,11 @@
 
 @property (strong, nonatomic) NSArray *arrayOfArtistLabels;
 @property (strong, nonatomic) NSArray *arrayOfArtistImageViews;
+@property (strong, nonatomic) NSArray *arrayOfArtistRankingLabels;
 
 @property (strong, nonatomic) Firebase *userRef;
 
+@property (strong, nonatomic) NSString *selectedArtistSpotifyIDToSendToNextVC;
 @end
 
 @implementation FNBUserProfilePageTableViewController
@@ -56,6 +62,17 @@
     // set the artistLabels and artistImageViews of the cells
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
     self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
+    self.arrayOfArtistRankingLabels = @[self.artist1XOfTotalFans, self.artist2XOfTotalFans, self.artist3XOfTotalFans, self.artist4XOfTotalFans];
+    
+    // make user image rounded
+    self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height / 2;
+    self.userImageView.layer.masksToBounds = YES;
+    
+    // make artist images circular
+    for (UIImageView *artistImage in self.arrayOfArtistImageViews) {
+        artistImage.layer.cornerRadius = artistImage.frame.size.height / 2;
+        artistImage.layer.masksToBounds = YES;
+    }
     
     // set user info, and then get a detailed array of the artists the user is subscribed to
     
@@ -67,7 +84,10 @@
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
-                    //                    NSLog(@"this is the detailed array of artists: %@", self.currentUser.detailedArtistInfoArray);
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+                    
                     [self updateUI];
                 }
             }];
@@ -103,6 +123,10 @@
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+                    
                     [self updateUI];
                 }
             }];
@@ -116,7 +140,6 @@
 //    [self.userRef removeAllObservers];
 //}
 
-// TODO: sort subscribed artists by number of points
 
 
 - (IBAction)userNameDoubleTapped:(id)sender {
@@ -161,7 +184,7 @@
     }];
     UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *imageURLTextField = changeProfilePictureAlert.textFields.firstObject;
-//        NSLog(@"this is the newImageURL: %@", imageURLTextField.text);
+
         // change the profilePicURL in the Database
         [FNBFirebaseClient changeProfilePictureURLOfUser:self.currentUser toURL:imageURLTextField.text withCompletionBlock:^(BOOL completedChangingProfilePicURL) {
             if (completedChangingProfilePicURL) {
@@ -180,36 +203,40 @@
 - (void) updateUI {
     self.userNameLabel.text = self.currentUser.userName;
     [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
-    self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Subscribed Artists: %lu", self.currentUser.artistsDictionary.count];
+    self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
     // TODO: put in the biggest fan label here
     
-    [self setLabelsAndImagesOfArtistCells:self.currentUser.detailedArtistInfoArray];
+    [self setLabelsAndImagesOfArtistCells:self.currentUser.rankingAndImagesForEachArtist];
 
     self.tableView.tableFooterView = [UIView new];
     [self.tableView reloadData];
 }
 
 
-- (void)setLabelsAndImagesOfArtistCells:(NSArray *)detailedArtistArray {
-    NSUInteger numberOfArtists = detailedArtistArray.count;
+- (void)setLabelsAndImagesOfArtistCells:(NSArray *)artistInfoArray {
+    NSUInteger numberOfArtists = artistInfoArray.count;
     if (numberOfArtists == 0) {
         NSLog(@"there are no artists for this user according to the detailedArtistArray");
     }
     // user is subscribed to less than or equal number of artists than there are labels
     else if (numberOfArtists <= self.arrayOfArtistLabels.count) {
         for (NSInteger i = 0; i < numberOfArtists; i++) {
-            ((UILabel *)self.arrayOfArtistLabels[i]).text = ((FNBArtist *)detailedArtistArray[i]).name;
-            [((UIImageView *)self.arrayOfArtistImageViews[i]) setImageWithURL:[NSURL URLWithString:((FNBArtist *)detailedArtistArray[i]).imagesArray[0][@"url"]]];
+            ((UILabel *)self.arrayOfArtistLabels[i]).text = artistInfoArray[i][@"artistName"];
+            [((UIImageView *)self.arrayOfArtistImageViews[i]) setImageWithURL:[NSURL URLWithString:artistInfoArray[i][@"artistImageURL"]]];
+            ((UILabel *)self.arrayOfArtistRankingLabels[i]).text = [NSString stringWithFormat:@"#%@ of %@", artistInfoArray[i][@"usersRank"], artistInfoArray[i][@"numberOfFollowers" ]];
         }
     }
     // user is subscribed to more artists than there are labels
     else {
         for (NSInteger i = 0; i < self.arrayOfArtistLabels.count; i++) {
-            ((UILabel *)self.arrayOfArtistLabels[i]).text = ((FNBArtist *)detailedArtistArray[i]).name;
-            [((UIImageView *)self.arrayOfArtistImageViews[i]) setImageWithURL:[NSURL URLWithString:((FNBArtist *)detailedArtistArray[i]).imagesArray[0][@"url"]]];
+            ((UILabel *)self.arrayOfArtistLabels[i]).text = artistInfoArray[i][@"artistName"];
+            [((UIImageView *)self.arrayOfArtistImageViews[i]) setImageWithURL:[NSURL URLWithString:artistInfoArray[i][@"artistImageURL"]]];
+            ((UILabel *)self.arrayOfArtistRankingLabels[i]).text = [NSString stringWithFormat:@"#%@ of %@", artistInfoArray[i][@"usersRank"], artistInfoArray[i][@"numberOfFollowers" ]];
         }
     }
 }
+
+
 
 
 // makes height 0 of empty cells
@@ -246,5 +273,26 @@
         NSLog(@"you deleted %@", selectedArtistName);
         
     }
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    if(selectedIndexPath.section == 2 && selectedIndexPath.row < self.arrayOfArtistLabels.count) {
+        NSString *selectedArist = self.currentUser.rankingAndImagesForEachArtist[selectedIndexPath.row][@"artistName"];
+        NSString *selectedArtistSpotifyID = self.currentUser.rankingAndImagesForEachArtist[selectedIndexPath.row][@"artistSpotifyID"];
+        NSLog(@"this is the selected artist: %@ and this is their Spotify ID: %@", selectedArist, selectedArtistSpotifyID);
+
+        
+        
+        UINavigationController *navControllerOfFNBArtistTop10TableViewController = [segue destinationViewController];
+        FNBArtistTop10TableViewController *nextVC = [navControllerOfFNBArtistTop10TableViewController viewControllers][0];
+        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
+    }
+//    // if any other segue other than from the "See All" button
+//    if (![segue.identifier isEqualToString:@"seeAllSegue"]) {
+//        FNBArtistTop10TableViewController *nextVC = segue.destinationViewController;
+//        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
+//    }
 }
 @end
