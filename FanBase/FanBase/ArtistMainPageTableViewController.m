@@ -14,8 +14,14 @@
 @property (strong, nonatomic) FNBArtist *currentArtist;
 //@property (strong, nonatomic) NSArray *artistTweets;
 
+// artist Top info
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+
+// users info
+@property (weak, nonatomic) IBOutlet UILabel *youSubscribedLabel;
+@property (weak, nonatomic) IBOutlet UIButton *clickToAddArtistButton;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfSubscribedUsersLabel;
 
 // tweet section
 @property (strong, nonatomic) NSArray *arrayOfTweetContentLabels;
@@ -27,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *tweet3ContentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *tweet3DateLabel;
 
+
+
 @end
 
 @implementation ArtistMainPageTableViewController
@@ -34,9 +42,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     // dummy data for now
     self.receivedArtistName = @"Adele";
+    
+    
+    
+    
+    // make FNBUser for this VC
+    
     
     
     // set the tweetsLabels
@@ -47,15 +60,16 @@
     self.artistImageView.layer.cornerRadius = self.artistImageView.frame.size.height /2 ,
     self.artistImageView.layer.masksToBounds = YES;
     
-    
+    // create FNBArtist from receivedName
     self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
     [FNBFirebaseClient setPropertiesOfArtist:_currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
         if (setPropertiesCompleted) {
             [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
             self.artistNameLabel.text = self.currentArtist.name;
             
+            [self setUserLabels];
             
-            // get top 4 tweets
+            // get tweets
             [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
                 
                 [self setTwitterCellsWithTweetsArray:returnedArray];
@@ -65,10 +79,63 @@
     
 }
 
+- (void) setUserLabels {
+    self.numberOfSubscribedUsersLabel.text = [NSString stringWithFormat:@"%li People Subscribed", self.currentArtist.subscribedUsers.count];
+    
+//    if (USER IS AUTHENTICATED) {
+    if (true) {
+        // if user is subscribed
+//        if (USER IS SUBSCRIBED) {
+        if (true) {
+            self.youSubscribedLabel.text = @"You Are Subscribed";
+            [self.clickToAddArtistButton setTitle:@"Click To Unsubscribe" forState:UIControlStateNormal];
+            [self.clickToAddArtistButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            
+        }
+
+        // if user isn't subscribed
+        else {
+            self.youSubscribedLabel.text = @"You Are Not Subscribed";
+            [self.clickToAddArtistButton setTitle:@"Click To Subscribe" forState:UIControlStateNormal];
+            [self.clickToAddArtistButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        }
+    }
+    
+    // if user is guest (not signed in)
+    else {
+        self.youSubscribedLabel.text = @"You Are Not Logged In";
+        [self.clickToAddArtistButton setTitle:@"Click To Login" forState:UIControlStateNormal];
+        [self.clickToAddArtistButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    }
+    
+}
+
+// this method depends on the YouAreSubscribed label's text
+- (IBAction)clickToAddTapped:(id)sender {
+    NSLog(@"tapped");
+    if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Logged In"]) {
+        NSLog(@"button tapped and you were not logged in");
+        // TODO: segue to Login Screen
+    }
+    else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Subscribed"]) {
+        NSLog(@"button tapped and you were not subscribed in");
+        // TODO: subscribe User
+    }
+    else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Subscribed"]) {
+        NSLog(@"button tapped and you were subscribed");
+        // present alert to confirm
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are You Sure?" message:[NSString stringWithFormat: @"Do you want to unsubscribe from %@", self.currentArtist.name]  preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *submit = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:nil];
+        [alert addAction:cancel];
+        [alert addAction:submit];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
 
 
 - (void) setTwitterCellsWithTweetsArray:(NSArray *)tweetsArray {
-    NSLog(@"these are the tweets array: %@", tweetsArray);
+//    NSLog(@"these are the tweets array: %@", tweetsArray);
     
     if (tweetsArray.count == 0) {
         NSLog(@"received no tweets for this artist");
