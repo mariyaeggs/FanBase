@@ -25,7 +25,7 @@
     self.collectionView = [[FNBIndexedCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
     
-    // Collors the background of the cells scrolls 
+    // Collors the background of view in white color
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.contentView addSubview:self.collectionView];

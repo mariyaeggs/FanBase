@@ -24,12 +24,15 @@
     NSLog(@"init frame of collection view cell");
     if (!(self=[super initWithFrame:frame])) return nil;
     
+    //Programs the image view
     self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     self.imageView.clipsToBounds = YES;
     
+    //Programs the label to the view
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     self.label.textAlignment = NSTextAlignmentCenter;
     
+    //Adds the image and label
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.label];
     
@@ -48,12 +51,6 @@
     self.label.text = artist;
     
 }
-
-//-(void)setLabel:(UILabel *)label {
-//    
-//    _label = label;
-//    self.label =label;
-//}
 
 
 @end
