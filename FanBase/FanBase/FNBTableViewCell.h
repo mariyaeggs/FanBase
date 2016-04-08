@@ -19,6 +19,7 @@ static NSString *CollectionViewCellIdentifier = @"Cell";
 @interface FNBTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) FNBIndexedCollectionView *collectionView;
+@property (nonatomic, strong) NSArray *artists;
 
 - (void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource, UICollectionViewDelegate>)dataSourceDelegate indexPath:(NSIndexPath *)indexPath;
 

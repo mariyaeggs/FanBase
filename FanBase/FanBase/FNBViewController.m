@@ -17,7 +17,9 @@
 
 @property (nonatomic,strong) NSArray *imageArray; //-->currently colors
 @property (nonatomic, strong) NSArray *genres;
+@property (nonatomic, strong) NSArray *genresForComparison;
 @property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
+@property (nonatomic) NSInteger section;
 
 //Dictionary is in the format:
 //NSDictionary *sampleDictionary = @{
@@ -33,7 +35,7 @@
 -(void)loadView
 {
     [super loadView];
-    
+    self.section = -1;
     const NSInteger numberOfTableViewRows = 1;
     const NSInteger numberOfCollectionViewCells = 20;
     
@@ -45,17 +47,7 @@
         
         for (NSInteger collectionViewItem = 0; collectionViewItem < numberOfCollectionViewCells; collectionViewItem++)
         {
-            
-//            CGFloat red = arc4random() % 255;
-//            CGFloat green = arc4random() % 255;
-//            CGFloat blue = arc4random() % 255;
-//            
-//            UIColor *color = [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0f];
-//            
-            
-            //add images of artist albums see xib for structure
-            
-//            [imageArray addObject:color];
+            //don't need this yet
         }
         
         [mutableArray addObject:imageArray];
@@ -64,76 +56,92 @@
     self.imageArray = [NSArray arrayWithArray:mutableArray];
     
     self.contentOffsetDictionary = [NSMutableDictionary dictionary];
+
     
-    // Make dictionary to store new Genre:Artist:URL
-    self.content = [NSMutableDictionary new];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+  
+    self.content = [NSMutableDictionary new];
+    
+    self.genres = @[@"Pop", @"Hip Hop", @"Country", @"EDM/Dance", @"Indie", @"Rock", @"Latino", @"Soul", @"Folk & American", @"Jazz", @"Classical", @"Comedy", @"Metal", @"K-Pop", @"Reggae", @"Punk", @"Funk", @"Blues"];
+    [self.genres sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
     
     //Calls on data in firebase
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://fanbaseflatiron.firebaseio.com/artists"];
-    
+   
+    NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
+
     // Block reads artist data in firebase
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
+        //Compiles a dictionary in specific format
         for (NSString *artistName in snapshot.value) {
             
             NSDictionary *artistInfo = snapshot.value[artistName];
-            NSArray *genres = artistInfo[@"genres"];
             NSArray *images = artistInfo[@"images"];
             NSDictionary *firstImage = images.firstObject;
             NSString *imageURL = firstImage[@"url"];
             
+            NSArray *genres = artistInfo[@"genres"];
+            
+            NSString *artistGenre;
             for (NSString *genre in genres) {
-                if ([self.content.allKeys containsObject:genre]) {
-                    NSMutableArray *artistAndArtistURLS = self.content[genre];
-                    NSDictionary *newEntry = @{artistName: imageURL };
-                    [artistAndArtistURLS addObject:newEntry];
-                } else {
-                    NSDictionary *newEntry = @{artistName: imageURL };
-                    NSMutableArray *artistsAndArtistsURLS = [NSMutableArray new];
-                    [artistsAndArtistsURLS addObject:newEntry];
-                    //NSLog(@"\n\n\nnewEntry\n\n\n%@", newEntry);
-                    self.content[genre] = artistsAndArtistsURLS;
+                NSPredicate *genrePredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@", genre];
+                NSArray *filteredGenres = [self.genres filteredArrayUsingPredicate:genrePredicate];
+                if (filteredGenres.count > 0) {
+                    artistGenre = filteredGenres[0];
+                    break;
                 }
             }
+            
+            NSLog(@"\n\nartistName: %@\nimageURL: %@\nartistGenre: %@\n\n",artistName,imageURL, artistGenre);
+            
+            if (artistGenre != nil) {
+                if ([self.content objectForKey:artistGenre]) {
+                    
+                    NSMutableArray *contentObjects = self.content[artistGenre];
+                    NSMutableArray *artistNames = contentObjects[0];
+                    NSMutableDictionary *artistNameAndImageURL = contentObjects[1];
+                    
+                    [artistNameAndImageURL setValue:imageURL forKey:artistName];
+                    [artistNames addObject:artistName];
+                    NSLog(@"\n\nself.content artistName: %@\n\n",artistName);
+                    
+                } else {
+                    
+                    NSMutableArray *contentObjects = [NSMutableArray new];
+                    NSMutableArray *artistNames = [NSMutableArray new];
+                    NSMutableDictionary *artistNameAndImageURL = [NSMutableDictionary new];
+                    
+                    [artistNameAndImageURL setValue:imageURL forKey:artistName];
+                    [artistNames addObject:artistName];
+                    NSLog(@"\n\nFIRST TIME\nself.content artistName: %@\n\n",artistName);
+                    
+                    [contentObjects addObject:artistNames];
+                    [contentObjects addObject:artistNameAndImageURL];
+                    
+                    [self.content setObject:contentObjects forKey:artistGenre];
+                
+                }
+            }
+            
+            
+         
         }
-        NSArray *genreKeys = [self.content allKeys];
-        // Sort all keys alphabetically and put into genres array
-        self.genres = [genreKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        NSLog(@"about to reloadtdata");
-        [self.tableView reloadData];
-        
 
-        
+        NSLog(@"about to reloadtdata");
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+            NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
+        }];
+            
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
-        
     }];
-    
-    //dictionery = genre --> artist --> imageUrl
-    
-    // dictionary to hold all content for display
-    // key is genre
-    // value is array of artists for genre
-    
-    //Call new dictionary here to populate table
-//   self.content = @{
-//                     @"Pop" : @[@"Maroon 5",@"Adele",@"Gwen Stefani",@"Ariana Grande"],
-//                     @"Rock" : @[@"AC/DC",@"Guns n'Roses"],
-//                     @"Hip-Hop" : @[@"Jay-Z",@"Drake",@"Run DMC",@"Beyonce"]
-//                     };
-//    
-    //    NSDictionary *sampleDictionary = @{
-    //                                       @"Genre" : @[@{@"Artist":@"ArtistImageURL"}]
-    //                                       };
-    
-
-    
 }
 -(BOOL)prefersStatusBarHidden {
     
@@ -175,6 +183,13 @@
     
     FNBTableViewCell *cell = (FNBTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+//    NSString *genre = self.genres[indexPath.row];
+//    NSDictionary *artists = [self.content objectForKey:genre];
+//    NSArray *artistsArray = [artists allKeys];
+//    [artistsArray sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+//    NSLog(@"\n\nartistsArray: %@\n\n", artistsArray);
+//    cell.artists = artistsArray;
+    
     if (!cell)
     {
         cell = [[FNBTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -204,30 +219,25 @@
 
 #pragma mark - UICollectionViewDataSource Methods
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+//    self.section++;
+    return 1;
+}
+
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    NSLog(@"\n\n\nCollectionView section: %li\n\n\n",section);
+    UIView *view = [collectionView superview];
+    FNBTableViewCell *cell = (FNBTableViewCell *)[view superview];
+    NSIndexPath *ip = [self.tableView indexPathForCell:cell];
+    NSInteger tableViewSection = ip.section;
+    NSString *genre = self.genres[tableViewSection];
+    NSArray *artistContent = self.content[genre];
+    NSArray *artistNames = artistContent[0];
     
-    NSString *genre = self.genres[section];
-    NSArray *artists = self.content[genre];
-    return artists.count;
-//    
-//    NSLog(@"\n\n\nCollectionView section: %li\n\n\n",section);
-//    
-    // grab superview of collectionView which is UITableViewCellContentView
-//    UIView *view = [collectionView superview];
-//    // grab FNBTableViewCell from superview of UITableViewCellContentView
-//    FNBTableViewCell *cell = (FNBTableViewCell *)[view superview];
-//    // get index path of cell
-//    NSIndexPath *ip = [self.tableView indexPathForCell:cell];
-//    // get section number from index path
-//    NSInteger tableViewSection = ip.section;
-//    // get genre from genres array
-//    //NSString *genre = self.genres[tableViewSection];
-//    // get all artists from content dictionary
-//   // NSArray *artists = self.content[genre];
-//    
-//    return artists.count;
+    return artistNames.count;
     
+//
 }
 
 
@@ -235,54 +245,15 @@
 {
     
     FNBCollectionViewCell *cell = (FNBCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
-    
-    NSString *genre = self.genres[indexPath.section];
-    NSArray *artists = self.content[genre];
-   
-    
-    
-    
-    NSDictionary *artist = artists[indexPath.row];
-    NSLog(@"artist Dictionary: %@", artist);
-    NSString *nameOfArtist = artist.allKeys.firstObject;
-    NSLog(@"name of artist: %@", nameOfArtist);
-    NSString *urlString = artist[nameOfArtist];
-    
-    cell.artist = nameOfArtist;
-     // cell.image = [UIImage imageWithData:]
-    cell.image = [UIImage imageNamed:@"adele"];
-    
-    
-    
-    
-//    NSString *imageURL = imagesArray[0][@"url"];
-//    
-//    [cell.artistImageView setImageWithURL:[NSURL URLWithString:imageURL]];
-//    [cell.labelTitle setText:nameForCell];
-//    
-//    cell.clipsToBounds = YES;
 
-    
-    
-    //    //make custom cells for this stuff
-    //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
-    //    [cell addSubview:label];
-    //    label.textAlignment = NSTextAlignmentCenter;
-//    
-//    UIView *view = [collectionView superview];
-//    FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];
-//    NSIndexPath *ip = [self.tableView indexPathForCell:tableViewCell];
-//    NSInteger tableViewSection = ip.section;
-//    NSString *genre = self.genres[tableViewSection];
-//    NSArray *artists = self.content[genre];
-//    
-//    NSLog(@"\n\n\ncell for item at index path\n\nindex path item: %li\n\n\n",indexPath.item);
-//    cell.artist = artists[indexPath.item];
-//    cell.image = [UIImage imageNamed:@"adele"];
-//    //    NSLog(@"label text: %@", label.text);
-//    
-//    NSArray *collectionViewArray = self.imageArray[[(FNBIndexedCollectionView *)collectionView indexPath].row];
-//    cell.backgroundColor = collectionViewArray[indexPath.item];
+    UIView *view = [collectionView superview];
+    FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];
+    NSIndexPath *ip = [self.tableView indexPathForCell:tableViewCell];
+    NSInteger tableViewSection = ip.section;
+    NSString *genre = self.genres[tableViewSection];
+    NSArray *artistContent = self.content[genre];
+    NSArray *artistNames = artistContent[0];
+    cell.artist = artistNames[indexPath.item];
     
     return cell;
 }
@@ -299,20 +270,22 @@
     NSInteger index = collectionView.tag;
     self.contentOffsetDictionary[[@(index) stringValue]] = @(horizontalOffset);
 }
-//- (NSArray *)filterArtistsArray:(NSDictionary *)artistDictionary ByGenre:(NSString *)genreInput {
-//    NSMutableArray *genreArray = [NSMutableArray new];
-//    for (NSString *artistName in artistDictionary) {
-//        NSDictionary *artistValues = [artistDictionary objectForKey:artistName];
-//        for (NSString *genre in artistValues[@"genres"]) {
-//            if ([genre containsString:genreInput]) {
-//                [genreArray addObject:artistValues];
-//
-//                NSLog(@"%@", artistName);
-//                break;
-//            }
-//        }
-//    }
-//    return genreArray;
-//}
+
+//Filters array by genre(s)
+- (NSArray *)filterArtistsArray:(NSDictionary *)artistDictionary ByGenre:(NSString *)genreInput {
+    NSMutableArray *genreArray = [NSMutableArray new];
+    for (NSString *artistName in artistDictionary) {
+        NSDictionary *artistValues = [artistDictionary objectForKey:artistName];
+        for (NSString *genre in artistValues[@"genres"]) {
+            if ([genre containsString:genreInput]) {
+                [genreArray addObject:artistValues];
+
+                NSLog(@"%@", artistName);
+                break;
+            }
+        }
+    }
+    return genreArray;
+}
 
 @end
