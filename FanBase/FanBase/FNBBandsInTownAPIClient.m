@@ -8,6 +8,7 @@
 
 #import "FNBBandsInTownAPIClient.h"
 #import "FNBUser.h"
+#import "FNBArtistEvent.h"
 
 @implementation FNBBandsInTownAPIClient
 
@@ -19,10 +20,16 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSMutableArray *collectionOfEventObjects = [NSMutableArray new];
         
+        for (NSDictionary *dict in responseObject) {
+//            FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES];
+            FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES image:dict[@"artists"][0][@"image_url"]];
+            [collectionOfEventObjects addObject:event];
+        }
         
-        
-        completionBlock(responseObject);
+        NSLog(@"%@",collectionOfEventObjects);
+        completionBlock(collectionOfEventObjects);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Oh No! Something went wrong in the BandsInTown GET request!");

@@ -285,8 +285,7 @@
 
         
         
-        UINavigationController *navControllerOfFNBArtistTop10TableViewController = [segue destinationViewController];
-        FNBArtistTop10TableViewController *nextVC = [navControllerOfFNBArtistTop10TableViewController viewControllers][0];
+        FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
         nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
     }
 //    // if any other segue other than from the "See All" button

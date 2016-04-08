@@ -13,6 +13,7 @@
 @interface FNBTopTrackDetailViewController ()
 
 @property (strong, nonatomic) AVPlayer *player;
+@property (nonatomic) BOOL  isMusicPlaying;
 
 @end
 
@@ -20,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.isMusicPlaying = NO;
     self.AlbumTitleDetailView.text = self.albumName;
     self.TrackNameDetailView.text = self.trackName;
     [self.LargeImageDetailView setImageWithURL:[NSURL URLWithString:self.albumArtURL]];
@@ -46,8 +47,24 @@
 
 - (IBAction)playbutton:(id)sender {
     
+    self.isMusicPlaying = !self.isMusicPlaying;
+    if(self.isMusicPlaying){
+        [self.playButton setTitle:@"Pause" forState:UIControlStateNormal];
+ 
+        [self.player play];
+    }
+    else {
+        
+        [self.playButton setTitle:@"Play" forState:UIControlStateNormal];
+        [self.player pause];
+    }
+    
+    
+
+    
    
-    [self.player play];
+    
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(songEnded) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player];
 }
@@ -55,11 +72,6 @@
 -(void) songEnded {
     [self.player seekToTime:kCMTimeZero ];
 
-}
-
-- (IBAction)stopButton:(id)sender {
-    
-    [self.player pause];
 }
 
 
