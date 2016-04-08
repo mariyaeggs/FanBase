@@ -109,7 +109,7 @@
     NSLog(@"url of user: %@", urlOfUser);
     self.userRef = [[Firebase alloc] initWithUrl:urlOfUser];
     [self.userRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"this is the new value: %@, and this is the key: %@", snapshot.value, snapshot.key);
+        NSLog(@"USER CHANGED. this is the new value from FNBUserProfilePageTableViewController: %@, and this is the key: %@", snapshot.value, snapshot.key);
         // change in username
         if ([snapshot.key isEqualToString:@"userName"]) {
             self.currentUser.userName = snapshot.value;
@@ -272,9 +272,11 @@
         NSString *selectedArtistName = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[indexPath.row]).name;
         
         // delete appropriate things from database
-        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName];
-        NSLog(@"you deleted %@", selectedArtistName);
-        
+        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
+            if (deletedArtistAndUserCompleted) {
+                NSLog(@"you deleted %@", selectedArtistName);
+            }
+        }];
     }
 }
 
@@ -287,7 +289,6 @@
         NSLog(@"this is the selected artist: %@ and this is their Spotify ID: %@", selectedArist, selectedArtistSpotifyID);
 
         if (![segue.identifier isEqualToString:@"seeAllSegue"]) {
-            NSLog(@"this is not the seeAllSegue");
             FNBArtistMainPageTableViewController *nextVC = [segue destinationViewController];
             nextVC.receivedArtistName = selectedArist;
         }

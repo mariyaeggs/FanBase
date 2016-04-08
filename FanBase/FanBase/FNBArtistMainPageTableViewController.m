@@ -18,6 +18,10 @@
 @property (nonatomic) BOOL isUserLoggedIn;
 @property (nonatomic) BOOL isUserSubscribedToArtist;
 
+@property (strong, nonatomic) Firebase *artistRef;
+
+
+
 // artist Top info
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
@@ -92,7 +96,7 @@
     
     // create FNBArtist from receivedName
     self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
-    [FNBFirebaseClient setPropertiesOfArtist:_currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
+    [FNBFirebaseClient setPropertiesOfArtist:self.currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
         if (setPropertiesCompleted) {
             [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
             self.artistNameLabel.text = self.currentArtist.name;
@@ -109,6 +113,35 @@
     
 }
 
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    // start listening to changes in the artist's database
+    
+    // first format the artistName to as it appears in our database
+    NSString *formattedArtistName = [self formatedArtistName:self.currentArtist.name];
+
+    NSString *urlOfArtist= [NSString stringWithFormat:@"%@/artists/%@", ourFirebaseURL, formattedArtistName];
+    NSLog(@"url of artist: %@", urlOfArtist);
+
+    self.artistRef = [[Firebase alloc] initWithUrl:urlOfArtist];
+    [self.artistRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"ARTIST CHANGED this is the new value for artist: %@, and this is the key: %@", snapshot.value, snapshot.key);
+        [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
+        [self setUserLabels];
+    }];
+    
+}
+// stop listening to changes for the artist when view disappears
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.artistRef removeAllObservers];
+}
+
+
+
 - (void) checkIfUser:(FNBUser *)user isSubscribedToArtistName:(NSString *)receivedArtistName {
     // check if user has artist's Name in subscribed Users
     
@@ -116,7 +149,7 @@
     NSString *formattedArtistName = [self formatedArtistName:receivedArtistName];
     
     for (NSString *artistName in user.artistsDictionary) {
-        NSLog(@"this is the artistName(forloop):%@ and this is the formatedArtistName: %@", artistName, formattedArtistName);
+//        NSLog(@"this is the artistName(forloop):%@ and this is the formatedArtistName: %@", artistName, formattedArtistName);
         if ([artistName isEqualToString:formattedArtistName]) {
             // if found a match while looping,
             self.isUserSubscribedToArtist = YES;
@@ -168,7 +201,6 @@
 
 // this method depends on the YouAreSubscribed label's text
 - (IBAction)clickToAddTapped:(id)sender {
-    NSLog(@"tapped");
     if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Logged In"]) {
         NSLog(@"button tapped and you were not logged in");
         // TODO: segue to Login Screen
@@ -183,10 +215,14 @@
         // present alert to confirm
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are You Sure?" message:[NSString stringWithFormat: @"Do you want to unsubscribe from %@", self.currentArtist.name]  preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *submit = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:self.currentArtist.name];
-            // check if user is subscribed to artist
-            [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
-            [self setUserLabels];
+            [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:self.currentArtist.name withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
+                if (deletedArtistAndUserCompleted) {
+                    // check if user is subscribed to artist
+                    [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
+                    [self setUserLabels];
+                }
+            }];
+            
         }];
         //TODO: check if this deletes artist
         

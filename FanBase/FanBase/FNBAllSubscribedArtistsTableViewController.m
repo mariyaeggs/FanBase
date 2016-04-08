@@ -124,12 +124,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // when you hit delete
-        NSString *selectedArtistName = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[indexPath.row]).name;
+        NSString *selectedArtistName = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
         
         // delete appropriate things from database
-        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName];
-        NSLog(@"you deleted %@", selectedArtistName);
-        
+        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
+            if (deletedArtistAndUserCompleted) {
+                NSLog(@"you deleted %@", selectedArtistName);
+            }
+        }];
     }
 }
 
