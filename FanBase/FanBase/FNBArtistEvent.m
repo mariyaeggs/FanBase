@@ -14,7 +14,9 @@
                              date:(NSString *)dateOfConcert
                      availability:(BOOL)isTicketsAvailable
                             venue:(NSDictionary *)venue
-                             star:(BOOL)isStarred {
+                             star:(BOOL)isStarred
+                            image:(NSString *)imageURL
+{
     
     self = [super init];
     if (self) {
@@ -23,10 +25,17 @@
         _isTicketsAvailable = isTicketsAvailable;
         _venue = venue;
         _isStarred = isStarred;
+        _artistImageURL = imageURL;
     }
     
     return self;
     
 }
+
+-(NSString *)description {
+    return [NSString stringWithFormat:@"TITLE: %@ \n VENUE:%@",self.eventTitle, self.venue];
+}
+
+
 
 @end

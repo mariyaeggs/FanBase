@@ -14,6 +14,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "FNBBandsInTownAPIClient.h"
 #import "EventPostTableViewCell.h"
+#import "FNBEventInfoVC.h"
 
 @interface FNBArtistNewsTableViewController : UITableViewController <UIViewControllerPreviewingDelegate>
 

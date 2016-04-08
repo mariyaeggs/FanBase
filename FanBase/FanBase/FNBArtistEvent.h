@@ -6,7 +6,7 @@
 //  Copyright © 2016 Angelica Bato. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface FNBArtistEvent : NSObject
 
@@ -15,7 +15,13 @@
 @property (assign, nonatomic) BOOL isTicketsAvailable;
 @property (strong, nonatomic) NSDictionary *venue;
 @property (assign, nonatomic) BOOL isStarred;
+@property (strong, nonatomic) NSString *artistImageURL;
 
--(instancetype)initWithEventTitle:(NSString *)eventTitle date:(NSString *)dateOfConcert availability:(BOOL)isTicketsAvailable venue:(NSDictionary *)venue star:(BOOL)isStarred;
+-(instancetype)initWithEventTitle:(NSString *)eventTitle
+                             date:(NSString *)dateOfConcert
+                     availability:(BOOL)isTicketsAvailable
+                            venue:(NSDictionary *)venue
+                             star:(BOOL)isStarred
+                            image:(NSString *)imageURL;
 
 @end
