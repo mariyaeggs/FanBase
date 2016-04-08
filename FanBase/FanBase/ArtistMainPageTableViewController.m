@@ -12,7 +12,8 @@
 
 @interface ArtistMainPageTableViewController ()
 @property (strong, nonatomic) FNBArtist *currentArtist;
-//@property (strong, nonatomic) NSArray *artistTweets;
+@property (strong, nonatomic) FNBUser  *currentUser;
+@property (strong, nonatomic) NSMutableString *userState;
 
 // artist Top info
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
@@ -35,9 +36,12 @@
 
 
 
+
 @end
 
 @implementation ArtistMainPageTableViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,10 +50,27 @@
     self.receivedArtistName = @"Adele";
     
     
-    
+   
     
     // make FNBUser for this VC
-    
+    self.currentUser = [[FNBUser alloc] init];
+    // check if user is Guest or Authentic User
+    [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
+        if (isAuthenticUser) {
+            NSLog(@"you are an auth user");
+            //Set the properties of this user
+            [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL updateHappened) {
+                if (updateHappened) {
+                    NSLog(@"Update happened to User");
+                }
+            }];
+            
+        }
+        else {
+            NSLog(@"GUEST");
+            self.userState = [@"guest" mutableCopy];
+        }
+    }];
     
     
     // set the tweetsLabels
@@ -158,7 +179,12 @@
 }
 
 
-
+- (void) checkIfUser:(FNBUser *)user isSubscribedToArtist:(FNBArtist *)artist {
+    // check if user has artist's Name in subscribed Users
+    for (NSString *artistName in user.artistsDictionary) {
+        NSLog(@"this is artistName in checkIfUser: %@", artistName);
+    }
+}
 
 
 /*

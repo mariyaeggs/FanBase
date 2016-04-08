@@ -72,7 +72,7 @@
         }
     }];
     
-    }
+}
 
 - (IBAction)logoutTapped:(id)sender {
     [FNBFirebaseClient logoutUser];
