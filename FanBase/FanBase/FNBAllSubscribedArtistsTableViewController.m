@@ -8,6 +8,12 @@
 
 #import "FNBAllSubscribedArtistsTableViewController.h"
 #import "FNBFirebaseClient.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
+//this is to segue to the ArtistTop10
+//#import "FNBArtistTop10TableViewController.h"
+// this is to segue to the ArtistMainPage
+#import "FNBArtistMainPageTableViewController.h"
+#import "FNBViewAllArtistsTableViewCell.h"
 
 @interface FNBAllSubscribedArtistsTableViewController ()
 
@@ -30,7 +36,10 @@
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
-                    //                    NSLog(@"this is the detailed array of artists: %@", self.currentUser.detailedArtistInfoArray);
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+                    
                     [self updateUI];
                 }
             }];
@@ -54,6 +63,9 @@
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
                     self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
                     [self updateUI];
                 }
             }];
@@ -82,15 +94,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.currentUser.detailedArtistInfoArray.count;
+    return self.currentUser.rankingAndImagesForEachArtist.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    FNBViewAllArtistsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[indexPath.row]).name;
+    
+    
+    cell.artistNameLabel.text = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
+    cell.usersRankLabel.text = [NSString stringWithFormat:@"#%@ of %@", self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"usersRank"], self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"numberOfFollowers"]];
+    [cell.artistImageView setImageWithURL:[NSURL URLWithString:self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistImageURL"]]];
+
+    
+
     return cell;
+}
+
+// add header to the tableview
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"All Subscribed Artists";
 }
 
 // Below two methods adds swipe left to show a delete option
@@ -109,49 +133,21 @@
     }
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        NSString *selectedArist = self.currentUser.rankingAndImagesForEachArtist[selectedIndexPath.row][@"artistName"];
+        NSString *selectedArtistSpotifyID = self.currentUser.rankingAndImagesForEachArtist[selectedIndexPath.row][@"artistSpotifyID"];
+        NSLog(@"this is the selected artist: %@ and this is their Spotify ID: %@", selectedArist, selectedArtistSpotifyID);
+        
+        
+        FNBArtistMainPageTableViewController *nextVC = [segue destinationViewController];
+        nextVC.receivedArtistName = selectedArist;
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    //    // if any other segue other than from the "See All" button
+    //    if (![segue.identifier isEqualToString:@"seeAllSegue"]) {
+    //        FNBArtistTop10TableViewController *nextVC = segue.destinationViewController;
+    //        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
+    //    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

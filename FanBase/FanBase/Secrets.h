@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Secrets : NSObject
+extern NSString const *TwitterClientID;
+extern NSString const *TwitterSecret;
 
+extern NSString const *InstagramClientID;
+extern NSString const *InstagramClientSecret;
+extern NSString const *InstagramRedirectURL;
 extern NSString *const ourFirebaseURL;
 
-@end
+extern NSString const *BandsInTownBaseURL;
+extern NSString const *BandsInTownEventsURL;
+
+//extern NSString const *BandsInTownReqURL;

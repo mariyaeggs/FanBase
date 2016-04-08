@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lot-if-2dA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Artist Top10 Table View Controller-->
+        <scene sceneID="tZX-ar-caB">
+            <objects>
+                <tableViewController id="Lot-if-2dA" customClass="FNBArtistTop10TableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="aql-XO-KqI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="97" id="JHd-CA-YFa" customClass="FNBArtistTop10Cell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="97"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JHd-CA-YFa" id="l6X-6V-10a">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ANt-yU-92a">
+                                            <rect key="frame" x="8" y="0.0" width="70" height="70"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Albumname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ei-cP-SLQ">
+                                            <rect key="frame" x="8" y="69" width="347" height="19"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trackname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrP-BU-ZlQ">
+                                            <rect key="frame" x="111" y="24" width="251" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AlbumImageView" destination="ANt-yU-92a" id="XdL-rG-sI1"/>
+                                    <outlet property="AlbumNameLabel" destination="2ei-cP-SLQ" id="vJd-Zp-FXi"/>
+                                    <outlet property="TrackNameLabel" destination="YrP-BU-ZlQ" id="e9Z-PO-xS0"/>
+                                    <segue destination="x0F-Lc-pY3" kind="show" identifier="ShowDetail" id="UeC-kg-Keu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Lot-if-2dA" id="3Kb-CT-Aq3"/>
+                            <outlet property="delegate" destination="Lot-if-2dA" id="rhr-mS-Ci1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="jdW-Ar-kIa"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sl2-5F-Gce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="427.5" y="342.5"/>
+        </scene>
+        <!--Top Track Detail View Controller-->
+        <scene sceneID="9al-c0-L34">
+            <objects>
+                <viewController id="x0F-Lc-pY3" customClass="FNBTopTrackDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7nM-BX-3J5"/>
+                        <viewControllerLayoutGuide type="bottom" id="f20-Jc-2OF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HKN-4R-3VX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2r-as-IWt">
+                                <rect key="frame" x="55" y="453" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekG-AZ-GDm">
+                                <rect key="frame" x="55" y="501" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="axn-l4-vwV">
+                                <rect key="frame" x="55" y="122" width="300" height="300"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVD-2c-ihk">
+                                <rect key="frame" x="176" y="541" width="55" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playbutton:" destination="x0F-Lc-pY3" eventType="touchUpInside" id="hya-di-32E"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="AlbumTitleDetailView" destination="g2r-as-IWt" id="7Xn-Pa-RpZ"/>
+                        <outlet property="LargeImageDetailView" destination="axn-l4-vwV" id="eaq-05-OPN"/>
+                        <outlet property="TrackNameDetailView" destination="ekG-AZ-GDm" id="prK-mF-PcR"/>
+                        <outlet property="playButton" destination="VVD-2c-ihk" id="J6n-bO-HtT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yO8-jE-2qq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892.5" y="342.5"/>
+        </scene>
+    </scenes>
+</document>

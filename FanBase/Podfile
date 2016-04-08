@@ -6,8 +6,9 @@
 target 'FanBase' do
 
 	pod 'STTwitter'
+	pod 'JSQMessagesViewController'
+	pod 'Firebase'
 	pod 'AFNetworking', '~> 3.0'
-	pod 'Firebase', '>= 2.5.1'
 
 end
 
