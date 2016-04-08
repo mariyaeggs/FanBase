@@ -13,7 +13,8 @@
 @interface ArtistMainPageTableViewController ()
 @property (strong, nonatomic) FNBArtist *currentArtist;
 @property (strong, nonatomic) FNBUser  *currentUser;
-@property (strong, nonatomic) NSMutableString *userState;
+@property (nonatomic) BOOL isUserLoggedIn;
+@property (nonatomic) BOOL isUserSubscribedToArtist;
 
 // artist Top info
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
@@ -62,13 +63,16 @@
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL updateHappened) {
                 if (updateHappened) {
                     NSLog(@"Update happened to User");
+                    // check if user is subscribed to artist
+                    [self checkIfUser:self.currentUser isSubscribedToArtist:self.currentArtist];
+                    [self setUserLabels];
                 }
             }];
             
         }
         else {
             NSLog(@"GUEST");
-            self.userState = [@"guest" mutableCopy];
+            self.isUserLoggedIn = NO;
         }
     }];
     
@@ -88,7 +92,7 @@
             [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
             self.artistNameLabel.text = self.currentArtist.name;
             
-            [self setUserLabels];
+//            [self setUserLabels];
             
             // get tweets
             [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
@@ -100,14 +104,25 @@
     
 }
 
+- (void) checkIfUser:(FNBUser *)user isSubscribedToArtist:(FNBArtist *)artist {
+    // check if user has artist's Name in subscribed Users
+    for (NSString *artistName in user.artistsDictionary) {
+        NSLog(@"this is artistName in checkIfUser: %@", artistName);
+        
+        // if found a match while looping,
+        self.isUserSubscribedToArtist = YES;
+        return;
+    }
+    self.isUserSubscribedToArtist = NO;
+}
+
 - (void) setUserLabels {
     self.numberOfSubscribedUsersLabel.text = [NSString stringWithFormat:@"%li People Subscribed", self.currentArtist.subscribedUsers.count];
     
-//    if (USER IS AUTHENTICATED) {
-    if (true) {
+
+    if (self.isUserLoggedIn) {
         // if user is subscribed
-//        if (USER IS SUBSCRIBED) {
-        if (true) {
+        if (self.isUserSubscribedToArtist) {
             self.youSubscribedLabel.text = @"You Are Subscribed";
             [self.clickToAddArtistButton setTitle:@"Click To Unsubscribe" forState:UIControlStateNormal];
             [self.clickToAddArtistButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -141,12 +156,18 @@
     else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Subscribed"]) {
         NSLog(@"button tapped and you were not subscribed in");
         // TODO: subscribe User
+//        [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:<#(NSDictionary *)#>]
     }
     else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Subscribed"]) {
         NSLog(@"button tapped and you were subscribed");
         // present alert to confirm
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are You Sure?" message:[NSString stringWithFormat: @"Do you want to unsubscribe from %@", self.currentArtist.name]  preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *submit = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *submit = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:self.currentArtist.name];
+
+        }];
+        //TODO: check if this deletes artist
+        
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:nil];
         [alert addAction:cancel];
         [alert addAction:submit];
@@ -179,12 +200,6 @@
 }
 
 
-- (void) checkIfUser:(FNBUser *)user isSubscribedToArtist:(FNBArtist *)artist {
-    // check if user has artist's Name in subscribed Users
-    for (NSString *artistName in user.artistsDictionary) {
-        NSLog(@"this is artistName in checkIfUser: %@", artistName);
-    }
-}
 
 
 /*
