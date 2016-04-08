@@ -7,8 +7,25 @@
 //
 
 #import "ArtistMainPageTableViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import "FNBTwitterAPIClient.h"
 
 @interface ArtistMainPageTableViewController ()
+@property (strong, nonatomic) FNBArtist *currentArtist;
+//@property (strong, nonatomic) NSArray *artistTweets;
+
+@property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
+@property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+
+// tweet section
+@property (strong, nonatomic) NSArray *arrayOfTweetContentLabels;
+@property (strong, nonatomic) NSArray *arrayOfTweetDateLabels;
+@property (weak, nonatomic) IBOutlet UITextView *tweet1ContentTextView;
+@property (weak, nonatomic) IBOutlet UILabel *tweet1DateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *tweet2ContentTextView;
+@property (weak, nonatomic) IBOutlet UILabel *tweet2DateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *tweet3ContentTextView;
+@property (weak, nonatomic) IBOutlet UILabel *tweet3DateLabel;
 
 @end
 
@@ -17,21 +34,61 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // dummy data for now
+    self.receivedArtistName = @"Adele";
+    
+    
+    // set the tweetsLabels
+    self.arrayOfTweetContentLabels = @[self.tweet1ContentTextView, self.tweet2ContentTextView, self.tweet3ContentTextView];
+    self.arrayOfTweetDateLabels = @[self.tweet1DateLabel, self.tweet2DateLabel, self.tweet3DateLabel];
+    
+    // make artist image circular
+    self.artistImageView.layer.cornerRadius = self.artistImageView.frame.size.height /2 ,
+    self.artistImageView.layer.masksToBounds = YES;
+    
+    
+    self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
+    [FNBFirebaseClient setPropertiesOfArtist:_currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
+        if (setPropertiesCompleted) {
+            [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
+            self.artistNameLabel.text = self.currentArtist.name;
+            
+            
+            // get top 4 tweets
+            [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
+                
+                [self setTwitterCellsWithTweetsArray:returnedArray];
+            }];
+        }
+    }];
+    
 }
 
 
 
+- (void) setTwitterCellsWithTweetsArray:(NSArray *)tweetsArray {
+    NSLog(@"these are the tweets array: %@", tweetsArray);
+    
+    if (tweetsArray.count == 0) {
+        NSLog(@"received no tweets for this artist");
+    }
+    // number of tweets received is less than or equal number of labels
+    else if (tweetsArray.count <= self.arrayOfTweetContentLabels.count) {
+        for (NSInteger i = 0; i < tweetsArray.count; i++) {
+            ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = tweetsArray[i][@"created_at"];
+        }
+    }
+    // number of tweets received is greater than number of labels
+    else {
+        for (NSInteger i = 0; i < self.arrayOfTweetContentLabels.count; i++) {
+            ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = tweetsArray[i][@"created_at"];
+        }
+    }
 
-
-
-
-
-
+}
 
 
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FNBFirebaseClient.h"
 
 @interface ArtistMainPageTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSString *receivedArtistName;
 
 @end
