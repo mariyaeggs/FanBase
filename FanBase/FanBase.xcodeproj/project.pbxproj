@@ -19,6 +19,8 @@
 		A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */; };
 		A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */; };
 		A14E4E4C1CB6B65B0034FBFB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E4B1CB6B65B0034FBFB /* Default-568h@2x.png */; };
+		A14E4E601CB7F3B90034FBFB /* artistMainPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E5D1CB7F3B90034FBFB /* artistMainPage.storyboard */; };
+		A14E4E611CB7F3B90034FBFB /* ArtistMainPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E5F1CB7F3B90034FBFB /* ArtistMainPageTableViewController.m */; };
 		A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
@@ -77,6 +79,9 @@
 		A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBAllSubscribedArtistsTableViewController.h; sourceTree = "<group>"; };
 		A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBAllSubscribedArtistsTableViewController.m; sourceTree = "<group>"; };
 		A14E4E4B1CB6B65B0034FBFB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A14E4E5D1CB7F3B90034FBFB /* artistMainPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = artistMainPage.storyboard; sourceTree = "<group>"; };
+		A14E4E5E1CB7F3B90034FBFB /* ArtistMainPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistMainPageTableViewController.h; sourceTree = "<group>"; };
+		A14E4E5F1CB7F3B90034FBFB /* ArtistMainPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistMainPageTableViewController.m; sourceTree = "<group>"; };
 		A14F2D7E1CADC6110093D187 /* FNBSpotifySearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifySearch.h; sourceTree = "<group>"; };
 		A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifySearch.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
@@ -205,6 +210,16 @@
 			name = UserPage;
 			sourceTree = "<group>";
 		};
+		A14E4E5C1CB7F3AC0034FBFB /* ArtistMainPage */ = {
+			isa = PBXGroup;
+			children = (
+				A14E4E5D1CB7F3B90034FBFB /* artistMainPage.storyboard */,
+				A14E4E5E1CB7F3B90034FBFB /* ArtistMainPageTableViewController.h */,
+				A14E4E5F1CB7F3B90034FBFB /* ArtistMainPageTableViewController.m */,
+			);
+			name = ArtistMainPage;
+			sourceTree = "<group>";
+		};
 		A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +279,7 @@
 		BD0A5A7F1CAAFCF300FFF623 /* FanBase */ = {
 			isa = PBXGroup;
 			children = (
+				A14E4E5C1CB7F3AC0034FBFB /* ArtistMainPage */,
 				325FEC9D1CB6DB96009F5F27 /* Top10 */,
 				BD3116C81CB5A8F100C47570 /* FanFeed */,
 				BD3116C71CB5A8CB00C47570 /* ArtistNews */,
@@ -431,6 +447,7 @@
 				BD3116B41CB5A87D00C47570 /* FNBArtistNews.storyboard in Resources */,
 				A14E4E4C1CB6B65B0034FBFB /* Default-568h@2x.png in Resources */,
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
+				A14E4E601CB7F3B90034FBFB /* artistMainPage.storyboard in Resources */,
 				ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
@@ -505,6 +522,7 @@
 				325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
 				ED7730171CB2DE0A001C48DB /* Constants.m in Sources */,
+				A14E4E611CB7F3B90034FBFB /* ArtistMainPageTableViewController.m in Sources */,
 				ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
 				ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */,
