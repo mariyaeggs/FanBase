@@ -11,8 +11,11 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
 
-//this is to transition to the ArtistTop10 on segue
-#import "FNBArtistTop10TableViewController.h"
+//this is to segue to the ArtistTop10
+//#import "FNBArtistTop10TableViewController.h"
+// this is to segue to the ArtistMainPage
+#import "FNBArtistMainPageTableViewController.h"
+
 
 @interface FNBUserProfilePageTableViewController ()
 
@@ -283,10 +286,14 @@
         NSString *selectedArtistSpotifyID = self.currentUser.rankingAndImagesForEachArtist[selectedIndexPath.row][@"artistSpotifyID"];
         NSLog(@"this is the selected artist: %@ and this is their Spotify ID: %@", selectedArist, selectedArtistSpotifyID);
 
+        if (![segue.identifier isEqualToString:@"seeAllSegue"]) {
+            NSLog(@"this is not the seeAllSegue");
+            FNBArtistMainPageTableViewController *nextVC = [segue destinationViewController];
+            nextVC.receivedArtistName = selectedArist;
+        }
         
         
-        FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
-        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
+        
     }
 //    // if any other segue other than from the "See All" button
 //    if (![segue.identifier isEqualToString:@"seeAllSegue"]) {

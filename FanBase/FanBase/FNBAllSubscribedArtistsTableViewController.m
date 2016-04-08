@@ -9,8 +9,10 @@
 #import "FNBAllSubscribedArtistsTableViewController.h"
 #import "FNBFirebaseClient.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
-//this is to transition to the ArtistTop10 on segue
-#import "FNBArtistTop10TableViewController.h"
+//this is to segue to the ArtistTop10
+//#import "FNBArtistTop10TableViewController.h"
+// this is to segue to the ArtistMainPage
+#import "FNBArtistMainPageTableViewController.h"
 #import "FNBViewAllArtistsTableViewCell.h"
 
 @interface FNBAllSubscribedArtistsTableViewController ()
@@ -99,9 +101,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FNBViewAllArtistsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
+    
+    
     cell.artistNameLabel.text = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
     cell.usersRankLabel.text = [NSString stringWithFormat:@"#%@ of %@", self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"usersRank"], self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"numberOfFollowers"]];
     [cell.artistImageView setImageWithURL:[NSURL URLWithString:self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistImageURL"]]];
+
+    
 
     return cell;
 }
@@ -134,10 +140,8 @@
         NSLog(@"this is the selected artist: %@ and this is their Spotify ID: %@", selectedArist, selectedArtistSpotifyID);
         
         
-        
-        UINavigationController *navControllerOfFNBArtistTop10TableViewController = [segue destinationViewController];
-        FNBArtistTop10TableViewController *nextVC = [navControllerOfFNBArtistTop10TableViewController viewControllers][0];
-        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
+        FNBArtistMainPageTableViewController *nextVC = [segue destinationViewController];
+        nextVC.receivedArtistName = selectedArist;
 
     //    // if any other segue other than from the "See All" button
     //    if (![segue.identifier isEqualToString:@"seeAllSegue"]) {

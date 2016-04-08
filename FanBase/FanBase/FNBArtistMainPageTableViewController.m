@@ -6,11 +6,13 @@
 //  Copyright © 2016 Angelica Bato. All rights reserved.
 //
 
-#import "ArtistMainPageTableViewController.h"
+#import "FNBArtistMainPageTableViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBTwitterAPIClient.h"
+//this is to segue to the ArtistTop10
+#import "FNBArtistTop10TableViewController.h"
 
-@interface ArtistMainPageTableViewController ()
+@interface FNBArtistMainPageTableViewController ()
 @property (strong, nonatomic) FNBArtist *currentArtist;
 @property (strong, nonatomic) FNBUser  *currentUser;
 @property (nonatomic) BOOL isUserLoggedIn;
@@ -40,7 +42,7 @@
 
 @end
 
-@implementation ArtistMainPageTableViewController
+@implementation FNBArtistMainPageTableViewController
 
 
 
@@ -48,9 +50,11 @@
     [super viewDidLoad];
     
     // dummy data for now
-    self.receivedArtistName = @"Adele";
-    
-    
+//    self.receivedArtistName = @"Adele";
+
+    // load page assuming user is not logged in and not subscribed
+    self.isUserSubscribedToArtist = NO;
+    self.isUserLoggedIn = NO;
    
     
     // make FNBUser for this VC
@@ -59,12 +63,13 @@
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         if (isAuthenticUser) {
             NSLog(@"you are an auth user");
+            self.isUserLoggedIn = YES;
             //Set the properties of this user
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL updateHappened) {
                 if (updateHappened) {
                     NSLog(@"Update happened to User");
                     // check if user is subscribed to artist
-                    [self checkIfUser:self.currentUser isSubscribedToArtist:self.currentArtist];
+                    [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
                     [self setUserLabels];
                 }
             }];
@@ -92,7 +97,7 @@
             [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
             self.artistNameLabel.text = self.currentArtist.name;
             
-//            [self setUserLabels];
+            [self setUserLabels];
             
             // get tweets
             [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
@@ -104,16 +109,31 @@
     
 }
 
-- (void) checkIfUser:(FNBUser *)user isSubscribedToArtist:(FNBArtist *)artist {
+- (void) checkIfUser:(FNBUser *)user isSubscribedToArtistName:(NSString *)receivedArtistName {
     // check if user has artist's Name in subscribed Users
+    
+    // first format the artistName to as it appears in our database
+    NSString *formattedArtistName = [self formatedArtistName:receivedArtistName];
+    
     for (NSString *artistName in user.artistsDictionary) {
-        NSLog(@"this is artistName in checkIfUser: %@", artistName);
+        NSLog(@"this is the artistName(forloop):%@ and this is the formatedArtistName: %@", artistName, formattedArtistName);
+        if ([artistName isEqualToString:formattedArtistName]) {
+            // if found a match while looping,
+            self.isUserSubscribedToArtist = YES;
+            NSLog(@"User is subscribed to this artist");
+            return;
+        }
         
-        // if found a match while looping,
-        self.isUserSubscribedToArtist = YES;
-        return;
     }
+    NSLog(@"User is NOT subscribed to this artist");
     self.isUserSubscribedToArtist = NO;
+}
+
+- (NSString *) formatedArtistName: (NSString *)artistName {
+    //get rid of .#$[] characters in artist's name
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@".#$[]/"];
+    NSLog(@"%@", [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""]);
+    return [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""];
 }
 
 - (void) setUserLabels {
@@ -164,7 +184,9 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are You Sure?" message:[NSString stringWithFormat: @"Do you want to unsubscribe from %@", self.currentArtist.name]  preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *submit = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:self.currentArtist.name];
-
+            // check if user is subscribed to artist
+            [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
+            [self setUserLabels];
         }];
         //TODO: check if this deletes artist
         
@@ -200,7 +222,12 @@
 }
 
 
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"artistTop10Segue"]) {
+        FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
+        nextVC.recievedArtistSpotifyID = self.currentArtist.spotifyID;
+    }
+}
 
 /*
 - (void)didReceiveMemoryWarning {
