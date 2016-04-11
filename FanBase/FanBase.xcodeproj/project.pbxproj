@@ -31,7 +31,6 @@
 		A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */; };
 		A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */; };
 		BD0A5A821CAAFCF300FFF623 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A811CAAFCF300FFF623 /* main.m */; };
-		BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A841CAAFCF300FFF623 /* AppDelegate.m */; };
 		BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A871CAAFCF300FFF623 /* ViewController.m */; };
 		BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A891CAAFCF300FFF623 /* Main.storyboard */; };
 		BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */; };
@@ -47,14 +46,18 @@
 		BDE18E3D1CB69F9E00BEDE01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */; };
 		BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */; };
 		BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */; };
-		ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9F81CB3FEA600B83B97 /* BigViewController.m */; };
-		ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */; };
-		ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */; };
-		ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300D1CB2DE0A001C48DB /* APIClient.m */; };
-		ED7730171CB2DE0A001C48DB /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED77300F1CB2DE0A001C48DB /* Constants.m */; };
-		ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730111CB2DE0A001C48DB /* CVCell.m */; };
-		ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */; };
-		ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */; };
+		ED1787B81CB85B80008B12D9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B41CB85B80008B12D9 /* Constants.m */; };
+		ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B61CB85B80008B12D9 /* CVCell.m */; };
+		ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */; };
+		ED1787BF1CB85B8C008B12D9 /* DiscoverPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */; };
+		ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */; };
+		ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */; };
+		ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C41CB85BF7008B12D9 /* APIClient.m */; };
+		EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */; };
+		EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */; };
+		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
+		EDD4EEC21CB85A9900D7576E /* FNBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */; };
+		EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,8 +103,6 @@
 		A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtist.m; sourceTree = "<group>"; };
 		BD0A5A7D1CAAFCF300FFF623 /* FanBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0A5A811CAAFCF300FFF623 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BD0A5A831CAAFCF300FFF623 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BD0A5A841CAAFCF300FFF623 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BD0A5A861CAAFCF300FFF623 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BD0A5A871CAAFCF300FFF623 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BD0A5A8A1CAAFCF300FFF623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,20 +131,27 @@
 		BDE18E421CB6AEA900BEDE01 /* FNBEventInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBEventInfoVC.h; sourceTree = "<group>"; };
 		BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBEventInfoVC.m; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
-		ED45D9F71CB3FEA600B83B97 /* BigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigViewController.h; sourceTree = "<group>"; };
-		ED45D9F81CB3FEA600B83B97 /* BigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigViewController.m; sourceTree = "<group>"; };
-		ED45D9FA1CB3FF1400B83B97 /* GenreCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreCollectionView.h; sourceTree = "<group>"; };
-		ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreCollectionView.m; sourceTree = "<group>"; };
-		ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
-		ED77300C1CB2DE0A001C48DB /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
-		ED77300D1CB2DE0A001C48DB /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
-		ED77300E1CB2DE0A001C48DB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		ED77300F1CB2DE0A001C48DB /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		ED7730101CB2DE0A001C48DB /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCell.h; sourceTree = "<group>"; };
-		ED7730111CB2DE0A001C48DB /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVCell.m; sourceTree = "<group>"; };
-		ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverPage.storyboard; sourceTree = "<group>"; };
-		ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBDiscoverViewController.h; sourceTree = "<group>"; };
-		ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBDiscoverViewController.m; sourceTree = "<group>"; };
+		ED1787B31CB85B80008B12D9 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = FanBase/Constants.h; sourceTree = "<group>"; };
+		ED1787B41CB85B80008B12D9 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = FanBase/Constants.m; sourceTree = "<group>"; };
+		ED1787B51CB85B80008B12D9 /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CVCell.h; path = FanBase/CVCell.h; sourceTree = "<group>"; };
+		ED1787B61CB85B80008B12D9 /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CVCell.m; path = FanBase/CVCell.m; sourceTree = "<group>"; };
+		ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscoverCollectionViewCell.xib; path = FanBase/DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
+		ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DiscoverPage.storyboard; path = FanBase/DiscoverPage.storyboard; sourceTree = "<group>"; };
+		ED1787BC1CB85B8C008B12D9 /* FNBAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNBAPIClient.h; path = FanBase/FNBAPIClient.h; sourceTree = "<group>"; };
+		ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNBAPIClient.m; path = FanBase/FNBAPIClient.m; sourceTree = "<group>"; };
+		ED1787BE1CB85B8C008B12D9 /* FNBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNBDiscoverViewController.h; path = FanBase/FNBDiscoverViewController.h; sourceTree = "<group>"; };
+		ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNBDiscoverViewController.m; path = FanBase/FNBDiscoverViewController.m; sourceTree = "<group>"; };
+		ED1787C31CB85BF7008B12D9 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = FanBase/APIClient.h; sourceTree = "<group>"; };
+		ED1787C41CB85BF7008B12D9 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = FanBase/APIClient.m; sourceTree = "<group>"; };
+		EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover2.storyboard; sourceTree = "<group>"; };
+		EDD4EEB71CB85A7400D7576E /* FNBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBAppDelegate.h; sourceTree = "<group>"; };
+		EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBAppDelegate.m; sourceTree = "<group>"; };
+		EDD4EEB91CB85A7400D7576E /* FNBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBViewController.h; sourceTree = "<group>"; };
+		EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBViewController.m; sourceTree = "<group>"; };
+		EDD4EEBE1CB85A9900D7576E /* FNBCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBCollectionViewCell.h; sourceTree = "<group>"; };
+		EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBCollectionViewCell.m; sourceTree = "<group>"; };
+		EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTableViewCell.h; sourceTree = "<group>"; };
+		EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +286,15 @@
 		BD0A5A7F1CAAFCF300FFF623 /* FanBase */ = {
 			isa = PBXGroup;
 			children = (
+				EDD4EEBE1CB85A9900D7576E /* FNBCollectionViewCell.h */,
+				EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */,
+				EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */,
+				EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */,
+				EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */,
+				EDD4EEB71CB85A7400D7576E /* FNBAppDelegate.h */,
+				EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */,
+				EDD4EEB91CB85A7400D7576E /* FNBViewController.h */,
+				EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */,
 				A14E4E5C1CB7F3AC0034FBFB /* ArtistMainPage */,
 				325FEC9D1CB6DB96009F5F27 /* Top10 */,
 				BD3116C81CB5A8F100C47570 /* FanFeed */,
@@ -287,8 +304,6 @@
 				A14E4E421CB408D90034FBFB /* UserPage */,
 				A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */,
 				A1E7A92C1CAC281600A9B968 /* FirebaseFiles */,
-				BD0A5A831CAAFCF300FFF623 /* AppDelegate.h */,
-				BD0A5A841CAAFCF300FFF623 /* AppDelegate.m */,
 				BD0A5A861CAAFCF300FFF623 /* ViewController.h */,
 				BD0A5A871CAAFCF300FFF623 /* ViewController.m */,
 				BD0A5A891CAAFCF300FFF623 /* Main.storyboard */,
@@ -353,20 +368,18 @@
 		ED77300B1CB2DD63001C48DB /* Discover Page */ = {
 			isa = PBXGroup;
 			children = (
-				ED7730141CB2DE0A001C48DB /* FNBDiscoverViewController.h */,
-				ED7730151CB2DE0A001C48DB /* FNBDiscoverViewController.m */,
-				ED45D9F71CB3FEA600B83B97 /* BigViewController.h */,
-				ED45D9F81CB3FEA600B83B97 /* BigViewController.m */,
-				ED7730131CB2DE0A001C48DB /* DiscoverPage.storyboard */,
-				ED7730101CB2DE0A001C48DB /* CVCell.h */,
-				ED7730111CB2DE0A001C48DB /* CVCell.m */,
-				ED77300C1CB2DE0A001C48DB /* APIClient.h */,
-				ED77300D1CB2DE0A001C48DB /* APIClient.m */,
-				ED77300E1CB2DE0A001C48DB /* Constants.h */,
-				ED77300F1CB2DE0A001C48DB /* Constants.m */,
-				ED45D9FA1CB3FF1400B83B97 /* GenreCollectionView.h */,
-				ED45D9FB1CB3FF1400B83B97 /* GenreCollectionView.m */,
-				ED45D9FD1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib */,
+				ED1787C31CB85BF7008B12D9 /* APIClient.h */,
+				ED1787C41CB85BF7008B12D9 /* APIClient.m */,
+				ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */,
+				ED1787BC1CB85B8C008B12D9 /* FNBAPIClient.h */,
+				ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */,
+				ED1787BE1CB85B8C008B12D9 /* FNBDiscoverViewController.h */,
+				ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */,
+				ED1787B31CB85B80008B12D9 /* Constants.h */,
+				ED1787B41CB85B80008B12D9 /* Constants.m */,
+				ED1787B51CB85B80008B12D9 /* CVCell.h */,
+				ED1787B61CB85B80008B12D9 /* CVCell.m */,
+				ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */,
 			);
 			name = "Discover Page";
 			path = ..;
@@ -442,12 +455,13 @@
 				BD3116B41CB5A87D00C47570 /* FNBArtistNews.storyboard in Resources */,
 				A14E4E4C1CB6B65B0034FBFB /* Default-568h@2x.png in Resources */,
 				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
+				EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */,
 				A14E4E601CB7F3B90034FBFB /* artistMainPage.storyboard in Resources */,
-				ED45D9FE1CB400BA00B83B97 /* DiscoverCollectionViewCell.xib in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
-				ED77301A1CB2DE0A001C48DB /* DiscoverPage.storyboard in Resources */,
+				ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */,
+				ED1787BF1CB85B8C008B12D9 /* DiscoverPage.storyboard in Resources */,
 				325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,39 +522,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
-				BD0A5A851CAAFCF300FFF623 /* AppDelegate.m in Sources */,
+				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
 				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
 				BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				BD3116B71CB5A87D00C47570 /* FNBBandsInTownAPIClient.m in Sources */,
 				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
+				ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */,
+				EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */,
 				325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */,
 				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
-				ED7730171CB2DE0A001C48DB /* Constants.m in Sources */,
+				EDD4EEC21CB85A9900D7576E /* FNBCollectionViewCell.m in Sources */,
 				A14E4E611CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m in Sources */,
-				ED45D9FC1CB3FF1500B83B97 /* GenreCollectionView.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
-				ED7730181CB2DE0A001C48DB /* CVCell.m in Sources */,
+				EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */,
 				A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */,
+				EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */,
 				BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */,
 				BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
+				ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */,
 				BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */,
 				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
-				ED77301B1CB2DE0A001C48DB /* FNBDiscoverViewController.m in Sources */,
+				ED1787B81CB85B80008B12D9 /* Constants.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
 				325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */,
-				ED7730161CB2DE0A001C48DB /* APIClient.m in Sources */,
 				BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */,
 				325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
+				ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */,
 				325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */,
 				BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */,
 				BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */,
 				A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
 				ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */,
+				BD3116B51CB5A87D00C47570 /* FNBArtistNewsCollectionViewController.m in Sources */,
+				BD3116B81CB5A87D00C47570 /* FNBChatViewController.m in Sources */,
 				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
