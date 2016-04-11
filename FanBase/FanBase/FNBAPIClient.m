@@ -7,7 +7,7 @@
 //
 
 #import "FNBAPIClient.h"
-#import <Firebase.h>
+#import <Firebase/Firebase.h>
 #import "Constants.h"
 
 @interface FNBAPIClient ()

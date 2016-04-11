@@ -11,7 +11,7 @@
 #import "FNBTableViewCell.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBFirebaseClient.h"
-#import <Firebase.h>
+#import <Firebase/Firebase.h>
 
 @interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
