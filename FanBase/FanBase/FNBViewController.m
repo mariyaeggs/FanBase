@@ -72,7 +72,6 @@
 {
     [super viewDidLoad];
     
-    
 }
 
 -(BOOL)array:(NSArray *)array caseInsensitiveContainsString:(NSString *)string
@@ -231,15 +230,40 @@
     [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0) animated:NO];
     
     [cell.collectionView registerClass:[FNBCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
+
     
 }
 
 #pragma mark - UITableViewDelegate Methods
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *tappedTableViewCell = (UITableViewCell *)collectionView.superview.superview;
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:tappedTableViewCell];
+
+    NSInteger tableViewSection = selectedIndexPath.section;
+    NSString *genre = self.genres[tableViewSection];
+    NSArray *artistContent = self.content[genre];
+    NSArray *artistNames = artistContent[0];
+    NSString *artistName = artistNames[indexPath.item];
+    NSLog(@"this is the section %li ", selectedIndexPath.section);
+    NSLog(@"you selected: %@", artistName);
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"HIII");
+    NSLog(@"you selected this section %li and this row %li", indexPath.section, indexPath.row);
+}
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 200;
 }
+
+
+
 
 #pragma mark - UICollectionViewDataSource Methods
 
@@ -279,7 +303,7 @@
     
     NSDictionary *artistImages = artistContent[1];
     NSString *artistImageURL = artistImages[artistName];
-    NSLog(@"this is the artist URL: %@", artistImageURL);
+//    NSLog(@"this is the artist URL: %@", artistImageURL);
     
     cell.image = nil;
     
