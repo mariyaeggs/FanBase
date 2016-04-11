@@ -9,6 +9,8 @@
 #import "FNBViewController.h"
 #import "FNBCollectionViewCell.h"
 #import "FNBTableViewCell.h"
+#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/AFImageDownloader.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBFirebaseClient.h"
 #import <Firebase.h>
@@ -21,6 +23,8 @@
 @property (nonatomic, strong) NSArray *genresForComparison;
 @property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
 @property (nonatomic) NSInteger section;
+
+@property (nonatomic, strong) AFImageDownloader *imageDownloader;
 
 //Dictionary is in the format:
 //NSDictionary *sampleDictionary = @{
@@ -36,6 +40,9 @@
 -(void)loadView
 {
     [super loadView];
+    
+    self.imageDownloader = [AFImageDownloader defaultInstance];
+    
     self.section = -1;
     const NSInteger numberOfTableViewRows = 1;
     const NSInteger numberOfCollectionViewCells = 20;
@@ -68,6 +75,17 @@
     
 }
 
+-(BOOL)array:(NSArray *)array caseInsensitiveContainsString:(NSString *)string
+{
+    for(NSString *arrayString in array) {
+        if([arrayString localizedCaseInsensitiveContainsString:string]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -80,16 +98,21 @@
     //Calls on data in firebase
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://fanbaseflatiron.firebaseio.com/artists"];
     
-    NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
+    //NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
     
     // Block reads artist data in firebase
-    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
+        NSLog(@"start");
+        
+        // seems like repeated access of snapshot.value is painfully slow.
+        // so... we're going to stash it in a variable and use that instead.
+        NSDictionary *snapshotValue = snapshot.value;
         
             //Compiles a dictionary in specific format
-            for (NSString *artistName in snapshot.value) {
+            for (NSString *artistName in snapshotValue) {
                 
-                NSDictionary *artistInfo = snapshot.value[artistName];
+                NSDictionary *artistInfo = snapshotValue[artistName];
                 NSArray *images = artistInfo[@"images"];
                 NSDictionary *firstImage = images.firstObject;
                 NSString *imageURL = firstImage[@"url"];
@@ -106,7 +129,7 @@
                     }
                 }
                 
-                NSLog(@"\n\nartistName: %@\nimageURL: %@\nartistGenre: %@\n\n",artistName,imageURL, artistGenre);
+//                NSLog(@"\n\nartistName: %@\nimageURL: %@\nartistGenre: %@\n\n",artistName,imageURL, artistGenre);
                 
                 if (artistGenre != nil) {
                     if ([self.content objectForKey:artistGenre]) {
@@ -117,7 +140,7 @@
                         
                         [artistNameAndImageURL setValue:imageURL forKey:artistName];
                         [artistNames addObject:artistName];
-                        NSLog(@"\n\nself.content artistName: %@\n\n",artistName);
+//                        NSLog(@"\n\nself.content artistName: %@\n\n",artistName);
                         
                     } else {
                         
@@ -127,7 +150,7 @@
                         
                         [artistNameAndImageURL setValue:imageURL forKey:artistName];
                         [artistNames addObject:artistName];
-                        NSLog(@"\n\nFIRST TIME\nself.content artistName: %@\n\n",artistName);
+//                        NSLog(@"\n\nFIRST TIME\nself.content artistName: %@\n\n",artistName);
                         
                         [contentObjects addObject:artistNames];
                         [contentObjects addObject:artistNameAndImageURL];
@@ -138,6 +161,8 @@
                     }
                 
             }
+        
+        NSLog(@"end");
         
         NSLog(@"about to reloadtdata");
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -203,7 +228,7 @@
     NSInteger index = cell.collectionView.tag;
     
     CGFloat horizontalOffset = [self.contentOffsetDictionary[[@(index) stringValue]] floatValue];
-    [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0)];
+    [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0) animated:NO];
     
     [cell.collectionView registerClass:[FNBCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
     
@@ -256,10 +281,22 @@
     NSString *artistImageURL = artistImages[artistName];
     NSLog(@"this is the artist URL: %@", artistImageURL);
     
+    cell.image = nil;
+    
     
     //Set Image for URL
-    cell.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:artistImageURL]]];
-    cell.clipsToBounds = YES; 
+//    cell.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:artistImageURL]]];
+    
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:artistImageURL]];
+    [self.imageDownloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+        // need to double-check that this cell is still supposed to be showing the image for the artist we just received.
+        // if cells are reused, this check will fail.
+        if([cell.artist isEqualToString:artistName]) {
+            cell.image = responseObject;
+        }
+    } failure:nil];
+    
+    cell.clipsToBounds = YES;
     
     
     return cell;
