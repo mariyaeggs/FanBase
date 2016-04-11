@@ -1,727 +1,2462 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		2FD21C22D79D648E02D5CBAD /* libPods-FanBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */; };
-		321DBED31CB6B571009B9E13 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DBED21CB6B571009B9E13 /* Secrets.m */; };
-		325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */; };
-		325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */; };
-		325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */; };
-		325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA51CB6DC37009F5F27 /* FNBSpotifyTopTracks.m */; };
-		325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA71CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m */; };
-		325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */; };
-		A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E431CB408F90034FBFB /* UserPage.storyboard */; };
-		A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */; };
-		A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */; };
-		A14E4E4C1CB6B65B0034FBFB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E4B1CB6B65B0034FBFB /* Default-568h@2x.png */; };
-		A14E4E601CB7F3B90034FBFB /* artistMainPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E5D1CB7F3B90034FBFB /* artistMainPage.storyboard */; };
-		A14E4E611CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E5F1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m */; };
-		A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */; };
-		A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */; };
-		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
-		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
-		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
-		A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */; };
-		A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */; };
-		A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */; };
-		A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */; };
-		BD0A5A821CAAFCF300FFF623 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A811CAAFCF300FFF623 /* main.m */; };
-		BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A5A871CAAFCF300FFF623 /* ViewController.m */; };
-		BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A891CAAFCF300FFF623 /* Main.storyboard */; };
-		BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */; };
-		BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */; };
-		BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116A11CB5A87D00C47570 /* EventPostTableViewCell.m */; };
-		BD3116B41CB5A87D00C47570 /* FNBArtistNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3116A21CB5A87D00C47570 /* FNBArtistNews.storyboard */; };
-		BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116A61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m */; };
-		BD3116B71CB5A87D00C47570 /* FNBBandsInTownAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116A81CB5A87D00C47570 /* FNBBandsInTownAPIClient.m */; };
-		BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116AC1CB5A87D00C47570 /* FNBEventCollectionViewCell.m */; };
-		BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116BE1CB5A88600C47570 /* FNBTwitterAPIClient.m */; };
-		BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116C01CB5A88600C47570 /* FNBTwitterPostTableViewCell.m */; };
-		BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116C41CB5A88D00C47570 /* NSURL+QueryString.m */; };
-		BDE18E3D1CB69F9E00BEDE01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */; };
-		BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */; };
-		BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */; };
-		ED1787B81CB85B80008B12D9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B41CB85B80008B12D9 /* Constants.m */; };
-		ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B61CB85B80008B12D9 /* CVCell.m */; };
-		ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */; };
-		ED1787BF1CB85B8C008B12D9 /* DiscoverPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */; };
-		ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */; };
-		ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */; };
-		ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C41CB85BF7008B12D9 /* APIClient.m */; };
-		EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */; };
-		EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */; };
-		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
-		EDD4EEC21CB85A9900D7576E /* FNBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */; };
-		EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		321DBED21CB6B571009B9E13 /* Secrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secrets.m; sourceTree = "<group>"; };
-		325FEC9E1CB6DC37009F5F27 /* FNBArtistTop10Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistTop10Cell.h; sourceTree = "<group>"; };
-		325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistTop10Cell.m; sourceTree = "<group>"; };
-		325FECA01CB6DC37009F5F27 /* FNBArtistTop10TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistTop10TableViewController.h; sourceTree = "<group>"; };
-		325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistTop10TableViewController.m; sourceTree = "<group>"; };
-		325FECA21CB6DC37009F5F27 /* FNBSpotifyAPIclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifyAPIclient.h; sourceTree = "<group>"; };
-		325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifyAPIclient.m; sourceTree = "<group>"; };
-		325FECA41CB6DC37009F5F27 /* FNBSpotifyTopTracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifyTopTracks.h; sourceTree = "<group>"; };
-		325FECA51CB6DC37009F5F27 /* FNBSpotifyTopTracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifyTopTracks.m; sourceTree = "<group>"; };
-		325FECA61CB6DC37009F5F27 /* FNBTopTrackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTopTrackDetailViewController.h; sourceTree = "<group>"; };
-		325FECA71CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTopTrackDetailViewController.m; sourceTree = "<group>"; };
-		325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBArtistTop10.storyboard; sourceTree = "<group>"; };
-		4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.debug.xcconfig"; sourceTree = "<group>"; };
-		9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FanBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A14E4E431CB408F90034FBFB /* UserPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPage.storyboard; sourceTree = "<group>"; };
-		A14E4E451CB4110B0034FBFB /* FNBUserProfilePageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUserProfilePageTableViewController.h; sourceTree = "<group>"; };
-		A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUserProfilePageTableViewController.m; sourceTree = "<group>"; };
-		A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBAllSubscribedArtistsTableViewController.h; sourceTree = "<group>"; };
-		A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBAllSubscribedArtistsTableViewController.m; sourceTree = "<group>"; };
-		A14E4E4B1CB6B65B0034FBFB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		A14E4E5D1CB7F3B90034FBFB /* artistMainPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = artistMainPage.storyboard; sourceTree = "<group>"; };
-		A14E4E5E1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistMainPageTableViewController.h; sourceTree = "<group>"; };
-		A14E4E5F1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistMainPageTableViewController.m; sourceTree = "<group>"; };
-		A14E4E621CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBViewAllArtistsTableViewCell.h; sourceTree = "<group>"; };
-		A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBViewAllArtistsTableViewCell.m; sourceTree = "<group>"; };
-		A14F2D7E1CADC6110093D187 /* FNBSpotifySearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifySearch.h; sourceTree = "<group>"; };
-		A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifySearch.m; sourceTree = "<group>"; };
-		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
-		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
-		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
-		A1E7A9311CAC284700A9B968 /* FNBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUser.m; sourceTree = "<group>"; };
-		A1E7A9351CAC28A900A9B968 /* FNBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBLoginViewController.h; sourceTree = "<group>"; };
-		A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBLoginViewController.m; sourceTree = "<group>"; };
-		A1E7A9371CAC28A900A9B968 /* FNBUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUserDetailsViewController.h; sourceTree = "<group>"; };
-		A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUserDetailsViewController.m; sourceTree = "<group>"; };
-		A1E7A9391CAC28A900A9B968 /* FNBCreateNewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBCreateNewAccountViewController.h; sourceTree = "<group>"; };
-		A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBCreateNewAccountViewController.m; sourceTree = "<group>"; };
-		A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Firebase.storyboard; sourceTree = "<group>"; };
-		A1E7A9411CAC49FE00A9B968 /* FNBArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtist.h; sourceTree = "<group>"; };
-		A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtist.m; sourceTree = "<group>"; };
-		BD0A5A7D1CAAFCF300FFF623 /* FanBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD0A5A811CAAFCF300FFF623 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BD0A5A861CAAFCF300FFF623 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BD0A5A871CAAFCF300FFF623 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BD0A5A8A1CAAFCF300FFF623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BD0A5A8F1CAAFCF300FFF623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BD0A5A911CAAFCF300FFF623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD3116A01CB5A87D00C47570 /* EventPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPostTableViewCell.h; sourceTree = "<group>"; };
-		BD3116A11CB5A87D00C47570 /* EventPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPostTableViewCell.m; sourceTree = "<group>"; };
-		BD3116A21CB5A87D00C47570 /* FNBArtistNews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBArtistNews.storyboard; sourceTree = "<group>"; };
-		BD3116A51CB5A87D00C47570 /* FNBArtistNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistNewsTableViewController.h; sourceTree = "<group>"; };
-		BD3116A61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistNewsTableViewController.m; sourceTree = "<group>"; };
-		BD3116A71CB5A87D00C47570 /* FNBBandsInTownAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBBandsInTownAPIClient.h; sourceTree = "<group>"; };
-		BD3116A81CB5A87D00C47570 /* FNBBandsInTownAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBBandsInTownAPIClient.m; sourceTree = "<group>"; };
-		BD3116AB1CB5A87D00C47570 /* FNBEventCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBEventCollectionViewCell.h; sourceTree = "<group>"; };
-		BD3116AC1CB5A87D00C47570 /* FNBEventCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBEventCollectionViewCell.m; sourceTree = "<group>"; };
-		BD3116BD1CB5A88600C47570 /* FNBTwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterAPIClient.h; sourceTree = "<group>"; };
-		BD3116BE1CB5A88600C47570 /* FNBTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterAPIClient.m; sourceTree = "<group>"; };
-		BD3116BF1CB5A88600C47570 /* FNBTwitterPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTwitterPostTableViewCell.h; sourceTree = "<group>"; };
-		BD3116C01CB5A88600C47570 /* FNBTwitterPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTwitterPostTableViewCell.m; sourceTree = "<group>"; };
-		BD3116C31CB5A88D00C47570 /* NSURL+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryString.h"; sourceTree = "<group>"; };
-		BD3116C41CB5A88D00C47570 /* NSURL+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryString.m"; sourceTree = "<group>"; };
-		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
-		BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		BDE18E3F1CB6A1E900BEDE01 /* FNBArtistEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistEvent.h; sourceTree = "<group>"; };
-		BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistEvent.m; sourceTree = "<group>"; };
-		BDE18E421CB6AEA900BEDE01 /* FNBEventInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBEventInfoVC.h; sourceTree = "<group>"; };
-		BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBEventInfoVC.m; sourceTree = "<group>"; };
-		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
-		ED1787B31CB85B80008B12D9 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = FanBase/Constants.h; sourceTree = "<group>"; };
-		ED1787B41CB85B80008B12D9 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = FanBase/Constants.m; sourceTree = "<group>"; };
-		ED1787B51CB85B80008B12D9 /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CVCell.h; path = FanBase/CVCell.h; sourceTree = "<group>"; };
-		ED1787B61CB85B80008B12D9 /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CVCell.m; path = FanBase/CVCell.m; sourceTree = "<group>"; };
-		ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscoverCollectionViewCell.xib; path = FanBase/DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
-		ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DiscoverPage.storyboard; path = FanBase/DiscoverPage.storyboard; sourceTree = "<group>"; };
-		ED1787BC1CB85B8C008B12D9 /* FNBAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNBAPIClient.h; path = FanBase/FNBAPIClient.h; sourceTree = "<group>"; };
-		ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNBAPIClient.m; path = FanBase/FNBAPIClient.m; sourceTree = "<group>"; };
-		ED1787BE1CB85B8C008B12D9 /* FNBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNBDiscoverViewController.h; path = FanBase/FNBDiscoverViewController.h; sourceTree = "<group>"; };
-		ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNBDiscoverViewController.m; path = FanBase/FNBDiscoverViewController.m; sourceTree = "<group>"; };
-		ED1787C31CB85BF7008B12D9 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = FanBase/APIClient.h; sourceTree = "<group>"; };
-		ED1787C41CB85BF7008B12D9 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = FanBase/APIClient.m; sourceTree = "<group>"; };
-		EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover2.storyboard; sourceTree = "<group>"; };
-		EDD4EEB71CB85A7400D7576E /* FNBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBAppDelegate.h; sourceTree = "<group>"; };
-		EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBAppDelegate.m; sourceTree = "<group>"; };
-		EDD4EEB91CB85A7400D7576E /* FNBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBViewController.h; sourceTree = "<group>"; };
-		EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBViewController.m; sourceTree = "<group>"; };
-		EDD4EEBE1CB85A9900D7576E /* FNBCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBCollectionViewCell.h; sourceTree = "<group>"; };
-		EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBCollectionViewCell.m; sourceTree = "<group>"; };
-		EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTableViewCell.h; sourceTree = "<group>"; };
-		EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTableViewCell.m; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		BD0A5A7A1CAAFCF300FFF623 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BDE18E3D1CB69F9E00BEDE01 /* MapKit.framework in Frameworks */,
-				2FD21C22D79D648E02D5CBAD /* libPods-FanBase.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		325FEC9D1CB6DB96009F5F27 /* Top10 */ = {
-			isa = PBXGroup;
-			children = (
-				325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */,
-				325FEC9E1CB6DC37009F5F27 /* FNBArtistTop10Cell.h */,
-				325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */,
-				325FECA01CB6DC37009F5F27 /* FNBArtistTop10TableViewController.h */,
-				325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */,
-				325FECA21CB6DC37009F5F27 /* FNBSpotifyAPIclient.h */,
-				325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */,
-				325FECA41CB6DC37009F5F27 /* FNBSpotifyTopTracks.h */,
-				325FECA51CB6DC37009F5F27 /* FNBSpotifyTopTracks.m */,
-				325FECA61CB6DC37009F5F27 /* FNBTopTrackDetailViewController.h */,
-				325FECA71CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m */,
-			);
-			name = Top10;
-			sourceTree = "<group>";
-		};
-		71DE2E40FFBA7B1B6B1EF698 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */,
-				9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		88D17E31D7CF4D38126C7F6C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */,
-				C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		A14E4E421CB408D90034FBFB /* UserPage */ = {
-			isa = PBXGroup;
-			children = (
-				A14E4E621CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.h */,
-				A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */,
-				A14E4E431CB408F90034FBFB /* UserPage.storyboard */,
-				A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */,
-				A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */,
-				A14E4E451CB4110B0034FBFB /* FNBUserProfilePageTableViewController.h */,
-				A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */,
-			);
-			name = UserPage;
-			sourceTree = "<group>";
-		};
-		A14E4E5C1CB7F3AC0034FBFB /* ArtistMainPage */ = {
-			isa = PBXGroup;
-			children = (
-				A14E4E5D1CB7F3B90034FBFB /* artistMainPage.storyboard */,
-				A14E4E5E1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.h */,
-				A14E4E5F1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m */,
-			);
-			name = ArtistMainPage;
-			sourceTree = "<group>";
-		};
-		A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */ = {
-			isa = PBXGroup;
-			children = (
-				A14F2D7E1CADC6110093D187 /* FNBSpotifySearch.h */,
-				A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */,
-			);
-			name = SpotifyArtistSearchFiles;
-			sourceTree = "<group>";
-		};
-		A1E7A92C1CAC281600A9B968 /* FirebaseFiles */ = {
-			isa = PBXGroup;
-			children = (
-				A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */,
-				A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */,
-				A1E7A9301CAC284700A9B968 /* FNBUser.h */,
-				A1E7A9311CAC284700A9B968 /* FNBUser.m */,
-				A1E7A9411CAC49FE00A9B968 /* FNBArtist.h */,
-				A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */,
-				A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */,
-				A1E7A93E1CAC28B300A9B968 /* ViewControllers */,
-			);
-			name = FirebaseFiles;
-			sourceTree = "<group>";
-		};
-		A1E7A93E1CAC28B300A9B968 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A1E7A9351CAC28A900A9B968 /* FNBLoginViewController.h */,
-				A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */,
-				A1E7A9371CAC28A900A9B968 /* FNBUserDetailsViewController.h */,
-				A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */,
-				A1E7A9391CAC28A900A9B968 /* FNBCreateNewAccountViewController.h */,
-				A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		BD0A5A741CAAFCF300FFF623 = {
-			isa = PBXGroup;
-			children = (
-				A14E4E4B1CB6B65B0034FBFB /* Default-568h@2x.png */,
-				BD0A5A7F1CAAFCF300FFF623 /* FanBase */,
-				BD0A5A7E1CAAFCF300FFF623 /* Products */,
-				88D17E31D7CF4D38126C7F6C /* Pods */,
-				71DE2E40FFBA7B1B6B1EF698 /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		BD0A5A7E1CAAFCF300FFF623 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BD0A5A7D1CAAFCF300FFF623 /* FanBase.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BD0A5A7F1CAAFCF300FFF623 /* FanBase */ = {
-			isa = PBXGroup;
-			children = (
-				EDD4EEBE1CB85A9900D7576E /* FNBCollectionViewCell.h */,
-				EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */,
-				EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */,
-				EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */,
-				EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */,
-				EDD4EEB71CB85A7400D7576E /* FNBAppDelegate.h */,
-				EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */,
-				EDD4EEB91CB85A7400D7576E /* FNBViewController.h */,
-				EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */,
-				A14E4E5C1CB7F3AC0034FBFB /* ArtistMainPage */,
-				325FEC9D1CB6DB96009F5F27 /* Top10 */,
-				BD3116C81CB5A8F100C47570 /* FanFeed */,
-				BD3116C71CB5A8CB00C47570 /* ArtistNews */,
-				BD3116C61CB5A8A700C47570 /* APIs */,
-				ED77300B1CB2DD63001C48DB /* Discover Page */,
-				A14E4E421CB408D90034FBFB /* UserPage */,
-				A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */,
-				A1E7A92C1CAC281600A9B968 /* FirebaseFiles */,
-				BD0A5A861CAAFCF300FFF623 /* ViewController.h */,
-				BD0A5A871CAAFCF300FFF623 /* ViewController.m */,
-				BD0A5A891CAAFCF300FFF623 /* Main.storyboard */,
-				BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */,
-				BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */,
-				BD0A5A911CAAFCF300FFF623 /* Info.plist */,
-				BD0A5A801CAAFCF300FFF623 /* Supporting Files */,
-				BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */,
-				321DBED21CB6B571009B9E13 /* Secrets.m */,
-			);
-			path = FanBase;
-			sourceTree = "<group>";
-		};
-		BD0A5A801CAAFCF300FFF623 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BD0A5A811CAAFCF300FFF623 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		BD3116C61CB5A8A700C47570 /* APIs */ = {
-			isa = PBXGroup;
-			children = (
-				BD3116C31CB5A88D00C47570 /* NSURL+QueryString.h */,
-				BD3116C41CB5A88D00C47570 /* NSURL+QueryString.m */,
-				BD3116BD1CB5A88600C47570 /* FNBTwitterAPIClient.h */,
-				BD3116BE1CB5A88600C47570 /* FNBTwitterAPIClient.m */,
-				BD3116A71CB5A87D00C47570 /* FNBBandsInTownAPIClient.h */,
-				BD3116A81CB5A87D00C47570 /* FNBBandsInTownAPIClient.m */,
-			);
-			name = APIs;
-			sourceTree = "<group>";
-		};
-		BD3116C71CB5A8CB00C47570 /* ArtistNews */ = {
-			isa = PBXGroup;
-			children = (
-				BD3116BF1CB5A88600C47570 /* FNBTwitterPostTableViewCell.h */,
-				BD3116C01CB5A88600C47570 /* FNBTwitterPostTableViewCell.m */,
-				BD3116A21CB5A87D00C47570 /* FNBArtistNews.storyboard */,
-				BD3116A51CB5A87D00C47570 /* FNBArtistNewsTableViewController.h */,
-				BD3116A61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m */,
-				BD3116AC1CB5A87D00C47570 /* FNBEventCollectionViewCell.m */,
-				BD3116AB1CB5A87D00C47570 /* FNBEventCollectionViewCell.h */,
-				BD3116A01CB5A87D00C47570 /* EventPostTableViewCell.h */,
-				BD3116A11CB5A87D00C47570 /* EventPostTableViewCell.m */,
-				BDE18E3F1CB6A1E900BEDE01 /* FNBArtistEvent.h */,
-				BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */,
-				BDE18E421CB6AEA900BEDE01 /* FNBEventInfoVC.h */,
-				BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */,
-			);
-			name = ArtistNews;
-			sourceTree = "<group>";
-		};
-		BD3116C81CB5A8F100C47570 /* FanFeed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = FanFeed;
-			sourceTree = "<group>";
-		};
-		ED77300B1CB2DD63001C48DB /* Discover Page */ = {
-			isa = PBXGroup;
-			children = (
-				ED1787C31CB85BF7008B12D9 /* APIClient.h */,
-				ED1787C41CB85BF7008B12D9 /* APIClient.m */,
-				ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */,
-				ED1787BC1CB85B8C008B12D9 /* FNBAPIClient.h */,
-				ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */,
-				ED1787BE1CB85B8C008B12D9 /* FNBDiscoverViewController.h */,
-				ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */,
-				ED1787B31CB85B80008B12D9 /* Constants.h */,
-				ED1787B41CB85B80008B12D9 /* Constants.m */,
-				ED1787B51CB85B80008B12D9 /* CVCell.h */,
-				ED1787B61CB85B80008B12D9 /* CVCell.m */,
-				ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */,
-			);
-			name = "Discover Page";
-			path = ..;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		BD0A5A7C1CAAFCF300FFF623 /* FanBase */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BD0A5A941CAAFCF300FFF623 /* Build configuration list for PBXNativeTarget "FanBase" */;
-			buildPhases = (
-				13DAA4409E1E8C8F3035D184 /* Check Pods Manifest.lock */,
-				BD0A5A791CAAFCF300FFF623 /* Sources */,
-				BD0A5A7A1CAAFCF300FFF623 /* Frameworks */,
-				BD0A5A7B1CAAFCF300FFF623 /* Resources */,
-				85DA08EB2088C14F59345E46 /* Embed Pods Frameworks */,
-				FB4C55D5A4351B46ACEFCE5B /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FanBase;
-			productName = FanBase;
-			productReference = BD0A5A7D1CAAFCF300FFF623 /* FanBase.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		BD0A5A751CAAFCF300FFF623 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Angelica Bato";
-				TargetAttributes = {
-					BD0A5A7C1CAAFCF300FFF623 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 43RAP2A4D4;
-						SystemCapabilities = {
-							com.apple.Maps.iOS = {
-								enabled = 1;
-							};
-						};
-					};
-				};
-			};
-			buildConfigurationList = BD0A5A781CAAFCF300FFF623 /* Build configuration list for PBXProject "FanBase" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = BD0A5A741CAAFCF300FFF623;
-			productRefGroup = BD0A5A7E1CAAFCF300FFF623 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				BD0A5A7C1CAAFCF300FFF623 /* FanBase */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		BD0A5A7B1CAAFCF300FFF623 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */,
-				BD3116B41CB5A87D00C47570 /* FNBArtistNews.storyboard in Resources */,
-				A14E4E4C1CB6B65B0034FBFB /* Default-568h@2x.png in Resources */,
-				BD0A5A901CAAFCF300FFF623 /* LaunchScreen.storyboard in Resources */,
-				EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */,
-				A14E4E601CB7F3B90034FBFB /* artistMainPage.storyboard in Resources */,
-				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
-				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
-				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
-				ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */,
-				ED1787BF1CB85B8C008B12D9 /* DiscoverPage.storyboard in Resources */,
-				325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		13DAA4409E1E8C8F3035D184 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		85DA08EB2088C14F59345E46 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FanBase/Pods-FanBase-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FB4C55D5A4351B46ACEFCE5B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FanBase/Pods-FanBase-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		BD0A5A791CAAFCF300FFF623 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
-				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
-				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
-				BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */,
-				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
-				BD3116B71CB5A87D00C47570 /* FNBBandsInTownAPIClient.m in Sources */,
-				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
-				ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */,
-				EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */,
-				325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */,
-				A1E7A93D1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m in Sources */,
-				EDD4EEC21CB85A9900D7576E /* FNBCollectionViewCell.m in Sources */,
-				A14E4E611CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m in Sources */,
-				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
-				EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */,
-				A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */,
-				EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */,
-				BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */,
-				BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */,
-				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
-				ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */,
-				BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */,
-				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
-				ED1787B81CB85B80008B12D9 /* Constants.m in Sources */,
-				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
-				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
-				325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */,
-				BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */,
-				325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */,
-				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
-				ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */,
-				325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */,
-				BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */,
-				BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */,
-				A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */,
-				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
-				ED45D9F91CB3FEA600B83B97 /* BigViewController.m in Sources */,
-				BD3116B51CB5A87D00C47570 /* FNBArtistNewsCollectionViewController.m in Sources */,
-				BD3116B81CB5A87D00C47570 /* FNBChatViewController.m in Sources */,
-				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		BD0A5A891CAAFCF300FFF623 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD0A5A8A1CAAFCF300FFF623 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD0A5A8F1CAAFCF300FFF623 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		BD0A5A921CAAFCF300FFF623 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		BD0A5A931CAAFCF300FFF623 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		BD0A5A951CAAFCF300FFF623 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = FanBase/Info.plist;
-				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Debug;
-		};
-		BD0A5A961CAAFCF300FFF623 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = FanBase/Info.plist;
-				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		BD0A5A781CAAFCF300FFF623 /* Build configuration list for PBXProject "FanBase" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BD0A5A921CAAFCF300FFF623 /* Debug */,
-				BD0A5A931CAAFCF300FFF623 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BD0A5A941CAAFCF300FFF623 /* Build configuration list for PBXNativeTarget "FanBase" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BD0A5A951CAAFCF300FFF623 /* Debug */,
-				BD0A5A961CAAFCF300FFF623 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = BD0A5A751CAAFCF300FFF623 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>13DAA4409E1E8C8F3035D184</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>23AE7BF59E99C61F835A5EBA</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_FanBase.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>321DBED21CB6B571009B9E13</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Secrets.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>321DBED31CB6B571009B9E13</key>
+		<dict>
+			<key>fileRef</key>
+			<string>321DBED21CB6B571009B9E13</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>325FEC9D1CB6DB96009F5F27</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>325FECAD1CB6DC64009F5F27</string>
+				<string>325FEC9E1CB6DC37009F5F27</string>
+				<string>325FEC9F1CB6DC37009F5F27</string>
+				<string>325FECA01CB6DC37009F5F27</string>
+				<string>325FECA11CB6DC37009F5F27</string>
+				<string>325FECA21CB6DC37009F5F27</string>
+				<string>325FECA31CB6DC37009F5F27</string>
+				<string>325FECA41CB6DC37009F5F27</string>
+				<string>325FECA51CB6DC37009F5F27</string>
+				<string>325FECA61CB6DC37009F5F27</string>
+				<string>325FECA71CB6DC37009F5F27</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Top10</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FEC9E1CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBArtistTop10Cell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FEC9F1CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBArtistTop10Cell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA01CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBArtistTop10TableViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA11CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBArtistTop10TableViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA21CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBSpotifyAPIclient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA31CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBSpotifyAPIclient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA41CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBSpotifyTopTracks.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA51CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBSpotifyTopTracks.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA61CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBTopTrackDetailViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA71CB6DC37009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBTopTrackDetailViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECA81CB6DC37009F5F27</key>
+		<dict>
+			<key>fileRef</key>
+			<string>325FEC9F1CB6DC37009F5F27</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>325FECA91CB6DC37009F5F27</key>
+		<dict>
+			<key>fileRef</key>
+			<string>325FECA11CB6DC37009F5F27</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>325FECAA1CB6DC37009F5F27</key>
+		<dict>
+			<key>fileRef</key>
+			<string>325FECA31CB6DC37009F5F27</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>325FECAB1CB6DC37009F5F27</key>
+		<dict>
+			<key>fileRef</key>
+			<string>325FECA51CB6DC37009F5F27</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>325FECAC1CB6DC37009F5F27</key>
+		<dict>
+			<key>fileRef</key>
+			<string>325FECA71CB6DC37009F5F27</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>325FECAD1CB6DC64009F5F27</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>FNBArtistTop10.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>325FECAE1CB6DC64009F5F27</key>
+		<dict>
+			<key>fileRef</key>
+			<string>325FECAD1CB6DC64009F5F27</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4D5840F805F31103BAC56E7B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-FanBase.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-FanBase/Pods-FanBase.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>71DE2E40FFBA7B1B6B1EF698</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BDE18E3C1CB69F9E00BEDE01</string>
+				<string>23AE7BF59E99C61F835A5EBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>85DA08EB2088C14F59345E46</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-FanBase/Pods-FanBase-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>88D17E31D7CF4D38126C7F6C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>4D5840F805F31103BAC56E7B</string>
+				<string>C5851181C3ED88D6FA8A8B4F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E421CB408D90034FBFB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A14E4E621CB7FD960034FBFB</string>
+				<string>A14E4E631CB7FD960034FBFB</string>
+				<string>A14E4E431CB408F90034FBFB</string>
+				<string>A14E4E481CB584320034FBFB</string>
+				<string>A14E4E491CB584320034FBFB</string>
+				<string>A14E4E451CB4110B0034FBFB</string>
+				<string>A14E4E461CB4110B0034FBFB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>UserPage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E431CB408F90034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>UserPage.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E441CB408F90034FBFB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14E4E431CB408F90034FBFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A14E4E451CB4110B0034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBUserProfilePageTableViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E461CB4110B0034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBUserProfilePageTableViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E471CB4110B0034FBFB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14E4E461CB4110B0034FBFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A14E4E481CB584320034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBAllSubscribedArtistsTableViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E491CB584320034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBAllSubscribedArtistsTableViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E4A1CB584320034FBFB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14E4E491CB584320034FBFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A14E4E4B1CB6B65B0034FBFB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Default-568h@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E4C1CB6B65B0034FBFB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14E4E4B1CB6B65B0034FBFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A14E4E5C1CB7F3AC0034FBFB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A14E4E5D1CB7F3B90034FBFB</string>
+				<string>A14E4E5E1CB7F3B90034FBFB</string>
+				<string>A14E4E5F1CB7F3B90034FBFB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ArtistMainPage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E5D1CB7F3B90034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>artistMainPage.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E5E1CB7F3B90034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBArtistMainPageTableViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E5F1CB7F3B90034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBArtistMainPageTableViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E601CB7F3B90034FBFB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14E4E5D1CB7F3B90034FBFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A14E4E611CB7F3B90034FBFB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14E4E5F1CB7F3B90034FBFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A14E4E621CB7FD960034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBViewAllArtistsTableViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E631CB7FD960034FBFB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBViewAllArtistsTableViewCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E4E641CB7FD960034FBFB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14E4E631CB7FD960034FBFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A14F2D7D1CADC4250093D187</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A14F2D7E1CADC6110093D187</string>
+				<string>A14F2D7F1CADC6110093D187</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SpotifyArtistSearchFiles</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14F2D7E1CADC6110093D187</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBSpotifySearch.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14F2D7F1CADC6110093D187</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBSpotifySearch.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14F2D801CADC6110093D187</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A14F2D7F1CADC6110093D187</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1E7A92C1CAC281600A9B968</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A1E7A92D1CAC282F00A9B968</string>
+				<string>A1E7A92E1CAC282F00A9B968</string>
+				<string>A1E7A9301CAC284700A9B968</string>
+				<string>A1E7A9311CAC284700A9B968</string>
+				<string>A1E7A9411CAC49FE00A9B968</string>
+				<string>A1E7A9421CAC49FE00A9B968</string>
+				<string>A1E7A93F1CAC28D500A9B968</string>
+				<string>A1E7A93E1CAC28B300A9B968</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FirebaseFiles</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A92D1CAC282F00A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBFirebaseClient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A92E1CAC282F00A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBFirebaseClient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A92F1CAC282F00A9B968</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1E7A92E1CAC282F00A9B968</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1E7A9301CAC284700A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBUser.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9311CAC284700A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBUser.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9321CAC284700A9B968</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1E7A9311CAC284700A9B968</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1E7A9351CAC28A900A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBLoginViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9361CAC28A900A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBLoginViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9371CAC28A900A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBUserDetailsViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9381CAC28A900A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBUserDetailsViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9391CAC28A900A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBCreateNewAccountViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A93A1CAC28A900A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBCreateNewAccountViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A93B1CAC28A900A9B968</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1E7A9361CAC28A900A9B968</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1E7A93C1CAC28A900A9B968</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1E7A9381CAC28A900A9B968</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1E7A93D1CAC28A900A9B968</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1E7A93A1CAC28A900A9B968</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1E7A93E1CAC28B300A9B968</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A1E7A9351CAC28A900A9B968</string>
+				<string>A1E7A9361CAC28A900A9B968</string>
+				<string>A1E7A9371CAC28A900A9B968</string>
+				<string>A1E7A9381CAC28A900A9B968</string>
+				<string>A1E7A9391CAC28A900A9B968</string>
+				<string>A1E7A93A1CAC28A900A9B968</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ViewControllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A93F1CAC28D500A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Firebase.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9401CAC28D500A9B968</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1E7A93F1CAC28D500A9B968</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1E7A9411CAC49FE00A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBArtist.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9421CAC49FE00A9B968</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBArtist.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A1E7A9431CAC49FE00A9B968</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1E7A9421CAC49FE00A9B968</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AC6403B9E55E111BB6D8A421</key>
+		<dict>
+			<key>fileRef</key>
+			<string>23AE7BF59E99C61F835A5EBA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD0A5A741CAAFCF300FFF623</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A14E4E4B1CB6B65B0034FBFB</string>
+				<string>BD0A5A7F1CAAFCF300FFF623</string>
+				<string>BD0A5A7E1CAAFCF300FFF623</string>
+				<string>88D17E31D7CF4D38126C7F6C</string>
+				<string>71DE2E40FFBA7B1B6B1EF698</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A751CAAFCF300FFF623</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0730</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Angelica Bato</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>BD0A5A7C1CAAFCF300FFF623</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3</string>
+						<key>DevelopmentTeam</key>
+						<string>43RAP2A4D4</string>
+						<key>SystemCapabilities</key>
+						<dict>
+							<key>com.apple.Maps.iOS</key>
+							<dict>
+								<key>enabled</key>
+								<string>1</string>
+							</dict>
+						</dict>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>BD0A5A781CAAFCF300FFF623</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>BD0A5A741CAAFCF300FFF623</string>
+			<key>productRefGroup</key>
+			<string>BD0A5A7E1CAAFCF300FFF623</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>BD0A5A7C1CAAFCF300FFF623</string>
+			</array>
+		</dict>
+		<key>BD0A5A781CAAFCF300FFF623</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>BD0A5A921CAAFCF300FFF623</string>
+				<string>BD0A5A931CAAFCF300FFF623</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>BD0A5A791CAAFCF300FFF623</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>BD0A5A881CAAFCF300FFF623</string>
+				<string>ED1787C51CB85BF7008B12D9</string>
+				<string>BD3116C51CB5A88D00C47570</string>
+				<string>BD3116B31CB5A87D00C47570</string>
+				<string>A1E7A93C1CAC28A900A9B968</string>
+				<string>BD3116B71CB5A87D00C47570</string>
+				<string>A14E4E471CB4110B0034FBFB</string>
+				<string>ED1787C21CB85B94008B12D9</string>
+				<string>EDD4EEBC1CB85A7400D7576E</string>
+				<string>325FECAC1CB6DC37009F5F27</string>
+				<string>A1E7A93D1CAC28A900A9B968</string>
+				<string>EDD4EEC21CB85A9900D7576E</string>
+				<string>A14E4E611CB7F3B90034FBFB</string>
+				<string>A1E7A92F1CAC282F00A9B968</string>
+				<string>EDD4EEC31CB85A9900D7576E</string>
+				<string>A14E4E4A1CB584320034FBFB</string>
+				<string>EDD4EEBD1CB85A7400D7576E</string>
+				<string>BDE18E441CB6AEA900BEDE01</string>
+				<string>BD3116C21CB5A88600C47570</string>
+				<string>A1E7A9431CAC49FE00A9B968</string>
+				<string>ED1787C01CB85B8C008B12D9</string>
+				<string>BD3116C11CB5A88600C47570</string>
+				<string>325FECAA1CB6DC37009F5F27</string>
+				<string>ED1787B81CB85B80008B12D9</string>
+				<string>BD0A5A821CAAFCF300FFF623</string>
+				<string>A1E7A93B1CAC28A900A9B968</string>
+				<string>325FECAB1CB6DC37009F5F27</string>
+				<string>BD3116B91CB5A87D00C47570</string>
+				<string>325FECA91CB6DC37009F5F27</string>
+				<string>BDBEC03D1CBBFDF6005C86D9</string>
+				<string>A1E7A9321CAC284700A9B968</string>
+				<string>ED1787B91CB85B80008B12D9</string>
+				<string>325FECA81CB6DC37009F5F27</string>
+				<string>BDE18E411CB6A1E900BEDE01</string>
+				<string>BD3116B61CB5A87D00C47570</string>
+				<string>A14E4E641CB7FD960034FBFB</string>
+				<string>A14F2D801CADC6110093D187</string>
+				<string>321DBED31CB6B571009B9E13</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>BD0A5A7A1CAAFCF300FFF623</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>BDE18E3D1CB69F9E00BEDE01</string>
+				<string>AC6403B9E55E111BB6D8A421</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>BD0A5A7B1CAAFCF300FFF623</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>A14E4E441CB408F90034FBFB</string>
+				<string>BD3116B41CB5A87D00C47570</string>
+				<string>A14E4E4C1CB6B65B0034FBFB</string>
+				<string>BD0A5A901CAAFCF300FFF623</string>
+				<string>EDD4EEBB1CB85A7400D7576E</string>
+				<string>A14E4E601CB7F3B90034FBFB</string>
+				<string>BD0A5A8D1CAAFCF300FFF623</string>
+				<string>BD0A5A8B1CAAFCF300FFF623</string>
+				<string>A1E7A9401CAC28D500A9B968</string>
+				<string>ED1787BA1CB85B80008B12D9</string>
+				<string>BDBEC03F1CBC00EF005C86D9</string>
+				<string>ED1787BF1CB85B8C008B12D9</string>
+				<string>325FECAE1CB6DC64009F5F27</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>BD0A5A7C1CAAFCF300FFF623</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>BD0A5A941CAAFCF300FFF623</string>
+			<key>buildPhases</key>
+			<array>
+				<string>13DAA4409E1E8C8F3035D184</string>
+				<string>BD0A5A791CAAFCF300FFF623</string>
+				<string>BD0A5A7A1CAAFCF300FFF623</string>
+				<string>BD0A5A7B1CAAFCF300FFF623</string>
+				<string>85DA08EB2088C14F59345E46</string>
+				<string>FB4C55D5A4351B46ACEFCE5B</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FanBase</string>
+			<key>productName</key>
+			<string>FanBase</string>
+			<key>productReference</key>
+			<string>BD0A5A7D1CAAFCF300FFF623</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>BD0A5A7D1CAAFCF300FFF623</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FanBase.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>BD0A5A7E1CAAFCF300FFF623</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BD0A5A7D1CAAFCF300FFF623</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A7F1CAAFCF300FFF623</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EDD4EEBE1CB85A9900D7576E</string>
+				<string>EDD4EEBF1CB85A9900D7576E</string>
+				<string>EDD4EEC01CB85A9900D7576E</string>
+				<string>EDD4EEC11CB85A9900D7576E</string>
+				<string>EDD4EEB61CB85A7400D7576E</string>
+				<string>EDD4EEB71CB85A7400D7576E</string>
+				<string>EDD4EEB81CB85A7400D7576E</string>
+				<string>EDD4EEB91CB85A7400D7576E</string>
+				<string>EDD4EEBA1CB85A7400D7576E</string>
+				<string>A14E4E5C1CB7F3AC0034FBFB</string>
+				<string>325FEC9D1CB6DB96009F5F27</string>
+				<string>BD3116C81CB5A8F100C47570</string>
+				<string>BD3116C71CB5A8CB00C47570</string>
+				<string>BD3116C61CB5A8A700C47570</string>
+				<string>ED77300B1CB2DD63001C48DB</string>
+				<string>A14E4E421CB408D90034FBFB</string>
+				<string>A14F2D7D1CADC4250093D187</string>
+				<string>A1E7A92C1CAC281600A9B968</string>
+				<string>BD0A5A861CAAFCF300FFF623</string>
+				<string>BD0A5A871CAAFCF300FFF623</string>
+				<string>BD0A5A891CAAFCF300FFF623</string>
+				<string>BD0A5A8C1CAAFCF300FFF623</string>
+				<string>BD0A5A8E1CAAFCF300FFF623</string>
+				<string>BD0A5A911CAAFCF300FFF623</string>
+				<string>BD0A5A801CAAFCF300FFF623</string>
+				<string>BDB73EF01CAAFEAE00F6B3EB</string>
+				<string>321DBED21CB6B571009B9E13</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FanBase</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A801CAAFCF300FFF623</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BD0A5A811CAAFCF300FFF623</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A811CAAFCF300FFF623</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A821CAAFCF300FFF623</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD0A5A811CAAFCF300FFF623</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD0A5A861CAAFCF300FFF623</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>ViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A871CAAFCF300FFF623</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>ViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A881CAAFCF300FFF623</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD0A5A871CAAFCF300FFF623</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD0A5A891CAAFCF300FFF623</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BD0A5A8A1CAAFCF300FFF623</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A8A1CAAFCF300FFF623</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A8B1CAAFCF300FFF623</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD0A5A891CAAFCF300FFF623</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD0A5A8C1CAAFCF300FFF623</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A8D1CAAFCF300FFF623</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD0A5A8C1CAAFCF300FFF623</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD0A5A8E1CAAFCF300FFF623</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BD0A5A8F1CAAFCF300FFF623</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A8F1CAAFCF300FFF623</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A901CAAFCF300FFF623</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD0A5A8E1CAAFCF300FFF623</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD0A5A911CAAFCF300FFF623</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD0A5A921CAAFCF300FFF623</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>BD0A5A931CAAFCF300FFF623</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>BD0A5A941CAAFCF300FFF623</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>BD0A5A951CAAFCF300FFF623</string>
+				<string>BD0A5A961CAAFCF300FFF623</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>BD0A5A951CAAFCF300FFF623</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>4D5840F805F31103BAC56E7B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FanBase/Info.plist</string>
+				<key>INFOPLIST_OTHER_PREPROCESSOR_FLAGS</key>
+				<string></string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.flatironschool.FanBase</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>FanBase/FanBase-Bridging-Header.h</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>BD0A5A961CAAFCF300FFF623</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>C5851181C3ED88D6FA8A8B4F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FanBase/Info.plist</string>
+				<key>INFOPLIST_OTHER_PREPROCESSOR_FLAGS</key>
+				<string></string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.flatironschool.FanBase</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>FanBase/FanBase-Bridging-Header.h</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>BD3116A01CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EventPostTableViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116A11CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EventPostTableViewCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116A21CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>FNBArtistNews.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116A51CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBArtistNewsTableViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116A61CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBArtistNewsTableViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116A71CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBBandsInTownAPIClient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116A81CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBBandsInTownAPIClient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116AB1CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBEventCollectionViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116AC1CB5A87D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBEventCollectionViewCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116B31CB5A87D00C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116A11CB5A87D00C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116B41CB5A87D00C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116A21CB5A87D00C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116B61CB5A87D00C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116A61CB5A87D00C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116B71CB5A87D00C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116A81CB5A87D00C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116B91CB5A87D00C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116AC1CB5A87D00C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116BD1CB5A88600C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBTwitterAPIClient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116BE1CB5A88600C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBTwitterAPIClient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116BF1CB5A88600C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBTwitterPostTableViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116C01CB5A88600C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBTwitterPostTableViewCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116C11CB5A88600C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116BE1CB5A88600C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116C21CB5A88600C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116C01CB5A88600C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116C31CB5A88D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSURL+QueryString.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116C41CB5A88D00C47570</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSURL+QueryString.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116C51CB5A88D00C47570</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD3116C41CB5A88D00C47570</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BD3116C61CB5A8A700C47570</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BD3116C31CB5A88D00C47570</string>
+				<string>BD3116C41CB5A88D00C47570</string>
+				<string>BD3116BD1CB5A88600C47570</string>
+				<string>BD3116BE1CB5A88600C47570</string>
+				<string>BD3116A71CB5A87D00C47570</string>
+				<string>BD3116A81CB5A87D00C47570</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>APIs</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116C71CB5A8CB00C47570</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BD3116BF1CB5A88600C47570</string>
+				<string>BD3116C01CB5A88600C47570</string>
+				<string>BD3116A21CB5A87D00C47570</string>
+				<string>BD3116A51CB5A87D00C47570</string>
+				<string>BD3116A61CB5A87D00C47570</string>
+				<string>BD3116AC1CB5A87D00C47570</string>
+				<string>BD3116AB1CB5A87D00C47570</string>
+				<string>BD3116A01CB5A87D00C47570</string>
+				<string>BD3116A11CB5A87D00C47570</string>
+				<string>BDE18E3F1CB6A1E900BEDE01</string>
+				<string>BDE18E401CB6A1E900BEDE01</string>
+				<string>BDE18E421CB6AEA900BEDE01</string>
+				<string>BDE18E431CB6AEA900BEDE01</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ArtistNews</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD3116C81CB5A8F100C47570</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BDBEC03C1CBBFDF6005C86D9</string>
+				<string>BDBEC03B1CBBFDF6005C86D9</string>
+				<string>BDBEC03E1CBC00EF005C86D9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FanFeed</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDB73EF01CAAFEAE00F6B3EB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Secrets.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDBEC03B1CBBFDF6005C86D9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FanBase-Bridging-Header.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDBEC03C1CBBFDF6005C86D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FNBFanFeedViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDBEC03D1CBBFDF6005C86D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BDBEC03C1CBBFDF6005C86D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BDBEC03E1CBC00EF005C86D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>FanFeed.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDBEC03F1CBC00EF005C86D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BDBEC03E1CBC00EF005C86D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BDE18E3C1CB69F9E00BEDE01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>MapKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/MapKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>BDE18E3D1CB69F9E00BEDE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BDE18E3C1CB69F9E00BEDE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BDE18E3F1CB6A1E900BEDE01</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBArtistEvent.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDE18E401CB6A1E900BEDE01</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBArtistEvent.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDE18E411CB6A1E900BEDE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BDE18E401CB6A1E900BEDE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BDE18E421CB6AEA900BEDE01</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBEventInfoVC.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDE18E431CB6AEA900BEDE01</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBEventInfoVC.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDE18E441CB6AEA900BEDE01</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BDE18E431CB6AEA900BEDE01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C5851181C3ED88D6FA8A8B4F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-FanBase.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787B31CB85B80008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>Constants.h</string>
+			<key>path</key>
+			<string>FanBase/Constants.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787B41CB85B80008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>Constants.m</string>
+			<key>path</key>
+			<string>FanBase/Constants.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787B51CB85B80008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CVCell.h</string>
+			<key>path</key>
+			<string>FanBase/CVCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787B61CB85B80008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CVCell.m</string>
+			<key>path</key>
+			<string>FanBase/CVCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787B71CB85B80008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>DiscoverCollectionViewCell.xib</string>
+			<key>path</key>
+			<string>FanBase/DiscoverCollectionViewCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787B81CB85B80008B12D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED1787B41CB85B80008B12D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED1787B91CB85B80008B12D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED1787B61CB85B80008B12D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED1787BA1CB85B80008B12D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED1787B71CB85B80008B12D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED1787BB1CB85B8C008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>DiscoverPage.storyboard</string>
+			<key>path</key>
+			<string>FanBase/DiscoverPage.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787BC1CB85B8C008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FNBAPIClient.h</string>
+			<key>path</key>
+			<string>FanBase/FNBAPIClient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787BD1CB85B8C008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FNBAPIClient.m</string>
+			<key>path</key>
+			<string>FanBase/FNBAPIClient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787BE1CB85B8C008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FNBDiscoverViewController.h</string>
+			<key>path</key>
+			<string>FanBase/FNBDiscoverViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787BF1CB85B8C008B12D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED1787BB1CB85B8C008B12D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED1787C01CB85B8C008B12D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED1787BD1CB85B8C008B12D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED1787C11CB85B94008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FNBDiscoverViewController.m</string>
+			<key>path</key>
+			<string>FanBase/FNBDiscoverViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787C21CB85B94008B12D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED1787C11CB85B94008B12D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED1787C31CB85BF7008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>APIClient.h</string>
+			<key>path</key>
+			<string>FanBase/APIClient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787C41CB85BF7008B12D9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>APIClient.m</string>
+			<key>path</key>
+			<string>FanBase/APIClient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED1787C51CB85BF7008B12D9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED1787C41CB85BF7008B12D9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED77300B1CB2DD63001C48DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ED1787C31CB85BF7008B12D9</string>
+				<string>ED1787C41CB85BF7008B12D9</string>
+				<string>ED1787BB1CB85B8C008B12D9</string>
+				<string>ED1787BC1CB85B8C008B12D9</string>
+				<string>ED1787BD1CB85B8C008B12D9</string>
+				<string>ED1787BE1CB85B8C008B12D9</string>
+				<string>ED1787C11CB85B94008B12D9</string>
+				<string>ED1787B31CB85B80008B12D9</string>
+				<string>ED1787B41CB85B80008B12D9</string>
+				<string>ED1787B51CB85B80008B12D9</string>
+				<string>ED1787B61CB85B80008B12D9</string>
+				<string>ED1787B71CB85B80008B12D9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Discover Page</string>
+			<key>path</key>
+			<string>..</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEB61CB85A7400D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Discover2.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEB71CB85A7400D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEB81CB85A7400D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEB91CB85A7400D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEBA1CB85A7400D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEBB1CB85A7400D7576E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDD4EEB61CB85A7400D7576E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDD4EEBC1CB85A7400D7576E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDD4EEB81CB85A7400D7576E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDD4EEBD1CB85A7400D7576E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDD4EEBA1CB85A7400D7576E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDD4EEBE1CB85A9900D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBCollectionViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEBF1CB85A9900D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBCollectionViewCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEC01CB85A9900D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FNBTableViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEC11CB85A9900D7576E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FNBTableViewCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD4EEC21CB85A9900D7576E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDD4EEBF1CB85A9900D7576E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EDD4EEC31CB85A9900D7576E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EDD4EEC11CB85A9900D7576E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FB4C55D5A4351B46ACEFCE5B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-FanBase/Pods-FanBase-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>BD0A5A751CAAFCF300FFF623</string>
+</dict>
+</plist>
