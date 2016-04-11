@@ -16,7 +16,7 @@
 @interface FNBFanFeedViewController : JSQMessagesViewController
 
 @property (strong, nonatomic) NSString *senderID;
-@property (copy, nonatomic) NSString *senderDisplayName;
+@property (strong, nonatomic) NSString *senderDisplayName;
 
 
 

@@ -17,6 +17,12 @@
 @end
 
 @implementation FNBFanFeedViewController
+-(void)viewWillAppear:(BOOL)animated {
+    [self addMessageWithID:@"foo" text:@"Hey Person!"];
+    [self addMessageWithID:self.senderId text:@"Yo"];
+    [self addMessageWithID:self.senderId text:@"I like turtles"];
+    [self finishReceivingMessage];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,6 +63,11 @@
 
 -(id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
+}
+
+-(void)addMessageWithID:(NSString *)id text:(NSString *)text {
+    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:id senderDisplayName:@"" date:[NSDate date] text:text];
+    [self.messages addObject:message];
 }
 
 
