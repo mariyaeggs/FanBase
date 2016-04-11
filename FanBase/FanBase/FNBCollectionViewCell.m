@@ -41,7 +41,6 @@
 
 -(void)setImage:(UIImage *)image {
     
-    _image = image;
     self.imageView.image = image;
 }
 

@@ -10,6 +10,7 @@
 
 @interface FNBCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceBuilderImageView;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *artist;
 
