@@ -26,11 +26,15 @@
     
     //Programs the image view
     self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView.clipsToBounds = YES;
     
     //Programs the label to the view
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    self.label.textAlignment = NSTextAlignmentCenter;
+    
+    //Right, bottom corner alighnment
+    self.label.textAlignment = NSTextAlignmentRight;
+    //[self.label.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor].active = YES;
     
     //Adds the image and label
     [self.contentView addSubview:self.imageView];
@@ -41,7 +45,6 @@
 
 -(void)setImage:(UIImage *)image {
     
-    _image = image;
     self.imageView.image = image;
 }
 
