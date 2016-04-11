@@ -77,25 +77,37 @@
         artistImage.layer.masksToBounds = YES;
     }
     
-    // set user info, and then get a detailed array of the artists the user is subscribed to
-    
-    self.currentUser = [[FNBUser alloc] init];
-    [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
-        if (completedSettingUsersProperties) {
-            [self updateUI];
-            // get an array of artists that the user is subscribed to filled with detailed info
-            [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
-                if (gotDetailedArray) {
-                    self.currentUser.detailedArtistInfoArray = arrayOfArtists;
-                    
-                    // get users rankings for each of their subscribed artists
-                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
-                    
+    // check if user is logged in or guest
+    [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
+        if (isAuthenticUser) {
+            // set user info, and then get a detailed array of the artists the user is subscribed to
+            
+            self.currentUser = [[FNBUser alloc] init];
+            [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                if (completedSettingUsersProperties) {
                     [self updateUI];
+                    // get an array of artists that the user is subscribed to filled with detailed info
+                    [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
+                        if (gotDetailedArray) {
+                            self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                            
+                            // get users rankings for each of their subscribed artists
+                            self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+                            
+                            [self updateUI];
+                        }
+                    }];
                 }
             }];
+
+        }
+        
+        else {
+            NSLog(@"This is a guest in the User Profile Page");
         }
     }];
+    
+    
 }
 
 

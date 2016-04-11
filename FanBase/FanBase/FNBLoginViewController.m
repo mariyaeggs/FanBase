@@ -25,35 +25,25 @@
         //if the user is an authenticated user, segue to next screen
         if (isAuthenticUser) {
             NSLog(@"isAuthenticUser");
-            [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
+//            [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];
         }
     }];
     
-//    [FNBFirebaseClient isUserAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
-//   
-//    }];
-//    
+
 }
 
 - (IBAction)loginTapped:(id)sender {
     [FNBFirebaseClient loginWithEmail:self.emailField.text Password:self.passwordField.text];
 
 }
-//- (IBAction)continueAsDummyTapped:(id)sender {
-//    FNBUser *myDummyUser = [[FNBUser alloc] init];
-//    [FNBFirebaseClient fillUser:myDummyUser WithDummyDataWithCompletionBlock:^(BOOL madeDummyUser) {
-//        if (madeDummyUser) {
-//            // THIS IS WHERE YOU CAN GET THE DUMMY USER DATA
-//            NSLog(@"Filled user with dummy data");
-//            NSLog(@"myDummyUser: %@", myDummyUser.artistsDictionary);
-//            [FNBFirebaseClient loginWithEmail:myDummyUser.email Password:myDummyUser.password];
-//            NSLog(@"logged in");
-//        }
-//    }];
-//}
+
+
 - (IBAction)continueAsGuestTapped:(id)sender {
     //Just transition to next VC
-    [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];   
+//    [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];
+
 }
 
 

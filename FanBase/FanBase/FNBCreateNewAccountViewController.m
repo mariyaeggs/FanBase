@@ -20,7 +20,9 @@
     [super viewDidAppear:animated];
     [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         if (isAuthenticUser) {
-            [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];
+
+//            [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
         }
     }];
 }

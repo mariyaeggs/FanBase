@@ -53,7 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // dummy data for now
+    // dummy data for testing
 //    self.receivedArtistName = @"Adele";
 
     // load page assuming user is not logged in and not subscribed
@@ -151,9 +151,6 @@
 - (void) checkIfUser:(FNBUser *)user isSubscribedToArtistName:(NSString *)receivedArtistName {
     // check if artist has user as a subscribed Users
     
-    // first format the artistName to as it appears in our database
-//    NSString *formattedArtistName = [self formatedArtistName:receivedArtistName];
-    
     for (NSString *userID in self.currentArtist.subscribedUsers) {
         if ([userID isEqualToString:self.currentUser.userID]) {
             self.isUserSubscribedToArtist = YES;
@@ -165,20 +162,6 @@
             self.isUserSubscribedToArtist = NO;
         }
     }
-    
-    
-//    for (NSString *artistName in user.artistsDictionary) {
-////        NSLog(@"this is the artistName(forloop):%@ and this is the formatedArtistName: %@", artistName, formattedArtistName);
-//        if ([artistName isEqualToString:formattedArtistName]) {
-//            // if found a match while looping,
-//            self.isUserSubscribedToArtist = YES;
-//            NSLog(@"User is subscribed to this artist");
-//            return;
-//        }
-//        
-//    }
-//    NSLog(@"User is NOT subscribed to this artist");
-//    self.isUserSubscribedToArtist = NO;
 }
 
 - (NSString *) formatedArtistName: (NSString *)artistName {
