@@ -101,8 +101,6 @@
             [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
             self.artistNameLabel.text = self.currentArtist.name;
             
-            [self setUserLabels];
-            
             // get tweets
             [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
                 
@@ -127,10 +125,18 @@
     NSLog(@"url of artist: %@", urlOfArtist);
 
     self.artistRef = [[Firebase alloc] initWithUrl:urlOfArtist];
-    [self.artistRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+    [self.artistRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"ARTIST CHANGED this is the new value for artist: %@, and this is the key: %@", snapshot.value, snapshot.key);
-        [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
-        [self setUserLabels];
+        [FNBFirebaseClient setPropertiesOfArtist:self.currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
+            if (setPropertiesCompleted) {
+                [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
+                [self setUserLabels];
+            }
+            else {
+                NSLog(@"there was a problem in setting the currentArtist's properties once they changed");
+            }
+        }];
+        
     }];
     
 }
@@ -143,23 +149,36 @@
 
 
 - (void) checkIfUser:(FNBUser *)user isSubscribedToArtistName:(NSString *)receivedArtistName {
-    // check if user has artist's Name in subscribed Users
+    // check if artist has user as a subscribed Users
     
     // first format the artistName to as it appears in our database
-    NSString *formattedArtistName = [self formatedArtistName:receivedArtistName];
+//    NSString *formattedArtistName = [self formatedArtistName:receivedArtistName];
     
-    for (NSString *artistName in user.artistsDictionary) {
-//        NSLog(@"this is the artistName(forloop):%@ and this is the formatedArtistName: %@", artistName, formattedArtistName);
-        if ([artistName isEqualToString:formattedArtistName]) {
-            // if found a match while looping,
+    for (NSString *userID in self.currentArtist.subscribedUsers) {
+        if ([userID isEqualToString:self.currentUser.userID]) {
             self.isUserSubscribedToArtist = YES;
             NSLog(@"User is subscribed to this artist");
             return;
         }
-        
+        else {
+            NSLog(@"User is NOT subscribed to this artist");
+            self.isUserSubscribedToArtist = NO;
+        }
     }
-    NSLog(@"User is NOT subscribed to this artist");
-    self.isUserSubscribedToArtist = NO;
+    
+    
+//    for (NSString *artistName in user.artistsDictionary) {
+////        NSLog(@"this is the artistName(forloop):%@ and this is the formatedArtistName: %@", artistName, formattedArtistName);
+//        if ([artistName isEqualToString:formattedArtistName]) {
+//            // if found a match while looping,
+//            self.isUserSubscribedToArtist = YES;
+//            NSLog(@"User is subscribed to this artist");
+//            return;
+//        }
+//        
+//    }
+//    NSLog(@"User is NOT subscribed to this artist");
+//    self.isUserSubscribedToArtist = NO;
 }
 
 - (NSString *) formatedArtistName: (NSString *)artistName {
@@ -206,23 +225,24 @@
         // TODO: segue to Login Screen
     }
     else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Subscribed"]) {
-        NSLog(@"button tapped and you were not subscribed in");
-        // TODO: subscribe User
-//        [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:<#(NSDictionary *)#>]
+//        NSLog(@"button tapped and you were not subscribed in");
+        
+        NSDictionary *addArtistDictionary = @{ @"name" : self.currentArtist.name ,
+                                               @"spotifyID" : self.currentArtist.spotifyID,
+                                               @"subscribedUsers" : self.currentArtist.subscribedUsers ,
+                                               @"images" : self.currentArtist.imagesArray,
+                                               @"genres" : self.currentArtist.genres
+                                               };
+        
+        [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:addArtistDictionary];
     }
     else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Subscribed"]) {
-        NSLog(@"button tapped and you were subscribed");
+//        NSLog(@"button tapped and you were subscribed");
         // present alert to confirm
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are You Sure?" message:[NSString stringWithFormat: @"Do you want to unsubscribe from %@", self.currentArtist.name]  preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *submit = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:self.currentArtist.name withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
-                if (deletedArtistAndUserCompleted) {
-                    // check if user is subscribed to artist
-                    [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
-                    [self setUserLabels];
-                }
             }];
-            
         }];
         //TODO: check if this deletes artist
         
@@ -264,77 +284,5 @@
         nextVC.recievedArtistSpotifyID = self.currentArtist.spotifyID;
     }
 }
-
-/*
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
-*/
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

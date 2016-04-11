@@ -82,7 +82,7 @@
     self.currentUser = [[FNBUser alloc] init];
     [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
         if (completedSettingUsersProperties) {
-            
+            [self updateUI];
             // get an array of artists that the user is subscribed to filled with detailed info
             [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
                 if (gotDetailedArray) {
@@ -136,6 +136,39 @@
         }
         
     }];
+    
+    // listen to child node if last artist deleted, or first artist added
+    [self.userRef observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        // change in the artistDictionary
+        if ([snapshot.key isEqualToString:@"artistsDictionary"]){
+            NSLog(@"last artist deleted from user");
+            self.currentUser.artistsDictionary = [NSMutableDictionary new];
+            self.currentUser.detailedArtistInfoArray = @[];
+            
+            // there are no users rankings for each of their subscribed artists because last one is deleted
+            self.currentUser.rankingAndImagesForEachArtist = @[];
+            [self updateUI];
+        }
+
+    }];
+    [self.userRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        // change in the artistDictionary
+        if ([snapshot.key isEqualToString:@"artistsDictionary"]){
+            self.currentUser.artistsDictionary = snapshot.value;
+            [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
+                if (gotDetailedArray) {
+                    self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+                    
+                    // get users rankings for each of their subscribed artists
+                    self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+                    
+                    [self updateUI];
+                }
+            }];
+        }
+        
+    }];
+
 }
 
 //-(void)viewWillDisappear:(BOOL)animated{

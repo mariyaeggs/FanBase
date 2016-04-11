@@ -72,6 +72,18 @@
         }
         
     }];
+    // listen to if last artist deleted
+    [self.userRef observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"Last artist deleted");
+        // change in the artistDictionary
+        if ([snapshot.key isEqualToString:@"artistsDictionary"]){
+            self.currentUser.artistsDictionary = [NSMutableDictionary new];
+            self.currentUser.detailedArtistInfoArray = @[];
+            self.currentUser.rankingAndImagesForEachArtist = @[];
+            [self updateUI];
+        }
+    }];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

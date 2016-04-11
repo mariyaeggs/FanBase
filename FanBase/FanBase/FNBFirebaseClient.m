@@ -271,7 +271,8 @@
     
     NSDictionary *initialArtistValues = @{@"name" : artistSpotifyDictionary[@"name"],
                                           @"spotifyID": artistSpotifyDictionary[@"id"] ,
-                                          @"twitterHandle": @"", @"subscribedUsers" : [NSMutableDictionary new],
+                                          @"twitterHandle": @"",
+                                          @"subscribedUsers" : [NSMutableDictionary new],
                                           @"images" : artistSpotifyDictionary[@"images"],
                                           @"genres" : artistSpotifyDictionary[@"genres"]};
     [currentArtistRef setValue:initialArtistValues];
