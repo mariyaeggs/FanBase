@@ -14,7 +14,7 @@
                 <viewControllerPlaceholder storyboardName="Firebase" id="VN1-Qf-zvC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XV-gi-8eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-179" y="303"/>
+            <point key="canvasLocation" x="201" y="851"/>
         </scene>
         <!--Artist Main Page Table View Controller-->
         <scene sceneID="Anw-3h-HVT">
@@ -34,14 +34,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="206.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-2e-Orb">
-                                                    <rect key="frame" x="233" y="28" width="136" height="137"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-2e-Orb">
+                                                    <rect key="frame" x="231" y="33" width="137" height="137"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="4v2-2e-Orb" secondAttribute="height" multiplier="1:1" id="UJ0-Wq-FPK"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="89E-ND-5Qp">
-                                                    <rect key="frame" x="239" y="164" width="121" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="89E-ND-5Qp">
+                                                    <rect key="frame" x="239" y="170.5" width="121" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -49,7 +49,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4v2-2e-Orb" firstAttribute="centerX" secondItem="1hZ-tj-v7K" secondAttribute="centerX" id="3a1-4C-k7c"/>
-                                                <constraint firstItem="4v2-2e-Orb" firstAttribute="top" secondItem="1hZ-tj-v7K" secondAttribute="topMargin" id="I1E-Ys-ozo"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="89E-ND-5Qp" secondAttribute="bottom" id="Rla-8q-WN1"/>
                                                 <constraint firstItem="4v2-2e-Orb" firstAttribute="height" secondItem="1hZ-tj-v7K" secondAttribute="height" multiplier="0.66" id="Vbg-ju-Vg9"/>
                                                 <constraint firstItem="89E-ND-5Qp" firstAttribute="centerX" secondItem="1hZ-tj-v7K" secondAttribute="centerX" id="hBb-Qq-FiZ"/>
@@ -81,14 +80,14 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You Aren't Subscribed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4Y-as-nYx">
-                                                    <rect key="frame" x="30" y="-9" width="240" height="63"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Aren't Subscribed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4Y-as-nYx">
+                                                    <rect key="frame" x="30" y="-8.5" width="240" height="62"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qe2-nD-ydI">
-                                                    <rect key="frame" x="1" y="32" width="300" height="27"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qe2-nD-ydI">
+                                                    <rect key="frame" x="0.0" y="32" width="300" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="Click To Add Artist"/>
                                                     <connections>

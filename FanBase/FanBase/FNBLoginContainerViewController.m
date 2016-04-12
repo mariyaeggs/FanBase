@@ -57,11 +57,11 @@
 - (void) showUserMainPageVC {
 
     UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"UserPage" bundle:nil];
-    UINavigationController *nextNavController = [nextStoryboard instantiateViewControllerWithIdentifier:@"userPageNavControllerID"];
+//    UINavigationController *nextNavController = [nextStoryboard instantiateViewControllerWithIdentifier:@"userPageNavControllerID"];
 //    FNBUserProfilePageTableViewController *userVC = nextNavController.viewControllers[0];
-//    FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
+    FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
     
-    [self setEmbeddedViewController:nextNavController];
+    [self setEmbeddedViewController:userVC];
 }
 
 #pragma mark Child VC from Tim

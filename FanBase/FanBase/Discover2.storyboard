@@ -69,7 +69,7 @@
                             <outlet property="delegate" destination="n4v-wa-sRe" id="BfD-bo-lQF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="orf-Dh-aAz"/>
+                    <navigationItem key="navigationItem" title="Discover Page" id="orf-Dh-aAz"/>
                     <connections>
                         <segue destination="42c-vQ-ecI" kind="show" identifier="discoverPageSegue" id="wr9-AH-Cw4"/>
                     </connections>
