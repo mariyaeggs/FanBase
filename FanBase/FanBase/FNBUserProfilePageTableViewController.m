@@ -90,6 +90,9 @@
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                 if (completedSettingUsersProperties) {
                     [self addListenersForLoggedInUser];
+                    [self updateUserPicNameAndNumberOfArtists];
+                    [self.tableView reloadData];
+
 //                    [self updateUI];
                     // get an array of artists that the user is subscribed to filled with detailed info
 //                    [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
@@ -252,12 +255,14 @@
     [self presentViewController:changeProfilePictureAlert animated:YES completion:nil];
 }
 
-
-- (void) updateUI {
+-(void) updateUserPicNameAndNumberOfArtists {
     self.userNameLabel.text = self.currentUser.userName;
     [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
-    
+}
+
+- (void) updateUI {
+    [self updateUserPicNameAndNumberOfArtists];
     [self setLabelsAndImagesOfArtistCells:self.currentUser.rankingAndImagesForEachArtist];
 
     self.tableView.tableFooterView = [UIView new];

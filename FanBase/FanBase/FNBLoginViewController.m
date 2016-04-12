@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -24,6 +25,10 @@
     // round corners of container view
     self.containerView.layer.cornerRadius = 7.5;
     self.containerView.layer.masksToBounds = YES;
+    
+    // round corners of loginButton
+    self.loginButton.layer.cornerRadius = 5;
+    self.loginButton.layer.masksToBounds = YES;
 }
 
 - (void) viewDidAppear:(BOOL)animated {

@@ -12,9 +12,26 @@
 @interface FNBCreateNewAccountViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @end
 
 @implementation FNBCreateNewAccountViewController
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    // round corners
+    self.submitButton.layer.cornerRadius = 5;
+    self.submitButton.layer.masksToBounds = YES;
+    
+    self.cancelButton.layer.cornerRadius = 5;
+    self.cancelButton.layer.masksToBounds = YES;
+    
+    self.containerView.layer.cornerRadius = 7.5;
+    self.containerView.layer.masksToBounds = YES;
+    
+}
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
