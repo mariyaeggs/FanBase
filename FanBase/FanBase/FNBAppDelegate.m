@@ -14,14 +14,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    
-    FNBViewController *viewController = [[FNBViewController alloc] initWithStyle:UITableViewStylePlain];
-    
-    self.viewController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    // Override point for customization after application launch.
+//    
+//    FNBViewController *viewController = [[FNBViewController alloc] initWithStyle:UITableViewStylePlain];
+//    
+//    self.viewController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//    self.window.rootViewController = self.viewController;
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 

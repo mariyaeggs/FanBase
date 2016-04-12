@@ -8,7 +8,7 @@
         <!--Fan Feed View Controller-->
         <scene sceneID="3XW-ja-NdE">
             <objects>
-                <viewController id="TFJ-8n-jLJ" customClass="FNBFanFeedViewController" customModule="FanBase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FNBFanFeed" id="TFJ-8n-jLJ" customClass="FNBFanFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WCV-Z9-8Jf"/>
                         <viewControllerLayoutGuide type="bottom" id="7SI-RV-jUb"/>

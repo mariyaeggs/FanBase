@@ -43,11 +43,11 @@
 		BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116BE1CB5A88600C47570 /* FNBTwitterAPIClient.m */; };
 		BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116C01CB5A88600C47570 /* FNBTwitterPostTableViewCell.m */; };
 		BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116C41CB5A88D00C47570 /* NSURL+QueryString.m */; };
-		BD38815C1CBC52E1004F000A /* FNBFanFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD38815B1CBC52E1004F000A /* FNBFanFeedViewController.m */; };
-		BDBEC03F1CBC00EF005C86D9 /* FanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDBEC03E1CBC00EF005C86D9 /* FanFeed.storyboard */; };
 		BDE18E3D1CB69F9E00BEDE01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */; };
 		BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */; };
 		BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */; };
+		BDEC09E01CBC6B2A00A11375 /* FNBFanFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD38815B1CBC52E1004F000A /* FNBFanFeedViewController.m */; };
+		BDEC09E11CBC6B6300A11375 /* FanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDBEC03E1CBC00EF005C86D9 /* FanFeed.storyboard */; };
 		ED1787B81CB85B80008B12D9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B41CB85B80008B12D9 /* Constants.m */; };
 		ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B61CB85B80008B12D9 /* CVCell.m */; };
 		ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */; };
@@ -427,7 +427,7 @@
 				TargetAttributes = {
 					BD0A5A7C1CAAFCF300FFF623 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 43RAP2A4D4;
+						DevelopmentTeam = KXY9EDFTF5;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -459,6 +459,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDEC09E11CBC6B6300A11375 /* FanFeed.storyboard in Resources */,
 				A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */,
 				BD3116B41CB5A87D00C47570 /* FNBArtistNews.storyboard in Resources */,
 				A14E4E4C1CB6B65B0034FBFB /* Default-568h@2x.png in Resources */,
@@ -469,7 +470,6 @@
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
 				ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */,
-				BDBEC03F1CBC00EF005C86D9 /* FanFeed.storyboard in Resources */,
 				ED1787BF1CB85B8C008B12D9 /* DiscoverPage.storyboard in Resources */,
 				325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */,
 			);
@@ -530,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDEC09E01CBC6B2A00A11375 /* FNBFanFeedViewController.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
 				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
@@ -566,7 +567,6 @@
 				BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */,
 				A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
-				BD38815C1CBC52E1004F000A /* FNBFanFeedViewController.m in Sources */,
 				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,15 +18,21 @@
 
 @implementation FNBFanFeedViewController
 -(void)viewWillAppear:(BOOL)animated {
-    [self addMessageWithID:@"foo" text:@"Hey Person!"];
+    self.messages = [NSMutableArray new];
+    NSLog(@"In viewWillAppear");
+    [self addMessageWithID:@"someoneElse" text:@"Hey Person!"];
     [self addMessageWithID:self.senderId text:@"Yo"];
     [self addMessageWithID:self.senderId text:@"I like turtles"];
+    NSLog(@"%@",self.messages);
     [self finishReceivingMessage];
 }
 
 - (void)viewDidLoad {
+    NSLog(@"In viewDidLoad");
     [super viewDidLoad];
     self.title = @"FanFeed";
+    self.senderId = @"angelirose";
+    self.senderDisplayName = @"Angelica";
     [self setupBubbles];
     
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
@@ -39,6 +45,7 @@
 }
 
 -(void)setupBubbles {
+    NSLog(@"In setupBubbles");
     JSQMessagesBubbleImageFactory *factory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.outgoingBubbleImage = [factory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
     self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -54,10 +61,12 @@
 
 -(id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
     JSQMessage *message = self.messages[indexPath.item];
-    if (message.senderId == self.senderID) {
+    if (message.senderId == self.senderId) {
+        NSLog(@"Returning outgoing Bubble Image");
         return self.outgoingBubbleImage;
+        
     }
-    
+    NSLog(@"returning incoming Bubble Image");
     return self.incomingBubbleImage;
 }
 
