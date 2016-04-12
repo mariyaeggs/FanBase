@@ -15,6 +15,9 @@
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImage;
 @property (strong, nonatomic) Firebase *rootRef;
 @property (strong, nonatomic) Firebase *messagesRef;
+@property (strong, nonatomic) Firebase *userIsTypingRef;
+@property (assign, nonatomic) BOOL localTyping;
+@property (assign, nonatomic) BOOL isTyping;
 
 @end
 
@@ -34,6 +37,7 @@
 - (void)viewDidLoad {
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
+    self.localTyping = NO;
     
     self.messages = [NSMutableArray new];
     self.rootRef = [[Firebase alloc] initWithUrl:@"https://flickering-fire-7717.firebaseio.com/"];
@@ -53,6 +57,7 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     [self observeMessages];
+    [self observeTyping];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +110,8 @@
                                   };
     [itemRef setValue:messageItem];
     
+    self.isTyping = NO;
+    
     [self finishSendingMessage];
 }
 
@@ -118,6 +125,27 @@
         [self finishReceivingMessage];
     }];
 }
+
+-(void)textViewDidChange:(UITextView *)textView {
+    [super textViewDidChange:textView];
+    self.isTyping = ![textView.text isEqualToString:@""];
+}
+
+-(void)setIsTyping:(BOOL)isTyping {
+        _isTyping = isTyping;
+        self.localTyping = isTyping;
+        [self.userIsTypingRef setValue:@(_isTyping)];
+    
+}
+
+-(void)observeTyping {
+    
+    Firebase *typingIndicatorRef = [self.rootRef childByAppendingPath:@"typingIndicator"];
+    self.userIsTypingRef  = [typingIndicatorRef childByAppendingPath:self.senderId];
+    [self.userIsTypingRef onDisconnectRemoveValue];
+    
+}
+
 
 
 /*
