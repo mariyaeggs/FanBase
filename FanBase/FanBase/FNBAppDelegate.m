@@ -15,8 +15,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    // Override point for customization after application launch.
-//    
+    // Override point for customization after application launch.
+    
 //    FNBViewController *viewController = [[FNBViewController alloc] initWithStyle:UITableViewStylePlain];
 //    
 //    self.viewController = [[UINavigationController alloc] initWithRootViewController:viewController];

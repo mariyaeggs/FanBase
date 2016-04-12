@@ -28,7 +28,9 @@
                                   completionBlock(statuses);
                                   
                               } errorBlock:^(NSError *error) {
-                                  NSLog(@"Something went wrong when generating a user's posts.");
+                                  NSLog(@"Something went wrong when generating a user's tweets.");
+                                  //send an empty array
+                                  completionBlock(@[]);
                               }];
 
 }

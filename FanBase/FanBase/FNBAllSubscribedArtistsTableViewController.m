@@ -72,6 +72,18 @@
         }
         
     }];
+    // listen to if last artist deleted
+    [self.userRef observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"Last artist deleted");
+        // change in the artistDictionary
+        if ([snapshot.key isEqualToString:@"artistsDictionary"]){
+            self.currentUser.artistsDictionary = [NSMutableDictionary new];
+            self.currentUser.detailedArtistInfoArray = @[];
+            self.currentUser.rankingAndImagesForEachArtist = @[];
+            [self updateUI];
+        }
+    }];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -124,12 +136,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // when you hit delete
-        NSString *selectedArtistName = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[indexPath.row]).name;
+        NSString *selectedArtistName = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
         
         // delete appropriate things from database
-        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName];
-        NSLog(@"you deleted %@", selectedArtistName);
-        
+        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
+            if (deletedArtistAndUserCompleted) {
+                NSLog(@"you deleted %@", selectedArtistName);
+            }
+        }];
     }
 }
 

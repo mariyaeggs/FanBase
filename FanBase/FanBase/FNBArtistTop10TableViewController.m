@@ -34,7 +34,7 @@
 //    self.recievedArtistSpotifyID = @"711MCceyCBcFnzjGY4Q7Un";
    self.topTrackCellFolder = [NSMutableArray new];
     [FNBSpotifyAPIclient getTopTracksOfSpotifyID:self.recievedArtistSpotifyID WithCompletionBlock:^(BOOL success, NSArray *topTracks) {
-        NSLog(@"Inside API CLIENT");
+//        NSLog(@"Inside API CLIENT");
         if (success) {
             self.topTrackCellFolder = topTracks;
             
@@ -77,7 +77,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"Anybody here?");
+//    NSLog(@"Anybody here?"); 
 
     NSString *reuseIdentifier = @"Cell";
 

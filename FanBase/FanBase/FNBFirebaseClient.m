@@ -229,10 +229,10 @@
 + (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesCompleted)) setArtistPropertiesCompletionBlock {
     Firebase *artistsRef = [self getArtistFirebaseRef];
     Firebase *specificArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artist.name]];
-    NSLog(@"QUEING UP A SINGLE EVENT OBSERVATION FOR: %@", artist.name);
+//    NSLog(@"QUEING UP A SINGLE EVENT OBSERVATION FOR: %@", artist.name);
     // This block gets called for a single in this artists data
     [specificArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"OBSERVED SINGLE EVENT FOR: %@", artist.name);
+//        NSLog(@"OBSERVED SINGLE EVENT FOR: %@", artist.name);
         //        NSLog(@"Snapshot of Artist: %@ values: %@", artist.name, snapshot.value);
         if (![snapshot.value isKindOfClass:[NSNull class]]) {
             artist.name = snapshot.value[@"name"];
@@ -255,6 +255,8 @@
     
 }
 
+
+
 + (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary withCompletionBlock: (void (^) (BOOL artistDatabaseCreated)) makeDatabaseCompletionBlock  {
     NSLog(@"making artist database");
     
@@ -269,7 +271,8 @@
     
     NSDictionary *initialArtistValues = @{@"name" : artistSpotifyDictionary[@"name"],
                                           @"spotifyID": artistSpotifyDictionary[@"id"] ,
-                                          @"twitterHandle": @"", @"subscribedUsers" : [NSMutableDictionary new],
+                                          @"twitterHandle": @"",
+                                          @"subscribedUsers" : [NSMutableDictionary new],
                                           @"images" : artistSpotifyDictionary[@"images"],
                                           @"genres" : artistSpotifyDictionary[@"genres"]};
     [currentArtistRef setValue:initialArtistValues];
@@ -323,22 +326,36 @@
 }
 
 // helper method for deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist
-+ (void) deleteUser:(FNBUser *)user FromArtist:(NSString *)artistName{
++ (void) deleteUser:(FNBUser *)user FromArtist:(NSString *)artistName withCompletionBlock: (void (^) (BOOL deletedUserFromArtistCompleted)) deletedUserFromArtistCompletionBlock  {
     Firebase *artistsRef = [self getArtistFirebaseRef];
     Firebase *currentArtistRef = [artistsRef childByAppendingPath:artistName];
     Firebase *artistsSubscribedUsersRef = [currentArtistRef childByAppendingPath:@"subscribedUsers"];
     Firebase *specificUserRef = [artistsSubscribedUsersRef childByAppendingPath:user.userID];
-    [specificUserRef removeValue];
+    [specificUserRef removeValueWithCompletionBlock:^(NSError *error, Firebase *ref) {
+        if (!error) {
+            deletedUserFromArtistCompletionBlock(YES);
+        }
+        else {
+            NSLog(@"There was an error deleting user from artist's databse");
+        }
+    }];
 }
 
 // helper method for deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(FNBArtist *)newArtist
-+ (void) deleteArtist:(NSString *)artistName FromUser:(FNBUser *)user {
++ (void) deleteArtist:(NSString *)artistName FromUser:(FNBUser *)user withCompletionBlock: (void (^) (BOOL deletedArtistFromUserCompleted)) deletedArtistFromUserCompletionBlock  {
     Firebase *usersRef = [self getUserFirebaseRef];
     Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
     Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
     Firebase *specificArtistRef = [usersArtistRef childByAppendingPath:artistName];
     
-    [specificArtistRef removeValue];
+    [specificArtistRef removeValueWithCompletionBlock:^(NSError *error, Firebase *ref) {
+        if (!error) {
+            deletedArtistFromUserCompletionBlock(YES);
+        }
+        else {
+            NSLog(@"There was an error deleting artist from user's databse");
+        }
+    }];
 }
 
 
@@ -350,11 +367,19 @@
     [self addArtist:artistName ToDatabaseOfUser:currentUser];
 }
 
-+ (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(NSString *)newArtistName {
++ (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(NSString *)newArtistName withCompletionBlock: (void (^) (BOOL deletedArtistAndUserCompleted)) deletedArtistFromUserCompletionBlock  {
     NSString *artistName = [self formatedArtistName:newArtistName];
     
-    [self deleteUser:currentUser FromArtist:artistName];
-    [self deleteArtist:artistName FromUser:currentUser];
+    [self deleteUser:currentUser FromArtist:artistName withCompletionBlock:^(BOOL deletedUserFromArtistCompleted) {
+        if (deletedUserFromArtistCompleted) {
+            [self deleteArtist:artistName FromUser:currentUser withCompletionBlock:^(BOOL deletedArtistFromUserCompleted) {
+                if (deletedArtistFromUserCompleted) {
+                    deletedArtistFromUserCompletionBlock(YES);
+                }
+            }];
+
+        }
+    }];
 }
 
 #pragma mark - Methods For Us to Test App

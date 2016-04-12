@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *twitterHandle;
 @property (strong, nonatomic) NSMutableDictionary *subscribedUsers;
 @property (strong, nonatomic) NSArray *imagesArray;
-@property (strong, nonatomic) NSString *genres;
+@property (strong, nonatomic) NSArray *genres;
 
 
 
