@@ -40,6 +40,7 @@
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.label];
     
+    
     return self;
 }
 
@@ -54,6 +55,7 @@
     self.label.text = artist;
     
 }
+
 
 
 @end

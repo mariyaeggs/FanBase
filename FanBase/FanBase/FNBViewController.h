@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FNBViewController : UITableViewController 
+@interface FNBViewController : UITableViewController
+
 
 @end
