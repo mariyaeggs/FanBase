@@ -15,6 +15,7 @@
 		325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA51CB6DC37009F5F27 /* FNBSpotifyTopTracks.m */; };
 		325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA71CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m */; };
 		325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */; };
+		A103C1811CBC1184001FA3D5 /* FNBLoginContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A103C1801CBC1184001FA3D5 /* FNBLoginContainerViewController.m */; };
 		A14E4E441CB408F90034FBFB /* UserPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E4E431CB408F90034FBFB /* UserPage.storyboard */; };
 		A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */; };
 		A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */; };
@@ -77,6 +78,8 @@
 		325FECAD1CB6DC64009F5F27 /* FNBArtistTop10.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBArtistTop10.storyboard; sourceTree = "<group>"; };
 		4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.debug.xcconfig"; sourceTree = "<group>"; };
 		9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FanBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A103C17F1CBC1184001FA3D5 /* FNBLoginContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBLoginContainerViewController.h; sourceTree = "<group>"; };
+		A103C1801CBC1184001FA3D5 /* FNBLoginContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBLoginContainerViewController.m; sourceTree = "<group>"; };
 		A14E4E431CB408F90034FBFB /* UserPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPage.storyboard; sourceTree = "<group>"; };
 		A14E4E451CB4110B0034FBFB /* FNBUserProfilePageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUserProfilePageTableViewController.h; sourceTree = "<group>"; };
 		A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBUserProfilePageTableViewController.m; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 				A1E7A9381CAC28A900A9B968 /* FNBUserDetailsViewController.m */,
 				A1E7A9391CAC28A900A9B968 /* FNBCreateNewAccountViewController.h */,
 				A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */,
+				A103C17F1CBC1184001FA3D5 /* FNBLoginContainerViewController.h */,
+				A103C1801CBC1184001FA3D5 /* FNBLoginContainerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				A14E4E611CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m in Sources */,
 				A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */,
 				EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */,
+				A103C1811CBC1184001FA3D5 /* FNBLoginContainerViewController.m in Sources */,
 				A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */,
 				EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */,
 				BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */,

@@ -39,7 +39,7 @@
 
 #pragma mark - Adding and Deleting User and Artist Methods
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(NSDictionary *)newArtistDictionary;
-+ (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(NSString *)newArtistName;
++ (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(NSString *)newArtistName withCompletionBlock: (void (^) (BOOL deletedArtistAndUserCompleted)) deletedArtistFromUserCompletionBlock;
 
 #pragma mark - Methods For Us to Test App
 //+ (void)fillUser:(FNBUser *)user WithDummyDataWithCompletionBlock: (void (^) (BOOL madeDummyUser))completionBlock;

@@ -14,6 +14,8 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBFirebaseClient.h"
 #import <Firebase.h>
+// this is to segue to artistMainPage
+#import "FNBArtistMainPageTableViewController.h"
 
 @interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -25,6 +27,8 @@
 @property (nonatomic) NSInteger section;
 
 @property (nonatomic, strong) AFImageDownloader *imageDownloader;
+
+@property (strong, nonatomic) NSString *selectedArtist;
 
 //Dictionary is in the format:
 //NSDictionary *sampleDictionary = @{
@@ -71,6 +75,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.selectedArtist = @"";
     
     UISearchController *searchController =[[UISearchController alloc]initWithSearchResultsController:nil];
     searchController.dimsBackgroundDuringPresentation = NO;
@@ -81,6 +86,7 @@
     
     //Dismiss keyboard 
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+    
 
     
 }
@@ -258,13 +264,14 @@
     NSString *artistName = artistNames[indexPath.item];
     NSLog(@"this is the section %li ", selectedIndexPath.section);
     NSLog(@"you selected: %@", artistName);
-    
+    self.selectedArtist = artistName;
+    [self performSegueWithIdentifier:@"discoverPageSegue" sender:self];
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"HIII");
-    NSLog(@"you selected this section %li and this row %li", indexPath.section, indexPath.row);
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NSLog(@"HIII");
+//    NSLog(@"you selected this section %li and this row %li", indexPath.section, indexPath.row);
+//}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -348,6 +355,16 @@
     UICollectionView *collectionView = (UICollectionView *)scrollView;
     NSInteger index = collectionView.tag;
     self.contentOffsetDictionary[[@(index) stringValue]] = @(horizontalOffset);
+}
+
+#pragma mark - Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    UINavigationController *nextNavController = [segue destinationViewController];
+//    FNBArtistMainPageTableViewController *nextVC = [nextNavController viewControllers][0];
+//    nextVC.receivedArtistName = self.selectedArtist;
+    FNBArtistMainPageTableViewController *nextVC = segue.destinationViewController;
+    nextVC.receivedArtistName = self.selectedArtist;
 }
 
 @end
