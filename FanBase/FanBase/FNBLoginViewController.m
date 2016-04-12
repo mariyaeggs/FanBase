@@ -12,11 +12,19 @@
 @interface FNBLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
 @implementation FNBLoginViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // round corners of container view
+    self.containerView.layer.cornerRadius = 7.5;
+    self.containerView.layer.masksToBounds = YES;
+}
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
