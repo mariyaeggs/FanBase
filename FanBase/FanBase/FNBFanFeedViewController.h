@@ -11,6 +11,7 @@
 #import <JSQMessagesBubbleImageFactory.h>
 #import <UIColor+JSQMessages.h>
 #import <JSQMessage.h>
+#import <Firebase/Firebase.h>
 
 
 @interface FNBFanFeedViewController : JSQMessagesViewController

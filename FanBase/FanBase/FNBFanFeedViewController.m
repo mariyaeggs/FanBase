@@ -13,12 +13,18 @@
 @property (strong, nonatomic) NSMutableArray<JSQMessage *> *messages;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImage;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImage;
+@property (strong, nonatomic) Firebase *rootRef;
+@property (strong, nonatomic) Firebase *messagesRef;
 
 @end
 
 @implementation FNBFanFeedViewController
 -(void)viewWillAppear:(BOOL)animated {
     self.messages = [NSMutableArray new];
+    self.rootRef = [[Firebase alloc] initWithUrl:@"https://flickering-fire-7717.firebaseio.com/"];
+    self.messagesRef = [[Firebase alloc] init];
+    
+    
     NSLog(@"In viewWillAppear");
     [self addMessageWithID:@"someoneElse" text:@"Hey Person!"];
     [self addMessageWithID:self.senderId text:@"Yo"];
