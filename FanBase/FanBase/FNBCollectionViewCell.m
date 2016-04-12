@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) UILabel *label;
+@property (nonatomic, strong) UIButton *quickAddButton;
 
 
 @end
@@ -35,16 +36,46 @@
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, frame.size.height * (heightOfLabelConstant -1)/heightOfLabelConstant, frame.size.width, frame.size.height / heightOfLabelConstant)];
     //add background to label
     self.label.backgroundColor = [UIColor lightGrayColor];
-    
     //Right, bottom corner alighnment
     self.label.textAlignment = NSTextAlignmentRight;
+    
+    
+
     
     //Adds the image and label
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.label];
     
-    
     return self;
+}
+
+-(void)setIsUserLoggedIn:(BOOL)isUserLoggedIn {
+    // have quickAddButton only if user is loggedIn
+    _isUserLoggedIn = isUserLoggedIn;
+    if (isUserLoggedIn) {
+        // add the quickAddButton
+        self.quickAddButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.quickAddButton addTarget:self action:@selector(quickAddButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+        // TODO: add button image
+        [self.quickAddButton setTitle:@"QuickAddButton" forState:UIControlStateNormal];
+        self.quickAddButton.frame = CGRectMake(0, 0, 100, 100);
+        [self.contentView addSubview:self.quickAddButton];
+    }
+}
+
+-(void)setIsUserSubscribedToArtist:(BOOL)isUserSubscribedToArtist {
+    _isUserSubscribedToArtist = isUserSubscribedToArtist;
+    if (self.isUserLoggedIn) {
+        // make text green if user is not subscribed, and grey if user is already subscribed
+        if (isUserSubscribedToArtist) {
+            // make text grey
+            [self.quickAddButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        }
+        else {
+            // make text green
+            [self.quickAddButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        }
+    }
 }
 
 -(void)setImage:(UIImage *)image {
@@ -59,6 +90,9 @@
     
 }
 
-
+-(void)quickAddButtonTapped {
+    //this gets triggered when QuickAddButton tapped
+    NSLog(@"quick add button tapped");
+}
 
 @end

@@ -30,12 +30,10 @@
 
 @property (strong, nonatomic) NSString *selectedArtist;
 
-//Dictionary is in the format:
-//NSDictionary *sampleDictionary = @{
-//                                       @"Genre" : @[@{@"Artist":@"ArtistImageURL"}]
-//                                       };
 @property (nonatomic, strong) NSMutableDictionary *content;
 
+@property (nonatomic, strong) FNBUser *currentUser;
+@property (nonatomic) BOOL currentUserIsLoggedIn;
 
 @end
 
@@ -79,8 +77,6 @@
     
     UISearchController *searchController =[[UISearchController alloc]initWithSearchResultsController:nil];
     searchController.dimsBackgroundDuringPresentation = NO;
-    //searchController.searchResultsUpdater = self;
-    //searchController.delegate = self;
     searchController.searchBar.frame = CGRectMake(0, 0, 320, 44);
     self.tableView.tableHeaderView = searchController.searchBar;
     
@@ -88,8 +84,8 @@
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     
 
-    
 }
+
 -(BOOL)array:(NSArray *)array caseInsensitiveContainsString:(NSString *)string
 {
     for(NSString *arrayString in array) {
@@ -103,6 +99,35 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    //find if user is logged in, if so, get their subscribed users
+    self.currentUser = [[FNBUser alloc] init];
+    [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
+        if (isAuthenticUser) {
+            NSLog(@"user is logged in");
+            self.currentUserIsLoggedIn = YES;
+            
+            // set properties of user from Firebase
+            [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                if (completedSettingUsersProperties) {
+                    NSLog(@"done setting user properties in Discover Page");
+                    
+                    // not sure if this is necessary
+                    //                    [self.tableView reloadData];
+                }
+                else {
+                    NSLog(@"There was an error setting user properties in Discover Page");
+                }
+            }];
+        }
+        // if not an Authentic User
+        else {
+            NSLog(@"user is a guest (not logged in)");
+            self.currentUserIsLoggedIn = NO;
+        }
+    }];
+    
+    
     
     self.content = [NSMutableDictionary new];
     
@@ -118,7 +143,7 @@
     // Block reads artist data in firebase
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
-        NSLog(@"start");
+//        NSLog(@"start");
         
         // seems like repeated access of snapshot.value is painfully slow.
         // so... we're going to stash it in a variable and use that instead.
@@ -177,16 +202,16 @@
                 
             }
         
-        NSLog(@"end");
+//        NSLog(@"end");
         
-        NSLog(@"about to reloadtdata");
+//        NSLog(@"about to reloadtdata");
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
-            NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
+//            NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
         }];
         
     } withCancelBlock:^(NSError *error) {
-        NSLog(@"%@", error.description);
+        NSLog(@"Error is discoverPage: %@", error.description);
     }];
 }
 -(BOOL)prefersStatusBarHidden {
@@ -224,7 +249,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSLog(@"\n\n\nTableView cell: %li\n\n\n",indexPath.row);
+//    NSLog(@"\n\n\nTableView cell: %li\n\n\n",indexPath.row);
     static NSString *CellIdentifier = @"CellIdentifier";
     
     FNBTableViewCell *cell = (FNBTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -262,24 +287,17 @@
     NSArray *artistContent = self.content[genre];
     NSArray *artistNames = artistContent[0];
     NSString *artistName = artistNames[indexPath.item];
-    NSLog(@"this is the section %li ", selectedIndexPath.section);
+//    NSLog(@"this is the section %li ", selectedIndexPath.section);
     NSLog(@"you selected: %@", artistName);
     self.selectedArtist = artistName;
     [self performSegueWithIdentifier:@"discoverPageSegue" sender:self];
 }
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"HIII");
-//    NSLog(@"you selected this section %li and this row %li", indexPath.section, indexPath.row);
-//}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 200;
 }
-
-
 
 
 #pragma mark - UICollectionViewDataSource Methods
@@ -291,7 +309,7 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"\n\n\nCollectionView section: %li\n\n\n",section);
+//    NSLog(@"\n\n\nCollectionView section: %li\n\n\n",section);
     UIView *view = [collectionView superview];
     FNBTableViewCell *cell = (FNBTableViewCell *)[view superview];
     NSIndexPath *ip = [self.tableView indexPathForCell:cell];
@@ -325,8 +343,28 @@
     cell.image = nil;
     
     
-    //Set Image for URL
-//    cell.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:artistImageURL]]];
+    
+    
+    // this is for the quickAddButton
+    cell.isUserLoggedIn = self.currentUserIsLoggedIn;
+//    cell.isUserSubscribedToArtist = NO;
+    
+    // if the currentUser has received the subscribedArtist dictionary from Firebase
+    if (self.currentUser.artistsDictionary.count > 0) {
+        for (NSString *artistNameInUserDictionary in self.currentUser.artistsDictionary) {
+            if ([artistNameInUserDictionary isEqualToString:artistName]) {
+                cell.isUserSubscribedToArtist = YES;
+                break;
+            }
+            else {
+                cell.isUserSubscribedToArtist = NO;
+            }
+        }
+    }
+    
+    
+
+    
     
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:artistImageURL]];
     [self.imageDownloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
@@ -363,8 +401,16 @@
 //    UINavigationController *nextNavController = [segue destinationViewController];
 //    FNBArtistMainPageTableViewController *nextVC = [nextNavController viewControllers][0];
 //    nextVC.receivedArtistName = self.selectedArtist;
-    FNBArtistMainPageTableViewController *nextVC = segue.destinationViewController;
-    nextVC.receivedArtistName = self.selectedArtist;
+    
+    // dont allow sending nil
+    if (self.selectedArtist) {
+        FNBArtistMainPageTableViewController *nextVC = segue.destinationViewController;
+        nextVC.receivedArtistName = self.selectedArtist;
+    }
+    else {
+        NSLog(@"the selectedArtist property is nil ");
+    }
+
 }
 
 @end
