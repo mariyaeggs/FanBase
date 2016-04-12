@@ -20,8 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-//    BOOL userIsLoggedIn = NO;
     
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         // put a loading icon here
@@ -32,18 +30,6 @@
             [self showLoginVC];
         }
     }];
-    
-   
-//    
-//    if (userIsLoggedIn) {
-//        // show the users main page
-//        [self showUserMainPageVC];
-//    }
-//    
-//    else {
-//        // show the login screen
-//        [self showLoginVC];
-//    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedInNotification:) name:@"UserDidLogInNotification" object:nil];
     
@@ -62,21 +48,20 @@
 }
 
 - (void) showLoginVC {
-    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
+    NSLog(@"starting to show the login VC");
+    FNBLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewControllerID"] ;
+    //    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
     [self setEmbeddedViewController:loginVC];
 }
 
 - (void) showUserMainPageVC {
-    // not sure if this is right? what is the identifier? whats the difference between the following two lines?
-//    [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-//    FNBUserProfilePageTableViewController *userVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UserPageID"];
-    
-    
-    UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"UserPage" bundle:nil];
-    FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
 
+    UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"UserPage" bundle:nil];
+    UINavigationController *nextNavController = [nextStoryboard instantiateViewControllerWithIdentifier:@"userPageNavControllerID"];
+//    FNBUserProfilePageTableViewController *userVC = nextNavController.viewControllers[0];
+//    FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
     
-    [self setEmbeddedViewController:userVC];
+    [self setEmbeddedViewController:nextNavController];
 }
 
 #pragma mark Child VC from Tim
@@ -111,4 +96,6 @@
     [controller.view.bottomAnchor constraintEqualToAnchor:self.containerView.bottomAnchor].active = YES;
 
     [controller didMoveToParentViewController:self];
-}@end
+}
+
+@end

@@ -67,16 +67,20 @@
     self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
     self.arrayOfArtistRankingLabels = @[self.artist1XOfTotalFans, self.artist2XOfTotalFans, self.artist3XOfTotalFans, self.artist4XOfTotalFans];
     
-    // make user image rounded
+    // make user image circular
     self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height / 2;
     self.userImageView.layer.masksToBounds = YES;
-    
     // make artist images circular
     for (UIImageView *artistImage in self.arrayOfArtistImageViews) {
         artistImage.layer.cornerRadius = artistImage.frame.size.height / 2;
         artistImage.layer.masksToBounds = YES;
     }
-    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+
     // check if user is logged in or guest
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         if (isAuthenticUser) {
@@ -85,36 +89,40 @@
             self.currentUser = [[FNBUser alloc] init];
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                 if (completedSettingUsersProperties) {
-                    [self updateUI];
+                    [self addListenersForLoggedInUser];
+//                    [self updateUI];
                     // get an array of artists that the user is subscribed to filled with detailed info
-                    [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
-                        if (gotDetailedArray) {
-                            self.currentUser.detailedArtistInfoArray = arrayOfArtists;
-                            
-                            // get users rankings for each of their subscribed artists
-                            self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
-                            
-                            [self updateUI];
-                        }
-                    }];
+//                    [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
+//                        if (gotDetailedArray) {
+//                            self.currentUser.detailedArtistInfoArray = arrayOfArtists;
+//                            
+//                            // get users rankings for each of their subscribed artists
+//                            self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
+//                            
+//                            [self updateUI];
+//                        }
+//                    }];
                 }
             }];
-
+            
         }
         
         else {
             NSLog(@"This is a guest in the User Profile Page");
         }
     }];
+
     
-    
+ 
+
 }
 
+//-(void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    [self.userRef removeAllObservers];
+//}
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-
-    
+- (void) addListenersForLoggedInUser {
     // start listening to changes in the username, userProfileImage, or artistDictionary
     
     NSString *urlOfUser= [NSString stringWithFormat:@"%@/users/%@", ourFirebaseURL, self.currentUser.userID];
@@ -161,7 +169,7 @@
             self.currentUser.rankingAndImagesForEachArtist = @[];
             [self updateUI];
         }
-
+        
     }];
     [self.userRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // change in the artistDictionary
@@ -180,15 +188,12 @@
         }
         
     }];
-
 }
-
-//-(void)viewWillDisappear:(BOOL)animated{
-//    [super viewWillDisappear:animated];
-//    [self.userRef removeAllObservers];
-//}
-
-
+- (IBAction)logoutTapped:(id)sender {
+    [FNBFirebaseClient logoutUser];
+    // TODO: This does not bring up the login VC. IDK why. IT broadcasts successfully
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
+}
 
 - (IBAction)userNameDoubleTapped:(id)sender {
     // pull up an alert to change userName
@@ -252,7 +257,6 @@
     self.userNameLabel.text = self.currentUser.userName;
     [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
-    // TODO: put in the biggest fan label here
     
     [self setLabelsAndImagesOfArtistCells:self.currentUser.rankingAndImagesForEachArtist];
 

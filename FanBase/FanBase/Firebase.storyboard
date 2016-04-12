@@ -232,6 +232,7 @@
                                 <state key="normal" title="Continue As Guest"/>
                                 <connections>
                                     <action selector="continueAsGuestTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rL8-ZI-mFa"/>
+                                    <segue destination="XYr-oA-eTp" kind="show" id="Aut-cK-cPr"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B68-5q-gMG">
@@ -279,7 +280,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.27080487559999999" green="1" blue="0.36557578969999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Bsx-Uw-a2A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7aP-UB-s6y"/>
                             <constraint firstItem="poe-jl-oO3" firstAttribute="top" secondItem="m43-hp-AcD" secondAttribute="bottom" constant="18" id="Jen-zk-trj"/>
@@ -301,6 +301,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="610" y="545"/>
+        </scene>
+        <!--Discover2-->
+        <scene sceneID="JiP-52-9XA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discover2" id="XYr-oA-eTp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uP7-dh-Bdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157.5" y="722"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mHn-Fe-iPV">

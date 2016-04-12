@@ -172,7 +172,13 @@
 }
 
 - (void) setUserLabels {
-    self.numberOfSubscribedUsersLabel.text = [NSString stringWithFormat:@"%li People Subscribed", self.currentArtist.subscribedUsers.count];
+    // have the label say "person" instead of "people" if there is only 1 person
+    if (self.currentArtist.subscribedUsers.count == 1) {
+        self.numberOfSubscribedUsersLabel.text = [NSString stringWithFormat:@"%li Person Subscribed", self.currentArtist.subscribedUsers.count];
+    }
+    else {
+        self.numberOfSubscribedUsersLabel.text = [NSString stringWithFormat:@"%li People Subscribed", self.currentArtist.subscribedUsers.count];
+    }
     
 
     if (self.isUserLoggedIn) {
@@ -205,17 +211,31 @@
 - (IBAction)clickToAddTapped:(id)sender {
     if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Logged In"]) {
         NSLog(@"button tapped and you were not logged in");
-        // TODO: segue to Login Screen
+        [self performSegueWithIdentifier:@"goToLoginVCSegue" sender:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
     }
     else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Subscribed"]) {
 //        NSLog(@"button tapped and you were not subscribed in");
-        
-        NSDictionary *addArtistDictionary = @{ @"name" : self.currentArtist.name ,
-                                               @"spotifyID" : self.currentArtist.spotifyID,
-                                               @"subscribedUsers" : self.currentArtist.subscribedUsers ,
-                                               @"images" : self.currentArtist.imagesArray,
-                                               @"genres" : self.currentArtist.genres
-                                               };
+        NSMutableDictionary *addArtistDictionary = [NSMutableDictionary new];
+        // if there are no subscribedUsers yet, create an empty dictionary
+        if (self.currentArtist.subscribedUsers) {
+            addArtistDictionary = [@{ @"name" : self.currentArtist.name ,
+                                                   @"spotifyID" : self.currentArtist.spotifyID,
+                                                   @"subscribedUsers" : self.currentArtist.subscribedUsers ,
+                                                   @"images" : self.currentArtist.imagesArray,
+                                                   @"genres" : self.currentArtist.genres
+                                                   } mutableCopy];
+
+        }
+        else {
+            addArtistDictionary = [@{ @"name" : self.currentArtist.name ,
+                                      @"spotifyID" : self.currentArtist.spotifyID,
+                                      @"subscribedUsers" : [NSMutableDictionary new],
+                                      @"images" : self.currentArtist.imagesArray,
+                                      @"genres" : self.currentArtist.genres
+                                      } mutableCopy];
+        }
+
         
         [FNBFirebaseClient addCurrentUser:self.currentUser andArtistToEachOthersDatabases:addArtistDictionary];
     }
@@ -227,7 +247,6 @@
             [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:self.currentArtist.name withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
             }];
         }];
-        //TODO: check if this deletes artist
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:nil];
         [alert addAction:cancel];

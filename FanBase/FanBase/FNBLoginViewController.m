@@ -34,6 +34,7 @@
 }
 
 - (IBAction)loginTapped:(id)sender {
+    NSLog(@"Login button tapped");
     [FNBFirebaseClient loginWithEmail:self.emailField.text Password:self.passwordField.text];
 
 }
@@ -42,7 +43,7 @@
 - (IBAction)continueAsGuestTapped:(id)sender {
     //Just transition to next VC
 //    [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];
 
 }
 
