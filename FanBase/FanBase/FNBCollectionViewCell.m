@@ -57,8 +57,11 @@
         self.quickAddButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.quickAddButton addTarget:self action:@selector(quickAddButtonTapped) forControlEvents:UIControlEventTouchUpInside];
         // TODO: add button image
-        [self.quickAddButton setTitle:@"QuickAddButton" forState:UIControlStateNormal];
-        self.quickAddButton.frame = CGRectMake(0, 0, 100, 100);
+        [self.quickAddButton setTitle:@"QuickAdd" forState:UIControlStateNormal];
+        self.quickAddButton.frame = CGRectMake(0, 0, 44, 44);
+        self.quickAddButton.backgroundColor = [UIColor whiteColor];
+        
+        [self.quickAddButton setAlpha:0.75];
         [self.contentView addSubview:self.quickAddButton];
     }
 }
@@ -93,6 +96,7 @@
 -(void)quickAddButtonTapped {
     //this gets triggered when QuickAddButton tapped
     NSLog(@"quick add button tapped");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"userTappedQuickAddButton" object:@[self.artist, self.artistSpotifyID]];
 }
 
 @end

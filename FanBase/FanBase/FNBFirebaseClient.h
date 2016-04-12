@@ -37,6 +37,9 @@
 
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
 
++ (void) addUser:(FNBUser *)user andArtistWithSpotifyID:(NSString *)spotifyID toDatabaseWithCompletionBlock: (void (^) (BOOL artistAddedToUserSuccessfully))block;
+
+
 #pragma mark - Adding and Deleting User and Artist Methods
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(NSDictionary *)newArtistDictionary;
 + (void) deleteCurrentUser:(FNBUser *)currentUser andArtistFromEachOthersDatabases:(NSString *)newArtistName withCompletionBlock: (void (^) (BOOL deletedArtistAndUserCompleted)) deletedArtistFromUserCompletionBlock;
@@ -47,5 +50,7 @@
 // get array of all artists from database
 + (void) getDictionaryOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSDictionary *artistsDictionary))block;
 + (void) fillDatabaseWithArrayOfArtists:(NSArray *)artistNames;
+
+
 
 @end

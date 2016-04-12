@@ -210,6 +210,56 @@
 
 #pragma mark - Artist Methods
 
++ (void) checkExistanceOfDatabaseEntryForArtistSpotifyID:(NSString *) artistSpotifyID withCompletionBlock: (void (^) (BOOL artistDatabaseExists, NSString *artistName))block {
+    Firebase *artistsRef = [self getArtistFirebaseRef];
+    
+    [artistsRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *receivedSnapshot = snapshot.value;
+        for (NSString *artistName in receivedSnapshot) {
+            NSString *spotifyIDOfArtist = receivedSnapshot[artistName][@"spotifyID"];
+            if ([spotifyIDOfArtist isEqualToString:artistSpotifyID]) {
+                
+                block(YES, artistName);
+                return;
+            }
+        }
+        block(NO, @"");
+        
+    }];
+}
+
++ (void) addUser:(FNBUser *)user andArtistWithSpotifyID:(NSString *)spotifyID toDatabaseWithCompletionBlock: (void (^) (BOOL artistAddedToUserSuccessfully))block {
+    // check if artist database exists
+    [self checkExistanceOfDatabaseEntryForArtistSpotifyID:spotifyID withCompletionBlock:^(BOOL artistDatabaseExists, NSString *artistName) {
+        
+        // if artist database doesnt exist
+        if (!artistDatabaseExists) {
+            // get spotify dictionary from Spotify
+            [FNBSpotifySearch getArtistDictionaryFromSpotifyID:spotifyID withCompletionBlock:^(BOOL gotMatchingArtist, NSDictionary *artistDictionary) {
+                if (gotMatchingArtist) {
+                    NSLog(@"this is the artist dictioanry: %@", artistDictionary);
+                    // create database entry
+                    [self makeDatabaseEntryForArtistFromSpotifyDictionary:artistDictionary withCompletionBlock:^(BOOL artistDatabaseCreated) {
+                        // then add user to the artist database and add artist to user database
+                        [self addUser:user ToExistingArtistDatabase:artistDictionary[@"name"]];
+                        [self addArtist:artistDictionary[@"name"] ToDatabaseOfUser:user];
+                        block(YES);
+                    }];
+                    
+                }
+            }];
+        }
+        else {
+            NSLog(@"The artists database already exists for spotifyID: %@", spotifyID);
+            [self addUser:user ToExistingArtistDatabase:artistName];
+            [self addArtist:artistName ToDatabaseOfUser:user];
+            block(YES);
+        }
+    }];
+
+}
+
+
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block {
     //    NSLog(@"checking existance of database. aristName = %@", artistName);
     Firebase *artistsRef = [self getArtistFirebaseRef];
@@ -285,11 +335,13 @@
 
 // helper method for addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases
 + (void) addArtist:(NSString *)artistName ToDatabaseOfUser:(FNBUser *)user {
+    NSString *formattedArtistName = [self formatedArtistName:artistName];
+    
     Firebase *usersRef = [self getUserFirebaseRef];
     Firebase *currentUserRef = [usersRef childByAppendingPath:user.userID];
     Firebase *usersArtistRef = [currentUserRef childByAppendingPath:@"artistsDictionary"];
     
-    NSDictionary *newArtistDictionary = @{artistName : @0};
+    NSDictionary *newArtistDictionary = @{formattedArtistName : @0};
     [usersArtistRef updateChildValues:newArtistDictionary];
 }
 
@@ -318,8 +370,10 @@
 
 // helper method for addCurrentUser andArtistToEachOthersDatabase
 + (void) addUser:(FNBUser *)user ToExistingArtistDatabase:(NSString *)artistName {
+    NSString *formattedArtistName = [self formatedArtistName:artistName];
+    
     Firebase *artistsRef = [self getArtistFirebaseRef];
-    Firebase *currentArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artistName]];
+    Firebase *currentArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:formattedArtistName]];
     Firebase *artistsSubscribedUsersRef = [currentArtistRef childByAppendingPath:@"subscribedUsers"];
     NSDictionary *newUserDictionary = @{user.userID : @0};
     [artistsSubscribedUsersRef updateChildValues:newUserDictionary];

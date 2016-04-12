@@ -75,6 +75,10 @@
     [super viewDidLoad];
     self.selectedArtist = @"";
     
+    // start listening to if the quickAddButton pressed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userTappedQuickAddButton:) name:@"userTappedQuickAddButton" object:nil];
+    
+    
     UISearchController *searchController =[[UISearchController alloc]initWithSearchResultsController:nil];
     searchController.dimsBackgroundDuringPresentation = NO;
     searchController.searchBar.frame = CGRectMake(0, 0, 320, 44);
@@ -84,6 +88,33 @@
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     
 
+    
+}
+
+- (void) userTappedQuickAddButton:(NSNotification *)notification {
+    NSString *nameOfArtistFromCell = [notification object][0];
+    NSString *spotifyIDOfArtistFromCell = [notification object][1];
+    NSLog(@"In discover page, received artist name: %@, and the spotifyID: %@", nameOfArtistFromCell, spotifyIDOfArtistFromCell);
+    
+    // if the user is subscribed to this artist, then delete. If the user isn't subscribe, then add
+    if ([self isUserSubscribedToArtistName:nameOfArtistFromCell]) {
+        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:nameOfArtistFromCell withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
+            if (deletedArtistAndUserCompleted) {
+                NSLog(@"You have deleted artist %@ from the Discover Page", nameOfArtistFromCell);
+                [self.tableView reloadData];
+            }
+        }];
+    }
+    else {
+        // TODO: add user to artist data
+        [FNBFirebaseClient addUser:self.currentUser andArtistWithSpotifyID:spotifyIDOfArtistFromCell toDatabaseWithCompletionBlock:^(BOOL artistAddedToUserSuccessfully) {
+            if (artistAddedToUserSuccessfully) {
+                NSLog(@"added artist and user using spotifyID");
+                [self.tableView reloadData];
+            }
+        }];
+      
+    }
 }
 
 -(BOOL)array:(NSArray *)array caseInsensitiveContainsString:(NSString *)string
@@ -152,11 +183,13 @@
             //Compiles a dictionary in specific format
             for (NSString *artistName in snapshotValue) {
                 
+                // POTENTIAL PROBLEM: ARTIST NAME IS NOT COMING FROM ARTISTINFO[@"NAME"], SO THE DISPLAYED NAME DOES NOT HAVE /$() CHARACTERS
+                
                 NSDictionary *artistInfo = snapshotValue[artistName];
                 NSArray *images = artistInfo[@"images"];
                 NSDictionary *firstImage = images.firstObject;
                 NSString *imageURL = firstImage[@"url"];
-                
+                NSString *spotifyID = artistInfo[@"spotifyID"];
                 NSArray *genres = artistInfo[@"genres"];
                 
                 NSString *artistGenre;
@@ -178,7 +211,14 @@
                         NSMutableArray *artistNames = contentObjects[0];
                         NSMutableDictionary *artistNameAndImageURL = contentObjects[1];
                         
+                        //ANDY ADDED THIS
+                        NSMutableDictionary *artistNameAndSpotifyID = contentObjects[2];
+                        
                         [artistNameAndImageURL setValue:imageURL forKey:artistName];
+                        
+                        // ANDY ADDED THIS
+                        [artistNameAndSpotifyID setValue:spotifyID forKey:artistName];
+                        
                         [artistNames addObject:artistName];
 //                        NSLog(@"\n\nself.content artistName: %@\n\n",artistName);
                         
@@ -187,13 +227,22 @@
                         NSMutableArray *contentObjects = [NSMutableArray new];
                         NSMutableArray *artistNames = [NSMutableArray new];
                         NSMutableDictionary *artistNameAndImageURL = [NSMutableDictionary new];
+                        //ANDY ADDED THIS
+                        NSMutableDictionary *artistNameAndSpotifyID = [NSMutableDictionary new];
                         
                         [artistNameAndImageURL setValue:imageURL forKey:artistName];
+                        
+                        //ANDY ADDED THIS
+                        [artistNameAndSpotifyID setValue:spotifyID forKey:artistName];
+                        
                         [artistNames addObject:artistName];
 //                        NSLog(@"\n\nFIRST TIME\nself.content artistName: %@\n\n",artistName);
                         
                         [contentObjects addObject:artistNames];
                         [contentObjects addObject:artistNameAndImageURL];
+                        
+                        // ANDY ADDED THIS
+                        [contentObjects addObject:artistNameAndSpotifyID];
                         
                         [self.content setObject:contentObjects forKey:artistGenre];
                         
@@ -211,7 +260,7 @@
         }];
         
     } withCancelBlock:^(NSError *error) {
-        NSLog(@"Error is discoverPage: %@", error.description);
+        NSLog(@"Error in discoverPage: %@", error.description);
     }];
 }
 -(BOOL)prefersStatusBarHidden {
@@ -345,24 +394,16 @@
     
     
     
+    
+    NSDictionary *artistSpotifyIDs = artistContent[2];
+    NSString *spotifyIDOfArtist = artistSpotifyIDs[artistName];
+    cell.artistSpotifyID = spotifyIDOfArtist;
+    
     // this is for the quickAddButton
     cell.isUserLoggedIn = self.currentUserIsLoggedIn;
 //    cell.isUserSubscribedToArtist = NO;
-    
-    // if the currentUser has received the subscribedArtist dictionary from Firebase
-    if (self.currentUser.artistsDictionary.count > 0) {
-        for (NSString *artistNameInUserDictionary in self.currentUser.artistsDictionary) {
-            if ([artistNameInUserDictionary isEqualToString:artistName]) {
-                cell.isUserSubscribedToArtist = YES;
-                break;
-            }
-            else {
-                cell.isUserSubscribedToArtist = NO;
-            }
-        }
-    }
-    
-    
+    cell.isUserSubscribedToArtist = [self isUserSubscribedToArtistName:artistName];
+
 
     
     
@@ -412,5 +453,24 @@
     }
 
 }
+
+- (BOOL) isUserSubscribedToArtistName:(NSString *)artistName {
+    // if the currentUser has received the subscribedArtist dictionary from Firebase
+    if (self.currentUser.artistsDictionary.count > 0) {
+        for (NSString *artistNameInUserDictionary in self.currentUser.artistsDictionary) {
+            if ([artistNameInUserDictionary isEqualToString:artistName]) {
+                return YES;
+            }
+        }
+        return NO;
+    }
+    else {
+        NSLog(@"THERE IS NOTHING IN THE USER'S ARTISTDICTIONARY!!!");
+        // need this line to compile
+        return NO;
+    }
+}
+
+
 
 @end

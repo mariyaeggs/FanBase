@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *artist;
 @property (nonatomic) BOOL isUserSubscribedToArtist;
 @property (nonatomic) BOOL isUserLoggedIn;
+@property (nonatomic, strong) NSString *artistSpotifyID;
 
 @end

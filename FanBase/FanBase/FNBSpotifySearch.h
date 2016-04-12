@@ -11,5 +11,6 @@
 @interface FNBSpotifySearch : NSObject
 
 + (void) getArrayOfMatchingArtistsFromSearch:(NSString *)searchString withCompletionBlock: (void (^) (BOOL gotMatchingArtists, NSArray *matchingArtistsArray))block;
++ (void) getArtistDictionaryFromSpotifyID:(NSString *)spotifyID withCompletionBlock: (void (^) (BOOL gotMatchingArtist, NSDictionary *artistDictionary))block;
 
 @end
