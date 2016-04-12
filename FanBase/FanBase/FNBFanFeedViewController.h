@@ -12,6 +12,7 @@
 #import <UIColor+JSQMessages.h>
 #import <JSQMessage.h>
 #import <Firebase/Firebase.h>
+#import <JSQSystemSoundPlayer/JSQSystemSoundPlayer.h>
 
 
 @interface FNBFanFeedViewController : JSQMessagesViewController

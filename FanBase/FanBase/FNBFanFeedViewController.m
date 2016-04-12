@@ -19,30 +19,40 @@
 @end
 
 @implementation FNBFanFeedViewController
--(void)viewWillAppear:(BOOL)animated {
-    self.messages = [NSMutableArray new];
-    self.rootRef = [[Firebase alloc] initWithUrl:@"https://flickering-fire-7717.firebaseio.com/"];
-    self.messagesRef = [[Firebase alloc] init];
-    
-    
-    NSLog(@"In viewWillAppear");
-    [self addMessageWithID:@"someoneElse" text:@"Hey Person!"];
-    [self addMessageWithID:self.senderId text:@"Yo"];
-    [self addMessageWithID:self.senderId text:@"I like turtles"];
-    NSLog(@"%@",self.messages);
-    [self finishReceivingMessage];
-}
+//-(void)viewWillAppear:(BOOL)animated {
+//
+//    
+//    
+//    NSLog(@"In viewWillAppear");
+//    [self addMessageWithID:@"someoneElse" text:@"Hey Person!"];
+//    [self addMessageWithID:self.senderId text:@"Yo"];
+//    [self addMessageWithID:self.senderId text:@"I like turtles"];
+//    NSLog(@"%@",self.messages);
+//    [self finishReceivingMessage];
+//}
 
 - (void)viewDidLoad {
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
+    
+    self.messages = [NSMutableArray new];
+    self.rootRef = [[Firebase alloc] initWithUrl:@"https://flickering-fire-7717.firebaseio.com/"];
+    self.messagesRef = [[Firebase alloc] init];
+    
     self.title = @"FanFeed";
-    self.senderId = @"angelirose";
-    self.senderDisplayName = @"Angelica";
+    self.senderId = @"andyNovak";
+    self.senderDisplayName = @"Andy";
     [self setupBubbles];
     
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
+    
+    self.messagesRef = [self.rootRef childByAppendingPath:@"messages"];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    [self observeMessages];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +77,9 @@
 
 -(id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
     JSQMessage *message = self.messages[indexPath.item];
-    if (message.senderId == self.senderId) {
+    NSLog(@"self.messages @indexPath.item: %@", message.senderId);
+    NSLog(@"current User = %@",self.senderId);
+    if ([message.senderId isEqualToString:self.senderId]) {
         NSLog(@"Returning outgoing Bubble Image");
         return self.outgoingBubbleImage;
         
@@ -85,6 +97,27 @@
     [self.messages addObject:message];
 }
 
+-(void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date {
+    Firebase *itemRef = self.messagesRef.childByAutoId;
+    NSDictionary *messageItem = @{
+                                  @"text": text,
+                                  @"senderId": senderId
+                                  };
+    [itemRef setValue:messageItem];
+    
+    [self finishSendingMessage];
+}
+
+-(void)observeMessages {
+   FQuery *messagesQuery = [self.messagesRef queryLimitedToLast:25];
+    [messagesQuery observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        NSString *senderId = snapshot.value[@"senderId"];
+        NSLog(@"senderID: %@",senderId);
+        NSString *text = snapshot.value[@"text"];
+        [self addMessageWithID:senderId text:text];
+        [self finishReceivingMessage];
+    }];
+}
 
 
 /*
