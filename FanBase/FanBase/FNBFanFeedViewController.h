@@ -8,7 +8,9 @@
 
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 #import <JSQMessagesBubbleImage.h>
+#import <JSQMessagesAvatarImage.h>
 #import <JSQMessagesBubbleImageFactory.h>
+#import <JSQMessagesAvatarImageFactory.h>
 #import <UIColor+JSQMessages.h>
 #import <JSQMessage.h>
 #import <Firebase/Firebase.h>
@@ -19,7 +21,7 @@
 
 @property (strong, nonatomic) NSString *senderId;
 @property (strong, nonatomic) NSString *senderDisplayName;
-
+@property (strong, nonatomic) UIImage *senderAvatar;
 
 
 @end

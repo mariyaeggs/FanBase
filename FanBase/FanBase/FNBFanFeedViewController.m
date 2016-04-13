@@ -13,11 +13,16 @@
 @property (strong, nonatomic) NSMutableArray<JSQMessage *> *messages;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImage;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImage;
+@property (strong, nonatomic) JSQMessagesAvatarImage *outgoingAvatarImage;
+@property (strong, nonatomic) JSQMessagesAvatarImage *incomingAvatarImage;
+
+
 @property (strong, nonatomic) Firebase *rootRef;
 @property (strong, nonatomic) Firebase *messagesRef;
 @property (strong, nonatomic) Firebase *userIsTypingRef;
 @property (assign, nonatomic) BOOL localTyping;
 @property (assign, nonatomic) BOOL isTyping;
+@property (strong, nonatomic) FQuery *usersTypingQuery;
 
 @end
 
@@ -44,12 +49,15 @@
     self.messagesRef = [[Firebase alloc] init];
     
     self.title = @"FanFeed";
-    self.senderId = @"andyNovak";
-    self.senderDisplayName = @"Andy";
+    self.senderId = @"angelirose";
+    self.senderDisplayName = @"Angelica";
+    self.senderAvatar = [UIImage imageNamed:@"Adele"];
+    
+    
     [self setupBubbles];
     
-    self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
+//    self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
+//    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
     
     self.messagesRef = [self.rootRef childByAppendingPath:@"messages"];
 }
@@ -70,6 +78,12 @@
     JSQMessagesBubbleImageFactory *factory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.outgoingBubbleImage = [factory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
     self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+}
+
+-(void)setupAvatars {
+    self.outgoingAvatarImage = [JSQMessagesAvatarImage avatarWithImage:[UIImage imageNamed:@"Adele"]];
+    self.incomingAvatarImage = [JSQMessagesAvatarImage avatarImageWithPlaceholder:[UIImage imageNamed:@"anonymous_avatar"]];
+    
 }
 
 -(id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -115,6 +129,14 @@
     [self finishSendingMessage];
 }
 
+//-(id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    JSQMessage *message = self.messages[indexPath.item];
+//    if ([message.senderId isEqualToString:self.senderId]) {
+//        return self.outgoingAvatarImage;
+//    }
+//    return self.incomingAvatarImage;
+//}
+
 -(void)observeMessages {
    FQuery *messagesQuery = [self.messagesRef queryLimitedToLast:25];
     [messagesQuery observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -144,7 +166,19 @@
     self.userIsTypingRef  = [typingIndicatorRef childByAppendingPath:self.senderId];
     [self.userIsTypingRef onDisconnectRemoveValue];
     
+    self.usersTypingQuery = [[typingIndicatorRef queryOrderedByValue] queryEqualToValue:@(YES)];
+    [self.usersTypingQuery observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (snapshot.childrenCount == 1 && self.isTyping) {
+            return;
+        }
+        
+        self.showTypingIndicator = snapshot.childrenCount > 0;
+        [self scrollToBottomAnimated:YES];
+    }];
 }
+
+
+
 
 
 
