@@ -101,21 +101,31 @@
         [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:nameOfArtistFromCell withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
             if (deletedArtistAndUserCompleted) {
                 NSLog(@"You have deleted artist %@ from the Discover Page", nameOfArtistFromCell);
-                [self.tableView reloadData];
+                // refresh the user
+                [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                    // make this reload just the cell
+                    [self.tableView reloadData];
+                }];
             }
         }];
     }
     else {
-        // TODO: add user to artist data
         [FNBFirebaseClient addUser:self.currentUser andArtistWithSpotifyID:spotifyIDOfArtistFromCell toDatabaseWithCompletionBlock:^(BOOL artistAddedToUserSuccessfully) {
             if (artistAddedToUserSuccessfully) {
-                NSLog(@"added artist and user using spotifyID");
-                [self.tableView reloadData];
+                NSLog(@"added artist %@ and user using spotifyID", nameOfArtistFromCell);
+                
+                // refresh the user
+                [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                    // make this reload just the cell
+                    [self.tableView reloadData];
+                }];
+
             }
         }];
       
     }
 }
+
 
 -(BOOL)array:(NSArray *)array caseInsensitiveContainsString:(NSString *)string
 {
@@ -322,6 +332,7 @@
     [cell.collectionView registerClass:[FNBCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
 
     
+    
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -395,10 +406,16 @@
     
     
     
+    
+    
+    
     NSDictionary *artistSpotifyIDs = artistContent[2];
     NSString *spotifyIDOfArtist = artistSpotifyIDs[artistName];
     cell.artistSpotifyID = spotifyIDOfArtist;
     
+    
+    // this stops the quickAddButton images from overlapping
+    [cell.quickAddButton removeFromSuperview];
     // this is for the quickAddButton
     cell.isUserLoggedIn = self.currentUserIsLoggedIn;
 //    cell.isUserSubscribedToArtist = NO;

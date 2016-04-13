@@ -16,5 +16,6 @@
 @property (nonatomic) BOOL isUserSubscribedToArtist;
 @property (nonatomic) BOOL isUserLoggedIn;
 @property (nonatomic, strong) NSString *artistSpotifyID;
+@property (nonatomic, strong) UIButton *quickAddButton;
 
 @end

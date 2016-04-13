@@ -12,7 +12,6 @@
 
 @property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) UILabel *label;
-@property (nonatomic, strong) UIButton *quickAddButton;
 
 
 @end
@@ -22,7 +21,7 @@
 
 -(id)initWithFrame:(CGRect)frame {
     
-    NSLog(@"init frame of collection view cell");
+//    NSLog(@"init frame of collection view cell");
     if (!(self=[super initWithFrame:frame])) return nil;
     
     //Programs the image view
@@ -56,27 +55,29 @@
         // add the quickAddButton
         self.quickAddButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.quickAddButton addTarget:self action:@selector(quickAddButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-        // TODO: add button image
-        [self.quickAddButton setTitle:@"QuickAdd" forState:UIControlStateNormal];
+//        [self.quickAddButton setTitle:@"QuickAdd" forState:UIControlStateNormal];
         self.quickAddButton.frame = CGRectMake(0, 0, 44, 44);
         self.quickAddButton.backgroundColor = [UIColor whiteColor];
-        
-        [self.quickAddButton setAlpha:0.75];
+        [self.quickAddButton setAlpha:0.33];
         [self.contentView addSubview:self.quickAddButton];
     }
 }
 
 -(void)setIsUserSubscribedToArtist:(BOOL)isUserSubscribedToArtist {
     _isUserSubscribedToArtist = isUserSubscribedToArtist;
+    [self.quickAddButton setImage:nil forState:UIControlStateNormal];
     if (self.isUserLoggedIn) {
+        
         // make text green if user is not subscribed, and grey if user is already subscribed
         if (isUserSubscribedToArtist) {
-            // make text grey
-            [self.quickAddButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            // make delete icon
+            [self.quickAddButton setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
         }
         else {
-            // make text green
-            [self.quickAddButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+            // make checkmark
+            [self.quickAddButton setImage:[UIImage imageNamed:@"person-add"] forState:UIControlStateNormal];
+            [self.quickAddButton setTintColor:[UIColor greenColor]];
+            
         }
     }
 }
