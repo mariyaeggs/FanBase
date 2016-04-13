@@ -22,7 +22,7 @@
 //        _imageURLSize640 = @"";
 //        _imageURLSize200 = @"";
 //        _imageURLSize64 = @"";
-        _genres = @"";
+        _genres = [NSArray new];
     }
     return self;
 }
@@ -38,7 +38,7 @@
 //        _imageURLSize640 = @"";
 //        _imageURLSize200 = @"";
 //        _imageURLSize64 = @"";
-        _genres = @"";
+        _genres = [NSArray new];
         
     }
     return self;
