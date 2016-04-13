@@ -17,7 +17,7 @@
 // this is to segue to artistMainPage
 #import "FNBArtistMainPageTableViewController.h"
 
-@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic,strong) NSArray *imageArray; //-->currently colors
 
@@ -34,6 +34,11 @@
 
 @property (nonatomic, strong) FNBUser *currentUser;
 @property (nonatomic) BOOL currentUserIsLoggedIn;
+
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UITapGestureRecognizer *dismissKeyboardTap;
+@property (nonatomic) BOOL searchFieldPopulated;
+@property (strong, nonatomic) NSArray *spotifyResultsArray;
 
 @end
 
@@ -75,57 +80,61 @@
     [super viewDidLoad];
     self.selectedArtist = @"";
     
+    self.searchFieldPopulated = NO;
+
+    
     // start listening to if the quickAddButton pressed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userTappedQuickAddButton:) name:@"userTappedQuickAddButton" object:nil];
     
-    
-    UISearchController *searchController =[[UISearchController alloc]initWithSearchResultsController:nil];
-    searchController.dimsBackgroundDuringPresentation = NO;
-    searchController.searchBar.frame = CGRectMake(0, 0, 320, 44);
-    self.tableView.tableHeaderView = searchController.searchBar;
-    
-    //Dismiss keyboard 
-    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
-    
-
-    
+    // search bar
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.searchBar.delegate = self;
+    self.tableView.tableHeaderView = self.searchBar;
 }
 
-- (void) userTappedQuickAddButton:(NSNotification *)notification {
-    NSString *nameOfArtistFromCell = [notification object][0];
-    NSString *spotifyIDOfArtistFromCell = [notification object][1];
-    NSLog(@"In discover page, received artist name: %@, and the spotifyID: %@", nameOfArtistFromCell, spotifyIDOfArtistFromCell);
+// create a tapGestureRecognizer to dismiss keyboard when click out of searchBar
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    // add tap gesture for entire page to exit the search
+    self.dismissKeyboardTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDismissKeyboardTap:)];
+    [self.view addGestureRecognizer:self.dismissKeyboardTap];
     
-    // if the user is subscribed to this artist, then delete. If the user isn't subscribe, then add
-    if ([self isUserSubscribedToArtistName:nameOfArtistFromCell]) {
-        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:nameOfArtistFromCell withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
-            if (deletedArtistAndUserCompleted) {
-                NSLog(@"You have deleted artist %@ from the Discover Page", nameOfArtistFromCell);
-                // refresh the user
-                [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
-                    // make this reload just the cell
-                    [self.tableView reloadData];
-                }];
-            }
-        }];
-    }
-    else {
-        [FNBFirebaseClient addUser:self.currentUser andArtistWithSpotifyID:spotifyIDOfArtistFromCell toDatabaseWithCompletionBlock:^(BOOL artistAddedToUserSuccessfully) {
-            if (artistAddedToUserSuccessfully) {
-                NSLog(@"added artist %@ and user using spotifyID", nameOfArtistFromCell);
-                
-                // refresh the user
-                [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
-                    // make this reload just the cell
-                    [self.tableView reloadData];
-                }];
+    return YES;
+}
+- (void) handleDismissKeyboardTap:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"anywhere tapped");
+    [self.searchBar resignFirstResponder];
 
-            }
-        }];
-      
-    }
+}
+-(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    [self.view removeGestureRecognizer:self.dismissKeyboardTap];
+    return YES;
 }
 
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+//    NSLog(@"this is from the search bar: %@", searchBar.text);
+    self.searchFieldPopulated = YES;
+    [FNBSpotifySearch getArrayOfMatchingArtistsFromSearch:searchBar.text withCompletionBlock:^(BOOL gotMatchingArtists, NSArray *matchingArtistsArray) {
+        if (gotMatchingArtists) {
+//            NSLog(@"this is the matching artists: %@", matchingArtistsArray);
+            self.spotifyResultsArray = matchingArtistsArray;
+            [self.tableView reloadData];
+        }
+        else {
+            NSLog(@"Did not get any matching artist from Spotify for your search: %@", searchBar.text);
+        }
+    }];
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (self.searchFieldPopulated && searchBar.text.length == 0) {
+        self.searchFieldPopulated = NO;
+        NSLog(@"changed the self.searchfieldPopulated to: %d", self.searchFieldPopulated);
+        [self.tableView reloadData];
+    }
+}
 
 -(BOOL)array:(NSArray *)array caseInsensitiveContainsString:(NSString *)string
 {
@@ -140,6 +149,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+
     
     //find if user is logged in, if so, get their subscribed users
     self.currentUser = [[FNBUser alloc] init];
@@ -221,12 +232,12 @@
                         NSMutableArray *artistNames = contentObjects[0];
                         NSMutableDictionary *artistNameAndImageURL = contentObjects[1];
                         
-                        //ANDY ADDED THIS
+                        
                         NSMutableDictionary *artistNameAndSpotifyID = contentObjects[2];
                         
                         [artistNameAndImageURL setValue:imageURL forKey:artistName];
                         
-                        // ANDY ADDED THIS
+                        
                         [artistNameAndSpotifyID setValue:spotifyID forKey:artistName];
                         
                         [artistNames addObject:artistName];
@@ -237,12 +248,12 @@
                         NSMutableArray *contentObjects = [NSMutableArray new];
                         NSMutableArray *artistNames = [NSMutableArray new];
                         NSMutableDictionary *artistNameAndImageURL = [NSMutableDictionary new];
-                        //ANDY ADDED THIS
+                        
                         NSMutableDictionary *artistNameAndSpotifyID = [NSMutableDictionary new];
                         
                         [artistNameAndImageURL setValue:imageURL forKey:artistName];
                         
-                        //ANDY ADDED THIS
+                        
                         [artistNameAndSpotifyID setValue:spotifyID forKey:artistName];
                         
                         [artistNames addObject:artistName];
@@ -251,7 +262,7 @@
                         [contentObjects addObject:artistNames];
                         [contentObjects addObject:artistNameAndImageURL];
                         
-                        // ANDY ADDED THIS
+                        
                         [contentObjects addObject:artistNameAndSpotifyID];
                         
                         [self.content setObject:contentObjects forKey:artistGenre];
@@ -273,10 +284,10 @@
         NSLog(@"Error in discoverPage: %@", error.description);
     }];
 }
--(BOOL)prefersStatusBarHidden {
-    
-    return YES;
-}
+//-(BOOL)prefersStatusBarHidden {
+//    
+//    return YES;
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -287,12 +298,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
+    // for search results
+    if (self.searchFieldPopulated) {
+        return 1;
+    }
+    
     // Count all keys (genres) in content dictionary
     // to establish number of sections needed in tableview
     return self.genres.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    // for search results
+    if (self.searchFieldPopulated) {
+        return @"Search Result";
+    }
+    
     if (self.genres.count > 0) {
         return self.genres[section];
     }
@@ -341,16 +363,51 @@
     
     UITableViewCell *tappedTableViewCell = (UITableViewCell *)collectionView.superview.superview;
     NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:tappedTableViewCell];
+    
+    // for search results
+    if (self.searchFieldPopulated) {
+        NSString *artistNameFromSearch = self.spotifyResultsArray[indexPath.row][@"name"];
+        NSLog(@"you selected %@", artistNameFromSearch);
+        // create a firebase entry 
+        [FNBFirebaseClient makeDatabaseEntryForArtistFromSpotifyDictionary: self.spotifyResultsArray[indexPath.row] withCompletionBlock:^(BOOL artistDatabaseCreated) {
+            if (artistDatabaseCreated) {
+                NSLog(@"Successfully made Firebase databse for searched artist: %@", artistNameFromSearch);
+                self.selectedArtist = artistNameFromSearch;
+                // only perform segue if artistName is loaded
+                if (artistNameFromSearch.length > 0) {
+                    [self performSegueWithIdentifier:@"discoverPageSegue" sender:self];
+                }
+                else {
+                    NSLog(@"SEGUE NOT HAPPENING CUS ARTIST IS NIL");
+                }
 
-    NSInteger tableViewSection = selectedIndexPath.section;
-    NSString *genre = self.genres[tableViewSection];
-    NSArray *artistContent = self.content[genre];
-    NSArray *artistNames = artistContent[0];
-    NSString *artistName = artistNames[indexPath.item];
-//    NSLog(@"this is the section %li ", selectedIndexPath.section);
-    NSLog(@"you selected: %@", artistName);
-    self.selectedArtist = artistName;
-    [self performSegueWithIdentifier:@"discoverPageSegue" sender:self];
+            }
+            else {
+                NSLog(@"couldnt make Firebase database entry for searched artist: %@", artistNameFromSearch);
+            }
+            
+            
+        }];
+    }
+    else {
+        NSInteger tableViewSection = selectedIndexPath.section;
+        NSString *genre = self.genres[tableViewSection];
+        NSArray *artistContent = self.content[genre];
+        NSArray *artistNames = artistContent[0];
+        NSString *artistName = artistNames[indexPath.item];
+        //    NSLog(@"this is the section %li ", selectedIndexPath.section);
+        NSLog(@"you selected: %@", artistName);
+        self.selectedArtist = artistName;
+        
+        // only perform segue if artistName is loaded
+        if (artistName.length > 0) {
+            [self performSegueWithIdentifier:@"discoverPageSegue" sender:self];
+        }
+        else {
+            NSLog(@"SEGUE NOT HAPPENING CUS ARTIST IS NIL");
+        }
+    }
+    
 }
 
 
@@ -369,6 +426,11 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    // for search results
+    if (self.searchFieldPopulated) {
+        return self.spotifyResultsArray.count;
+    }
+
 //    NSLog(@"\n\n\nCollectionView section: %li\n\n\n",section);
     UIView *view = [collectionView superview];
     FNBTableViewCell *cell = (FNBTableViewCell *)[view superview];
@@ -386,55 +448,80 @@
     
     FNBCollectionViewCell *cell = (FNBCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
     
-    UIView *view = [collectionView superview];
-    FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];
-    NSIndexPath *ip = [self.tableView indexPathForCell:tableViewCell];
-    NSInteger tableViewSection = ip.section;
-    NSString *genre = self.genres[tableViewSection];
-    NSArray *artistContent = self.content[genre];
-    NSArray *artistNames = artistContent[0];
-    NSString *artistName = artistNames[indexPath.item];
-    cell.artist = artistName;
-    
-    NSDictionary *artistImages = artistContent[1];
-    NSString *artistImageURL = artistImages[artistName];
-//    NSLog(@"this is the artist URL: %@", artistImageURL);
-    
-    cell.image = nil;
-    
-    
-    
-    
-    
-    
-    
-    
-    NSDictionary *artistSpotifyIDs = artistContent[2];
-    NSString *spotifyIDOfArtist = artistSpotifyIDs[artistName];
-    cell.artistSpotifyID = spotifyIDOfArtist;
-    
-    
-    // this stops the quickAddButton images from overlapping
-    [cell.quickAddButton removeFromSuperview];
-    // this is for the quickAddButton
-    cell.isUserLoggedIn = self.currentUserIsLoggedIn;
-//    cell.isUserSubscribedToArtist = NO;
-    cell.isUserSubscribedToArtist = [self isUserSubscribedToArtistName:artistName];
+    // for search results
+    if (self.searchFieldPopulated) {
+        NSLog(@"Search field populated");
+        NSString *artistNameFromSpotify = self.spotifyResultsArray[indexPath.row][@"name"];
+        
+        cell.artist = artistNameFromSpotify;
+        cell.artistSpotifyID = self.spotifyResultsArray[indexPath.row][@"id"];
+        cell.image = nil;
+        [cell.quickAddButton removeFromSuperview];
+        cell.isUserLoggedIn = self.currentUserIsLoggedIn;
+        cell.isUserSubscribedToArtist = [self isUserSubscribedToArtistName:artistNameFromSpotify];
+        
+        // if they have an image
+        if (((NSArray *)self.spotifyResultsArray[indexPath.row][@"images"]).count > 0) {
+            NSString *artistImageURLFromSpotify = self.spotifyResultsArray[indexPath.row][@"images"][0][@"url"];
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:artistImageURLFromSpotify]];
+            [self.imageDownloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+                // need to double-check that this cell is still supposed to be showing the image for the artist we just received.
+                // if cells are reused, this check will fail.
+                if([cell.artist isEqualToString:artistNameFromSpotify]) {
+                    cell.image = responseObject;
+                }
+            } failure:nil];
+            
+            cell.clipsToBounds = YES;
 
-
-    
-    
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:artistImageURL]];
-    [self.imageDownloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
-        // need to double-check that this cell is still supposed to be showing the image for the artist we just received.
-        // if cells are reused, this check will fail.
-        if([cell.artist isEqualToString:artistName]) {
-            cell.image = responseObject;
         }
-    } failure:nil];
-    
-    cell.clipsToBounds = YES;
-    
+        
+    }
+    else {
+        NSLog(@"Search field NOT populated");
+
+        UIView *view = [collectionView superview];
+        FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];
+        NSIndexPath *ip = [self.tableView indexPathForCell:tableViewCell];
+        NSInteger tableViewSection = ip.section;
+        NSString *genre = self.genres[tableViewSection];
+        NSArray *artistContent = self.content[genre];
+        NSArray *artistNames = artistContent[0];
+        NSString *artistName = artistNames[indexPath.item];
+        cell.artist = artistName;
+        
+        NSDictionary *artistImages = artistContent[1];
+        NSString *artistImageURL = artistImages[artistName];
+        //    NSLog(@"this is the artist URL: %@", artistImageURL);
+        
+        cell.image = nil;
+        
+        NSDictionary *artistSpotifyIDs = artistContent[2];
+        NSString *spotifyIDOfArtist = artistSpotifyIDs[artistName];
+        cell.artistSpotifyID = spotifyIDOfArtist;
+        
+        
+        // this stops the quickAddButton images from overlapping
+        [cell.quickAddButton removeFromSuperview];
+        // this is for the quickAddButton
+        cell.isUserLoggedIn = self.currentUserIsLoggedIn;
+        //    cell.isUserSubscribedToArtist = NO;
+        cell.isUserSubscribedToArtist = [self isUserSubscribedToArtistName:artistName];
+        
+        
+        
+        
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:artistImageURL]];
+        [self.imageDownloader downloadImageForURLRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *responseObject) {
+            // need to double-check that this cell is still supposed to be showing the image for the artist we just received.
+            // if cells are reused, this check will fail.
+            if([cell.artist isEqualToString:artistName]) {
+                cell.image = responseObject;
+            }
+        } failure:nil];
+        
+        cell.clipsToBounds = YES;
+    }
     
     return cell;
     
@@ -451,6 +538,7 @@
     UICollectionView *collectionView = (UICollectionView *)scrollView;
     NSInteger index = collectionView.tag;
     self.contentOffsetDictionary[[@(index) stringValue]] = @(horizontalOffset);
+    
 }
 
 #pragma mark - Segue
@@ -489,5 +577,39 @@
 }
 
 
+- (void) userTappedQuickAddButton:(NSNotification *)notification {
+    NSString *nameOfArtistFromCell = [notification object][0];
+    NSString *spotifyIDOfArtistFromCell = [notification object][1];
+    NSLog(@"In discover page, received artist name: %@, and the spotifyID: %@", nameOfArtistFromCell, spotifyIDOfArtistFromCell);
+    
+    // if the user is subscribed to this artist, then delete. If the user isn't subscribe, then add
+    if ([self isUserSubscribedToArtistName:nameOfArtistFromCell]) {
+        [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:nameOfArtistFromCell withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {
+            if (deletedArtistAndUserCompleted) {
+                NSLog(@"You have deleted artist %@ from the Discover Page", nameOfArtistFromCell);
+                // refresh the user
+                [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                    // make this reload just the cell
+                    [self.tableView reloadData];
+                }];
+            }
+        }];
+    }
+    else {
+        [FNBFirebaseClient addUser:self.currentUser andArtistWithSpotifyID:spotifyIDOfArtistFromCell toDatabaseWithCompletionBlock:^(BOOL artistAddedToUserSuccessfully) {
+            if (artistAddedToUserSuccessfully) {
+                NSLog(@"added artist %@ and user using spotifyID", nameOfArtistFromCell);
+                
+                // refresh the user
+                [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+                    // make this reload just the cell
+                    [self.tableView reloadData];
+                }];
+                
+            }
+        }];
+        
+    }
+}
 
 @end

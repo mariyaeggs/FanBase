@@ -308,26 +308,41 @@
 
 
 + (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary withCompletionBlock: (void (^) (BOOL artistDatabaseCreated)) makeDatabaseCompletionBlock  {
-    NSLog(@"making artist database");
+    NSLog(@"making artist database in makeDatabaseEntryForArtistFromSpotifyDictionary (FNBFirebaseClient)");
     
-    //get rid of .#$[]/ characters in artist's name
-    NSString *formatedArtistName = [self formatedArtistName:artistSpotifyDictionary[@"name"] ];
+    [self checkExistanceOfDatabaseEntryForArtistSpotifyID:artistSpotifyDictionary[@"id"] withCompletionBlock:^(BOOL artistDatabaseExists, NSString *artistName) {
+        if (!artistDatabaseExists) {
+            //get rid of .#$[]/ characters in artist's name
+            NSString *formatedArtistName = [self formatedArtistName:artistSpotifyDictionary[@"name"] ];
+            
+            Firebase *artistsRef = [self getArtistFirebaseRef];
+            Firebase *currentArtistRef = [artistsRef childByAppendingPath:formatedArtistName];
+            
+            
+            
+            
+            NSMutableDictionary *initialArtistValues = [@{@"name" : artistSpotifyDictionary[@"name"],
+                                                  @"spotifyID": artistSpotifyDictionary[@"id"] ,
+                                                  @"twitterHandle": @"",
+                                                  @"subscribedUsers" : [NSMutableDictionary new],
+                                                  @"images" : artistSpotifyDictionary[@"images"]
+                                                  } mutableCopy];
+            // protection if artist has no genres
+            if (artistSpotifyDictionary[@"genres"]) {
+                [initialArtistValues setObject:artistSpotifyDictionary[@"genres"] forKey:@"genres"];
+            }
+            [currentArtistRef setValue:initialArtistValues];
+            NSLog(@"Added Spotify artist to database");
+            makeDatabaseCompletionBlock(YES);
+
+        }
+        else {
+            NSLog(@"Artist database already exists. From makeDatabaseEntryForArtistFromSpotifyDictionary (FNBFirebaseClient)");
+            makeDatabaseCompletionBlock(YES);
+
+        }
+    }];
     
-    Firebase *artistsRef = [self getArtistFirebaseRef];
-    Firebase *currentArtistRef = [artistsRef childByAppendingPath:formatedArtistName];
-    
-    
-    //    NSLog(@"%@", artistSpotifyDictionary[@"name"]);
-    
-    NSDictionary *initialArtistValues = @{@"name" : artistSpotifyDictionary[@"name"],
-                                          @"spotifyID": artistSpotifyDictionary[@"id"] ,
-                                          @"twitterHandle": @"",
-                                          @"subscribedUsers" : [NSMutableDictionary new],
-                                          @"images" : artistSpotifyDictionary[@"images"],
-                                          @"genres" : artistSpotifyDictionary[@"genres"]};
-    [currentArtistRef setValue:initialArtistValues];
-    NSLog(@"Added Spotify artist to database");
-    makeDatabaseCompletionBlock(YES);
 }
 
 

@@ -132,7 +132,8 @@
     NSLog(@"url of user: %@", urlOfUser);
     self.userRef = [[Firebase alloc] initWithUrl:urlOfUser];
     [self.userRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"USER CHANGED. this is the new value from FNBUserProfilePageTableViewController: %@, and this is the key: %@", snapshot.value, snapshot.key);
+        NSLog(@"user changed. from the userprofilepage");
+//        NSLog(@"USER CHANGED. this is the new value from FNBUserProfilePageTableViewController: %@, and this is the key: %@", snapshot.value, snapshot.key);
         // change in username
         if ([snapshot.key isEqualToString:@"userName"]) {
             self.currentUser.userName = snapshot.value;
