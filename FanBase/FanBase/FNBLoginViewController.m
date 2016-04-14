@@ -54,6 +54,17 @@
 
 }
 
+// hide nav bar
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+// show nav bar before leaving page
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 
 - (IBAction)continueAsGuestTapped:(id)sender {
     //Just transition to next VC

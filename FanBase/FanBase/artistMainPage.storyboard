@@ -67,7 +67,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg8-hr-Dzr">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg8-hr-Dzr" userLabel="separationBar">
                                                     <rect key="frame" x="299" y="0.0" width="1" height="69"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -132,10 +132,30 @@
                                                         <segue destination="ioc-Zk-87v" kind="show" identifier="artistTop10Segue" id="e09-1b-B9B"/>
                                                     </connections>
                                                 </button>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sW7-vv-A2q" userLabel="separationBar">
+                                                    <rect key="frame" x="300" y="-1" width="1" height="70"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="Efj-BJ-Vxt"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52G-yc-wHc">
+                                                    <rect key="frame" x="412" y="20" width="76" height="30"/>
+                                                    <state key="normal" title="Chat Room"/>
+                                                    <connections>
+                                                        <action selector="chatRoomTapped:" destination="AMk-N6-4y6" eventType="touchUpInside" id="ir3-bd-lZk"/>
+                                                        <segue destination="PgS-WP-LMK" kind="show" identifier="fanFeedSegue" id="0nd-z1-yJA"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="NNG-Vw-2r0" firstAttribute="centerY" secondItem="HWC-Cs-GL4" secondAttribute="centerY" id="2i7-wY-imr"/>
+                                                <constraint firstItem="sW7-vv-A2q" firstAttribute="height" secondItem="HWC-Cs-GL4" secondAttribute="height" id="6Lo-AF-WB2"/>
+                                                <constraint firstItem="sW7-vv-A2q" firstAttribute="centerY" secondItem="HWC-Cs-GL4" secondAttribute="centerY" id="9la-ZI-6r1"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="NNG-Vw-2r0" secondAttribute="leading" id="QfQ-me-zT8"/>
+                                                <constraint firstItem="52G-yc-wHc" firstAttribute="centerY" secondItem="HWC-Cs-GL4" secondAttribute="centerY" id="ctk-0L-hEl"/>
+                                                <constraint firstItem="sW7-vv-A2q" firstAttribute="centerX" secondItem="HWC-Cs-GL4" secondAttribute="centerX" id="dOn-HC-Uvd"/>
+                                                <constraint firstItem="52G-yc-wHc" firstAttribute="centerX" secondItem="HWC-Cs-GL4" secondAttribute="centerX" multiplier="1.5" id="w0X-1f-VxC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -344,7 +364,15 @@
                 <viewControllerPlaceholder storyboardName="FNBArtistTop10" id="ioc-Zk-87v" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gas-pe-wnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="682.5" y="596"/>
+            <point key="canvasLocation" x="731" y="303"/>
+        </scene>
+        <!--FanFeed-->
+        <scene sceneID="cST-GF-HjW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FanFeed" id="PgS-WP-LMK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fsu-c5-aLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697.5" y="524"/>
         </scene>
     </scenes>
 </document>

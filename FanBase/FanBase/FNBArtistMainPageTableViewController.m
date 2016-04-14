@@ -11,6 +11,8 @@
 #import "FNBTwitterAPIClient.h"
 //this is to segue to the ArtistTop10
 #import "FNBArtistTop10TableViewController.h"
+//this is to segue to the fanFeedVC
+#import "FNBFanFeedViewController.h"
 
 @interface FNBArtistMainPageTableViewController ()
 @property (strong, nonatomic) FNBArtist *currentArtist;
@@ -71,6 +73,11 @@
             //Set the properties of this user
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL updateHappened) {
                 if (updateHappened) {
+                    
+                    //set the self.user userImage from the url
+                    NSData *userProfileImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
+                    self.currentUser.userImage = [UIImage imageWithData:userProfileImageData];
+                    
                     NSLog(@"Update happened to User");
                     // check if user is subscribed to artist
                     [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
@@ -256,6 +263,11 @@
 }
 
 
+- (IBAction)chatRoomTapped:(id)sender {
+    [self performSegueWithIdentifier:@"fanFeedSegue" sender:nil];
+}
+
+
 - (void) setTwitterCellsWithTweetsArray:(NSArray *)tweetsArray {
 //    NSLog(@"these are the tweets array: %@", tweetsArray);
     
@@ -284,6 +296,11 @@
     if ([segue.identifier isEqualToString:@"artistTop10Segue"]) {
         FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
         nextVC.recievedArtistSpotifyID = self.currentArtist.spotifyID;
+    }
+    else if ([segue.identifier isEqualToString:@"fanFeedSegue"]) {
+        FNBFanFeedViewController *nextVC = [segue destinationViewController];
+        nextVC.artist = self.currentArtist;
+        nextVC.user = self.currentUser;
     }
 }
 

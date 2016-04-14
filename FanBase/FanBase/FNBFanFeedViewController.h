@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSString *senderDisplayName;
 @property (strong, nonatomic) UIImage *senderAvatar;
 @property (strong, nonatomic) FNBArtist *artist;
+@property (strong, nonatomic) FNBUser *user;
 
 
 @end
