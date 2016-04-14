@@ -343,9 +343,7 @@
                             <outlet property="delegate" destination="i3H-E2-t3h" id="gg8-nn-Xlt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XuX-m4-dBG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="pause" id="NqZ-mD-io2"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="XuX-m4-dBG"/>
                     <connections>
                         <outlet property="artist1ImageView" destination="UT6-1a-FXZ" id="B1P-Ul-vcl"/>
                         <outlet property="artist1NameLabel" destination="yXn-Yl-lSx" id="HxP-xt-uvO"/>
@@ -380,7 +378,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2366" y="313"/>
+            <point key="canvasLocation" x="1737" y="313"/>
         </scene>
         <!--artistMainPage-->
         <scene sceneID="khm-DZ-EA4">
@@ -461,7 +459,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HzO-2x-OSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3276" y="313"/>
+            <point key="canvasLocation" x="2464" y="313"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

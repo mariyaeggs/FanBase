@@ -7,7 +7,7 @@
 //
 
 #import "APIClient.h"
-#import <Firebase.h>
+#import <Firebase/Firebase.h>
 #import "Constants.h"
 
 @interface APIClient ()

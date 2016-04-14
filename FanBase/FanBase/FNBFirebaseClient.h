@@ -33,9 +33,11 @@
 #pragma mark - Artist Methods
 + (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesCompleted)) setArtistPropertiesCompletionBlock;
 + (void) makeDatabaseEntryForArtistFromSpotifyDictionary: (NSDictionary *)artistSpotifyDictionary withCompletionBlock: (void (^) (BOOL artistDatabaseCreated)) makeDatabaseCompletionBlock;
-
-
++ (NSString *) formatedArtistName: (NSString *)artistName;
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
+
++ (void) addUser:(FNBUser *)user andArtistWithSpotifyID:(NSString *)spotifyID toDatabaseWithCompletionBlock: (void (^) (BOOL artistAddedToUserSuccessfully))block;
+
 
 #pragma mark - Adding and Deleting User and Artist Methods
 + (void) addCurrentUser:(FNBUser *)currentUser andArtistToEachOthersDatabases:(NSDictionary *)newArtistDictionary;
@@ -47,5 +49,7 @@
 // get array of all artists from database
 + (void) getDictionaryOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSDictionary *artistsDictionary))block;
 + (void) fillDatabaseWithArrayOfArtists:(NSArray *)artistNames;
+
+
 
 @end

@@ -126,7 +126,7 @@
 
     self.artistRef = [[Firebase alloc] initWithUrl:urlOfArtist];
     [self.artistRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"ARTIST CHANGED this is the new value for artist: %@, and this is the key: %@", snapshot.value, snapshot.key);
+//        NSLog(@"ARTIST CHANGED this is the new value for artist: %@, and this is the key: %@", snapshot.value, snapshot.key);
         [FNBFirebaseClient setPropertiesOfArtist:self.currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
             if (setPropertiesCompleted) {
                 [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];

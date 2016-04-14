@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     // round corners of container view
     self.containerView.layer.cornerRadius = 7.5;
     self.containerView.layer.masksToBounds = YES;
@@ -30,6 +31,7 @@
     self.loginButton.layer.cornerRadius = 5;
     self.loginButton.layer.masksToBounds = YES;
 }
+
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

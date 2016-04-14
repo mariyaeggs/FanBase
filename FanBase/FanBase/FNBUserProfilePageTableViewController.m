@@ -145,7 +145,8 @@
     NSLog(@"url of user: %@", urlOfUser);
     self.userRef = [[Firebase alloc] initWithUrl:urlOfUser];
     [self.userRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"USER CHANGED. this is the new value from FNBUserProfilePageTableViewController: %@, and this is the key: %@", snapshot.value, snapshot.key);
+        NSLog(@"user changed. from the userprofilepage");
+//        NSLog(@"USER CHANGED. this is the new value from FNBUserProfilePageTableViewController: %@, and this is the key: %@", snapshot.value, snapshot.key);
         // change in username
         if ([snapshot.key isEqualToString:@"userName"]) {
             self.currentUser.userName = snapshot.value;
@@ -336,7 +337,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // when you hit delete
-        NSString *selectedArtistName = ((FNBArtist *)self.currentUser.detailedArtistInfoArray[indexPath.row]).name;
+        NSString *selectedArtistName = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
         
         // delete appropriate things from database
         [FNBFirebaseClient deleteCurrentUser:self.currentUser andArtistFromEachOthersDatabases:selectedArtistName withCompletionBlock:^(BOOL deletedArtistAndUserCompleted) {

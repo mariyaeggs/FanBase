@@ -20,8 +20,11 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    layout.itemSize = CGSizeMake(200, 200);
+    
+    // adding -30 gets rid of the warnings
+    layout.itemSize = CGSizeMake(200-30, 200-30);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    
     self.collectionView = [[FNBIndexedCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
     
@@ -48,5 +51,7 @@
     
     [self.collectionView reloadData];
 }
+
+
 
 @end
