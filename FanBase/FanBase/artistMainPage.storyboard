@@ -8,14 +8,6 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Firebase-->
-        <scene sceneID="lbO-5E-8Hi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Firebase" id="VN1-Qf-zvC" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1XV-gi-8eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="201" y="851"/>
-        </scene>
         <!--Artist Main Page Table View Controller-->
         <scene sceneID="Anw-3h-HVT">
             <objects>
@@ -357,7 +349,6 @@
                         <outlet property="tweet3ContentTextView" destination="a5k-8P-P60" id="NLg-Q3-72C"/>
                         <outlet property="tweet3DateLabel" destination="EMd-TR-RcO" id="cKG-OC-Kya"/>
                         <outlet property="youSubscribedLabel" destination="g4Y-as-nYx" id="Da3-XE-ffJ"/>
-                        <segue destination="VN1-Qf-zvC" kind="show" identifier="goToLoginVCSegue" id="5cC-jA-fPB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbp-dT-VDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,7 +384,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBs-sR-EBd" id="jwg-9J-6Gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="107.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">
