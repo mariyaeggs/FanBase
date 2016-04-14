@@ -60,40 +60,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    NSLog(@"view will appear");
-    
-    // Check to see if presenting view controller is kind of class FNBArtistMainPageTableViewController
-    if ([self.presentingViewController isKindOfClass:[FNBArtistMainPageTableViewController class]]) {
-        NSLog(@"presenting class is of type FNBArtistMainPageTableViewController");
-        
-        // Create and add a button to the view in order to dismiss view controller
-        UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-        
-        // Add target method to handle when button is pressed in order to dismiss
-        [dismissButton addTarget:self action:@selector(dismissVC:) forControlEvents:UIControlEventTouchUpInside];
-        
-        // Add button to subview of main view
-        [self.view addSubview:dismissButton];
-        
-        // Set up design of button
-        dismissButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
-        [dismissButton setTitle:@"X" forState:UIControlStateNormal];
-        [dismissButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        // Add constraints to button to place it in top right corner
-        dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [dismissButton.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20].active = YES;
-        [dismissButton.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-20].active = YES;
-    }
-}
-
-// Target method for dismissing view controller when presenting class is FNBArtistMainPageTableViewController
--(void)dismissVC:(UIButton *)sender {
-    NSLog(@"button pressed");
-    
-    // Dismiss view controller and return to FNBArtistMainPageTableViewController
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
     
 }
 

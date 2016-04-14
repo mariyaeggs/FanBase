@@ -348,27 +348,40 @@
     
     // Get the section number to determine what section has been selected
     NSInteger section = indexPath.section;
-    
+    NSLog(@"printing indexpath.section%luXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",section);
     // Get the header section text
     NSString *sectionHeaderTitle = [tableView headerViewForSection:section].textLabel.text;
     
+    
     // Check to see if selection is in section, "Upcoming Concerts"
-    if ([sectionHeaderTitle isEqualToString:@"Upcoming Concerts"]) {
-        
-        // Reach into self.events property array and get FNBArtistEvent object at index path for row
-        FNBArtistEvent *event = self.events[indexPath.row];
-        
-        // Create an instance of FNBEventInfoVC (view controller)
-        // Use UIStoryboard class/type to create the instance
-        FNBEventInfoVC *eventInfoVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"eventInfo"];
-        
-        // Assign event value to property on eventInfoVC
-        eventInfoVC.event = event;
-        
-        // Present eventInfoVC in my window
-        [self.navigationController pushViewController:eventInfoVC animated:YES];
     
+    // IF section header text is equal to "Upcoming Conerts" AND row index is less than or equal to 2,
+    // THEN proceed with preparing to go to next VC
     
+    if ([sectionHeaderTitle isEqualToString:@"Upcoming Concerts"] && indexPath.row <= 2) {
+        
+        // Check to see if there is an event object at indexPath.row selected
+        if (self.events[indexPath.row] != nil) {
+            
+            // Reach into self.events property array and get FNBArtistEvent object at index path for row
+            FNBArtistEvent *event = self.events[indexPath.row];
+            
+            NSLog(@"printing indexPath.row: %li",indexPath.row);
+            
+            // Create an instance of FNBEventInfoVC (view controller)
+            // Use UIStoryboard class/type to create the instance
+            FNBEventInfoVC *eventInfoVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"eventInfo"];
+            
+            // Assign event value to property on eventInfoVC
+            eventInfoVC.event = event;
+            
+            // Push eventInfoVC in my window
+            [self.navigationController pushViewController:eventInfoVC animated:YES];
+        }
+        
+    } else if ([sectionHeaderTitle isEqualToString:@"Upcoming Concerts"] && indexPath.row == 3) {
+        
+        // Handle "See More"
     }
     
 }
