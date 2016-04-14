@@ -8,7 +8,7 @@
 
 #import "FNBSpotifySearch.h"
 #import <AFNetworking/AFNetworking.h>
-#import <AFHTTPSessionManager.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 @implementation FNBSpotifySearch
 

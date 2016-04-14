@@ -8,7 +8,7 @@
 
 #import "FNBArtistTop10TableViewController.h"
 #import "FNBArtistTop10Cell.h"
-#import <UIImageView+AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 #import "FNBSpotifyAPIclient.h"
 #import "FNBTopTrackDetailViewController.h"
 
