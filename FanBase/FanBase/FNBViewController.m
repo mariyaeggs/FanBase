@@ -77,8 +77,19 @@
     [super viewDidLoad];
     self.selectedArtist = @"";
     
-}
+    UISearchController *searchController =[[UISearchController alloc]initWithSearchResultsController:nil];
+    searchController.dimsBackgroundDuringPresentation = NO;
+    //searchController.searchResultsUpdater = self;
+    //searchController.delegate = self;
+    searchController.searchBar.frame = CGRectMake(0, 0, 320, 44);
+    self.tableView.tableHeaderView = searchController.searchBar;
+    
+    //Dismiss keyboard 
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+    
 
+    
+}
 -(BOOL)array:(NSArray *)array caseInsensitiveContainsString:(NSString *)string
 {
     for(NSString *arrayString in array) {
