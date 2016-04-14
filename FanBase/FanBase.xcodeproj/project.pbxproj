@@ -24,6 +24,7 @@
 		A14E4E611CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E5F1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m */; };
 		A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */; };
 		A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */; };
+		A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
 		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
@@ -93,6 +94,8 @@
 		A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBViewAllArtistsTableViewCell.m; sourceTree = "<group>"; };
 		A14F2D7E1CADC6110093D187 /* FNBSpotifySearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSpotifySearch.h; sourceTree = "<group>"; };
 		A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifySearch.m; sourceTree = "<group>"; };
+		A190B9EB1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeMoreTweetsTableViewController.h; sourceTree = "<group>"; };
+		A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeMoreTweetsTableViewController.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
 		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				A14E4E5D1CB7F3B90034FBFB /* artistMainPage.storyboard */,
+				A190B9EB1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.h */,
+				A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */,
 				A14E4E5E1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.h */,
 				A14E4E5F1CB7F3B90034FBFB /* FNBArtistMainPageTableViewController.m */,
 			);
@@ -564,6 +569,7 @@
 				ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */,
 				BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */,
 				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
+				A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */,
 				ED1787B81CB85B80008B12D9 /* Constants.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,

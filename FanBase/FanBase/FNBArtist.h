@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSMutableDictionary *subscribedUsers;
 @property (strong, nonatomic) NSArray *imagesArray;
 @property (strong, nonatomic) NSArray *genres;
-
+@property (strong, nonatomic) NSArray *tweetsArray;
 
 
 -(instancetype) initWithName:(NSString *)name;

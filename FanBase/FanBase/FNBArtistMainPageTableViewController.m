@@ -13,6 +13,8 @@
 #import "FNBArtistTop10TableViewController.h"
 //this is to segue to the fanFeedVC
 #import "FNBFanFeedViewController.h"
+//this is to segue to the fanFeedVC
+#import "FNBSeeMoreTweetsTableViewController.h"
 
 @interface FNBArtistMainPageTableViewController ()
 @property (strong, nonatomic) FNBArtist *currentArtist;
@@ -54,9 +56,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // dummy data for testing
-//    self.receivedArtistName = @"Adele";
+
 
     // load page assuming user is not logged in and not subscribed
     self.isUserSubscribedToArtist = NO;
@@ -108,11 +108,16 @@
             [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
             self.artistNameLabel.text = self.currentArtist.name;
             
-            // get tweets
-            [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
-                
-                [self setTwitterCellsWithTweetsArray:returnedArray];
+            [FNBTwitterAPIClient generateTweetsForKeyword:self.currentArtist.name completion:^(NSArray *receivedTweetsArray) {
+                self.currentArtist.tweetsArray = receivedTweetsArray;
+                [self setTwitterCellsWithTweetsArray:receivedTweetsArray];
             }];
+            
+//            // get tweets
+//            [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
+//                
+//                [self setTwitterCellsWithTweetsArray:returnedArray];
+//            }];
         }
     }];
     
@@ -278,14 +283,14 @@
     else if (tweetsArray.count <= self.arrayOfTweetContentLabels.count) {
         for (NSInteger i = 0; i < tweetsArray.count; i++) {
             ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
-            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = tweetsArray[i][@"created_at"];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , tweetsArray[i][@"created_at"]];
         }
     }
     // number of tweets received is greater than number of labels
     else {
         for (NSInteger i = 0; i < self.arrayOfTweetContentLabels.count; i++) {
             ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
-            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = tweetsArray[i][@"created_at"];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , tweetsArray[i][@"created_at"]];
         }
     }
 
@@ -301,6 +306,10 @@
         FNBFanFeedViewController *nextVC = [segue destinationViewController];
         nextVC.artist = self.currentArtist;
         nextVC.user = self.currentUser;
+    }
+    else if ([segue.identifier isEqualToString:@"seeMoreTweetsSegue"]) {
+        FNBSeeMoreTweetsTableViewController *nextVC = [segue destinationViewController];
+        nextVC.receivedArtist = self.currentArtist;
     }
 }
 
