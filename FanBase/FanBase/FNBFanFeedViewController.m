@@ -27,17 +27,18 @@
 @end
 
 @implementation FNBFanFeedViewController
-//-(void)viewWillAppear:(BOOL)animated {
-//
-//    
-//    
-//    NSLog(@"In viewWillAppear");
-//    [self addMessageWithID:@"someoneElse" text:@"Hey Person!"];
-//    [self addMessageWithID:self.senderId text:@"Yo"];
-//    [self addMessageWithID:self.senderId text:@"I like turtles"];
-//    NSLog(@"%@",self.messages);
-//    [self finishReceivingMessage];
-//}
+
+
+# pragma mark - Setter/Getter Methods
+
+-(void)setIsTyping:(BOOL)isTyping {
+    _isTyping = isTyping;
+    self.localTyping = isTyping;
+    [self.userIsTypingRef setValue:@(_isTyping)];
+    
+}
+
+# pragma mark - Setup Methods
 
 - (void)viewDidLoad {
     NSLog(@"In viewDidLoad");
@@ -55,9 +56,6 @@
     
     
     [self setupBubbles];
-    
-//    self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-//    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
     
     self.messagesRef = [self.rootRef childByAppendingPath:@"messages"];
 }
@@ -80,11 +78,7 @@
     self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
 }
 
--(void)setupAvatars {
-    self.outgoingAvatarImage = [JSQMessagesAvatarImage avatarWithImage:[UIImage imageNamed:@"Adele"]];
-    self.incomingAvatarImage = [JSQMessagesAvatarImage avatarImageWithPlaceholder:[UIImage imageNamed:@"anonymous_avatar"]];
-    
-}
+# pragma mark - Delegate methods for collectionview
 
 -(id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
     return self.messages[indexPath.item];
@@ -108,19 +102,112 @@
 }
 
 -(id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    
+    JSQMessage *message = self.messages[indexPath.item];
+    if ([message.senderId isEqualToString:self.senderId]) {
+        JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:[UIImage imageNamed:@"adele"]];
+        return image;
+    }
+    
+    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:[UIImage imageNamed:@"anonymous_avatar"]];
+    return image;
 }
 
 -(void)addMessageWithID:(NSString *)id text:(NSString *)text {
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:id senderDisplayName:@"" date:[NSDate date] text:text];
+    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:id senderDisplayName:id date:[NSDate date] text:text];
     [self.messages addObject:message];
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    JSQMessage *message = self.messages[indexPath.item];
+    if ([message.senderId isEqualToString:self.senderId]) {
+        cell.textView.textColor = [UIColor whiteColor];
+    }
+    else {
+        cell.textView.textColor = [UIColor blackColor];
+    }
+    
+    return cell;
+}
+
+-(NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath {
+    
+    JSQMessage *messageNow = self.messages[indexPath.item];
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterLongStyle];
+    [formatter setTimeZone:[NSTimeZone localTimeZone]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:messageNow.date];
+    return [[NSAttributedString alloc] initWithString:stringFromDate];
+    
+}
+
+-(NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath {
+    JSQMessage *message = self.messages[indexPath.item];
+    
+    return [[NSAttributedString alloc] initWithString:message.senderId];
+}
+
+-(CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.item == 0) {
+        return kJSQMessagesCollectionViewCellLabelHeightDefault;
+    }
+    
+    if (indexPath.item != 0) {
+        JSQMessage *messageNow = self.messages[indexPath.item];
+        JSQMessage *messageBefore = self.messages[indexPath.item-1];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterLongStyle];
+        [formatter setTimeZone:[NSTimeZone localTimeZone]];
+        
+        NSString *stringOfNow = [formatter stringFromDate:messageNow.date];
+        NSString *stringOfBefore = [formatter stringFromDate:messageBefore.date];
+        
+        
+        if (![stringOfNow isEqualToString:stringOfBefore]) {
+            return kJSQMessagesCollectionViewCellLabelHeightDefault;
+        }
+    }
+    
+    return 0.0f;
+}
+
+-(CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath {
+    JSQMessage *currentMessage = [self.messages objectAtIndex:indexPath.item];
+    if ([[currentMessage senderId] isEqualToString:self.senderId]) {
+        return 0.0f;
+    }
+    
+    if (indexPath.item - 1 > 0) {
+        JSQMessage *previousMessage = [self.messages objectAtIndex:indexPath.item - 1];
+        if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]]) {
+            return 0.0f;
+        }
+    }
+    
+    return kJSQMessagesCollectionViewCellLabelHeightDefault;
+}
+
+
+
+# pragma mark - Event listeners
+
+-(void)textViewDidChange:(UITextView *)textView {
+    [super textViewDidChange:textView];
+    self.isTyping = ![textView.text isEqualToString:@""];
 }
 
 -(void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date {
     Firebase *itemRef = self.messagesRef.childByAutoId;
     NSDictionary *messageItem = @{
                                   @"text": text,
-                                  @"senderId": senderId
+                                  @"senderId": senderId,
+                                  @"senderDisplayName":senderDisplayName
                                   };
     [itemRef setValue:messageItem];
     
@@ -137,6 +224,8 @@
 //    return self.incomingAvatarImage;
 //}
 
+# pragma mark - Observation methods
+
 -(void)observeMessages {
    FQuery *messagesQuery = [self.messagesRef queryLimitedToLast:25];
     [messagesQuery observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -146,18 +235,6 @@
         [self addMessageWithID:senderId text:text];
         [self finishReceivingMessage];
     }];
-}
-
--(void)textViewDidChange:(UITextView *)textView {
-    [super textViewDidChange:textView];
-    self.isTyping = ![textView.text isEqualToString:@""];
-}
-
--(void)setIsTyping:(BOOL)isTyping {
-        _isTyping = isTyping;
-        self.localTyping = isTyping;
-        [self.userIsTypingRef setValue:@(_isTyping)];
-    
 }
 
 -(void)observeTyping {
@@ -175,6 +252,7 @@
         self.showTypingIndicator = snapshot.childrenCount > 0;
         [self scrollToBottomAnimated:YES];
     }];
+    
 }
 
 

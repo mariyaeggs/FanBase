@@ -15,6 +15,9 @@
 #import <JSQMessage.h>
 #import <Firebase/Firebase.h>
 #import <JSQSystemSoundPlayer/JSQSystemSoundPlayer.h>
+#import <JSQMessageAvatarImageDataSource.h>
+#import <JSQMessagesCollectionViewFlowLayout.h>
+#import "FNBArtist.h"
 
 
 @interface FNBFanFeedViewController : JSQMessagesViewController
@@ -22,6 +25,7 @@
 @property (strong, nonatomic) NSString *senderId;
 @property (strong, nonatomic) NSString *senderDisplayName;
 @property (strong, nonatomic) UIImage *senderAvatar;
+@property (strong, nonatomic) FNBArtist *artist;
 
 
 @end
