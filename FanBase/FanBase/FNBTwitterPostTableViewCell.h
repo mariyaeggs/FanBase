@@ -11,7 +11,7 @@
 @interface FNBTwitterPostTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *userPicture;
 @property (strong, nonatomic) IBOutlet UILabel *userName;
-@property (strong, nonatomic) IBOutlet UILabel *userTweet;
+@property (strong, nonatomic) IBOutlet UITextView *userTweet;
 
 @end
 

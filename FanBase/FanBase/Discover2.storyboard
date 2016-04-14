@@ -37,17 +37,9 @@
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="69" height="68"/>
                                                         <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7c3-Z7-xy3">
-                                                                <rect key="frame" x="8" y="8" width="53" height="52"/>
-                                                            </imageView>
-                                                        </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <color key="backgroundColor" red="0.84894469895287961" green="0.43564303679087762" blue="0.19581285210775706" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <outlet property="interfaceBuilderImageView" destination="7c3-Z7-xy3" id="Lf0-AS-H20"/>
-                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
@@ -76,7 +68,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cql-BE-do5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="245"/>
+            <point key="canvasLocation" x="1529" y="281"/>
         </scene>
         <!--artistMainPage-->
         <scene sceneID="GNI-Yr-OVn">

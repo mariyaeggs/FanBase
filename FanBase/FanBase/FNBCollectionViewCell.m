@@ -21,7 +21,7 @@
 
 -(id)initWithFrame:(CGRect)frame {
     
-    NSLog(@"init frame of collection view cell");
+//    NSLog(@"init frame of collection view cell");
     if (!(self=[super initWithFrame:frame])) return nil;
     
     //Programs the image view
@@ -30,17 +30,56 @@
     self.imageView.clipsToBounds = YES;
     
     //Programs the label to the view
-    self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    
+    // this controls the height of the label, increase and the lable will be shorter
+    NSUInteger heightOfLabelConstant = 8;
+    self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, frame.size.height * (heightOfLabelConstant -1)/heightOfLabelConstant, frame.size.width, frame.size.height / heightOfLabelConstant)];
+    //add background to label
+    self.label.backgroundColor = [UIColor lightGrayColor];
     //Right, bottom corner alighnment
     self.label.textAlignment = NSTextAlignmentRight;
-    //[self.label.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor].active = YES;
+    
+    
+
     
     //Adds the image and label
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.label];
     
     return self;
+}
+
+-(void)setIsUserLoggedIn:(BOOL)isUserLoggedIn {
+    // have quickAddButton only if user is loggedIn
+    _isUserLoggedIn = isUserLoggedIn;
+    if (isUserLoggedIn) {
+        // add the quickAddButton
+        self.quickAddButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.quickAddButton addTarget:self action:@selector(quickAddButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+//        [self.quickAddButton setTitle:@"QuickAdd" forState:UIControlStateNormal];
+        self.quickAddButton.frame = CGRectMake(0, 0, 44, 44);
+        self.quickAddButton.backgroundColor = [UIColor whiteColor];
+        [self.quickAddButton setAlpha:0.33];
+        [self.contentView addSubview:self.quickAddButton];
+    }
+}
+
+-(void)setIsUserSubscribedToArtist:(BOOL)isUserSubscribedToArtist {
+    _isUserSubscribedToArtist = isUserSubscribedToArtist;
+    [self.quickAddButton setImage:nil forState:UIControlStateNormal];
+    if (self.isUserLoggedIn) {
+        
+        // make text green if user is not subscribed, and grey if user is already subscribed
+        if (isUserSubscribedToArtist) {
+            // make delete icon
+            [self.quickAddButton setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
+        }
+        else {
+            // make checkmark
+            [self.quickAddButton setImage:[UIImage imageNamed:@"person-add"] forState:UIControlStateNormal];
+            [self.quickAddButton setTintColor:[UIColor greenColor]];
+            
+        }
+    }
 }
 
 -(void)setImage:(UIImage *)image {
@@ -55,5 +94,10 @@
     
 }
 
+-(void)quickAddButtonTapped {
+    //this gets triggered when QuickAddButton tapped
+    NSLog(@"quick add button tapped");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"userTappedQuickAddButton" object:@[self.artist, self.artistSpotifyID]];
+}
 
 @end

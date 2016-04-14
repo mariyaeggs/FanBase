@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "FNBSpotifyTopTracks.h"
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 
 
 @interface FNBSpotifyAPIclient : NSObject

@@ -11,7 +11,7 @@
 #import "FNBTwitterAPIClient.h"
 #import "FNBTwitterPostTableViewCell.h"
 #import <AFNetworking/AFNetworking.h>
-#import <UIImageView+AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 #import "FNBBandsInTownAPIClient.h"
 #import "EventPostTableViewCell.h"
 #import "FNBEventInfoVC.h"

@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     // round corners of container view
     self.containerView.layer.cornerRadius = 7.5;
     self.containerView.layer.masksToBounds = YES;
@@ -30,6 +31,7 @@
     self.loginButton.layer.cornerRadius = 5;
     self.loginButton.layer.masksToBounds = YES;
 }
+
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -52,6 +54,17 @@
 
 }
 
+// hide nav bar
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+// show nav bar before leaving page
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 
 - (IBAction)continueAsGuestTapped:(id)sender {
     //Just transition to next VC

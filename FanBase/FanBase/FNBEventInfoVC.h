@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "FNBArtistEvent.h"
 #import <AFNetworking/AFNetworking.h>
-#import <UIImageView+AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 
 
 

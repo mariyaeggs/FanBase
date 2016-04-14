@@ -8,7 +8,7 @@
 
 #import "FNBSpotifySearch.h"
 #import <AFNetworking/AFNetworking.h>
-#import <AFHTTPSessionManager.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 @implementation FNBSpotifySearch
 
@@ -35,6 +35,29 @@
                 }
      ];
 
+}
+
+
++ (void) getArtistDictionaryFromSpotifyID:(NSString *)spotifyID withCompletionBlock: (void (^) (BOOL gotMatchingArtist, NSDictionary *artistDictionary))block{
+    NSString *stringForURL = [NSString stringWithFormat:@"https://api.spotify.com/v1/artists/%@", spotifyID];
+    
+    
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    
+    [sessionManager GET:stringForURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"no errors from searching for artist with Spotify ID ");
+        NSDictionary *artistDictionary = responseObject;
+  
+        block(YES, artistDictionary);
+        return;
+    }
+        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Error: %@", error);
+            return;
+        }
+     ];
+
+    
 }
 
 @end
