@@ -19,9 +19,6 @@
         _subscribedUsers = [NSMutableDictionary new];
         _twitterHandle = @"";
         _imagesArray = [NSArray new];
-//        _imageURLSize640 = @"";
-//        _imageURLSize200 = @"";
-//        _imageURLSize64 = @"";
         _genres = [NSArray new];
     }
     return self;
@@ -35,19 +32,12 @@
         _subscribedUsers = [NSMutableDictionary new];
         _twitterHandle = @"";
         _imagesArray = [NSArray new];
-//        _imageURLSize640 = @"";
-//        _imageURLSize200 = @"";
-//        _imageURLSize64 = @"";
         _genres = [NSArray new];
         
     }
     return self;
 }
 
-//-(instancetype) initWithSnapshot:(FDataSnapshot*)snapshot{
-//   self = [super init];
-//    self.name = snapshot.value[@"name"];
-//}
 
 -(NSDictionary*)firebaseValue{
     return @{@"name":self.name,

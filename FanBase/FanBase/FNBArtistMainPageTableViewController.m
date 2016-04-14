@@ -11,6 +11,10 @@
 #import "FNBTwitterAPIClient.h"
 //this is to segue to the ArtistTop10
 #import "FNBArtistTop10TableViewController.h"
+//this is to segue to the fanFeedVC
+#import "FNBFanFeedViewController.h"
+//this is to segue to the fanFeedVC
+#import "FNBSeeMoreTweetsTableViewController.h"
 
 @interface FNBArtistMainPageTableViewController ()
 @property (strong, nonatomic) FNBArtist *currentArtist;
@@ -52,9 +56,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // dummy data for testing
-//    self.receivedArtistName = @"Adele";
+
 
     // load page assuming user is not logged in and not subscribed
     self.isUserSubscribedToArtist = NO;
@@ -71,6 +73,11 @@
             //Set the properties of this user
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL updateHappened) {
                 if (updateHappened) {
+                    
+                    //set the self.user userImage from the url
+                    NSData *userProfileImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
+                    self.currentUser.userImage = [UIImage imageWithData:userProfileImageData];
+                    
                     NSLog(@"Update happened to User");
                     // check if user is subscribed to artist
                     [self checkIfUser:self.currentUser isSubscribedToArtistName:self.receivedArtistName];
@@ -101,11 +108,16 @@
             [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
             self.artistNameLabel.text = self.currentArtist.name;
             
-            // get tweets
-            [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
-                
-                [self setTwitterCellsWithTweetsArray:returnedArray];
+            [FNBTwitterAPIClient generateTweetsForKeyword:self.currentArtist.name completion:^(NSArray *receivedTweetsArray) {
+                self.currentArtist.tweetsArray = receivedTweetsArray;
+                [self setTwitterCellsWithTweetsArray:receivedTweetsArray];
             }];
+            
+//            // get tweets
+//            [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
+//                
+//                [self setTwitterCellsWithTweetsArray:returnedArray];
+//            }];
         }
     }];
     
@@ -150,6 +162,8 @@
 
 - (void) checkIfUser:(FNBUser *)user isSubscribedToArtistName:(NSString *)receivedArtistName {
     // check if artist has user as a subscribed Users
+    // start with no (if subscribed artists is nil)
+    self.isUserSubscribedToArtist = NO;
     
     for (NSString *userID in self.currentArtist.subscribedUsers) {
         if ([userID isEqualToString:self.currentUser.userID]) {
@@ -211,8 +225,8 @@
 - (IBAction)clickToAddTapped:(id)sender {
     if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Logged In"]) {
         NSLog(@"button tapped and you were not logged in");
-        [self performSegueWithIdentifier:@"goToLoginVCSegue" sender:nil];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
+//        [self performSegueWithIdentifier:@"goToLoginVCSegue" sender:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
     }
     else if ([self.youSubscribedLabel.text isEqualToString:@"You Are Not Subscribed"]) {
 //        NSLog(@"button tapped and you were not subscribed in");
@@ -256,6 +270,11 @@
 }
 
 
+- (IBAction)chatRoomTapped:(id)sender {
+    [self performSegueWithIdentifier:@"fanFeedSegue" sender:nil];
+}
+
+
 - (void) setTwitterCellsWithTweetsArray:(NSArray *)tweetsArray {
 //    NSLog(@"these are the tweets array: %@", tweetsArray);
     
@@ -266,14 +285,14 @@
     else if (tweetsArray.count <= self.arrayOfTweetContentLabels.count) {
         for (NSInteger i = 0; i < tweetsArray.count; i++) {
             ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
-            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = tweetsArray[i][@"created_at"];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , tweetsArray[i][@"created_at"]];
         }
     }
     // number of tweets received is greater than number of labels
     else {
         for (NSInteger i = 0; i < self.arrayOfTweetContentLabels.count; i++) {
             ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
-            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = tweetsArray[i][@"created_at"];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , tweetsArray[i][@"created_at"]];
         }
     }
 
@@ -284,6 +303,15 @@
     if ([segue.identifier isEqualToString:@"artistTop10Segue"]) {
         FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
         nextVC.recievedArtistSpotifyID = self.currentArtist.spotifyID;
+    }
+    else if ([segue.identifier isEqualToString:@"fanFeedSegue"]) {
+        FNBFanFeedViewController *nextVC = [segue destinationViewController];
+        nextVC.artist = self.currentArtist;
+        nextVC.user = self.currentUser;
+    }
+    else if ([segue.identifier isEqualToString:@"seeMoreTweetsSegue"]) {
+        FNBSeeMoreTweetsTableViewController *nextVC = [segue destinationViewController];
+        nextVC.receivedArtist = self.currentArtist;
     }
 }
 
