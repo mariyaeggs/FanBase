@@ -17,7 +17,9 @@
 #import <JSQSystemSoundPlayer/JSQSystemSoundPlayer.h>
 #import <JSQMessageAvatarImageDataSource.h>
 #import <JSQMessagesCollectionViewFlowLayout.h>
+#import "FNBFirebaseClient.h"
 #import "FNBArtist.h"
+#import "Secrets.h"
 
 
 @interface FNBFanFeedViewController : JSQMessagesViewController

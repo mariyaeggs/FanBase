@@ -19,7 +19,10 @@
 
 @property (strong, nonatomic) Firebase *rootRef;
 @property (strong, nonatomic) Firebase *messagesRef;
+@property (strong, nonatomic) Firebase *artistsRef;
+@property (strong, nonatomic) Firebase *artistSpecificRef;
 @property (strong, nonatomic) Firebase *userIsTypingRef;
+
 @property (assign, nonatomic) BOOL localTyping;
 @property (assign, nonatomic) BOOL isTyping;
 @property (strong, nonatomic) FQuery *usersTypingQuery;
@@ -43,21 +46,37 @@
 - (void)viewDidLoad {
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
-    self.localTyping = NO;
     
-    self.messages = [NSMutableArray new];
-    self.rootRef = [[Firebase alloc] initWithUrl:@"https://flickering-fire-7717.firebaseio.com/"];
-    self.messagesRef = [[Firebase alloc] init];
-    
-    self.title = @"FanFeed";
+    //Setup test data
     self.senderId = @"angelirose";
     self.senderDisplayName = @"Angelica";
     self.senderAvatar = [UIImage imageNamed:@"Adele"];
+    self.artist = [[FNBArtist alloc] initWithName:@"Adele"];
+    
+    self.localTyping = NO;
+    
+    self.messages = [NSMutableArray new];
+    self.rootRef = [[Firebase alloc] initWithUrl:ourFirebaseURL];
+    
+    self.artistsRef = [[Firebase alloc] init];
+    self.artistsRef = [self.rootRef childByAppendingPath:@"artists"];
+    
+    NSString *formattedArtistName = [FNBFirebaseClient formatedArtistName:self.artist.name];
+    
+    self.artistSpecificRef = [[Firebase alloc] init];
+    self.artistSpecificRef = [self.artistsRef childByAppendingPath:formattedArtistName];
+    
+    
+    self.messagesRef = [[Firebase alloc] init];
+    self.messagesRef = [self.artistSpecificRef childByAppendingPath:@"messages"];
+    
+    self.title = @"FanFeed";
+
     
     
     [self setupBubbles];
     
-    self.messagesRef = [self.rootRef childByAppendingPath:@"messages"];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -72,7 +91,6 @@
 }
 
 -(void)setupBubbles {
-    NSLog(@"In setupBubbles");
     JSQMessagesBubbleImageFactory *factory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.outgoingBubbleImage = [factory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
     self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -93,11 +111,9 @@
     NSLog(@"self.messages @indexPath.item: %@", message.senderId);
     NSLog(@"current User = %@",self.senderId);
     if ([message.senderId isEqualToString:self.senderId]) {
-        NSLog(@"Returning outgoing Bubble Image");
         return self.outgoingBubbleImage;
         
     }
-    NSLog(@"returning incoming Bubble Image");
     return self.incomingBubbleImage;
 }
 
@@ -216,21 +232,12 @@
     [self finishSendingMessage];
 }
 
-//-(id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    JSQMessage *message = self.messages[indexPath.item];
-//    if ([message.senderId isEqualToString:self.senderId]) {
-//        return self.outgoingAvatarImage;
-//    }
-//    return self.incomingAvatarImage;
-//}
-
 # pragma mark - Observation methods
 
 -(void)observeMessages {
    FQuery *messagesQuery = [self.messagesRef queryLimitedToLast:25];
     [messagesQuery observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         NSString *senderId = snapshot.value[@"senderId"];
-        NSLog(@"senderID: %@",senderId);
         NSString *text = snapshot.value[@"text"];
         [self addMessageWithID:senderId text:text];
         [self finishReceivingMessage];
