@@ -52,6 +52,7 @@
     FNBLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewControllerID"] ;
     //    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
     [self setEmbeddedViewController:loginVC];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) showUserMainPageVC {

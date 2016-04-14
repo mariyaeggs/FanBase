@@ -134,10 +134,21 @@
     }];
 }
 
-//-(void)viewWillDisappear:(BOOL)animated{
-//    [super viewWillDisappear:animated];
+
+// hide nav bar
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+// show nav bar before leaving page
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO];
+
 //    [self.userRef removeAllObservers];
-//}
+}
 
 - (void) addListenersForLoggedInUser {
     // start listening to changes in the username, userProfileImage, or artistDictionary

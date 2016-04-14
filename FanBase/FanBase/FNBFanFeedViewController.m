@@ -48,8 +48,8 @@
     [super viewDidLoad];
     
     //Setup test data
-    self.senderId = @"angelirose";
-    self.senderDisplayName = @"Angelica";
+    self.senderId = @"ANDY";
+    self.senderDisplayName = @"andy";
     self.senderAvatar = [UIImage imageNamed:@"Adele"];
     self.artist = [[FNBArtist alloc] initWithName:@"Adele"];
     

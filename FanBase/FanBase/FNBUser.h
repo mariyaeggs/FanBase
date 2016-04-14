@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Firebase/Firebase.h>
 #import "FNBArtist.h"
+#import <UIKit/UIKit.h>
 
 @interface FNBUser : NSObject
 @property (strong, nonatomic) NSMutableDictionary *artistsDictionary;
@@ -19,9 +20,10 @@
 @property (strong, nonatomic) NSString *profileImageURL;
 @property (strong, nonatomic) NSArray *detailedArtistInfoArray;
 @property (strong, nonatomic) NSArray *rankingAndImagesForEachArtist;
+@property (strong, nonatomic) UIImage *userImage;
+
 
 -(instancetype)init;
-//-(instancetype)initWithAuthData:(FAuthData *)authData;
 - (NSArray *) getArtistInfoForLabels;
 
 @end
