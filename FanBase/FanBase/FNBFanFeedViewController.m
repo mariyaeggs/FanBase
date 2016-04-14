@@ -22,10 +22,13 @@
 @property (strong, nonatomic) Firebase *artistsRef;
 @property (strong, nonatomic) Firebase *artistSpecificRef;
 @property (strong, nonatomic) Firebase *userIsTypingRef;
+@property (strong, nonatomic) Firebase *usersRef;
 
 @property (assign, nonatomic) BOOL localTyping;
 @property (assign, nonatomic) BOOL isTyping;
 @property (strong, nonatomic) FQuery *usersTypingQuery;
+
+@property (strong, nonatomic) FNBUser *otherUser;
 
 @end
 
@@ -48,10 +51,22 @@
     [super viewDidLoad];
     
     //Setup test data
-    self.senderId = @"ANDY";
-    self.senderDisplayName = @"andy";
-    self.senderAvatar = [UIImage imageNamed:@"Adele"];
-    self.artist = [[FNBArtist alloc] initWithName:@"Adele"];
+
+//    self.user = [[FNBUser alloc] init];
+//    self.user.userName = @"angelirose";
+////    self.user.userID = @"b45fb6fb-56eb-42dc-821c-407fd33bae34";
+////    self.user.profileImageURL = @"https://scontent-lga3-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/10285440_10103454023960116_6024035997059348328_o.jpg";
+////    self.user.userImage = [UIImage imageNamed:@"adele"];
+//    
+//    self.user.userID = @"1a65523f-3c6c-4dff-a45d-843b52e56470";
+//    self.user.profileImageURL = @"https://scontent-lga3-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/10285440_10103454023960116_6024035997059348328_o.jpg";
+//    self.user.userImage = [UIImage imageNamed:@"adele"];
+    
+    self.senderId = self.user.userID;
+    self.senderDisplayName = self.user.userName;
+    self.senderAvatar = self.user.userImage;
+    
+//    self.artist = [[FNBArtist alloc] initWithName:@"Adele"];
     
     self.localTyping = NO;
     
@@ -66,9 +81,13 @@
     self.artistSpecificRef = [[Firebase alloc] init];
     self.artistSpecificRef = [self.artistsRef childByAppendingPath:formattedArtistName];
     
-    
     self.messagesRef = [[Firebase alloc] init];
     self.messagesRef = [self.artistSpecificRef childByAppendingPath:@"messages"];
+    
+    self.usersRef = [[Firebase alloc] init];
+    self.usersRef = [self.rootRef childByAppendingPath:@"users"];
+    
+    
     
     self.title = @"FanFeed";
 
@@ -120,17 +139,47 @@
 -(id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     JSQMessage *message = self.messages[indexPath.item];
-    if ([message.senderId isEqualToString:self.senderId]) {
-        JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:[UIImage imageNamed:@"adele"]];
-        return image;
-    }
     
-    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:[UIImage imageNamed:@"anonymous_avatar"]];
+    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:[message.senderDisplayName substringToIndex:1] backgroundColor:[UIColor lightGrayColor] textColor:[UIColor blackColor] font:[UIFont fontWithName:@"Avenir" size:8.0] diameter:10];
+    
+//    if ([message.senderId isEqualToString:self.senderId]) {
+//        UIImage *regImage = [JSQMessagesAvatarImageFactory circularAvatarImage:self.senderAvatar withDiameter:10];
+//        JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:regImage];
+//        return image;
+//    }
+////    NSDictionary *userInfo = [NSDictionary new];
+//    Firebase *userRef = [self.usersRef childByAppendingPath:self.user.userID];
+////    FQuery *query = [self.usersRef queryEqualToValue:self.user.userID];
+//    
+//    [userRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        NSLog(@"SnapShot: %@", snapshot);
+//        
+//        NSLog(@"Snapshot value: %@",snapshot.value);
+//        NSDictionary *snap = snapshot.value;
+//        NSLog(@"NSDictionary snap: %@",snap);
+//        
+//        self.otherUser.profileImageURL = [snap valueForKey:];
+//        
+//        NSLog(@"%@", self.otherUser.profileImageURL);
+//    
+//    }];
+//    
+//    
+//    UIImage *regImageNonCircle = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.otherUser.profileImageURL]]];
+//    NSLog(@"UIImage: %@", regImageNonCircle);
+//    if (regImageNonCircle != nil) {
+//        UIImage *regImage = [JSQMessagesAvatarImageFactory circularAvatarImage:regImageNonCircle withDiameter:10];
+//        JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:regImage];
+//        return image;
+//    }
+//    
+////    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarImageWithPlaceholder:[UIImage imageNamed:@"anonymous-avatar"]];
+
     return image;
 }
 
--(void)addMessageWithID:(NSString *)id text:(NSString *)text {
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:id senderDisplayName:id date:[NSDate date] text:text];
+-(void)addMessageWithID:(NSString *)id displayName:(NSString *)displayName text:(NSString *)text {
+    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:id senderDisplayName:displayName date:[NSDate date] text:text];
     [self.messages addObject:message];
 }
 
@@ -164,8 +213,10 @@
 -(NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath {
     JSQMessage *message = self.messages[indexPath.item];
     
-    return [[NSAttributedString alloc] initWithString:message.senderId];
+    return [[NSAttributedString alloc] initWithString:message.senderDisplayName];
 }
+
+
 
 -(CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -218,13 +269,16 @@
     self.isTyping = ![textView.text isEqualToString:@""];
 }
 
+
 -(void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date {
     Firebase *itemRef = self.messagesRef.childByAutoId;
     NSDictionary *messageItem = @{
                                   @"text": text,
                                   @"senderId": senderId,
-                                  @"senderDisplayName":senderDisplayName
+                                  @"senderDisplayName":senderDisplayName,
+                                  @"senderAvatarURL":self.user.profileImageURL
                                   };
+    
     [itemRef setValue:messageItem];
     
     self.isTyping = NO;
@@ -238,8 +292,9 @@
    FQuery *messagesQuery = [self.messagesRef queryLimitedToLast:25];
     [messagesQuery observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         NSString *senderId = snapshot.value[@"senderId"];
+        NSString *displayName = snapshot.value[@"senderDisplayName"];
         NSString *text = snapshot.value[@"text"];
-        [self addMessageWithID:senderId text:text];
+        [self addMessageWithID:senderId displayName:displayName text:text];
         [self finishReceivingMessage];
     }];
 }
