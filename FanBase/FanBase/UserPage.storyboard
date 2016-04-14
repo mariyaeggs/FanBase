@@ -343,7 +343,9 @@
                             <outlet property="delegate" destination="i3H-E2-t3h" id="gg8-nn-Xlt"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="XuX-m4-dBG"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="artist1ImageView" destination="UT6-1a-FXZ" id="B1P-Ul-vcl"/>
                         <outlet property="artist1NameLabel" destination="yXn-Yl-lSx" id="HxP-xt-uvO"/>
