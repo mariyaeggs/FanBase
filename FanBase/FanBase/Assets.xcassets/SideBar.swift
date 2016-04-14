@@ -21,10 +21,10 @@ import UIKit
 class SideBar: NSObject, SideBarTableViewControllerDelegate {
     
     // Bar width
-    let barWidth:CGFloat = 150.0 // px
+    let barWidth:CGFloat = 150.0// px
     
     // Top inset
-    let sideBarTableViewTopInset:CGFloat = 64.0 // px
+    let sideBarTableViewTopInset:CGFloat = 64.0// px
     
     // Container view for the tableViewController
     let sideBarContainerView:UIView = UIView()
@@ -63,12 +63,12 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         
         // Right swipe gesture displays menu
         let displayGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
-        displayGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         originView.addGestureRecognizer(displayGestureRecognizer)
         
         // Left swipe hides gesture side menu
         let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
+        
         originView.addGestureRecognizer(hideGestureRecognizer)
     }
     
@@ -76,7 +76,8 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     func setUpSideBarMenu() {
         // Adds frame to side bar menu
         sideBarContainerView.frame = CGRectMake(-barWidth-1, originView.frame.origin.y, barWidth, originView.frame.size.height)
-        
+       // sideBarContainerView.frame = CGRectMake(400, originView.frame.origin.y, barWidth, originView.frame.size.height)
+
         // Background color of side bar menu
         sideBarContainerView.backgroundColor = UIColor.grayColor()
        
@@ -95,7 +96,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         sideBarTableViewController.delegate = self
         sideBarTableViewController.tableView.frame = sideBarContainerView.bounds
         sideBarTableViewController.tableView.clipsToBounds = false
-        sideBarTableViewController.tableView.backgroundColor = UIColor.greenColor()
+
         // The style for cells used as separators. None in our side bar menu
         sideBarTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         sideBarTableViewController.tableView.backgroundColor = UIColor.clearColor()
@@ -109,6 +110,34 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         sideBarTableViewController.tableView.reloadData()
         sideBarContainerView.addSubview(sideBarTableViewController.tableView)
         
+        // Initialize button
+        let logoutButton = UIButton()
+        
+        // Set up button properties and size
+        logoutButton.setTitle("Logout", forState: .Normal)
+        logoutButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        let size:CGSize = logoutButton.intrinsicContentSize()
+        logoutButton.frame = CGRectMake(0, 0, size.width, size.height)
+        
+        // Add target function for button
+        logoutButton.addTarget(self, action: #selector(SideBar.pressed(_:)), forControlEvents: .TouchUpInside)
+        
+        // Add button to container view
+        sideBarContainerView.addSubview(logoutButton)
+        
+        // Add constraints to button with padding
+        let padding:CGFloat = 10
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false;
+        logoutButton.leftAnchor.constraintEqualToAnchor(sideBarContainerView.leftAnchor, constant: padding).active = true
+        logoutButton.bottomAnchor.constraintEqualToAnchor(sideBarContainerView.bottomAnchor, constant: -(sideBarTableViewTopInset + padding)).active = true
+        self.sideBarContainerView.layoutIfNeeded()
+    
+    }
+    
+    func pressed(sender: UIButton!) {
+        print("Logout successful")
+        
+        // Add logout functionality here
         
     }
     
@@ -117,6 +146,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         
         // Checks which direction swipe occurs 
         if recognizer.direction == UISwipeGestureRecognizerDirection.Left {
+        //if recognizer.direction == UISwipeGestureRecognizerDirection.Right {
              // Hide side bar menu
             showSideBarMenu(false)
             
@@ -124,7 +154,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
             delegate?.sideBarWillClose?()
             
         } else {
-            // Hide side bar menu
+            // Show side bar menu
             showSideBarMenu(true)
             
             // Call on optinoal delegate to hide side bar menu
@@ -143,12 +173,18 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         
         // If menu should open, gravity of animation --> float = 0.5 else float = -0.5
         let gravityOfXCoordinate:CGFloat = (shouldOpen) ? 0.5 : -0.5
+        //let gravityOfXCoordinate:CGFloat = (shouldOpen) ? -0.5 : 0.5
+
         
         // If menu should open, magnitude of animation --> flaot = 20.0 else flaot = -20.0
         let magnitudeOfTheGavityOnPull:CGFloat = (shouldOpen) ? 20.0  : -20.0
-        
+        //let magnitudeOfTheGavityOnPull:CGFloat = (shouldOpen) ? -20.0  : 20.0
+
         // Defines boundaries of the side bar menu and its collision with the main view
-        let boundaryX:CGFloat = (shouldOpen) ? barWidth : -barWidth-1
+        let boundaryX:CGFloat = (shouldOpen) ? barWidth : -barWidth-1 
+        //let boundaryX:CGFloat = (shouldOpen) ? 250 : -barWidth-1
+
+
         
         // Initializes gravity behavior with an array of dynamic items
         let gravityBehavior:UIGravityBehavior = UIGravityBehavior (items:[sideBarContainerView])
@@ -171,7 +207,6 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         let sideBarBehavior:UIDynamicItemBehavior = UIDynamicItemBehavior(items:[sideBarContainerView])
         sideBarBehavior.elasticity = 0.3
         animator.addBehavior(sideBarBehavior)
-//        sideBarTableViewController.tableView.frame =  sideBarContainerView.frame
 
     }
     

@@ -29,13 +29,9 @@ class SideBarTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -63,7 +59,7 @@ class SideBarTableViewController: UITableViewController {
             let selectedView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: cell!.frame.size.width, height: cell!.frame.size.height))
             
             // Adjust view
-            selectedView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.3)
+            selectedView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.3)
             
             // Add selectedView to cell 
             cell!.selectedBackgroundView = selectedView
