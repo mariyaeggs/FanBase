@@ -140,7 +140,7 @@
     
     JSQMessage *message = self.messages[indexPath.item];
     
-    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:[message.senderDisplayName substringToIndex:1] backgroundColor:[UIColor lightGrayColor] textColor:[UIColor blackColor] font:[UIFont fontWithName:@"Avenir" size:8.0] diameter:10];
+    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:[[message.senderDisplayName substringToIndex:1] uppercaseString] backgroundColor:[UIColor lightGrayColor] textColor:[UIColor blackColor] font:[UIFont fontWithName:@"Helvetica" size:8.0] diameter:10];
     
 //    if ([message.senderId isEqualToString:self.senderId]) {
 //        UIImage *regImage = [JSQMessagesAvatarImageFactory circularAvatarImage:self.senderAvatar withDiameter:10];
@@ -317,6 +317,15 @@
     
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+    if( [self.inputToolbar.contentView.textView isFirstResponder] )
+    {
+        [self.inputToolbar.contentView.textView resignFirstResponder];
+    }
+}
 
 
 
