@@ -121,9 +121,9 @@
 
 - (IBAction)play_pauseButton:(id)sender {
     
-    NSLog(@"HEYYYYYYY!");
     
     UIButton *playButton = sender;
+    NSLog(@"Value for sender%@",sender);
     UIView *cellContentView = [playButton superview];
     FNBArtistTop10Cell *cell = (FNBArtistTop10Cell*)[cellContentView superview];
     NSURL *url = [NSURL URLWithString:cell.trackSampleURL];

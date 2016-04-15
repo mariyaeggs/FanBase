@@ -18,6 +18,7 @@
 #import "FNBFanFeedViewController.h"
 //this is to segue to the fanFeedVC
 #import "FNBSeeMoreTweetsTableViewController.h"
+#import "FNBArtistNewsTableViewController.h"
 
 @interface FNBArtistMainPageTableViewController ()
 @property (strong, nonatomic) FNBArtist *currentArtist;
@@ -400,12 +401,19 @@
         
     } else if ([sectionHeaderTitle isEqualToString:@"Upcoming Concerts"] && indexPath.row == 3) {
         
-        // Handle "See More"
-    }
+        
+        FNBArtistNewsTableViewController *eventsViewController = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"artistNews"];
+        // Assign event value to property on eventInfoVC
+        eventsViewController.eventsArray = self.events;
+        // Push eventInfoVC in my windows
+        
+        [self.navigationController pushViewController:eventsViewController animated:YES];
     
+
+
 }
 
-
+}
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"artistTop10Segue"]) {
         FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
