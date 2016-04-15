@@ -15,7 +15,7 @@
 //#import "FNBArtistTop10TableViewController.h"
 // this is to segue to the ArtistMainPage
 #import "FNBArtistMainPageTableViewController.h"
-
+#import "FNBBandsInTownAPIClient.h"
 
 @interface FNBUserProfilePageTableViewController ()
 
@@ -89,22 +89,13 @@
             self.currentUser = [[FNBUser alloc] init];
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                 if (completedSettingUsersProperties) {
+                    [FNBBandsInTownAPIClient generateEventsForArtists:@[@"Coldplay", @"Adele"] nearLocation:nil withinRadius:nil completion:^(NSArray * _Nullable receivedArray ){
+                        NSLog(@"here we are");
+                    }];
+                
                     [self addListenersForLoggedInUser];
                     [self updateUserPicNameAndNumberOfArtists];
                     [self.tableView reloadData];
-
-//                    [self updateUI];
-                    // get an array of artists that the user is subscribed to filled with detailed info
-//                    [FNBFirebaseClient getADetailedArtistArrayFromUserArtistDictionary:self.currentUser.artistsDictionary withCompletionBlock:^(BOOL gotDetailedArray, NSArray *arrayOfArtists) {
-//                        if (gotDetailedArray) {
-//                            self.currentUser.detailedArtistInfoArray = arrayOfArtists;
-//                            
-//                            // get users rankings for each of their subscribed artists
-//                            self.currentUser.rankingAndImagesForEachArtist = [self.currentUser getArtistInfoForLabels];
-//                            
-//                            [self updateUI];
-//                        }
-//                    }];
                 }
             }];
             

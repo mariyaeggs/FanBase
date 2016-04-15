@@ -14,4 +14,8 @@
 
 +(void)generateEventsForArtist:(NSString *)artistName completion:(void(^)(NSArray *))completionBlock;
 
+//+(void)generateEventsForArtist:(NSString *)artistName nearLocation:(nullable NSString *)location withinRadius:(nullable NSString *)radius completion:(void (^)( NSArray *))completionBlock;
+
++(void)generateEventsForArtists:(nonnull NSArray *)artistNamesArray nearLocation:(nullable NSString *)location withinRadius:(nullable NSString *)radius completion:(nullable void (^)( NSArray * _Nullable ))completionBlock ;
+
 @end

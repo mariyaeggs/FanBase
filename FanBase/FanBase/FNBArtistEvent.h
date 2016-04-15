@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSDictionary *venue;
 @property (assign, nonatomic) BOOL isStarred;
 @property (strong, nonatomic) NSString *artistImageURL;
+@property (strong, nonatomic) NSString *unformattedDateOfConcert;
 
 -(instancetype)initWithEventTitle:(NSString *)eventTitle
                              date:(NSString *)dateOfConcert
