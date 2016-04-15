@@ -16,6 +16,7 @@
     STTwitterAPI *twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:TwitterClientID consumerSecret:TwitterSecret];
     
     [twitterAPI getSearchTweetsWithQuery:keyword successBlock:^(NSDictionary *searchMetadata, NSArray *statuses) {
+//        NSLog(@"these are the statuses: %@", statuses);
         completionBlock(statuses);
     } errorBlock:nil];
     
@@ -24,6 +25,7 @@
 + (void) generateTweetsOfUsername:(NSString *)username completion:(void(^)(NSArray *))completionBlock {
     STTwitterAPI *twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:TwitterClientID consumerSecret:TwitterSecret];
     [twitterAPI getUserTimelineWithScreenName:username
+     
                               successBlock:^(NSArray *statuses) {
                                   completionBlock(statuses);
                                   
@@ -34,6 +36,8 @@
                               }];
 
 }
+
+
 
 
 @end
