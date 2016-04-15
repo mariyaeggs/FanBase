@@ -89,7 +89,7 @@
     
     
     
-    self.title = @"FanFeed";
+    self.title = [NSString stringWithFormat:@"FanFeed // %@", self.artist.name];
 
     
     

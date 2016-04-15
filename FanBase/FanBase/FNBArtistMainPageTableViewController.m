@@ -264,7 +264,7 @@
 
 
 - (IBAction)chatRoomTapped:(id)sender {
-    [self performSegueWithIdentifier:@"fanFeedSegue" sender:nil];
+//    [self performSegueWithIdentifier:@"fanFeedSegue" sender:nil];
 }
 
 
