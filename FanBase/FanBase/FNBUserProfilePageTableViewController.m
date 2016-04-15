@@ -10,6 +10,7 @@
 #import "FNBFirebaseClient.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
+#import "FanBase-Swift.h"
 
 //this is to segue to the ArtistTop10
 //#import "FNBArtistTop10TableViewController.h"
@@ -17,7 +18,7 @@
 #import "FNBArtistMainPageTableViewController.h"
 #import "FNBBandsInTownAPIClient.h"
 
-@interface FNBUserProfilePageTableViewController ()
+@interface FNBUserProfilePageTableViewController () <SideBarDelegate>
 
 @property (strong, nonatomic) FNBUser *currentUser;
 
@@ -53,14 +54,26 @@
 @property (strong, nonatomic) NSArray *arrayOfArtistRankingLabels;
 
 @property (strong, nonatomic) Firebase *userRef;
+@property (nonatomic, strong) SideBar *sideBar;
 
 @property (strong, nonatomic) NSString *selectedArtistSpotifyIDToSendToNextVC;
 @end
 
 @implementation FNBUserProfilePageTableViewController
 
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Call the sidebar menu function
+    
+    // Initialize side bar 
+    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    self.sideBar.delegate = self;
+    
     
     // set the artistLabels and artistImageViews of the cells
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
@@ -75,6 +88,11 @@
         artistImage.layer.cornerRadius = artistImage.frame.size.height / 2;
         artistImage.layer.masksToBounds = YES;
     }
+}
+
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
 }
 
 
@@ -105,10 +123,6 @@
             NSLog(@"This is a guest in the User Profile Page");
         }
     }];
-
-    
- 
-
 }
 
 
