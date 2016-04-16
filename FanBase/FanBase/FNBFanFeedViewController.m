@@ -87,15 +87,9 @@
     self.usersRef = [[Firebase alloc] init];
     self.usersRef = [self.rootRef childByAppendingPath:@"users"];
     
-    
-    
     self.title = [NSString stringWithFormat:@"FanFeed // %@", self.artist.name];
-
-    
     
     [self setupBubbles];
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
