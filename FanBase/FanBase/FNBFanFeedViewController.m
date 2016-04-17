@@ -50,18 +50,6 @@
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
     
-    //Setup test data
-
-//    self.user = [[FNBUser alloc] init];
-//    self.user.userName = @"angelirose";
-////    self.user.userID = @"b45fb6fb-56eb-42dc-821c-407fd33bae34";
-////    self.user.profileImageURL = @"https://scontent-lga3-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/10285440_10103454023960116_6024035997059348328_o.jpg";
-////    self.user.userImage = [UIImage imageNamed:@"adele"];
-//    
-//    self.user.userID = @"1a65523f-3c6c-4dff-a45d-843b52e56470";
-//    self.user.profileImageURL = @"https://scontent-lga3-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/10285440_10103454023960116_6024035997059348328_o.jpg";
-//    self.user.userImage = [UIImage imageNamed:@"adele"];
-    
     self.senderId = self.user.userID;
     self.senderDisplayName = self.user.userName;
     self.senderAvatar = self.user.userImage;
@@ -73,7 +61,7 @@
     self.messages = [NSMutableArray new];
     self.rootRef = [[Firebase alloc] initWithUrl:ourFirebaseURL];
     
-    self.artistsRef = [[Firebase alloc] init];
+    self.artistsRef = [[Firebase alloc] init]; 
     self.artistsRef = [self.rootRef childByAppendingPath:@"artists"];
     
     NSString *formattedArtistName = [FNBFirebaseClient formatedArtistName:self.artist.name];
