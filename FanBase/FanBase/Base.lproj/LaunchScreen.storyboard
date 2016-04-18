@@ -13,31 +13,33 @@
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" alpha="0.94999999999999996" contentMode="scaleToFill" semanticContentAttribute="playback" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_1468" translatesAutoresizingMaskIntoConstraints="NO" id="qzA-mO-0Fp">
-                                <rect key="frame" x="170" y="153" width="261" height="293"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="handsLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-pW-Yl9">
+                                <rect key="frame" x="37" y="184" width="300" height="300"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.75686274509999996" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="261" id="4jf-j0-9cV"/>
-                                    <constraint firstAttribute="height" constant="293" id="dxx-L9-TBc"/>
+                                    <constraint firstAttribute="height" constant="300" id="4Zu-yb-y0d"/>
+                                    <constraint firstAttribute="width" constant="300" id="LhB-KW-3sc"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16470588235294117" green="1" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.66666666669999997" green="0.75686274509999996" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="qzA-mO-0Fp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gEI-WP-4jx"/>
-                            <constraint firstItem="qzA-mO-0Fp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="taS-sk-SLK"/>
+                            <constraint firstItem="jAc-pW-Yl9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="N8B-qo-QEw"/>
+                            <constraint firstItem="jAc-pW-Yl9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Pi0-HX-5oq"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="385"/>
+            <point key="canvasLocation" x="322.5" y="384.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="noun_1468" width="1200" height="1200"/>
+        <image name="handsLogo.png" width="3000" height="3019"/>
     </resources>
 </document>

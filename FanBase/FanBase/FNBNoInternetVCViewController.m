@@ -1,21 +1,25 @@
 //
-//  SlideMenuViewController.m
+//  FNBNoInternetVCViewController.m
 //  FanBase
 //
-//  Created by Mariya Eggensperger on 4/12/16.
+//  Created by Angelica Bato on 4/18/16.
 //  Copyright © 2016 Angelica Bato. All rights reserved.
 //
 
-#import "SlideMenuViewController.h"
+#import "FNBNoInternetVCViewController.h"
 
-@interface SlideMenuViewController ()
+@interface FNBNoInternetVCViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *noInternetImage;
+@property (strong, nonatomic) IBOutlet UILabel *descNoInternet;
 
 @end
 
-@implementation SlideMenuViewController
+@implementation FNBNoInternetVCViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.noInternetImage.image = [UIImage imageNamed:@"No_Network"];
     // Do any additional setup after loading the view.
 }
 

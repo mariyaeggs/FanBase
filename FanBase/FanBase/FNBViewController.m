@@ -3,8 +3,7 @@
 //  FanBase
 //
 //  Created by Mariya Eggensperger on 4/6/16.
-//  Copyright © 2016 Angelica Bato. All rights reserved.
-//
+
 
 #import "FNBViewController.h"
 #import "FNBCollectionViewCell.h"
@@ -14,13 +13,15 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBFirebaseClient.h"
 #import <Firebase.h>
+#import "FanBase-Bridging-Header.h"
+#import "FanBase-Swift.h"
+
 // this is to segue to artistMainPage
 #import "FNBArtistMainPageTableViewController.h"
 
-@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
+@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate>
 
-@property (nonatomic,strong) NSArray *imageArray; //-->currently colors
-
+@property (nonatomic,strong) NSArray *imageArray;
 @property (nonatomic, strong) NSArray *genres;
 @property (nonatomic, strong) NSArray *genresForComparison;
 @property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
@@ -39,6 +40,9 @@
 @property (strong, nonatomic) UITapGestureRecognizer *dismissKeyboardTap;
 @property (nonatomic) BOOL searchFieldPopulated;
 @property (strong, nonatomic) NSArray *spotifyResultsArray;
+
+// Side Bar property
+@property (nonatomic,strong) SideBar *sideBar;
 
 @end
 
@@ -72,17 +76,16 @@
     
     self.contentOffsetDictionary = [NSMutableDictionary dictionary];
     
-    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.selectedArtist = @"";
     
     self.searchFieldPopulated = NO;
 
-    
     // start listening to if the quickAddButton pressed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userTappedQuickAddButton:) name:@"userTappedQuickAddButton" object:nil];
     
@@ -91,7 +94,10 @@
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
 }
-
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
+}
 // create a tapGestureRecognizer to dismiss keyboard when click out of searchBar
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     // add tap gesture for entire page to exit the search
@@ -109,8 +115,6 @@
     [self.view removeGestureRecognizer:self.dismissKeyboardTap];
     return YES;
 }
-
-
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
@@ -150,8 +154,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-
+    // Initialize side bar
+    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    self.sideBar.delegate = self;
     
+
     //find if user is logged in, if so, get their subscribed users
     self.currentUser = [[FNBUser alloc] init];
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
@@ -179,8 +186,6 @@
         }
     }];
     
-    
-    
     self.content = [NSMutableDictionary new];
     
     self.genres = @[@"Pop", @"Hip Hop", @"Country", @"EDM/Dance", @"Rock", @"Latino", @"Soul", @"Folk & American", @"Jazz", @"Classical", @"Comedy", @"Metal", @"K-Pop", @"Reggae", @"Punk", @"Funk", @"Blues"];
@@ -195,7 +200,6 @@
     // Block reads artist data in firebase
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
-//        NSLog(@"start");
         
         // seems like repeated access of snapshot.value is painfully slow.
         // so... we're going to stash it in a variable and use that instead.
@@ -352,9 +356,6 @@
     [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0) animated:NO];
     
     [cell.collectionView registerClass:[FNBCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
-
-    
-    
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -570,13 +571,11 @@
         return NO;
     }
     else {
-        NSLog(@"THERE IS NOTHING IN THE USER'S ARTISTDICTIONARY!!!");
+        NSLog(@"Nothing int he user dictionary!");
         // need this line to compile
         return NO;
     }
 }
-
-
 - (void) userTappedQuickAddButton:(NSNotification *)notification {
     NSString *nameOfArtistFromCell = [notification object][0];
     NSString *spotifyIDOfArtistFromCell = [notification object][1];

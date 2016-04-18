@@ -526,4 +526,18 @@
     return [[artistName componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""];
 }
 
+# pragma - mark Network Availability Methods
+
++(BOOL)isNetworkAvailable {
+    SCNetworkReachabilityFlags flags;
+    SCNetworkReachabilityRef loc;
+    
+    loc = SCNetworkReachabilityCreateWithName(nil, "www.apple.com");
+    BOOL success = SCNetworkReachabilityGetFlags(loc, &flags);
+    
+    BOOL canReach = success && !(flags & kSCNetworkFlagsConnectionRequired) && (flags & kSCNetworkFlagsReachable);
+    
+    return canReach;
+}
+
 @end

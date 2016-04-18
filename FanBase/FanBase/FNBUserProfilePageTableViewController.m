@@ -12,6 +12,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "FanBase-Swift.h"
 #import "FNBArtistEvent.h"
+#import "FanBase-Bridging-Header.h"
+//#import "FanBase-Swift.h"
+
 
 #import "FNBArtistMainPageTableViewController.h"
 #import "FNBBandsInTownAPIClient.h"
@@ -64,6 +67,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *concert4Image;
 @property (weak, nonatomic) IBOutlet UILabel *concert4TitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *concert4Date;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *concert1TableViewCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *concert2TableViewCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *concert3TableViewCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *concert4TableViewCell;
 
 @property (strong, nonatomic) NSArray *arrayOfArtistLabels;
 @property (strong, nonatomic) NSArray *arrayOfArtistImageViews;
@@ -159,14 +167,14 @@
 // hide nav bar
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 // show nav bar before leaving page
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO];
+//    [self.navigationController setNavigationBarHidden:NO];
 
 //    [self.userRef removeAllObservers];
 }
@@ -381,6 +389,7 @@
 {
     UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     
+    // Subscribed Artist Section
     if(cell == self.artist1TableViewCell && self.currentUser.detailedArtistInfoArray.count < 1)
         return 0; //set the hidden cell's height to 0
     if(cell == self.artist2TableViewCell && self.currentUser.detailedArtistInfoArray.count < 2)
@@ -388,6 +397,16 @@
     if(cell == self.artist3TableViewCell && self.currentUser.detailedArtistInfoArray.count < 3)
         return 0; //set the hidden cell's height to 0
     if(cell == self.artist4TableViewCell && self.currentUser.detailedArtistInfoArray.count < 4)
+        return 0; //set the hidden cell's height to 0
+    
+    // Upcoming Concerts Section
+    if(cell == self.concert1TableViewCell && self.sortedArrayOfUsersConcerts.count < 1)
+        return 0; //set the hidden cell's height to 0
+    if(cell == self.concert2TableViewCell && self.sortedArrayOfUsersConcerts.count < 2)
+        return 0; //set the hidden cell's height to 0
+    if(cell == self.concert3TableViewCell && self.sortedArrayOfUsersConcerts.count < 3)
+        return 0; //set the hidden cell's height to 0
+    if(cell == self.concert4TableViewCell && self.sortedArrayOfUsersConcerts.count < 4)
         return 0; //set the hidden cell's height to 0
     
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];

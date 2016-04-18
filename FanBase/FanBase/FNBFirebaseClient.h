@@ -12,6 +12,7 @@
 #import "FNBUser.h"
 #import "FNBArtist.h"
 #import "FNBSpotifySearch.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface FNBFirebaseClient : NSObject
 
@@ -51,6 +52,7 @@
 + (void) getDictionaryOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSDictionary *artistsDictionary))block;
 + (void) fillDatabaseWithArrayOfArtists:(NSArray *)artistNames;
 
-
+#pragma mark - Methods to check network connection
++(BOOL)isNetworkAvailable;
 
 @end

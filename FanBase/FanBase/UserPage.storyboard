@@ -531,7 +531,6 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="XuX-m4-dBG"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="artist1ImageView" destination="UT6-1a-FXZ" id="B1P-Ul-vcl"/>
@@ -552,15 +551,19 @@
                         <outlet property="artist4XOfTotalFans" destination="ymI-Pu-Pa1" id="SP1-3e-SFc"/>
                         <outlet property="concert1Date" destination="UB8-d9-2Zb" id="7qv-3g-UWB"/>
                         <outlet property="concert1Image" destination="y9V-h7-ir9" id="4J0-kZ-CnM"/>
+                        <outlet property="concert1TableViewCell" destination="Buc-2L-3Zx" id="JGW-ks-RiX"/>
                         <outlet property="concert1TitleLabel" destination="zaw-rd-JYX" id="7mW-15-zRx"/>
                         <outlet property="concert2Date" destination="KIO-Cj-t0E" id="PAE-iQ-ZYn"/>
                         <outlet property="concert2Image" destination="VIU-8g-Bu6" id="5Po-dp-nRq"/>
+                        <outlet property="concert2TableViewCell" destination="cLG-G8-V5D" id="1AX-8X-WIi"/>
                         <outlet property="concert2TitleLabel" destination="SZl-1G-2ch" id="5vh-mt-Dx7"/>
                         <outlet property="concert3Date" destination="ddR-EZ-wkV" id="FGv-CK-yGa"/>
                         <outlet property="concert3Image" destination="g8x-VA-aza" id="ZWv-Py-N5i"/>
+                        <outlet property="concert3TableViewCell" destination="ASV-LS-boF" id="ZQl-jp-fRO"/>
                         <outlet property="concert3TitleLabel" destination="SbX-qz-Y2h" id="4gc-Dd-kmc"/>
                         <outlet property="concert4Date" destination="dYa-nK-BPn" id="RIa-XZ-dYF"/>
                         <outlet property="concert4Image" destination="19K-m8-UPS" id="4Ro-Bi-cCM"/>
+                        <outlet property="concert4TableViewCell" destination="5qR-de-E5C" id="hpf-SV-LDB"/>
                         <outlet property="concert4TitleLabel" destination="bCa-OG-1og" id="LnW-YH-DL4"/>
                         <outlet property="numberOfSubscribedArtistsLabel" destination="gZg-34-iUa" id="WbM-TD-LZE"/>
                         <outlet property="userImageView" destination="aYh-d4-Aii" id="lJR-ye-fez"/>
@@ -579,7 +582,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1737" y="313"/>
+            <point key="canvasLocation" x="1417" y="-46"/>
         </scene>
         <!--artistMainPage-->
         <scene sceneID="khm-DZ-EA4">
@@ -606,11 +609,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Ekh-4L-oCT" customClass="FNBViewAllArtistsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="Ekh-4L-oCT" customClass="FNBViewAllArtistsTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ekh-4L-oCT" id="UQa-AK-iqK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3Z-0E-dfC">
@@ -626,7 +629,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="HvN-fq-HdX">
-                                            <rect key="frame" x="550" y="2" width="42" height="39"/>
+                                            <rect key="frame" x="517" y="3" width="42" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -671,11 +674,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="51" id="bLN-wz-rrE" customClass="FNBSeeAllNearbyEventsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="51" id="bLN-wz-rrE" customClass="FNBSeeAllNearbyEventsTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="600" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bLN-wz-rrE" id="Ytu-k9-U0y">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="51"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aI4-WW-mdv" userLabel="Event Image View">

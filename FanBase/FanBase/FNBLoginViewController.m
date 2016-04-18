@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     // round corners of container view
     self.containerView.layer.cornerRadius = 7.5;
     self.containerView.layer.masksToBounds = YES;
@@ -40,8 +39,6 @@
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
 }
-
-
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -53,7 +50,6 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];
         }
     }];
-    
 
 }
 
