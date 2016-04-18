@@ -25,7 +25,7 @@
                                             <rect key="frame" x="8" y="0.0" width="70" height="70"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Albumname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ei-cP-SLQ">
-                                            <rect key="frame" x="8" y="69" width="347" height="19"/>
+                                            <rect key="frame" x="8" y="69" width="336" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -36,12 +36,20 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15p-oR-8gb">
+                                            <rect key="frame" x="304" y="40" width="58" height="30"/>
+                                            <state key="normal" title="Play"/>
+                                            <connections>
+                                                <action selector="play_pauseButton:" destination="Lot-if-2dA" eventType="touchUpInside" id="W8H-mj-EVx"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="AlbumImageView" destination="ANt-yU-92a" id="XdL-rG-sI1"/>
                                     <outlet property="AlbumNameLabel" destination="2ei-cP-SLQ" id="vJd-Zp-FXi"/>
                                     <outlet property="TrackNameLabel" destination="YrP-BU-ZlQ" id="e9Z-PO-xS0"/>
+                                    <outlet property="play_pauseButton" destination="15p-oR-8gb" id="mzw-FE-H27"/>
                                     <segue destination="x0F-Lc-pY3" kind="show" identifier="ShowDetail" id="UeC-kg-Keu"/>
                                 </connections>
                             </tableViewCell>
@@ -86,8 +94,8 @@
                                 <rect key="frame" x="55" y="122" width="300" height="300"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVD-2c-ihk">
-                                <rect key="frame" x="176" y="541" width="55" height="30"/>
-                                <state key="normal" title="Play"/>
+                                <rect key="frame" x="129" y="541" width="165" height="30"/>
+                                <state key="normal" title="Play Full Track"/>
                                 <connections>
                                     <action selector="playbutton:" destination="x0F-Lc-pY3" eventType="touchUpInside" id="hya-di-32E"/>
                                 </connections>

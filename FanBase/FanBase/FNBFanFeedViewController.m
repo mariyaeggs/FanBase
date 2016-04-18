@@ -50,18 +50,6 @@
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
     
-    //Setup test data
-
-//    self.user = [[FNBUser alloc] init];
-//    self.user.userName = @"angelirose";
-////    self.user.userID = @"b45fb6fb-56eb-42dc-821c-407fd33bae34";
-////    self.user.profileImageURL = @"https://scontent-lga3-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/10285440_10103454023960116_6024035997059348328_o.jpg";
-////    self.user.userImage = [UIImage imageNamed:@"adele"];
-//    
-//    self.user.userID = @"1a65523f-3c6c-4dff-a45d-843b52e56470";
-//    self.user.profileImageURL = @"https://scontent-lga3-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/10285440_10103454023960116_6024035997059348328_o.jpg";
-//    self.user.userImage = [UIImage imageNamed:@"adele"];
-    
     self.senderId = self.user.userID;
     self.senderDisplayName = self.user.userName;
     self.senderAvatar = self.user.userImage;
@@ -73,7 +61,7 @@
     self.messages = [NSMutableArray new];
     self.rootRef = [[Firebase alloc] initWithUrl:ourFirebaseURL];
     
-    self.artistsRef = [[Firebase alloc] init];
+    self.artistsRef = [[Firebase alloc] init]; 
     self.artistsRef = [self.rootRef childByAppendingPath:@"artists"];
     
     NSString *formattedArtistName = [FNBFirebaseClient formatedArtistName:self.artist.name];
@@ -87,15 +75,9 @@
     self.usersRef = [[Firebase alloc] init];
     self.usersRef = [self.rootRef childByAppendingPath:@"users"];
     
-    
-    
     self.title = [NSString stringWithFormat:@"FanFeed // %@", self.artist.name];
-
-    
     
     [self setupBubbles];
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -140,7 +122,7 @@
     
     JSQMessage *message = self.messages[indexPath.item];
     
-    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:[message.senderDisplayName substringToIndex:1] backgroundColor:[UIColor lightGrayColor] textColor:[UIColor blackColor] font:[UIFont fontWithName:@"Avenir" size:8.0] diameter:10];
+    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:[[message.senderDisplayName substringToIndex:1] uppercaseString] backgroundColor:[UIColor lightGrayColor] textColor:[UIColor blackColor] font:[UIFont fontWithName:@"Helvetica" size:8.0] diameter:10];
     
 //    if ([message.senderId isEqualToString:self.senderId]) {
 //        UIImage *regImage = [JSQMessagesAvatarImageFactory circularAvatarImage:self.senderAvatar withDiameter:10];
@@ -317,8 +299,15 @@
     
 }
 
-
-
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+    if( [self.inputToolbar.contentView.textView isFirstResponder] )
+    {
+        [self.inputToolbar.contentView.textView resignFirstResponder];
+    }
+}
 
 
 

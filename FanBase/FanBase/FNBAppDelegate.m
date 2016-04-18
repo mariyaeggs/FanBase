@@ -14,7 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+    
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
     // Override point for customization after application launch.
     
 //    FNBViewController *viewController = [[FNBViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -22,6 +25,18 @@
 //    self.viewController = [[UINavigationController alloc] initWithRootViewController:viewController];
 //    self.window.rootViewController = self.viewController;
 //    [self.window makeKeyAndVisible];
+    
+    
+    
+    // ----- Attempt to change app-wide color----
+//    self.window.tintColor = [UIColor colorWithRed:230.0 green:255.0 blue:247.0 alpha:1.0];
+//    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0 green:204.0 blue:198.0 alpha:1.0];
+//    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+//    gradientMask.frame = self.window.bounds;
+//    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+//    
+//    [self.window.layer insertSublayer:gradientMask atIndex:1];
+    
     return YES;
 }
 
