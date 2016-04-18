@@ -67,7 +67,7 @@
         NSMutableArray *collectionOfEventObjects = [NSMutableArray new];
         
         for (NSDictionary *dict in responseObject) {
-            FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES image:dict[@"artists"][0][@"image_url"]];
+            FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES image:dict[@"artists"][0][@"image_url"] unformattedDate:dict[@"datetime"]];
             [collectionOfEventObjects addObject:event];
         }
         
@@ -97,8 +97,7 @@
                 }
             }
             if (counter == artistNamesArray.count) {
-                // filter by most recent
-                NSLog(@"ALL UPCOMING CONCERTS%@", ((FNBArtistEvent *)allUpcomingConcerts[0]).dateOfConcert);
+//                NSLog(@"ALL UPCOMING CONCERTS%@", ((FNBArtistEvent *)allUpcomingConcerts[0]).unformattedDateOfConcert);
                 completionBlock(allUpcomingConcerts);
             }
         }];

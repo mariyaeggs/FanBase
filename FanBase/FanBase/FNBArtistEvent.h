@@ -25,4 +25,12 @@
                              star:(BOOL)isStarred
                             image:(NSString *)imageURL;
 
+-(instancetype)initWithEventTitle:(NSString *)eventTitle
+                             date:(NSString *)dateOfConcert
+                     availability:(BOOL)isTicketsAvailable
+                            venue:(NSDictionary *)venue
+                             star:(BOOL)isStarred
+                            image:(NSString *)imageURL
+                  unformattedDate:(NSString *)unformattedDateOfConcert;
+
 @end
