@@ -81,6 +81,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
+        // Initialize side bar
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+        self.sideBar.delegate = self;
+
     
     self.selectedArtist = @"";
     

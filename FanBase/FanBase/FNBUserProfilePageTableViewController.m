@@ -64,9 +64,6 @@
 @implementation FNBUserProfilePageTableViewController
 
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -75,8 +72,7 @@
     // Initialize side bar 
     self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
     self.sideBar.delegate = self;
-    
-    
+
     // set the artistLabels and artistImageViews of the cells
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
     self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
@@ -95,6 +91,7 @@
 // Side bar delegate method implementation
 -(void)didSelectButtonAtIndex:(NSInteger)index {
     
+
 }
 
 
