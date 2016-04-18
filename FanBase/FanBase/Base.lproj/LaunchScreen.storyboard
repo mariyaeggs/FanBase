@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,42 +13,30 @@
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" alpha="0.94999999999999996" contentMode="scaleToFill" semanticContentAttribute="playback" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="handsLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="qzA-mO-0Fp">
-                                <rect key="frame" x="1" y="147" width="375" height="375"/>
-                                <color key="backgroundColor" red="0.66856201469999998" green="0.8724784968" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.81507455149999997" green="0.92842610430000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="handsLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-pW-Yl9">
+                                <rect key="frame" x="37" y="184" width="300" height="300"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.75686274509999996" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="6LR-LS-AEB"/>
-                                    <constraint firstAttribute="width" secondItem="qzA-mO-0Fp" secondAttribute="height" multiplier="1:1" id="7PY-RX-JXG"/>
-                                    <constraint firstAttribute="width" constant="200" id="dAW-E8-k6U"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="fbZ-YN-XTW"/>
-                                    <constraint firstAttribute="height" constant="200" id="rab-wV-XXA"/>
+                                    <constraint firstAttribute="height" constant="300" id="4Zu-yb-y0d"/>
+                                    <constraint firstAttribute="width" constant="300" id="LhB-KW-3sc"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="dAW-E8-k6U"/>
-                                        <exclude reference="fbZ-YN-XTW"/>
-                                        <exclude reference="rab-wV-XXA"/>
-                                    </mask>
-                                </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.66856201469999998" green="0.8724784968" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.66666666669999997" green="0.75686274509999996" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="qzA-mO-0Fp" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="Wxc-Ag-wDS"/>
-                            <constraint firstItem="qzA-mO-0Fp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gEI-WP-4jx"/>
-                            <constraint firstItem="qzA-mO-0Fp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="taS-sk-SLK"/>
+                            <constraint firstItem="jAc-pW-Yl9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="N8B-qo-QEw"/>
+                            <constraint firstItem="jAc-pW-Yl9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Pi0-HX-5oq"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="385"/>
+            <point key="canvasLocation" x="322.5" y="384.5"/>
         </scene>
     </scenes>
     <resources>

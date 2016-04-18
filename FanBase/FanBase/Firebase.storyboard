@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Pvn-il-BzV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qfV-kS-yd3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKt-nJ-bCy">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,19 +31,24 @@
                             <constraint firstAttribute="trailing" secondItem="yKt-nJ-bCy" secondAttribute="trailing" id="zhX-JJ-aAf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mlB-ih-aZm"/>
+                    <navigationItem key="navigationItem" id="mlB-ih-aZm">
+                        <barButtonItem key="rightBarButtonItem" image="menu" id="Tf5-LN-67j">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="containerView" destination="yKt-nJ-bCy" id="5y6-17-nPv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu5-HW-gXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="610" y="727"/>
+            <point key="canvasLocation" x="586.5" y="57.5"/>
         </scene>
         <!--Create New Account View Controller-->
         <scene sceneID="Tqx-AS-AIV">
             <objects>
-                <viewController id="OU9-at-eAw" customClass="FNBCreateNewAccountViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier=" " id="OU9-at-eAw" customClass="FNBCreateNewAccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4uK-sc-7cZ"/>
                         <viewControllerLayoutGuide type="bottom" id="3Cn-Bk-mlj"/>
@@ -148,7 +153,7 @@
                 <viewControllerPlaceholder storyboardName="UserPage" id="cGw-6Z-unj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDb-OP-9mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2624.5" y="-228"/>
+            <point key="canvasLocation" x="2008.5" y="-284"/>
         </scene>
         <!--User Details View Controller-->
         <scene sceneID="62D-TM-aJd">
@@ -227,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uga-Us-qgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3538" y="246"/>
+            <point key="canvasLocation" x="2038" y="120"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -337,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2128" y="593"/>
+            <point key="canvasLocation" x="1324" y="597"/>
         </scene>
         <!--Discover2-->
         <scene sceneID="JiP-52-9XA">
@@ -345,17 +350,18 @@
                 <viewControllerPlaceholder storyboardName="Discover2" id="XYr-oA-eTp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uP7-dh-Bdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569.5" y="1292"/>
+            <point key="canvasLocation" x="1483.5" y="1080"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NjH-Nw-cZV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PrD-BC-yfm" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhd-Ic-hFl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.75394853949999996" blue="0.34447615129999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.66666666669999997" green="0.75686274509999996" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -364,7 +370,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBC-mv-r5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="727"/>
+            <point key="canvasLocation" x="31.5" y="49.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="32" height="32"/>
+    </resources>
 </document>

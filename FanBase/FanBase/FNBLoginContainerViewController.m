@@ -10,17 +10,28 @@
 #import "FNBLoginViewController.h"
 #import "FNBUserProfilePageTableViewController.h"
 #import "FNBFirebaseClient.h"
+#import "FanBase-Bridging-Header.h"
+#import "FanBase-Swift.h"
 
-@interface FNBLoginContainerViewController ()
+@interface FNBLoginContainerViewController () <SideBarDelegate>
+
+//Outlet for main containerView in storyboard
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (nonatomic, strong) SideBar *sideBar;
+
 
 @end
 
-@implementation FNBLoginContainerViewController
+@implementation FNBLoginContainerViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    // Initialize side bar
+//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+//    self.sideBar.delegate = self;
+
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         // put a loading icon here
         if (isAuthenticUser) {
@@ -35,7 +46,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedOutNotification:) name:@"UserDidLogOutNotification" object:nil];
 }
-
 
 -(void)handleUserLoggedInNotification:(NSNotification *)notification
 {
@@ -55,7 +65,7 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void) showUserMainPageVC {
+- (void)showUserMainPageVC {
 
     UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"UserPage" bundle:nil];
 //    UINavigationController *nextNavController = [nextStoryboard instantiateViewControllerWithIdentifier:@"userPageNavControllerID"];

@@ -11,6 +11,8 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
 #import "FanBase-Swift.h"
+#import "FanBase-Bridging-Header.h"
+//#import "FanBase-Swift.h"
 
 //this is to segue to the ArtistTop10
 //#import "FNBArtistTop10TableViewController.h"
@@ -138,7 +140,7 @@
 // hide nav bar
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 // show nav bar before leaving page
