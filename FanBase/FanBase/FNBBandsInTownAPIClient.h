@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 #import "Secrets.h"
+#import "FNBUser.h"
+
 
 @interface FNBBandsInTownAPIClient : NSObject
 
@@ -17,5 +19,8 @@
 //+(void)generateEventsForArtist:(NSString *)artistName nearLocation:(nullable NSString *)location withinRadius:(nullable NSString *)radius completion:(void (^)( NSArray *))completionBlock;
 
 +(void)generateEventsForArtists:(nonnull NSArray *)artistNamesArray nearLocation:(nullable NSString *)location withinRadius:(nullable NSString *)radius completion:(nullable void (^)( NSArray * _Nullable ))completionBlock ;
+
+
++(void)getUpcomingConcertsOfUser:(FNBUser *)user withCompletion:(void (^)(NSArray *sortedConcertsArray))completionBlock;
 
 @end

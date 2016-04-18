@@ -7,8 +7,8 @@
 //
 
 #import "FNBBandsInTownAPIClient.h"
-#import "FNBUser.h"
 #import "FNBArtistEvent.h"
+#import "FNBFirebaseClient.h"
 
 @implementation FNBBandsInTownAPIClient
 
@@ -110,6 +110,38 @@
             }
         }];
     }
+}
+
++(void)getUpcomingConcertsOfUser:(FNBUser *)user withCompletion:(void (^)(NSArray *sortedConcertsArray))completionBlock{
+    // make an array of artist names (must use FNBArtist.name to allow special characters, such as A$AP Rocky
+    NSMutableArray *arrayOfArtistNames = [NSMutableArray new];
+    __block NSUInteger counter = 0;
+    
+    
+    for (NSString *artistName in user.artistsDictionary) {
+        
+        // go into firebase and get the name property of that user
+        [FNBFirebaseClient getArtistNameForArtistDatabaseName:artistName withCompletionBlock:^(BOOL artistDatabaseExists, NSString *artistActualName) {
+            if (artistDatabaseExists) {
+                [arrayOfArtistNames addObject:artistActualName];
+                counter ++;
+            }
+            else {
+                counter ++;
+            }
+            if (counter == user.artistsDictionary.count) {
+                [FNBBandsInTownAPIClient generateEventsForArtists:arrayOfArtistNames nearLocation:nil withinRadius:nil completion:^(NSArray * _Nullable receivedArray){
+                    // filter by date
+                    NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"unformattedDateOfConcert" ascending:YES];
+                    NSArray *sortedConcertEvents = [receivedArray sortedArrayUsingDescriptors:@[dateSort]];
+                    completionBlock(sortedConcertEvents);
+                }];
+            }
+        }];
+    }
+    
+    
+
 }
 
 

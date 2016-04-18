@@ -139,15 +139,7 @@
             self.currentUser = [[FNBUser alloc] init];
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                 if (completedSettingUsersProperties) {
-                    [FNBBandsInTownAPIClient generateEventsForArtists:@[@"Coldplay", @"Adele", @"ASAP Rocky"] nearLocation:nil withinRadius:nil completion:^(NSArray * _Nullable receivedArray){
-                        // filter by date
-                        NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"unformattedDateOfConcert" ascending:YES];
-                        NSArray *sortedConcertEvents = [receivedArray sortedArrayUsingDescriptors:@[dateSort]];
-                        [self setLabelsAndImagesOfConcertCells:sortedConcertEvents];
-                        
-                        
-                    }];
-                
+                    [self getConcerts];
                     [self addListenersForLoggedInUser];
                     [self updateUserPicNameAndNumberOfArtists];
                     [self.tableView reloadData];
@@ -321,6 +313,44 @@
 
     self.tableView.tableFooterView = [UIView new];
     [self.tableView reloadData];
+}
+
+- (void) getConcerts {
+    [FNBBandsInTownAPIClient getUpcomingConcertsOfUser:self.currentUser withCompletion:^(NSArray *sortedConcertsArray) {
+        if (sortedConcertsArray.count > 0) {
+            [self setLabelsAndImagesOfConcertCells:sortedConcertsArray];
+
+        }
+    }];
+//    // make an array of artist names (must use FNBArtist.name to allow special characters, such as A$AP Rocky
+//    NSMutableArray *arrayOfArtistNames = [NSMutableArray new];
+//    __block NSUInteger counter = 0;
+//
+//    
+//    for (NSString *artistName in self.currentUser.artistsDictionary) {
+//        
+//        // go into firebase and get the name property of that user
+//        [FNBFirebaseClient getArtistNameForArtistDatabaseName:artistName withCompletionBlock:^(BOOL artistDatabaseExists, NSString *artistActualName) {
+//            if (artistDatabaseExists) {
+//                [arrayOfArtistNames addObject:artistActualName];
+//                counter ++;
+//            }
+//            else {
+//                counter ++;
+//            }
+//            if (counter == self.currentUser.artistsDictionary.count) {
+//                [FNBBandsInTownAPIClient generateEventsForArtists:arrayOfArtistNames nearLocation:nil withinRadius:nil completion:^(NSArray * _Nullable receivedArray){
+//                    // filter by date
+//                    NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"unformattedDateOfConcert" ascending:YES];
+//                    NSArray *sortedConcertEvents = [receivedArray sortedArrayUsingDescriptors:@[dateSort]];
+//                    [self setLabelsAndImagesOfConcertCells:sortedConcertEvents];
+//                }];
+//            }
+//        }];
+//    }
+//    
+    
+
 }
 
 
