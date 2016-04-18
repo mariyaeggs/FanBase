@@ -10,6 +10,7 @@
 #import "FNBLoginViewController.h"
 #import "FNBUserProfilePageTableViewController.h"
 #import "FNBFirebaseClient.h"
+#import "FNBNoInternetVCViewController.h"
 
 @interface FNBLoginContainerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -21,19 +22,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
-        // put a loading icon here
-        if (isAuthenticUser) {
-            [self showUserMainPageVC];
-        }
-        else {
-            [self showLoginVC];
-        }
-    }];
+    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedInNotification:) name:@"UserDidLogInNotification" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedOutNotification:) name:@"UserDidLogOutNotification" object:nil];
+    if (isNetworkAvailable) {
+        [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
+            // put a loading icon here
+            if (isAuthenticUser) {
+                [self showUserMainPageVC];
+            }
+            else {
+                [self showLoginVC];
+            }
+        }];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedInNotification:) name:@"UserDidLogInNotification" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedOutNotification:) name:@"UserDidLogOutNotification" object:nil];
+    }
+    else {
+        [self showInternetBadVC];
+    }
 }
 
 
@@ -63,6 +71,11 @@
     FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
     
     [self setEmbeddedViewController:userVC];
+}
+
+- (void) showInternetBadVC {
+    FNBNoInternetVCViewController *nextVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"NoInternet"];
+    [self setEmbeddedViewController:nextVC];
 }
 
 #pragma mark Child VC from Tim
