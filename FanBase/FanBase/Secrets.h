@@ -18,5 +18,6 @@ extern NSString * const ourFirebaseURL;
 
 extern NSString * const BandsInTownBaseURL;
 extern NSString * const BandsInTownEventsURL;
+extern NSString * const BandsInTownEventsNearbyURL;
 
 //extern NSString const *BandsInTownReqURL;

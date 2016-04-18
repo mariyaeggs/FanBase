@@ -25,6 +25,8 @@
 		A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */; };
 		A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */; };
 		A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */; };
+		A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */; };
+		A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
 		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
@@ -47,6 +49,7 @@
 		BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116C41CB5A88D00C47570 /* NSURL+QueryString.m */; };
 		BD3913331CBD371D009E7437 /* FanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3913301CBD371D009E7437 /* FanFeed.storyboard */; };
 		BD3913341CBD371D009E7437 /* FNBFanFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3913321CBD371D009E7437 /* FNBFanFeedViewController.m */; };
+		BD565F061CC577ED00820734 /* FNBNoInternetVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD565F051CC577ED00820734 /* FNBNoInternetVCViewController.m */; };
 		BDE18E3D1CB69F9E00BEDE01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */; };
 		BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */; };
 		BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */; };
@@ -99,6 +102,10 @@
 		A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifySearch.m; sourceTree = "<group>"; };
 		A190B9EB1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeMoreTweetsTableViewController.h; sourceTree = "<group>"; };
 		A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeMoreTweetsTableViewController.m; sourceTree = "<group>"; };
+		A190B9EE1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeAllNearbyEventsTableViewController.h; sourceTree = "<group>"; };
+		A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewController.m; sourceTree = "<group>"; };
+		A190B9F41CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeAllNearbyEventsTableViewCell.h; sourceTree = "<group>"; };
+		A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewCell.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
 		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
@@ -140,6 +147,8 @@
 		BD3913301CBD371D009E7437 /* FanFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FanFeed.storyboard; sourceTree = "<group>"; };
 		BD3913311CBD371D009E7437 /* FNBFanFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFanFeedViewController.h; sourceTree = "<group>"; };
 		BD3913321CBD371D009E7437 /* FNBFanFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFanFeedViewController.m; sourceTree = "<group>"; };
+		BD565F041CC577ED00820734 /* FNBNoInternetVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBNoInternetVCViewController.h; sourceTree = "<group>"; };
+		BD565F051CC577ED00820734 /* FNBNoInternetVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBNoInternetVCViewController.m; sourceTree = "<group>"; };
 		BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BDE18E3F1CB6A1E900BEDE01 /* FNBArtistEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistEvent.h; sourceTree = "<group>"; };
@@ -229,6 +238,10 @@
 				A14E4E621CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.h */,
 				A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */,
 				A14E4E431CB408F90034FBFB /* UserPage.storyboard */,
+				A190B9F41CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.h */,
+				A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */,
+				A190B9EE1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.h */,
+				A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */,
 				EDF056A21CBE8AA300B457CF /* SideBarTableViewController.swift */,
 				EDF056A41CBEA0F400B457CF /* SideBar.swift */,
 				A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */,
@@ -287,6 +300,8 @@
 				A1E7A93A1CAC28A900A9B968 /* FNBCreateNewAccountViewController.m */,
 				A103C17F1CBC1184001FA3D5 /* FNBLoginContainerViewController.h */,
 				A103C1801CBC1184001FA3D5 /* FNBLoginContainerViewController.m */,
+				BD565F041CC577ED00820734 /* FNBNoInternetVCViewController.h */,
+				BD565F051CC577ED00820734 /* FNBNoInternetVCViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -558,6 +573,7 @@
 			files = (
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
+				BD565F061CC577ED00820734 /* FNBNoInternetVCViewController.m in Sources */,
 				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
 				BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
@@ -584,6 +600,7 @@
 				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
 				A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */,
 				ED1787B81CB85B80008B12D9 /* Constants.m in Sources */,
+				A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
 				EDF056A31CBE8AA300B457CF /* SideBarTableViewController.swift in Sources */,
@@ -597,6 +614,7 @@
 				BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */,
 				A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
+				A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */,
 				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

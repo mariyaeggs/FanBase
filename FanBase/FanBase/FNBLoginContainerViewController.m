@@ -10,6 +10,7 @@
 #import "FNBLoginViewController.h"
 #import "FNBUserProfilePageTableViewController.h"
 #import "FNBFirebaseClient.h"
+#import "FNBNoInternetVCViewController.h"
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
 
@@ -28,24 +29,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
 //    
+=======
+    
+    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+>>>>>>> d00be64f660c445c4cf7094419741959fe9913f7
 //    // Initialize side bar
 //    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
 //    self.sideBar.delegate = self;
-
-    [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
-        // put a loading icon here
-        if (isAuthenticUser) {
-            [self showUserMainPageVC];
-        }
-        else {
-            [self showLoginVC];
-        }
-    }];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedInNotification:) name:@"UserDidLogInNotification" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedOutNotification:) name:@"UserDidLogOutNotification" object:nil];
+    if (isNetworkAvailable) {
+        [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
+            // put a loading icon here
+            if (isAuthenticUser) {
+                [self showUserMainPageVC];
+            }
+            else {
+                [self showLoginVC];
+            }
+        }];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedInNotification:) name:@"UserDidLogInNotification" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedOutNotification:) name:@"UserDidLogOutNotification" object:nil];
+    }
+    else {
+        [self showInternetBadVC];
+    }
 }
 
 -(void)handleUserLoggedInNotification:(NSNotification *)notification
@@ -74,6 +85,11 @@
     FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
     
     [self setEmbeddedViewController:userVC];
+}
+
+- (void) showInternetBadVC {
+    FNBNoInternetVCViewController *nextVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"NoInternet"];
+    [self setEmbeddedViewController:nextVC];
 }
 
 #pragma mark Child VC from Tim

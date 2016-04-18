@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -230,6 +231,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1D-3w-iPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="898" y="-740"/>
+        </scene>
+        <!--No InternetVC View Controller-->
+        <scene sceneID="g5W-cx-vmr">
+            <objects>
+                <viewController restorationIdentifier="NoInternet" storyboardIdentifier="NoInternet" id="ovQ-5G-75O" customClass="FNBNoInternetVCViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W5e-Cd-WuO"/>
+                        <viewControllerLayoutGuide type="bottom" id="wU6-iI-fQ2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="95K-PO-vIR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0hY-aa-zyn">
+                                <rect key="frame" x="225" y="225" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0hY-aa-zyn" secondAttribute="height" multiplier="1:1" id="g1X-XL-EVd"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry! It looks like we can't connect to a network. Please try again later." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rop-oR-0Ge">
+                                <rect key="frame" x="150" y="383" width="300" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rop-oR-0Ge" firstAttribute="width" secondItem="0hY-aa-zyn" secondAttribute="width" multiplier="2" id="1eI-MV-boi"/>
+                            <constraint firstItem="0hY-aa-zyn" firstAttribute="centerX" secondItem="95K-PO-vIR" secondAttribute="centerX" id="EMx-Zh-MhD"/>
+                            <constraint firstItem="0hY-aa-zyn" firstAttribute="centerY" secondItem="95K-PO-vIR" secondAttribute="centerY" id="IFN-Ig-ZnW"/>
+                            <constraint firstItem="0hY-aa-zyn" firstAttribute="width" secondItem="95K-PO-vIR" secondAttribute="width" multiplier="0.25" id="bb2-1Q-V4T"/>
+                            <constraint firstItem="Rop-oR-0Ge" firstAttribute="top" secondItem="0hY-aa-zyn" secondAttribute="bottom" constant="8" id="roZ-Te-ERr"/>
+                            <constraint firstItem="Rop-oR-0Ge" firstAttribute="centerX" secondItem="95K-PO-vIR" secondAttribute="centerX" id="u4z-4D-NMd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descNoInternet" destination="Rop-oR-0Ge" id="xnn-F2-1rW"/>
+                        <outlet property="noInternetImage" destination="0hY-aa-zyn" id="5ep-cv-91x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2o6-aV-xHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2048" y="-329"/>
         </scene>
         <!--UserPage-->
         <scene sceneID="7iY-2z-0Ro">
