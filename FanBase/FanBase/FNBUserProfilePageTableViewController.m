@@ -50,9 +50,29 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *artist3TableViewCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *artist4TableViewCell;
 
+@property (weak, nonatomic) IBOutlet UIImageView *concert1Image;
+@property (weak, nonatomic) IBOutlet UILabel *concert1TitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *concert1Date;
+
+@property (weak, nonatomic) IBOutlet UIImageView *concert2Image;
+@property (weak, nonatomic) IBOutlet UILabel *concert2TitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *concert2Date;
+
+@property (weak, nonatomic) IBOutlet UIImageView *concert3Image;
+@property (weak, nonatomic) IBOutlet UILabel *concert3TitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *concert3Date;
+
+@property (weak, nonatomic) IBOutlet UIImageView *concert4Image;
+@property (weak, nonatomic) IBOutlet UILabel *concert4TitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *concert4Date;
+
 @property (strong, nonatomic) NSArray *arrayOfArtistLabels;
 @property (strong, nonatomic) NSArray *arrayOfArtistImageViews;
 @property (strong, nonatomic) NSArray *arrayOfArtistRankingLabels;
+
+@property (strong, nonatomic) NSArray *arrayOfConcertTitles;
+@property (strong, nonatomic) NSArray *arrayOfConcertDates;
+@property (strong, nonatomic) NSArray *arrayOfConcertImages;
 
 @property (strong, nonatomic) Firebase *userRef;
 @property (nonatomic, strong) SideBar *sideBar;
@@ -76,10 +96,16 @@
     self.sideBar.delegate = self;
     
     
-    // set the artistLabels and artistImageViews of the cells
+    // create the artistLabels and artistImageViews of the cells
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
     self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
     self.arrayOfArtistRankingLabels = @[self.artist1XOfTotalFans, self.artist2XOfTotalFans, self.artist3XOfTotalFans, self.artist4XOfTotalFans];
+
+    // create the concert arrays
+    self.arrayOfConcertTitles = @[self.concert1TitleLabel, self.concert2TitleLabel, self.concert3TitleLabel, self.concert4TitleLabel];
+    self.arrayOfConcertDates = @[self.concert1Date, self.concert2Date, self.concert3Date, self.concert4Date];
+    self.arrayOfConcertImages = @[self.concert1Image, self.concert2Image, self.concert3Image, self.concert4Image];
+    
     
     // make user image circular
     self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height / 2;
@@ -88,6 +114,11 @@
     for (UIImageView *artistImage in self.arrayOfArtistImageViews) {
         artistImage.layer.cornerRadius = artistImage.frame.size.height / 2;
         artistImage.layer.masksToBounds = YES;
+    }
+    // make concert images circular
+    for (UIImageView *concertImage in self.arrayOfConcertImages) {
+        concertImage.layer.cornerRadius = concertImage.frame.size.height / 2;
+        concertImage.layer.masksToBounds = YES;
     }
 }
 
@@ -112,9 +143,8 @@
                         // filter by date
                         NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"unformattedDateOfConcert" ascending:YES];
                         NSArray *sortedConcertEvents = [receivedArray sortedArrayUsingDescriptors:@[dateSort]];
-                        for (FNBArtistEvent *event in sortedConcertEvents) {
-                            NSLog(@"this is the date of the %@ concert: %@", event.eventTitle, event.unformattedDateOfConcert);
-                        }
+                        [self setLabelsAndImagesOfConcertCells:sortedConcertEvents];
+                        
                         
                     }];
                 
@@ -317,6 +347,29 @@
     }
 }
 
+
+- (void)setLabelsAndImagesOfConcertCells:(NSArray *)concertArray {
+    NSUInteger numberOfConcerts = concertArray.count;
+    if (numberOfConcerts == 0) {
+        NSLog(@"there are no events for your subscribed artists");
+    }
+    // number of events to less than or equal number of artists than there are labels
+    else if (numberOfConcerts <= self.arrayOfConcertTitles.count) {
+        for (NSInteger i = 0; i < numberOfConcerts; i++) {
+            ((UILabel *)self.arrayOfConcertTitles[i]).text = ((FNBArtistEvent *)concertArray[i]).eventTitle;
+            [((UIImageView *)self.arrayOfConcertImages[i]) setImageWithURL:[NSURL URLWithString:((FNBArtistEvent *)concertArray[i]).artistImageURL]];
+            ((UILabel *)self.arrayOfConcertDates[i]).text = ((FNBArtistEvent *)concertArray[i]).dateOfConcert;
+        }
+    }
+    // number of events is more than there are labels
+    else {
+        for (NSInteger i = 0; i < self.arrayOfConcertTitles.count; i++) {
+            ((UILabel *)self.arrayOfConcertTitles[i]).text = ((FNBArtistEvent *)concertArray[i]).eventTitle;
+            [((UIImageView *)self.arrayOfConcertImages[i]) setImageWithURL:[NSURL URLWithString:((FNBArtistEvent *)concertArray[i]).artistImageURL]];
+            ((UILabel *)self.arrayOfConcertDates[i]).text = ((FNBArtistEvent *)concertArray[i]).dateOfConcert;
+        }
+    }
+}
 
 
 
