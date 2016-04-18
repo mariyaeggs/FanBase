@@ -14,6 +14,7 @@
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
 
+
 @interface FNBLoginContainerViewController () <SideBarDelegate>
 
 //Outlet for main containerView in storyboard
@@ -28,8 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
+//    
+=======
     
     BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+>>>>>>> d00be64f660c445c4cf7094419741959fe9913f7
 //    // Initialize side bar
 //    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
 //    self.sideBar.delegate = self;

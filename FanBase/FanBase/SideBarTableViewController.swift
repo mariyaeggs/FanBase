@@ -14,6 +14,7 @@ protocol SideBarTableViewControllerDelegate {
     func sideBarControlDidSelectRow(indexPath:NSIndexPath)
 }
 class SideBarTableViewController: UITableViewController {
+
     
     // Set properties
     var delegate:SideBarTableViewControllerDelegate? //optional property
