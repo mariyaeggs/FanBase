@@ -13,11 +13,10 @@
 #import "FanBase-Swift.h"
 #import "FNBArtistEvent.h"
 
-//this is to segue to the ArtistTop10
-//#import "FNBArtistTop10TableViewController.h"
-// this is to segue to the ArtistMainPage
 #import "FNBArtistMainPageTableViewController.h"
 #import "FNBBandsInTownAPIClient.h"
+#import "FNBSeeAllNearbyEventsTableViewController.h"
+#import "FNBEventInfoVC.h"
 
 @interface FNBUserProfilePageTableViewController () <SideBarDelegate>
 
@@ -73,6 +72,8 @@
 @property (strong, nonatomic) NSArray *arrayOfConcertTitles;
 @property (strong, nonatomic) NSArray *arrayOfConcertDates;
 @property (strong, nonatomic) NSArray *arrayOfConcertImages;
+
+@property (strong, nonatomic) NSArray *sortedArrayOfUsersConcerts;
 
 @property (strong, nonatomic) Firebase *userRef;
 @property (nonatomic, strong) SideBar *sideBar;
@@ -318,39 +319,11 @@
 - (void) getConcerts {
     [FNBBandsInTownAPIClient getUpcomingConcertsOfUser:self.currentUser withCompletion:^(NSArray *sortedConcertsArray) {
         if (sortedConcertsArray.count > 0) {
+            self.sortedArrayOfUsersConcerts = sortedConcertsArray;
             [self setLabelsAndImagesOfConcertCells:sortedConcertsArray];
 
         }
     }];
-//    // make an array of artist names (must use FNBArtist.name to allow special characters, such as A$AP Rocky
-//    NSMutableArray *arrayOfArtistNames = [NSMutableArray new];
-//    __block NSUInteger counter = 0;
-//
-//    
-//    for (NSString *artistName in self.currentUser.artistsDictionary) {
-//        
-//        // go into firebase and get the name property of that user
-//        [FNBFirebaseClient getArtistNameForArtistDatabaseName:artistName withCompletionBlock:^(BOOL artistDatabaseExists, NSString *artistActualName) {
-//            if (artistDatabaseExists) {
-//                [arrayOfArtistNames addObject:artistActualName];
-//                counter ++;
-//            }
-//            else {
-//                counter ++;
-//            }
-//            if (counter == self.currentUser.artistsDictionary.count) {
-//                [FNBBandsInTownAPIClient generateEventsForArtists:arrayOfArtistNames nearLocation:nil withinRadius:nil completion:^(NSArray * _Nullable receivedArray){
-//                    // filter by date
-//                    NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"unformattedDateOfConcert" ascending:YES];
-//                    NSArray *sortedConcertEvents = [receivedArray sortedArrayUsingDescriptors:@[dateSort]];
-//                    [self setLabelsAndImagesOfConcertCells:sortedConcertEvents];
-//                }];
-//            }
-//        }];
-//    }
-//    
-    
-
 }
 
 
@@ -441,6 +414,23 @@
     }
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 3 && indexPath.row < self.arrayOfConcertTitles.count) {
+        FNBArtistEvent *selectedEvent = self.sortedArrayOfUsersConcerts[indexPath.row];
+        
+        
+        // Create an instance of FNBEventInfoVC (view controller)
+        // Use UIStoryboard class/type to create the instance
+        FNBEventInfoVC *eventInfoVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"eventInfo"];
+        
+        // Assign event value to property on eventInfoVC
+        eventInfoVC.event = selectedEvent;
+        
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:eventInfoVC animated:YES];
+        
+    }
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
@@ -453,14 +443,14 @@
             FNBArtistMainPageTableViewController *nextVC = [segue destinationViewController];
             nextVC.receivedArtistName = selectedArist;
         }
-        
-        
-        
     }
-//    // if any other segue other than from the "See All" button
-//    if (![segue.identifier isEqualToString:@"seeAllSegue"]) {
-//        FNBArtistTop10TableViewController *nextVC = segue.destinationViewController;
-//        nextVC.recievedArtistSpotifyID = selectedArtistSpotifyID;
-//    }
+    
+
+
+    if ([segue.identifier isEqualToString:@"SeeAllConcertsSegue"]) {
+        FNBSeeAllNearbyEventsTableViewController *nextVC = segue.destinationViewController;
+        nextVC.receivedConcertsArray = self.sortedArrayOfUsersConcerts;
+    }
+    
 }
 @end
