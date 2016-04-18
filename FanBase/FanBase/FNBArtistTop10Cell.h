@@ -16,4 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *AlbumNameLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *play_pauseButton;
+
+@property (strong, nonatomic) NSString *trackSampleURL;
+
 @end
