@@ -138,14 +138,14 @@
 // hide nav bar
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
 }
 
 // show nav bar before leaving page
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO];
+//    [self.navigationController setNavigationBarHidden:NO];
 
 //    [self.userRef removeAllObservers];
 }
