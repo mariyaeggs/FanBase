@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredUserImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSubscribedArtistsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistXOfTotalLabel;
@@ -163,6 +164,14 @@
     }];
 }
 
+// sets height of each section header
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0 || section == 1) {
+        // cannot be 0 for some reason
+        return 0.1;
+    }
+    return 15;
+}
 
 // hide nav bar
 -(void)viewWillAppear:(BOOL)animated{
@@ -313,6 +322,7 @@
 -(void) updateUserPicNameAndNumberOfArtists {
     self.userNameLabel.text = self.currentUser.userName;
     [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
+    [self.blurredUserImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
 }
 
