@@ -153,7 +153,7 @@
                     [self getConcerts];
                     [self addListenersForLoggedInUser];
                     [self updateUserPicNameAndNumberOfArtists];
-                    [self.tableView reloadData];
+//                    [self.tableView reloadData];
                 }
             }];
             
@@ -325,6 +325,8 @@
     [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     [self.blurredUserImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
+    [self.tableView reloadData];
+
 }
 
 - (void) updateUI {
@@ -367,6 +369,8 @@
             ((UILabel *)self.arrayOfArtistRankingLabels[i]).text = [NSString stringWithFormat:@"#%@ of %@", artistInfoArray[i][@"usersRank"], artistInfoArray[i][@"numberOfFollowers" ]];
         }
     }
+    [self.tableView reloadData];
+
 }
 
 
@@ -391,6 +395,8 @@
             ((UILabel *)self.arrayOfConcertDates[i]).text = ((FNBArtistEvent *)concertArray[i]).dateOfConcert;
         }
     }
+    [self.tableView reloadData];
+
 }
 
 
