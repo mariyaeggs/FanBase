@@ -314,14 +314,20 @@
     else if (tweetsArray.count <= self.arrayOfTweetContentLabels.count) {
         for (NSInteger i = 0; i < tweetsArray.count; i++) {
             ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
-            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , tweetsArray[i][@"created_at"]];
+            // get rid of the +000 2016 at the end of the tweet date
+            NSString *createdAtDateUnformatted = tweetsArray[i][@"created_at"];
+            NSString *createdAtDateFormatted = [createdAtDateUnformatted componentsSeparatedByString:@"+"][0];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , createdAtDateFormatted];
         }
     }
     // number of tweets received is greater than number of labels
     else {
         for (NSInteger i = 0; i < self.arrayOfTweetContentLabels.count; i++) {
             ((UITextView *)self.arrayOfTweetContentLabels[i]).text = tweetsArray[i][@"text"];
-            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , tweetsArray[i][@"created_at"]];
+            // get rid of the +000 2016 at the end of the tweet date
+            NSString *createdAtDateUnformatted = tweetsArray[i][@"created_at"];
+            NSString *createdAtDateFormatted = [createdAtDateUnformatted componentsSeparatedByString:@"+"][0];
+            ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , createdAtDateFormatted];
         }
     }
 

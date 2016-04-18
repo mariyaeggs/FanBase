@@ -38,6 +38,7 @@
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
 
 + (void) addUser:(FNBUser *)user andArtistWithSpotifyID:(NSString *)spotifyID toDatabaseWithCompletionBlock: (void (^) (BOOL artistAddedToUserSuccessfully))block;
++ (void) getArtistNameForArtistDatabaseName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists, NSString *artistActualName))block;
 
 
 #pragma mark - Adding and Deleting User and Artist Methods

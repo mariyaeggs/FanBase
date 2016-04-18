@@ -25,6 +25,8 @@
 		A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */; };
 		A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */; };
 		A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */; };
+		A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */; };
+		A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
 		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
@@ -100,6 +102,10 @@
 		A14F2D7F1CADC6110093D187 /* FNBSpotifySearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSpotifySearch.m; sourceTree = "<group>"; };
 		A190B9EB1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeMoreTweetsTableViewController.h; sourceTree = "<group>"; };
 		A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeMoreTweetsTableViewController.m; sourceTree = "<group>"; };
+		A190B9EE1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeAllNearbyEventsTableViewController.h; sourceTree = "<group>"; };
+		A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewController.m; sourceTree = "<group>"; };
+		A190B9F41CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeAllNearbyEventsTableViewCell.h; sourceTree = "<group>"; };
+		A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewCell.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
 		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
@@ -232,6 +238,10 @@
 				A14E4E621CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.h */,
 				A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */,
 				A14E4E431CB408F90034FBFB /* UserPage.storyboard */,
+				A190B9F41CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.h */,
+				A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */,
+				A190B9EE1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.h */,
+				A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */,
 				EDF056A21CBE8AA300B457CF /* SideBarTableViewController.swift */,
 				EDF056A41CBEA0F400B457CF /* SideBar.swift */,
 				A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */,
@@ -590,6 +600,7 @@
 				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
 				A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */,
 				ED1787B81CB85B80008B12D9 /* Constants.m in Sources */,
+				A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
 				EDF056A31CBE8AA300B457CF /* SideBarTableViewController.swift in Sources */,
@@ -603,6 +614,7 @@
 				BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */,
 				A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
+				A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */,
 				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -276,6 +276,24 @@
     }];
 }
 
++ (void) getArtistNameForArtistDatabaseName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists, NSString *artistActualName))block {
+    [self checkExistanceOfDatabaseEntryForArtistName:artistName withCompletionBlock:^(BOOL artistDatabaseExists) {
+        if (artistDatabaseExists) {
+            Firebase *artistsRef = [self getArtistFirebaseRef];
+            Firebase *newArtistRef = [artistsRef childByAppendingPath:artistName];
+            [newArtistRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                NSString *actualArtistName = snapshot.value[@"name"];
+                block(YES, actualArtistName);
+            }];
+        }
+        else {
+            NSLog(@"tried to get artist's actual name: %@, but couldnt find them in the database", artistName);
+            block(NO, @"");
+        }
+    }];
+}
+
+
 + (void) setPropertiesOfArtist:(FNBArtist *)artist FromDatabaseWithCompletionBlock: (void (^) (BOOL setPropertiesCompleted)) setArtistPropertiesCompletionBlock {
     Firebase *artistsRef = [self getArtistFirebaseRef];
     Firebase *specificArtistRef = [artistsRef childByAppendingPath:[self formatedArtistName:artist.name]];
