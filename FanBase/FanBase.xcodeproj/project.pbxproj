@@ -62,6 +62,7 @@
 		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
 		EDD4EEC21CB85A9900D7576E /* FNBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */; };
 		EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */; };
+		EDE7E97F1CC51926006BB29B /* handsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE7E97E1CC51926006BB29B /* handsLogo.png */; };
 		EDF0569A1CBD70D800B457CF /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF056991CBD70D800B457CF /* SlideMenuViewController.m */; };
 		EDF056A31CBE8AA300B457CF /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF056A21CBE8AA300B457CF /* SideBarTableViewController.swift */; };
 		EDF056A51CBEA0F400B457CF /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF056A41CBEA0F400B457CF /* SideBar.swift */; };
@@ -168,6 +169,7 @@
 		EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBCollectionViewCell.m; sourceTree = "<group>"; };
 		EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTableViewCell.h; sourceTree = "<group>"; };
 		EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTableViewCell.m; sourceTree = "<group>"; };
+		EDE7E97E1CC51926006BB29B /* handsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handsLogo.png; sourceTree = "<group>"; };
 		EDF056981CBD70D800B457CF /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
 		EDF056991CBD70D800B457CF /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
 		EDF056A11CBE8AA300B457CF /* FanBase-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FanBase-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				A1E7A92C1CAC281600A9B968 /* FirebaseFiles */,
 				BD0A5A861CAAFCF300FFF623 /* ViewController.h */,
 				BD0A5A871CAAFCF300FFF623 /* ViewController.m */,
+				EDE7E97E1CC51926006BB29B /* handsLogo.png */,
 				BD0A5A891CAAFCF300FFF623 /* Main.storyboard */,
 				BD0A5A8C1CAAFCF300FFF623 /* Assets.xcassets */,
 				BD0A5A8E1CAAFCF300FFF623 /* LaunchScreen.storyboard */,
@@ -493,6 +496,7 @@
 				EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */,
 				A14E4E601CB7F3B90034FBFB /* artistMainPage.storyboard in Resources */,
 				BD0A5A8D1CAAFCF300FFF623 /* Assets.xcassets in Resources */,
+				EDE7E97F1CC51926006BB29B /* handsLogo.png in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
 				ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */,
