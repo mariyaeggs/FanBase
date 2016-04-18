@@ -344,7 +344,6 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="XuX-m4-dBG"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="artist1ImageView" destination="UT6-1a-FXZ" id="B1P-Ul-vcl"/>
@@ -380,7 +379,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1737" y="313"/>
+            <point key="canvasLocation" x="1417" y="-46"/>
         </scene>
         <!--artistMainPage-->
         <scene sceneID="khm-DZ-EA4">
