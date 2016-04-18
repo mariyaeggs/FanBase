@@ -10,12 +10,9 @@
 #import "FNBLoginViewController.h"
 #import "FNBUserProfilePageTableViewController.h"
 #import "FNBFirebaseClient.h"
-<<<<<<< HEAD
 #import "FNBNoInternetVCViewController.h"
-=======
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
->>>>>>> master
 
 @interface FNBLoginContainerViewController () <SideBarDelegate>
 
