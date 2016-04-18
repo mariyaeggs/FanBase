@@ -21,6 +21,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    
     // round corners
     self.submitButton.layer.cornerRadius = 5;
     self.submitButton.layer.masksToBounds = YES;
