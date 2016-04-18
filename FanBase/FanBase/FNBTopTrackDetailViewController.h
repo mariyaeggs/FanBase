@@ -37,4 +37,5 @@
 
 @property (nonatomic, strong) NSString * trackSampleURL;
 
+@property (nonatomic, strong) NSString * trackUrl;
 @end

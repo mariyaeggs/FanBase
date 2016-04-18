@@ -46,13 +46,15 @@
                  NSString *albumImageURL = albumImages[1][@"url"];
                  NSString *trackName = myTop10[@"name"];
                  NSString *trackSampleURL = myTop10[@"preview_url"];
+                 NSString *trackUrl = myTop10[@"external_urls"][@"spotify"];
                  
                  
                  
                  NSDictionary *currentSongDictionry = @{ @"nameTrack" : trackName ,
                                                          @"albumImageURL" : albumImageURL,
                                                          @"albumName" : albumName,
-                                                         @"previewSong" : trackSampleURL};
+                                                         @"previewSong" : trackSampleURL,
+                                                         @"trackUrl" : trackUrl};
                                                          
                  [topTracksFolder addObject:currentSongDictionry];
                  NSLog(@"tracksample %@",currentSongDictionry);

@@ -11,6 +11,9 @@
 #import "FNBTwitterAPIClient.h"
 //this is to segue to the ArtistTop10
 #import "FNBArtistTop10TableViewController.h"
+#import "FNBBandsInTownAPIClient.h"
+#import "FNBArtistEvent.h"
+#import "FNBEventInfoVC.h"
 //this is to segue to the fanFeedVC
 #import "FNBFanFeedViewController.h"
 //this is to segue to the fanFeedVC
@@ -23,6 +26,7 @@
 @property (nonatomic) BOOL isUserSubscribedToArtist;
 
 @property (strong, nonatomic) Firebase *artistRef;
+@property (strong, nonatomic) NSArray *artistEvents;
 
 
 
@@ -45,7 +49,21 @@
 @property (weak, nonatomic) IBOutlet UITextView *tweet3ContentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *tweet3DateLabel;
 
+// upcoming events section
 
+@property (weak, nonatomic) IBOutlet UIImageView *eventImageView1;
+@property (weak, nonatomic) IBOutlet UILabel *eventLabel1;
+@property (weak, nonatomic) IBOutlet UIImageView *eventImageView2;
+@property (weak, nonatomic) IBOutlet UILabel *eventLabel2;
+@property (weak, nonatomic) IBOutlet UIImageView *eventImageView3;
+@property (weak, nonatomic) IBOutlet UILabel *eventLabel3;
+
+@property (weak, nonatomic) IBOutlet UILabel *eventLabelDate1;
+@property (weak, nonatomic) IBOutlet UILabel *eventLabelDate2;
+@property (weak, nonatomic) IBOutlet UILabel *eventLabelDate3;
+
+
+@property (strong,nonatomic) NSArray *events;
 
 
 @end
@@ -120,6 +138,17 @@
 //            }];
         }
     }];
+    
+    [FNBBandsInTownAPIClient generateEventsForArtist:self.currentArtist.name
+                                          completion:^(NSArray *events) {
+                                              
+                                              self.events = events;
+                                              
+                                             [self setEventCellsWithEventsArray:self.events];
+                                              
+                                          }];
+    
+    
     
 }
 
@@ -296,6 +325,84 @@
         }
     }
 
+}
+
+-(void) setEventCellsWithEventsArray: (NSArray *)events {
+    
+    
+    if (events.count > 0) {
+        // set up first event
+        FNBArtistEvent *event = events[0];
+        self.eventLabel1.text = event.eventTitle;
+        self.eventLabelDate1.text = event.dateOfConcert;
+        NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
+        NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
+        self.eventImageView1.image = [UIImage imageWithData:dataImage1];
+    }
+    
+    if (events.count > 1) {
+        // set up second event
+        FNBArtistEvent *event1 = events[1];
+        self.eventLabel2.text = event1.eventTitle;
+        self.eventLabelDate2.text = event1.dateOfConcert;
+        NSURL *imageURL2 = [NSURL URLWithString:event1.artistImageURL];
+        NSData *dataImage2 = [NSData dataWithContentsOfURL:imageURL2];
+        self.eventImageView2.image = [UIImage imageWithData:dataImage2];
+    }
+    
+    if (events.count > 2) {
+        // set up third event
+        FNBArtistEvent *event2 = events[2];
+        self.eventLabel3.text = event2.eventTitle;
+        self.eventLabelDate3.text = event2.dateOfConcert;
+        NSURL *imageURL3 = [NSURL URLWithString:event2.artistImageURL];
+        NSData *dataImage3 = [NSData dataWithContentsOfURL:imageURL3];
+        self.eventImageView3.image = [UIImage imageWithData:dataImage3];
+    }
+    
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Get the section number to determine what section has been selected
+    NSInteger section = indexPath.section;
+    NSLog(@"printing indexpath.section%luXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",section);
+    // Get the header section text
+    NSString *sectionHeaderTitle = [tableView headerViewForSection:section].textLabel.text;
+    
+    
+    // Check to see if selection is in section, "Upcoming Concerts"
+    
+    // IF section header text is equal to "Upcoming Conerts" AND row index is less than or equal to 2,
+    // THEN proceed with preparing to go to next VC
+    
+    if ([sectionHeaderTitle isEqualToString:@"Upcoming Concerts"] && indexPath.row <= 2) {
+        
+        // Check to see if there is an event object at indexPath.row selected
+        if (self.events[indexPath.row] != nil) {
+            
+            // Reach into self.events property array and get FNBArtistEvent object at index path for row
+            FNBArtistEvent *event = self.events[indexPath.row];
+            
+            NSLog(@"printing indexPath.row: %li",indexPath.row);
+            
+            // Create an instance of FNBEventInfoVC (view controller)
+            // Use UIStoryboard class/type to create the instance
+            FNBEventInfoVC *eventInfoVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"eventInfo"];
+            
+            // Assign event value to property on eventInfoVC
+            eventInfoVC.event = event;
+            
+            // Push eventInfoVC in my window
+            [self.navigationController pushViewController:eventInfoVC animated:YES];
+        }
+        
+    } else if ([sectionHeaderTitle isEqualToString:@"Upcoming Concerts"] && indexPath.row == 3) {
+        
+        // Handle "See More"
+    }
+    
 }
 
 

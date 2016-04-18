@@ -26,9 +26,11 @@
 //            FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES];
             FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES image:dict[@"artists"][0][@"image_url"]];
             [collectionOfEventObjects addObject:event];
+        
+        
         }
         
-        NSLog(@"%@",collectionOfEventObjects);
+        NSLog(@"THIS IS MY EVENT INFO %@",collectionOfEventObjects);
         completionBlock(collectionOfEventObjects);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
