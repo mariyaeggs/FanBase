@@ -31,6 +31,15 @@
     self.containerView.layer.cornerRadius = 7.5;
     self.containerView.layer.masksToBounds = YES;
     
+    //Gradient
+    self.view.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
+    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.view.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+
+    [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated {

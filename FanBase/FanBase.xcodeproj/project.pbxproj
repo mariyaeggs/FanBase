@@ -62,6 +62,9 @@
 		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
 		EDD4EEC21CB85A9900D7576E /* FNBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */; };
 		EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */; };
+		EDF0569A1CBD70D800B457CF /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF056991CBD70D800B457CF /* SlideMenuViewController.m */; };
+		EDF056A31CBE8AA300B457CF /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF056A21CBE8AA300B457CF /* SideBarTableViewController.swift */; };
+		EDF056A51CBEA0F400B457CF /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF056A41CBEA0F400B457CF /* SideBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +168,11 @@
 		EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBCollectionViewCell.m; sourceTree = "<group>"; };
 		EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTableViewCell.h; sourceTree = "<group>"; };
 		EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBTableViewCell.m; sourceTree = "<group>"; };
+		EDF056981CBD70D800B457CF /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
+		EDF056991CBD70D800B457CF /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
+		EDF056A11CBE8AA300B457CF /* FanBase-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FanBase-Bridging-Header.h"; sourceTree = "<group>"; };
+		EDF056A21CBE8AA300B457CF /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
+		EDF056A41CBEA0F400B457CF /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideBar.swift; path = Assets.xcassets/SideBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,10 +230,13 @@
 				A14E4E621CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.h */,
 				A14E4E631CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m */,
 				A14E4E431CB408F90034FBFB /* UserPage.storyboard */,
+				EDF056A21CBE8AA300B457CF /* SideBarTableViewController.swift */,
+				EDF056A41CBEA0F400B457CF /* SideBar.swift */,
 				A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */,
 				A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */,
 				A14E4E451CB4110B0034FBFB /* FNBUserProfilePageTableViewController.h */,
 				A14E4E461CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m */,
+				EDF056A11CBE8AA300B457CF /* FanBase-Bridging-Header.h */,
 			);
 			name = UserPage;
 			sourceTree = "<group>";
@@ -254,6 +265,8 @@
 		A1E7A92C1CAC281600A9B968 /* FirebaseFiles */ = {
 			isa = PBXGroup;
 			children = (
+				EDF056981CBD70D800B457CF /* SlideMenuViewController.h */,
+				EDF056991CBD70D800B457CF /* SlideMenuViewController.m */,
 				A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */,
 				A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */,
 				A1E7A9301CAC284700A9B968 /* FNBUser.h */,
@@ -441,7 +454,7 @@
 				TargetAttributes = {
 					BD0A5A7C1CAAFCF300FFF623 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 43RAP2A4D4;
+						DevelopmentTeam = KXY9EDFTF5;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -548,8 +561,10 @@
 				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
 				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
 				BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */,
+				EDF0569A1CBD70D800B457CF /* SlideMenuViewController.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				BD3116B71CB5A87D00C47570 /* FNBBandsInTownAPIClient.m in Sources */,
+				EDF056A51CBEA0F400B457CF /* SideBar.swift in Sources */,
 				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
 				ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */,
 				BD3913341CBD371D009E7437 /* FNBFanFeedViewController.m in Sources */,
@@ -573,6 +588,7 @@
 				ED1787B81CB85B80008B12D9 /* Constants.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
+				EDF056A31CBE8AA300B457CF /* SideBarTableViewController.swift in Sources */,
 				325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */,
 				BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */,
 				325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */,
@@ -696,6 +712,7 @@
 			baseConfigurationReference = 4D5840F805F31103BAC56E7B /* Pods-FanBase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanBase/Info.plist;
@@ -704,6 +721,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FanBase/FanBase-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -712,6 +731,7 @@
 			baseConfigurationReference = C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanBase/Info.plist;
@@ -720,6 +740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FanBase/FanBase-Bridging-Header.h";
 			};
 			name = Release;
 		};
