@@ -108,14 +108,14 @@
             self.currentUser = [[FNBUser alloc] init];
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                 if (completedSettingUsersProperties) {
-                    [FNBBandsInTownAPIClient generateEventsForArtists:@[@"Coldplay", @"Adele"] nearLocation:nil withinRadius:nil completion:^(NSArray * _Nullable receivedArray){
+                    [FNBBandsInTownAPIClient generateEventsForArtists:@[@"Coldplay", @"Adele", @"ASAP Rocky"] nearLocation:nil withinRadius:nil completion:^(NSArray * _Nullable receivedArray){
                         // filter by date
                         NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"unformattedDateOfConcert" ascending:YES];
                         NSArray *sortedConcertEvents = [receivedArray sortedArrayUsingDescriptors:@[dateSort]];
                         for (FNBArtistEvent *event in sortedConcertEvents) {
                             NSLog(@"this is the date of the %@ concert: %@", event.eventTitle, event.unformattedDateOfConcert);
                         }
-//                        NSLog(@"this is the sortd array of concerts: %@", sortedConcertEvents);
+                        
                     }];
                 
                     [self addListenersForLoggedInUser];

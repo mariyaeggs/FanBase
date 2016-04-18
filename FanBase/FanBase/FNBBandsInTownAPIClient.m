@@ -69,7 +69,13 @@
         NSMutableArray *collectionOfEventObjects = [NSMutableArray new];
         
         for (NSDictionary *dict in responseObject) {
-            FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES image:dict[@"artists"][0][@"image_url"] unformattedDate:dict[@"datetime"]];
+            //unformatted Date:
+            NSString *receivedUnformattedDate = dict[@"datetime"];
+            // remove everything past the 'T'
+            NSString *noTimeDate = [receivedUnformattedDate componentsSeparatedByString:@"T"][0];
+            NSString *justDate = [noTimeDate stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            
+            FNBArtistEvent *event = [[FNBArtistEvent alloc] initWithEventTitle:dict[@"title"] date:dict[@"formatted_datetime"] availability:YES venue:dict[@"venue"] star:YES image:dict[@"artists"][0][@"image_url"] unformattedDate:justDate];
             [collectionOfEventObjects addObject:event];
         }
         
