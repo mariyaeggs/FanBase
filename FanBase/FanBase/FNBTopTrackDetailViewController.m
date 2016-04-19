@@ -44,18 +44,18 @@
 //    [self.playButton setTitle:@"Play full song on Spotify" forState:UIControlStateNormal];
     
     
-    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-    UIImage *image = [UIImage imageNamed:@"spotify-logo"];
-    
-    
-    attachment.image = image;
-    
-    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
-    NSMutableAttributedString *buttonString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
-    NSAttributedString *contentString = [[NSAttributedString alloc] initWithString:@"Play full song on Spotify"];
-    [buttonString appendAttributedString:contentString];
-    
-    [self.playButton setAttributedTitle:buttonString forState:UIControlStateNormal];
+//    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+//    UIImage *image = [UIImage imageNamed:@"icon-spotify"];
+//    
+//    
+//    attachment.image = image;
+//    
+//    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
+//    NSMutableAttributedString *buttonString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
+//    NSAttributedString *contentString = [[NSAttributedString alloc] initWithString:@"Play full song on Spotify"];
+//    [buttonString appendAttributedString:contentString];
+//    
+//    [self.playButton setAttributedTitle:buttonString forState:UIControlStateNormal];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
