@@ -41,12 +41,17 @@
 @property (nonatomic) BOOL searchFieldPopulated;
 @property (strong, nonatomic) NSArray *spotifyResultsArray;
 
+
 // Side Bar property
 @property (nonatomic,strong) SideBar *sideBar;
 
 @end
 
 @implementation FNBViewController
+
+
+static NSInteger const minimumImageHeight = 100;
+
 
 -(void)loadView
 {
@@ -220,7 +225,7 @@
                 // get smallest image that is minimum height
                 NSMutableDictionary *selectedImage = [NSMutableDictionary new];
                 for (NSDictionary *imageDescription in images) {
-                    if ([imageDescription[@"height"] integerValue] > 100) {
+                    if ([imageDescription[@"height"] integerValue] > minimumImageHeight) {
                         selectedImage = [imageDescription mutableCopy];
                     }
                 }
