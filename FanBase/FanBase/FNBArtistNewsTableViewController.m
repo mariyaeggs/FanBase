@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
 //    NSLog(@"Outside client req");
     
     //Gradient
@@ -27,6 +28,7 @@
     gradientMask.frame = self.view.bounds;
     gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
     [self.view.layer insertSublayer:gradientMask atIndex:0];
+
     
     if ([self isForceTouchAvailable]) {
         self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];

@@ -13,8 +13,6 @@
 #import "FanBase-Swift.h"
 #import "FNBArtistEvent.h"
 #import "FanBase-Bridging-Header.h"
-//#import "FanBase-Swift.h"
-
 
 #import "FNBArtistMainPageTableViewController.h"
 #import "FNBBandsInTownAPIClient.h"
@@ -86,6 +84,7 @@
 @property (strong, nonatomic) NSArray *sortedArrayOfUsersConcerts;
 
 @property (strong, nonatomic) Firebase *userRef;
+
 @property (nonatomic, strong) SideBar *sideBar;
 
 @property (strong, nonatomic) NSString *selectedArtistSpotifyIDToSendToNextVC;
@@ -97,6 +96,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
     //Gradient
     self.view.tintColor = FNBOffWhiteColor;
     UIColor *gradientMaskLayer = FNBLightGreenColor;
@@ -107,10 +107,27 @@
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
     // Call the sidebar menu function
+
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+    hamburgerButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
+
     
-    // Initialize side bar 
+    // Initialize side bar
     self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
     self.sideBar.delegate = self;
+
+
+
+
+    // set the artistLabels and artistImageViews of the cells
+
+    
+    
+    // create the artistLabels and artistImageViews of the cells
+    
+
 
     // create the artistLabels and artistImageViews of the cells
 
@@ -139,11 +156,38 @@
     }
 }
 
+// If bar menu is tapped
+-(void)hamburgerButtonTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+    
+}
 // Side bar delegate method implementation
 -(void)didSelectButtonAtIndex:(NSInteger)index {
     
-
+    NSLog(@"%ld", (long)index);
+    
+    if ((long)index == 0) {
+        FNBUserProfilePageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:userProfileVC animated:YES];
+    } else if ((long)index == 1) {
+        FNBUserProfilePageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:discoverPageVC animated:YES];
+    } else if ((long)index == 2) {
+        FNBUserProfilePageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:eventsVC animated:YES];
+        
+    }
 }
+
+
 
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -406,8 +450,6 @@
 
 }
 
-
-
 // makes height 0 of empty cells
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -489,8 +531,6 @@
         }
     }
     
-
-
     if ([segue.identifier isEqualToString:@"SeeAllConcertsSegue"]) {
         FNBSeeAllNearbyEventsTableViewController *nextVC = segue.destinationViewController;
         nextVC.receivedConcertsArray = self.sortedArrayOfUsersConcerts;

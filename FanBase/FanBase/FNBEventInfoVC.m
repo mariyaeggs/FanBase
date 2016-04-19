@@ -19,7 +19,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *ticketsAvailable;
 @property (strong, nonatomic) IBOutlet UIImageView *artistImage;
 
-
 @end
 
 @implementation FNBEventInfoVC

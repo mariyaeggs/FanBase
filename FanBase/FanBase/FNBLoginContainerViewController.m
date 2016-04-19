@@ -15,6 +15,7 @@
 #import "FanBase-Swift.h"
 
 
+
 @interface FNBLoginContainerViewController () <SideBarDelegate>
 
 //Outlet for main containerView in storyboard
@@ -30,11 +31,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+    
+//    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+    //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+
+
+    //Initializes hamburger bar menu button
+//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+//    hamburgerButton.tintColor = [UIColor blackColor];
+//    self.navigationItem.rightBarButtonItem = hamburgerButton;
+//
+//    
+//    // Call the sidebar menu function
+//    
 
 //    // Initialize side bar
 //    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
 //    self.sideBar.delegate = self;
+//    
+    
+
+    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+    //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
     
     if (isNetworkAvailable) {
         [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
@@ -50,12 +68,37 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedInNotification:) name:@"UserDidLogInNotification" object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedOutNotification:) name:@"UserDidLogOutNotification" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleHamburgerButtonNotification:) name:@"HamburgerButtonNotification" object:nil];
     }
     else {
         [self showInternetBadVC];
     }
 }
 
+
+//// Side bar delegate method implementation
+//-(void)didSelectButtonAtIndex:(NSInteger)index {
+//    
+//    
+//}
+//
+//// If bar menu is tapped
+//-(void)hamburgerButtonTapped:(id)sender {
+//    
+//    if (self.sideBar.isSideBarOpen) {
+//        [self.sideBar showSideBarMenu:NO];
+//    } else {
+//        [self.sideBar showSideBarMenu:YES];
+//    }
+//    
+//}
+
+-(void)handleHamburgerButtonNotification:(NSNotification *)notification {
+    
+    NSLog(@"We got hamburgers?");
+    [self.sideBar showSideBarMenu:YES];
+}
 -(void)handleUserLoggedInNotification:(NSNotification *)notification
 {
     [self showUserMainPageVC];
@@ -63,6 +106,7 @@
 
 -(void)handleUserLoggedOutNotification:(NSNotification *)notification
 {
+    [FNBFirebaseClient logoutUser]; 
     [self showLoginVC];
 }
 

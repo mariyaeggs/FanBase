@@ -14,11 +14,15 @@
 // this is to segue to the ArtistMainPage
 #import "FNBArtistMainPageTableViewController.h"
 #import "FNBViewAllArtistsTableViewCell.h"
+#import "FanBase-Bridging-Header.h"
+#import "Fanbase-Swift.h"
 
-@interface FNBAllSubscribedArtistsTableViewController ()
+
+@interface FNBAllSubscribedArtistsTableViewController ()<SideBarDelegate>
 
 @property (strong, nonatomic) FNBUser *currentUser;
 @property (strong, nonatomic) Firebase *userRef;
+@property (strong, nonatomic) SideBar *sideBar;
 
 @end
 
@@ -27,11 +31,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:nil];
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
     hamburgerButton.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = hamburgerButton;
     
-
+    
+        // Initialize side bar
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+        self.sideBar.delegate = self;
+    
     
     // set user info, and then get a detailed array of the artists the user is subscribed to
     self.currentUser = [[FNBUser alloc] init];
@@ -51,6 +60,38 @@
             }];
         }
     }];
+}
+
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
+    NSLog(@"%ld", (long)index);
+    
+    if ((long)index == 0) {
+        FNBAllSubscribedArtistsTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:userProfileVC animated:YES];
+    } else if ((long)index == 1) {
+        FNBAllSubscribedArtistsTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:discoverPageVC animated:YES];
+    } else if ((long)index == 2) {
+        FNBAllSubscribedArtistsTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+        // Push eventInfoVC in my window
+    [self.navigationController pushViewController:eventsVC animated:YES];
+
+    }
+}
+
+ //If bar menu is tapped
+-(void)hamburgerButtonTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{

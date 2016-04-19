@@ -62,6 +62,7 @@
 		ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */; };
 		ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */; };
 		ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C41CB85BF7008B12D9 /* APIClient.m */; };
+		ED3436201CC673D000EA95BA /* SideMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED34361F1CC673D000EA95BA /* SideMenuConstants.m */; };
 		EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */; };
 		EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */; };
 		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
@@ -172,6 +173,8 @@
 		ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNBDiscoverViewController.m; path = FanBase/FNBDiscoverViewController.m; sourceTree = "<group>"; };
 		ED1787C31CB85BF7008B12D9 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = FanBase/APIClient.h; sourceTree = "<group>"; };
 		ED1787C41CB85BF7008B12D9 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = FanBase/APIClient.m; sourceTree = "<group>"; };
+		ED34361E1CC673D000EA95BA /* SideMenuConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuConstants.h; sourceTree = "<group>"; };
+		ED34361F1CC673D000EA95BA /* SideMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuConstants.m; sourceTree = "<group>"; };
 		EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover2.storyboard; sourceTree = "<group>"; };
 		EDD4EEB71CB85A7400D7576E /* FNBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBAppDelegate.h; sourceTree = "<group>"; };
 		EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBAppDelegate.m; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */,
 				EDF056A21CBE8AA300B457CF /* SideBarTableViewController.swift */,
 				EDF056A41CBEA0F400B457CF /* SideBar.swift */,
+				ED34361E1CC673D000EA95BA /* SideMenuConstants.h */,
+				ED34361F1CC673D000EA95BA /* SideMenuConstants.m */,
 				A14E4E481CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.h */,
 				A14E4E491CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m */,
 				A14E4E451CB4110B0034FBFB /* FNBUserProfilePageTableViewController.h */,
@@ -603,6 +608,7 @@
 				BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */,
+				ED3436201CC673D000EA95BA /* SideMenuConstants.m in Sources */,
 				BDFEF35E1CC59CFB00863A17 /* UILabel+SubstituteFont.m in Sources */,
 				BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */,
 				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
