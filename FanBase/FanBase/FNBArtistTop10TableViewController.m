@@ -33,7 +33,16 @@
     
     self.isMusicPlaying = NO;
     
+    //Gradient
+    self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
+    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.tableView.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
     
+    [self.tableView.layer insertSublayer:gradientMask atIndex:0];
+    
+//    self.tableView.backgroundColor = [UIColor blueColor];
     
     // dummy data (this is AC/DC Sptify ID)
     //    self.recievedArtistSpotifyID = @"711MCceyCBcFnzjGY4Q7Un";
@@ -95,11 +104,14 @@
         NSDictionary *song =  self.topTrackCellFolder[indexPath.row];
     if (self.isMusicPlaying && [self.previousUrl isEqualToString:song[@"previewSong"]]){
         
-        [cell.play_pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+//        [cell.play_pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+        [cell.play_pauseButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
         
     }
     else {
-        [cell.play_pauseButton setTitle:@"Play" forState:UIControlStateNormal];
+//        [cell.play_pauseButton setTitle:@"Play" forState:UIControlStateNormal];
+        [cell.play_pauseButton setImage:[UIImage imageNamed:@"play"]
+                               forState:UIControlStateNormal];
 
         
     }
@@ -107,6 +119,8 @@
     cell.AlbumNameLabel.text = song[@"albumName"];
     cell.trackSampleURL = song[@"previewSong"];
     NSString *trackString = song[@"albumImageURL"];
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     [cell.AlbumImageView setImageWithURL: [NSURL URLWithString:trackString]];
     

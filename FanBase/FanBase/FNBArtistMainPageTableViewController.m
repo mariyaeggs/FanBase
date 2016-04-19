@@ -104,7 +104,16 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //Gradient
+    self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
+    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.tableView.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+    
+    [self.tableView.layer insertSublayer:gradientMask atIndex:0];
 
+    
     // load page assuming user is not logged in and not subscribed
     self.isUserSubscribedToArtist = NO;
     self.isUserLoggedIn = NO;
@@ -383,7 +392,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 
 {
     UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-
+    cell.backgroundColor = [UIColor clearColor];
+    
     if (indexPath.section == 3){
                 if(cell == self.twitterFirstViewCell && self.currentArtist.tweetsArray.count < 1){
             

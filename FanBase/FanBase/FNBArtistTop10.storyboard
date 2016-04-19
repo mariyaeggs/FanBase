@@ -61,6 +61,8 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="2ei-cP-SLQ" firstAttribute="leading" secondItem="l6X-6V-10a" secondAttribute="leadingMargin" constant="7" id="6Qr-Xq-lgX"/>
                                         <constraint firstItem="ANt-yU-92a" firstAttribute="leading" secondItem="l6X-6V-10a" secondAttribute="leadingMargin" constant="5" id="8NK-KC-IFY"/>
@@ -72,6 +74,7 @@
                                         <constraint firstItem="YrP-BU-ZlQ" firstAttribute="leading" secondItem="ANt-yU-92a" secondAttribute="trailing" constant="3" id="xfe-io-kRJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="AlbumImageView" destination="ANt-yU-92a" id="XdL-rG-sI1"/>
                                     <outlet property="AlbumNameLabel" destination="2ei-cP-SLQ" id="vJd-Zp-FXi"/>
