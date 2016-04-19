@@ -39,8 +39,6 @@
     self.label.textAlignment = NSTextAlignmentRight;
     
     
-
-    
     //Adds the image and label
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.label];

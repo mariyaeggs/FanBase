@@ -27,6 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:nil];
+    hamburgerButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
+    
+
+    
     // set user info, and then get a detailed array of the artists the user is subscribed to
     self.currentUser = [[FNBUser alloc] init];
     [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {

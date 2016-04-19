@@ -3,8 +3,7 @@
 //  FanBase
 //
 //  Created by Mariya Eggensperger on 4/6/16.
-//  Copyright © 2016 Angelica Bato. All rights reserved.
-//
+
 
 #import "FNBViewController.h"
 #import "FNBCollectionViewCell.h"
@@ -14,13 +13,15 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBFirebaseClient.h"
 #import <Firebase.h>
+#import "FanBase-Bridging-Header.h"
+#import "FanBase-Swift.h"
+
 // this is to segue to artistMainPage
 #import "FNBArtistMainPageTableViewController.h"
 
-@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
+@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate>
 
-@property (nonatomic,strong) NSArray *imageArray; //-->currently colors
-
+@property (nonatomic,strong) NSArray *imageArray;
 @property (nonatomic, strong) NSArray *genres;
 @property (nonatomic, strong) NSArray *genresForComparison;
 @property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
@@ -40,9 +41,17 @@
 @property (nonatomic) BOOL searchFieldPopulated;
 @property (strong, nonatomic) NSArray *spotifyResultsArray;
 
+
+// Side Bar property
+@property (nonatomic,strong) SideBar *sideBar;
+
 @end
 
 @implementation FNBViewController
+
+
+static NSInteger const minimumImageHeight = 100;
+
 
 -(void)loadView
 {
@@ -72,17 +81,22 @@
     
     self.contentOffsetDictionary = [NSMutableDictionary dictionary];
     
-    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
+        // Initialize side bar
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+        self.sideBar.delegate = self;
+
+    
     self.selectedArtist = @"";
     
     self.searchFieldPopulated = NO;
 
-    
     // start listening to if the quickAddButton pressed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userTappedQuickAddButton:) name:@"userTappedQuickAddButton" object:nil];
     
@@ -91,7 +105,10 @@
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
 }
-
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
+}
 // create a tapGestureRecognizer to dismiss keyboard when click out of searchBar
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     // add tap gesture for entire page to exit the search
@@ -109,8 +126,6 @@
     [self.view removeGestureRecognizer:self.dismissKeyboardTap];
     return YES;
 }
-
-
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
@@ -150,8 +165,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-
+    // Initialize side bar
+    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    self.sideBar.delegate = self;
     
+
     //find if user is logged in, if so, get their subscribed users
     self.currentUser = [[FNBUser alloc] init];
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
@@ -179,8 +197,6 @@
         }
     }];
     
-    
-    
     self.content = [NSMutableDictionary new];
     
     self.genres = @[@"Pop", @"Hip Hop", @"Country", @"EDM/Dance", @"Rock", @"Latino", @"Soul", @"Folk & American", @"Jazz", @"Classical", @"Comedy", @"Metal", @"K-Pop", @"Reggae", @"Punk", @"Funk", @"Blues"];
@@ -195,7 +211,6 @@
     // Block reads artist data in firebase
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
-//        NSLog(@"start");
         
         // seems like repeated access of snapshot.value is painfully slow.
         // so... we're going to stash it in a variable and use that instead.
@@ -204,12 +219,19 @@
             //Compiles a dictionary in specific format
             for (NSString *artistName in snapshotValue) {
                 
-                // POTENTIAL PROBLEM: ARTIST NAME IS NOT COMING FROM ARTISTINFO[@"NAME"], SO THE DISPLAYED NAME DOES NOT HAVE /$() CHARACTERS
-                
                 NSDictionary *artistInfo = snapshotValue[artistName];
                 NSArray *images = artistInfo[@"images"];
-                NSDictionary *firstImage = images.firstObject;
-                NSString *imageURL = firstImage[@"url"];
+                
+                // get smallest image that is minimum height
+                NSMutableDictionary *selectedImage = [NSMutableDictionary new];
+                for (NSDictionary *imageDescription in images) {
+                    if ([imageDescription[@"height"] integerValue] > minimumImageHeight) {
+                        selectedImage = [imageDescription mutableCopy];
+                    }
+                }
+                NSString *imageURL = selectedImage[@"url"];
+//                NSDictionary *firstImage = images.firstObject;
+//                NSString *imageURL = firstImage[@"url"];
                 NSString *spotifyID = artistInfo[@"spotifyID"];
                 NSArray *genres = artistInfo[@"genres"];
                 
@@ -352,9 +374,6 @@
     [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0) animated:NO];
     
     [cell.collectionView registerClass:[FNBCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
-
-    
-    
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -450,7 +469,7 @@
     
     // for search results
     if (self.searchFieldPopulated) {
-        NSLog(@"Search field populated");
+//        NSLog(@"Search field populated");
         NSString *artistNameFromSpotify = self.spotifyResultsArray[indexPath.row][@"name"];
         
         cell.artist = artistNameFromSpotify;
@@ -478,7 +497,7 @@
         
     }
     else {
-        NSLog(@"Search field NOT populated");
+//        NSLog(@"Search field NOT populated");
 
         UIView *view = [collectionView superview];
         FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];
@@ -570,13 +589,11 @@
         return NO;
     }
     else {
-        NSLog(@"THERE IS NOTHING IN THE USER'S ARTISTDICTIONARY!!!");
+        NSLog(@"Nothing int he user dictionary!");
         // need this line to compile
         return NO;
     }
 }
-
-
 - (void) userTappedQuickAddButton:(NSNotification *)notification {
     NSString *nameOfArtistFromCell = [notification object][0];
     NSString *spotifyIDOfArtistFromCell = [notification object][1];

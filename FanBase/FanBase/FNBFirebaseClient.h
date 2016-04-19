@@ -12,6 +12,7 @@
 #import "FNBUser.h"
 #import "FNBArtist.h"
 #import "FNBSpotifySearch.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface FNBFirebaseClient : NSObject
 
@@ -37,6 +38,7 @@
 + (void) checkExistanceOfDatabaseEntryForArtistName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists))block;
 
 + (void) addUser:(FNBUser *)user andArtistWithSpotifyID:(NSString *)spotifyID toDatabaseWithCompletionBlock: (void (^) (BOOL artistAddedToUserSuccessfully))block;
++ (void) getArtistNameForArtistDatabaseName:(NSString *) artistName withCompletionBlock: (void (^) (BOOL artistDatabaseExists, NSString *artistActualName))block;
 
 
 #pragma mark - Adding and Deleting User and Artist Methods
@@ -50,6 +52,7 @@
 + (void) getDictionaryOfAllArtistsInDatabaseWithCompletionBlock: (void (^) (BOOL completed, NSDictionary *artistsDictionary))block;
 + (void) fillDatabaseWithArrayOfArtists:(NSArray *)artistNames;
 
-
+#pragma mark - Methods to check network connection
++(BOOL)isNetworkAvailable;
 
 @end

@@ -10,18 +10,18 @@
             <objects>
                 <tableViewController id="n4v-wa-sRe" userLabel="Discover Page" customClass="FNBViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="uiF-OV-nzp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="88" id="dVh-Kx-8r0" customClass="TableViewCell" customModule="FanBase" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="88"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dVh-Kx-8r0" id="rIq-Vb-WWl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Okc-ir-a1l">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Okc-ir-a1l">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mdx-Bl-Pl8">
@@ -62,6 +62,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Discover Page" id="orf-Dh-aAz"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="42c-vQ-ecI" kind="show" identifier="discoverPageSegue" id="wr9-AH-Cw4"/>
                     </connections>

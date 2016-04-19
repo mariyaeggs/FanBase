@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "adele.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "menu.png",
       "scale" : "2x"
     },
     {

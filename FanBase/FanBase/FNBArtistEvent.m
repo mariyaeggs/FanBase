@@ -16,6 +16,22 @@
                             venue:(NSDictionary *)venue
                              star:(BOOL)isStarred
                             image:(NSString *)imageURL
+                  unformattedDate:(NSString *)unformattedDateOfConcert
+{
+    self = [self initWithEventTitle:eventTitle date:dateOfConcert availability:isTicketsAvailable venue:venue star:isStarred image:imageURL];
+    if (self) {
+        _unformattedDateOfConcert = unformattedDateOfConcert;
+    }
+    return self;
+}
+
+
+-(instancetype)initWithEventTitle:(NSString *)eventTitle
+                             date:(NSString *)dateOfConcert
+                     availability:(BOOL)isTicketsAvailable
+                            venue:(NSDictionary *)venue
+                             star:(BOOL)isStarred
+                            image:(NSString *)imageURL
 {
     
     self = [super init];
