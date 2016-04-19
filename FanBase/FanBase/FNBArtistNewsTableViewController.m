@@ -9,9 +9,7 @@
 #import "FNBArtistNewsTableViewController.h"
 
 @interface FNBArtistNewsTableViewController ()
-@property (strong, nonatomic) NSMutableArray *allNews;
-@property (strong, nonatomic) NSArray *tweetsOfArtistNews;
-@property (strong, nonatomic) NSArray *eventsForArtist;
+
 
 @end
 
@@ -32,104 +30,36 @@
         self.longPress.enabled = YES;
     }
     
-    self.allNews = [@[@[],@[]] mutableCopy];
-    
-    //PULL EVENTS
-    [FNBBandsInTownAPIClient generateEventsForArtist:@"Adele" completion:^(NSArray *returnedArray) {
+  }
 
-        self.allNews[1] = returnedArray;
-        NSLog(@"%@",self.allNews);
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self.tableView reloadData];
-        }];
-        
-    }];
-    
-    //PULL TWEETS
-    [FNBTwitterAPIClient generateTweetsOfUsername:@"Adele" completion:^(NSArray *returnedArray) {
 
-        self.allNews[0] = returnedArray;
-        NSLog(@"%@",self.allNews);
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self.tableView reloadData];
-        }];
-        
-    }];
 
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *array = self.allNews[section];
-    NSLog(@"Array.Count = %li",array.count);
-    return array.count;
+    
+    return self.eventsArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        NSLog(@"Check inside section %li",indexPath.section);
-        
-        FNBTwitterPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
-        
-        NSURL *picURL = [NSURL URLWithString:self.allNews[0][indexPath.row][@"user"][@"profile_image_url"]];
-            [cell.userPicture setImageWithURL:picURL];
-        
-        
-        cell.userName.text = [NSString stringWithFormat:@"%@",self.allNews[0][indexPath.row][@"user"][@"name"]];
-        cell.userTweet.text = self.allNews[0][indexPath.row][@"text"];
-        
-        return cell;
-
-    }
-    else if (indexPath.section == 1) {
-        NSLog(@"Check inside section %li",indexPath.section);
-        
+    
         EventPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
-        FNBArtistEvent *event = self.allNews[1][indexPath.row];
+        FNBArtistEvent *event = self.eventsArray[indexPath.row];
         NSURL *picURL = [NSURL URLWithString:event.artistImageURL];
         [cell.artistImage setImageWithURL:picURL];
         
         cell.eventTitle.text = [NSString stringWithFormat:@"%@",event.eventTitle];
         
         return cell;
-    }
-    
-    return nil;
+
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *title = [NSString new];
-    if (section == 0) {
-        title = @"Tweets";
-    }
-    else if (section == 1) {
-        title = @"Events";
-    }
-    
-    return title;
-}
 
--(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    NSString *twitter = @"Tweets";
-    NSString *events = @"Events";
-    return @[twitter,events];
-}
 
--(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return index;
-}
 
 # pragma mark - Helper Methods
 
@@ -155,7 +85,7 @@
     if (path && path.section == 1) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil];
         FNBEventInfoVC *previewVC = [storyboard instantiateViewControllerWithIdentifier:@"eventInfo"];
-        previewVC.event = [self.allNews[1] objectAtIndex:path.row];
+        previewVC.event = [self.eventsArray objectAtIndex:path.row];
         [self.navigationController showViewController:previewVC sender:nil];
     }
     
@@ -174,7 +104,7 @@
     if (path && path.section == 1) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil];
         FNBEventInfoVC *previewVC = [storyboard instantiateViewControllerWithIdentifier:@"eventInfo"];
-        previewVC.event = [self.allNews[1] objectAtIndex:path.row];
+        previewVC.event = [self.eventsArray objectAtIndex:path.row];
         
         return previewVC;
     }
@@ -190,10 +120,9 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
-    if ([self.tableView indexPathForSelectedRow].section == 1) {
-        FNBEventInfoVC *destVC = segue.destinationViewController;
-        destVC.event = self.allNews[1][[self.tableView indexPathForSelectedRow].row];
-    }
+            FNBEventInfoVC *destVC = segue.destinationViewController;
+        destVC.event = self.eventsArray[[self.tableView indexPathForSelectedRow].row];
+    
     
 }
 

@@ -20,5 +20,6 @@
 
 @property (strong, nonatomic) id previewingContext;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
+@property (strong, nonatomic) NSArray *eventsArray;
 
 @end

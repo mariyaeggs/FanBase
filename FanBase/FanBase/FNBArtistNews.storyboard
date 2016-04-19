@@ -4,19 +4,19 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Artist News Table View Controller-->
         <scene sceneID="PAr-1C-atd">
             <objects>
-                <tableViewController id="itw-86-AZh" customClass="FNBArtistNewsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="artistNews" id="itw-86-AZh" customClass="FNBArtistNewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="97" sectionHeaderHeight="18" sectionFooterHeight="18" id="O5h-Xi-0Qc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
+
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="97" id="3bH-Q4-KO2" customClass="FNBTwitterPostTableViewCell">
                                 <rect key="frame" x="0.0" y="50" width="600" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -65,8 +65,9 @@
                                     <outlet property="userTweet" destination="lu3-rY-UkE" id="HQP-bQ-hip"/>
                                 </connections>
                             </tableViewCell>
+
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" id="oni-2t-dLP" customClass="EventPostTableViewCell">
-                                <rect key="frame" x="0.0" y="147" width="600" height="97"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oni-2t-dLP" id="mxv-hM-haF">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="97"/>
