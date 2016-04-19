@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredUserImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSubscribedArtistsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistXOfTotalLabel;
@@ -100,8 +101,9 @@
     // Initialize side bar 
     self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
     self.sideBar.delegate = self;
-    
+
     // create the artistLabels and artistImageViews of the cells
+
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
     self.arrayOfArtistImageViews = @[self.artist1ImageView, self.artist2ImageView, self.artist3ImageView, self.artist4ImageView];
     self.arrayOfArtistRankingLabels = @[self.artist1XOfTotalFans, self.artist2XOfTotalFans, self.artist3XOfTotalFans, self.artist4XOfTotalFans];
@@ -148,7 +150,7 @@
                     [self getConcerts];
                     [self addListenersForLoggedInUser];
                     [self updateUserPicNameAndNumberOfArtists];
-                    [self.tableView reloadData];
+//                    [self.tableView reloadData];
                 }
             }];
             
@@ -160,6 +162,14 @@
     }];
 }
 
+// sets height of each section header
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0 || section == 1) {
+        // cannot be 0 for some reason
+        return 0.1;
+    }
+    return 15;
+}
 
 // hide nav bar
 -(void)viewWillAppear:(BOOL)animated{
@@ -310,7 +320,10 @@
 -(void) updateUserPicNameAndNumberOfArtists {
     self.userNameLabel.text = self.currentUser.userName;
     [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
+    [self.blurredUserImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
+    [self.tableView reloadData];
+
 }
 
 - (void) updateUI {
@@ -353,6 +366,8 @@
             ((UILabel *)self.arrayOfArtistRankingLabels[i]).text = [NSString stringWithFormat:@"#%@ of %@", artistInfoArray[i][@"usersRank"], artistInfoArray[i][@"numberOfFollowers" ]];
         }
     }
+    [self.tableView reloadData];
+
 }
 
 
@@ -377,6 +392,8 @@
             ((UILabel *)self.arrayOfConcertDates[i]).text = ((FNBArtistEvent *)concertArray[i]).dateOfConcert;
         }
     }
+    [self.tableView reloadData];
+
 }
 
 

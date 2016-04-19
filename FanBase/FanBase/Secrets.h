@@ -6,6 +6,7 @@
 //  Copyright © 2016 Angelica Bato. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 
 extern NSString * const TwitterClientID;
@@ -19,5 +20,3 @@ extern NSString * const ourFirebaseURL;
 extern NSString * const BandsInTownBaseURL;
 extern NSString * const BandsInTownEventsURL;
 extern NSString * const BandsInTownEventsNearbyURL;
-
-//extern NSString const *BandsInTownReqURL;

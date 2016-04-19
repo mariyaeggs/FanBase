@@ -41,12 +41,17 @@
 @property (nonatomic) BOOL searchFieldPopulated;
 @property (strong, nonatomic) NSArray *spotifyResultsArray;
 
+
 // Side Bar property
 @property (nonatomic,strong) SideBar *sideBar;
 
 @end
 
 @implementation FNBViewController
+
+
+static NSInteger const minimumImageHeight = 100;
+
 
 -(void)loadView
 {
@@ -214,12 +219,19 @@
             //Compiles a dictionary in specific format
             for (NSString *artistName in snapshotValue) {
                 
-                // POTENTIAL PROBLEM: ARTIST NAME IS NOT COMING FROM ARTISTINFO[@"NAME"], SO THE DISPLAYED NAME DOES NOT HAVE /$() CHARACTERS
-                
                 NSDictionary *artistInfo = snapshotValue[artistName];
                 NSArray *images = artistInfo[@"images"];
-                NSDictionary *firstImage = images.firstObject;
-                NSString *imageURL = firstImage[@"url"];
+                
+                // get smallest image that is minimum height
+                NSMutableDictionary *selectedImage = [NSMutableDictionary new];
+                for (NSDictionary *imageDescription in images) {
+                    if ([imageDescription[@"height"] integerValue] > minimumImageHeight) {
+                        selectedImage = [imageDescription mutableCopy];
+                    }
+                }
+                NSString *imageURL = selectedImage[@"url"];
+//                NSDictionary *firstImage = images.firstObject;
+//                NSString *imageURL = firstImage[@"url"];
                 NSString *spotifyID = artistInfo[@"spotifyID"];
                 NSArray *genres = artistInfo[@"genres"];
                 
@@ -457,7 +469,7 @@
     
     // for search results
     if (self.searchFieldPopulated) {
-        NSLog(@"Search field populated");
+//        NSLog(@"Search field populated");
         NSString *artistNameFromSpotify = self.spotifyResultsArray[indexPath.row][@"name"];
         
         cell.artist = artistNameFromSpotify;
@@ -485,7 +497,7 @@
         
     }
     else {
-        NSLog(@"Search field NOT populated");
+//        NSLog(@"Search field NOT populated");
 
         UIView *view = [collectionView superview];
         FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];
