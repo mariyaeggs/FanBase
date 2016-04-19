@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2FD21C22D79D648E02D5CBAD /* libPods-FanBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */; };
-		321DBED31CB6B571009B9E13 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DBED21CB6B571009B9E13 /* Secrets.m */; };
 		325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */; };
 		325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */; };
 		325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */; };
@@ -60,6 +59,7 @@
 		ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */; };
 		ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */; };
 		ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C41CB85BF7008B12D9 /* APIClient.m */; };
+		ED34361D1CC59F0300EA95BA /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DBED21CB6B571009B9E13 /* Secrets.m */; };
 		EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */; };
 		EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */; };
 		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
@@ -571,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED34361D1CC59F0300EA95BA /* Secrets.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
 				BD565F061CC577ED00820734 /* FNBNoInternetVCViewController.m in Sources */,
@@ -615,7 +616,6 @@
 				A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
 				A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */,
-				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
