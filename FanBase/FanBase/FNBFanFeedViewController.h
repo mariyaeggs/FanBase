@@ -22,15 +22,19 @@
 #import "FNBArtist.h"
 #import "Secrets.h"
 #import "FNBUser.h"
+#import "FanBase-Bridging-Header.h"
+#import "Fanbase-Swift.h"
 
 
-@interface FNBFanFeedViewController : JSQMessagesViewController
+@interface FNBFanFeedViewController : JSQMessagesViewController <SideBarDelegate>
 
 @property (strong, nonatomic) NSString *senderId;
 @property (strong, nonatomic) NSString *senderDisplayName;
 @property (strong, nonatomic) UIImage *senderAvatar;
 @property (strong, nonatomic) FNBArtist *artist;
 @property (strong, nonatomic) FNBUser *user;
+
+@property (strong,nonatomic) SideBar *sideBar;
 
 
 @end

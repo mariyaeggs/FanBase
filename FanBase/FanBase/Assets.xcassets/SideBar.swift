@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 // Objective c optional delegate method 
 @objc protocol SideBarDelegate {
     
@@ -64,6 +65,8 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         // Right swipe gesture displays menu
         let displayGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
         originView.addGestureRecognizer(displayGestureRecognizer)
+        
+        print("Swiped")
         
         // Left swipe hides gesture side menu
         let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
@@ -135,18 +138,25 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     }
     
     func pressed(sender: UIButton!) {
-        print("Logout successful")
+        print("Logout successful in the swift file!")
         
-        // Add logout functionality here
+        NSNotificationCenter.defaultCenter().postNotificationName("UserDidLogOutNotification", object: nil)
         
-    }
-    
+        //[[NSNotificationCenter defaultCenter] postNotificationName:"UserDidLogOutNotification" object:nil];
+
+//        let storyboard = UIStoryboard(name:"Firebase", bundle: NSBundle.mainBundle())
+//        let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginViewControllerID")
+//        UIApplication.sharedApplication().keyWindow?.rootViewController = loginVC
+//        
+}
     // Function manages swipe gesture 
     func manageSwipe(recognizer:UISwipeGestureRecognizer) {
         
+        print("About to swipe")
+        
         // Checks which direction swipe occurs 
         if recognizer.direction == UISwipeGestureRecognizerDirection.Left {
-        //if recognizer.direction == UISwipeGestureRecognizerDirection.Right {
+//        if recognizer.direction == UISwipeGestureRecognizerDirection.Right {
              // Hide side bar menu
             showSideBarMenu(false)
             
@@ -160,6 +170,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
             // Call on optinoal delegate to hide side bar menu
             delegate?.sideBarWillOpen?()
         }
+        print("Swiped!")
     }
     
     // Bool function checks to see if side bar should be open

@@ -11,11 +11,18 @@
 #import "UIImageView+AFNetworking.h"
 #import "FNBSpotifyAPIclient.h"
 #import "FNBTopTrackDetailViewController.h"
+#import "FanBase-Bridging-Header.h"
+#import "Fanbase-Swift.h"
 
-@interface FNBArtistTop10TableViewController ()
+
+@interface FNBArtistTop10TableViewController () <SideBarDelegate>
 
 @property (nonatomic,strong) NSArray *topTrackCellFolder;
+<<<<<<< HEAD
 @property (nonatomic,strong) NSString *previousUrl;
+=======
+@property (nonatomic,strong) SideBar *sideBar;
+>>>>>>> mariyabranch
 
 @end
 
@@ -25,14 +32,18 @@
     
     [super viewDidAppear:animated];
     [self.tableView reloadData];
-    
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.isMusicPlaying = NO;
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+    hamburgerButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
     
+
     //Gradient
     self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
     UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
@@ -43,7 +54,15 @@
     [self.tableView.layer insertSublayer:gradientMask atIndex:0];
     
 //    self.tableView.backgroundColor = [UIColor blueColor];
+
+    // Initialize side bar
+    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    self.sideBar.delegate = self;
     
+    self.isMusicPlaying = NO;
+
+    
+
     // dummy data (this is AC/DC Sptify ID)
     //    self.recievedArtistSpotifyID = @"711MCceyCBcFnzjGY4Q7Un";
     self.topTrackCellFolder = [NSMutableArray new];
@@ -70,9 +89,40 @@
 //           }];
 //      }   }];
 //}
--(BOOL)prefersStatusBarHidden {
+//-(BOOL)prefersStatusBarHidden {
+//    
+//    return YES;
+//}
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
     
-    return YES;
+    NSLog(@"%ld", (long)index);
+    
+    if ((long)index == 0) {
+        FNBArtistTop10TableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:userProfileVC animated:YES];
+    } else if ((long)index == 1) {
+        FNBArtistTop10TableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:discoverPageVC animated:YES];
+    } else if ((long)index == 2) {
+        FNBArtistTop10TableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:eventsVC animated:YES];
+        
+    }
+}
+
+// If bar menu is tapped
+-(void)hamburgerButtonTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+    
 }
 #pragma mark - Table view data source
 
