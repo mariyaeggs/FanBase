@@ -255,7 +255,7 @@
     }];
 }
 - (IBAction)logoutTapped:(id)sender {
-    [FNBFirebaseClient logoutUser];
+//    [FNBFirebaseClient logoutUser];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
 }

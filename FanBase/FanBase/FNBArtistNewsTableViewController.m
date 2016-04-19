@@ -51,7 +51,7 @@
         FNBArtistEvent *event = self.eventsArray[indexPath.row];
         NSURL *picURL = [NSURL URLWithString:event.artistImageURL];
         [cell.artistImage setImageWithURL:picURL];
-        
+    cell.dateLabel.text = event.dateOfConcert;
         cell.eventTitle.text = [NSString stringWithFormat:@"%@",event.eventTitle];
         
         return cell;

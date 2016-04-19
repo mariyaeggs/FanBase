@@ -40,6 +40,7 @@
     [self.eventMapView setRegion:region animated:YES];
     [self.eventMapView addAnnotation:annot];
     
+
     
     self.eventTitle.text = self.event.eventTitle;
     self.eventVenue.text = self.event.venue[@"name"];
@@ -54,9 +55,13 @@
     
     NSURL *picURL = [NSURL URLWithString:self.event.artistImageURL];
     [self.artistImage setImageWithURL:picURL];
-    
-    
 
+}
+
+-(void)viewWillLayoutSubviews {
+    //make image circular
+    self.artistImage.layer.cornerRadius = self.artistImage.frame.size.width / 2.0;
+    self.artistImage.layer.masksToBounds = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
