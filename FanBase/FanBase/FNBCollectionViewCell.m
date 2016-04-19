@@ -7,6 +7,7 @@
 //
 
 #import "FNBCollectionViewCell.h"
+#import "FNBColorConstants.h"
 
 @interface FNBCollectionViewCell ()
 
@@ -34,7 +35,8 @@
     NSUInteger heightOfLabelConstant = 8;
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, frame.size.height * (heightOfLabelConstant -1)/heightOfLabelConstant, frame.size.width, frame.size.height / heightOfLabelConstant)];
     //add background to label
-    self.label.backgroundColor = [UIColor lightGrayColor];
+    self.label.backgroundColor = FNBOffWhiteColor;
+    self.label.textColor = FNBDarkGreyColor;
     //Right, bottom corner alighnment
     self.label.textAlignment = NSTextAlignmentRight;
     
@@ -53,10 +55,12 @@
         // add the quickAddButton
         self.quickAddButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.quickAddButton addTarget:self action:@selector(quickAddButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-//        [self.quickAddButton setTitle:@"QuickAdd" forState:UIControlStateNormal];
         self.quickAddButton.frame = CGRectMake(0, 0, 44, 44);
-        self.quickAddButton.backgroundColor = [UIColor whiteColor];
-        [self.quickAddButton setAlpha:0.33];
+        self.quickAddButton.backgroundColor = FNBOffWhiteColor;
+        // make it a circle
+        self.quickAddButton.layer.cornerRadius = self.quickAddButton.frame.size.height/2;
+        self.quickAddButton.layer.masksToBounds = YES;
+        
         [self.contentView addSubview:self.quickAddButton];
     }
 }
@@ -68,13 +72,12 @@
         
         // make text green if user is not subscribed, and grey if user is already subscribed
         if (isUserSubscribedToArtist) {
-            // make delete icon
             [self.quickAddButton setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
+            self.quickAddButton.tintColor = FNBDarkGreyColor;
         }
         else {
-            // make checkmark
-            [self.quickAddButton setImage:[UIImage imageNamed:@"person-add"] forState:UIControlStateNormal];
-            [self.quickAddButton setTintColor:[UIColor greenColor]];
+            [self.quickAddButton setImage:[UIImage imageNamed:@"person-add"]  forState:UIControlStateNormal];
+            self.quickAddButton.tintColor = FNBDarkGreyColor;
             
         }
     }

@@ -257,7 +257,7 @@
 }
 - (IBAction)logoutTapped:(id)sender {
     [FNBFirebaseClient logoutUser];
-    // TODO: This does not bring up the login VC. IDK why. IT broadcasts successfully
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
 }
 

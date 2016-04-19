@@ -27,6 +27,7 @@
 		A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EC1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m */; };
 		A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */; };
 		A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */; };
+		A190B9F91CC6ABB300D4CA36 /* FNBColorConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F81CC6ABB300D4CA36 /* FNBColorConstants.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
 		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
@@ -107,6 +108,8 @@
 		A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewController.m; sourceTree = "<group>"; };
 		A190B9F41CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBSeeAllNearbyEventsTableViewCell.h; sourceTree = "<group>"; };
 		A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewCell.m; sourceTree = "<group>"; };
+		A190B9F71CC6ABB300D4CA36 /* FNBColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBColorConstants.h; sourceTree = "<group>"; };
+		A190B9F81CC6ABB300D4CA36 /* FNBColorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBColorConstants.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
 		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 				BD0A5A801CAAFCF300FFF623 /* Supporting Files */,
 				BDB73EF01CAAFEAE00F6B3EB /* Secrets.h */,
 				321DBED21CB6B571009B9E13 /* Secrets.m */,
+				A190B9F71CC6ABB300D4CA36 /* FNBColorConstants.h */,
+				A190B9F81CC6ABB300D4CA36 /* FNBColorConstants.m */,
 			);
 			path = FanBase;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
 				BD565F061CC577ED00820734 /* FNBNoInternetVCViewController.m in Sources */,
+				A190B9F91CC6ABB300D4CA36 /* FNBColorConstants.m in Sources */,
 				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
 				BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
