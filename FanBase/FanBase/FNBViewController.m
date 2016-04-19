@@ -15,9 +15,9 @@
 #import <Firebase.h>
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
-
 // this is to segue to artistMainPage
 #import "FNBArtistMainPageTableViewController.h"
+
 
 @interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate>
 
@@ -129,7 +129,6 @@ static NSInteger const minimumImageHeight = 100;
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-//    NSLog(@"this is from the search bar: %@", searchBar.text);
     self.searchFieldPopulated = YES;
     [FNBSpotifySearch getArrayOfMatchingArtistsFromSearch:searchBar.text withCompletionBlock:^(BOOL gotMatchingArtists, NSArray *matchingArtistsArray) {
         if (gotMatchingArtists) {
@@ -469,6 +468,7 @@ static NSInteger const minimumImageHeight = 100;
     
     // for search results
     if (self.searchFieldPopulated) {
+        [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 //        NSLog(@"Search field populated");
         NSString *artistNameFromSpotify = self.spotifyResultsArray[indexPath.row][@"name"];
         
