@@ -50,6 +50,8 @@
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
     
+    self.collectionView.backgroundColor = [UIColor colorWithRed:230/255.0 green:255/255.0 blue:247.0/255 alpha:1.0];
+    
     self.senderId = self.user.userID;
     self.senderDisplayName = self.user.userName;
     self.senderAvatar = self.user.userImage;

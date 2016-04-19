@@ -132,14 +132,16 @@
     NSLog(@"self.isMusicPlaying: %@", self.isMusicPlaying ? @"YES" : @"NO");
     if(!self.isMusicPlaying){
         NSLog(@"playing");
-        [playButton setTitle:@"Pause" forState:UIControlStateNormal];
+        [playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+//        [playButton setTitle:@"Pause" forState:UIControlStateNormal];
         [self.player play];
         
     
     }
     else {
         NSLog(@"pausing");
-       [playButton setTitle:@"Play" forState:UIControlStateNormal];
+        [playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+//       [playButton setTitle:@"Play" forState:UIControlStateNormal];
         [self.player pause];
         
     }

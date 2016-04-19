@@ -27,14 +27,39 @@
     [self.LargeImageDetailView setImageWithURL:[NSURL URLWithString:self.albumArtURL]];
     
     
+    //Gradient
+    self.view.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
+    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.view.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+    
+    [self.view.layer insertSublayer:gradientMask atIndex:0];
 
-
+    
+    
+    
+//    [self.playButton setImage:[UIImage imageNamed:@"spotify-icon"] forState:UIControlStateNormal];
+//    [self.playButton setImageEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
+//    [self.playButton setTitle:@"Play full song on Spotify" forState:UIControlStateNormal];
+    
+    
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+    UIImage *image = [UIImage imageNamed:@"spotify-logo"];
+    
+    
+    attachment.image = image;
+    
+    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
+    NSMutableAttributedString *buttonString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
+    NSAttributedString *contentString = [[NSAttributedString alloc] initWithString:@"Play full song on Spotify"];
+    [buttonString appendAttributedString:contentString];
+    
+    [self.playButton setAttributedTitle:buttonString forState:UIControlStateNormal];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-
 
 }
 
