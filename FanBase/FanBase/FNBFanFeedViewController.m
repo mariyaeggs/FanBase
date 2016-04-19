@@ -93,8 +93,8 @@
 
 -(void)setupBubbles {
     JSQMessagesBubbleImageFactory *factory = [[JSQMessagesBubbleImageFactory alloc] init];
-    self.outgoingBubbleImage = [factory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
-    self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+    self.outgoingBubbleImage = [factory outgoingMessagesBubbleImageWithColor:[UIColor colorWithRed:45.0/255 green:127.0/255 blue:102.0/255 alpha:1.0]];
+    self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor colorWithRed:184.0/255 green:204.0/255 blue:198.0/255 alpha:1.0]];
 }
 
 # pragma mark - Delegate methods for collectionview
