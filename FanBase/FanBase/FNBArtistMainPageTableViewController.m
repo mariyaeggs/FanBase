@@ -34,6 +34,7 @@
 // artist Top info
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredArtistImageView;
 
 // users info
 @property (weak, nonatomic) IBOutlet UILabel *youSubscribedLabel;
@@ -97,6 +98,7 @@
 
 @implementation FNBArtistMainPageTableViewController
 
+static NSInteger const minimumArtistImageHeightForLabels = 200;
 
 
 - (void)viewDidLoad {
@@ -150,7 +152,17 @@
     self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
     [FNBFirebaseClient setPropertiesOfArtist:self.currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
         if (setPropertiesCompleted) {
-            [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
+            // get smallest image that is minimum height
+            NSMutableDictionary *selectedImage = [NSMutableDictionary new];
+            for (NSDictionary *imageDescription in self.currentArtist.imagesArray) {
+                if ([imageDescription[@"height"] integerValue] > minimumArtistImageHeightForLabels) {
+                    selectedImage = [imageDescription mutableCopy];
+                }
+            }
+            NSString *imageURL = selectedImage[@"url"];
+
+            [self.artistImageView setImageWithURL:[NSURL URLWithString:imageURL]];
+            [self.blurredArtistImageView setImageWithURL:[NSURL URLWithString:imageURL]];
             self.artistNameLabel.text = self.currentArtist.name;
             
             [FNBTwitterAPIClient generateTweetsForKeyword:self.currentArtist.name completion:^(NSArray *receivedTweetsArray) {
