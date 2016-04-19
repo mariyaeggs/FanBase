@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FD21C22D79D648E02D5CBAD /* libPods-FanBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9803CE9DA9A6C76E644CF4B6 /* libPods-FanBase.a */; };
+		321DBED31CB6B571009B9E13 /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DBED21CB6B571009B9E13 /* Secrets.m */; };
 		325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FEC9F1CB6DC37009F5F27 /* FNBArtistTop10Cell.m */; };
 		325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA11CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m */; };
 		325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FECA31CB6DC37009F5F27 /* FNBSpotifyAPIclient.m */; };
@@ -41,7 +42,6 @@
 		BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116A11CB5A87D00C47570 /* EventPostTableViewCell.m */; };
 		BD3116B41CB5A87D00C47570 /* FNBArtistNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3116A21CB5A87D00C47570 /* FNBArtistNews.storyboard */; };
 		BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116A61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m */; };
-		BD3116B71CB5A87D00C47570 /* FNBBandsInTownAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116A81CB5A87D00C47570 /* FNBBandsInTownAPIClient.m */; };
 		BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116AC1CB5A87D00C47570 /* FNBEventCollectionViewCell.m */; };
 		BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116BE1CB5A88600C47570 /* FNBTwitterAPIClient.m */; };
 		BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116C01CB5A88600C47570 /* FNBTwitterPostTableViewCell.m */; };
@@ -49,9 +49,11 @@
 		BD3913331CBD371D009E7437 /* FanFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3913301CBD371D009E7437 /* FanFeed.storyboard */; };
 		BD3913341CBD371D009E7437 /* FNBFanFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3913321CBD371D009E7437 /* FNBFanFeedViewController.m */; };
 		BD565F061CC577ED00820734 /* FNBNoInternetVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD565F051CC577ED00820734 /* FNBNoInternetVCViewController.m */; };
+		BD8506051CC59E4F00276722 /* FNBBandsInTownAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3116A81CB5A87D00C47570 /* FNBBandsInTownAPIClient.m */; };
 		BDE18E3D1CB69F9E00BEDE01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE18E3C1CB69F9E00BEDE01 /* MapKit.framework */; };
 		BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */; };
 		BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */; };
+		BDFEF35E1CC59CFB00863A17 /* UILabel+SubstituteFont.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFEF35D1CC59CFB00863A17 /* UILabel+SubstituteFont.m */; };
 		ED1787B81CB85B80008B12D9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B41CB85B80008B12D9 /* Constants.m */; };
 		ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B61CB85B80008B12D9 /* CVCell.m */; };
 		ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */; };
@@ -59,7 +61,6 @@
 		ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */; };
 		ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */; };
 		ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C41CB85BF7008B12D9 /* APIClient.m */; };
-		ED34361D1CC59F0300EA95BA /* Secrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 321DBED21CB6B571009B9E13 /* Secrets.m */; };
 		EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */; };
 		EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */; };
 		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
@@ -130,8 +131,6 @@
 		BD3116A01CB5A87D00C47570 /* EventPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPostTableViewCell.h; sourceTree = "<group>"; };
 		BD3116A11CB5A87D00C47570 /* EventPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPostTableViewCell.m; sourceTree = "<group>"; };
 		BD3116A21CB5A87D00C47570 /* FNBArtistNews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FNBArtistNews.storyboard; sourceTree = "<group>"; };
-		BD3116A31CB5A87D00C47570 /* FNBArtistNewsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistNewsCollectionViewController.h; sourceTree = "<group>"; };
-		BD3116A41CB5A87D00C47570 /* FNBArtistNewsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistNewsCollectionViewController.m; sourceTree = "<group>"; };
 		BD3116A51CB5A87D00C47570 /* FNBArtistNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBArtistNewsTableViewController.h; sourceTree = "<group>"; };
 		BD3116A61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistNewsTableViewController.m; sourceTree = "<group>"; };
 		BD3116A71CB5A87D00C47570 /* FNBBandsInTownAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBBandsInTownAPIClient.h; sourceTree = "<group>"; };
@@ -155,6 +154,8 @@
 		BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBArtistEvent.m; sourceTree = "<group>"; };
 		BDE18E421CB6AEA900BEDE01 /* FNBEventInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBEventInfoVC.h; sourceTree = "<group>"; };
 		BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBEventInfoVC.m; sourceTree = "<group>"; };
+		BDFEF35C1CC59CFB00863A17 /* UILabel+SubstituteFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+SubstituteFont.h"; sourceTree = "<group>"; };
+		BDFEF35D1CC59CFB00863A17 /* UILabel+SubstituteFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SubstituteFont.m"; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
 		ED1787B31CB85B80008B12D9 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = FanBase/Constants.h; sourceTree = "<group>"; };
 		ED1787B41CB85B80008B12D9 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = FanBase/Constants.m; sourceTree = "<group>"; };
@@ -337,6 +338,8 @@
 				EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */,
 				EDD4EEB91CB85A7400D7576E /* FNBViewController.h */,
 				EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */,
+				BDFEF35C1CC59CFB00863A17 /* UILabel+SubstituteFont.h */,
+				BDFEF35D1CC59CFB00863A17 /* UILabel+SubstituteFont.m */,
 				A14E4E5C1CB7F3AC0034FBFB /* ArtistMainPage */,
 				325FEC9D1CB6DB96009F5F27 /* Top10 */,
 				BD3116C81CB5A8F100C47570 /* FanFeed */,
@@ -387,8 +390,6 @@
 				BD3116BF1CB5A88600C47570 /* FNBTwitterPostTableViewCell.h */,
 				BD3116C01CB5A88600C47570 /* FNBTwitterPostTableViewCell.m */,
 				BD3116A21CB5A87D00C47570 /* FNBArtistNews.storyboard */,
-				BD3116A31CB5A87D00C47570 /* FNBArtistNewsCollectionViewController.h */,
-				BD3116A41CB5A87D00C47570 /* FNBArtistNewsCollectionViewController.m */,
 				BD3116A51CB5A87D00C47570 /* FNBArtistNewsTableViewController.h */,
 				BD3116A61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m */,
 				BD3116AC1CB5A87D00C47570 /* FNBEventCollectionViewCell.m */,
@@ -571,14 +572,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED34361D1CC59F0300EA95BA /* Secrets.m in Sources */,
+				BD8506051CC59E4F00276722 /* FNBBandsInTownAPIClient.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
 				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
 				BD565F061CC577ED00820734 /* FNBNoInternetVCViewController.m in Sources */,
 				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
 				BD3116B31CB5A87D00C47570 /* EventPostTableViewCell.m in Sources */,
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
-				BD3116B71CB5A87D00C47570 /* FNBBandsInTownAPIClient.m in Sources */,
 				EDF056A51CBEA0F400B457CF /* SideBar.swift in Sources */,
 				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
 				ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */,
@@ -597,6 +597,7 @@
 				BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
 				ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */,
+				BDFEF35E1CC59CFB00863A17 /* UILabel+SubstituteFont.m in Sources */,
 				BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */,
 				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
 				A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */,
@@ -616,6 +617,7 @@
 				A14E4E641CB7FD960034FBFB /* FNBViewAllArtistsTableViewCell.m in Sources */,
 				A14F2D801CADC6110093D187 /* FNBSpotifySearch.m in Sources */,
 				A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */,
+				321DBED31CB6B571009B9E13 /* Secrets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
