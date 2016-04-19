@@ -32,7 +32,7 @@
     [super viewDidLoad];
 
     
-    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+//    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
     //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
 
 

@@ -36,7 +36,7 @@
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, frame.size.height * (heightOfLabelConstant -1)/heightOfLabelConstant, frame.size.width, frame.size.height / heightOfLabelConstant)];
     //add background to label
     self.label.backgroundColor = FNBOffWhiteColor;
-    self.label.textColor = FNBDarkGreyColor;
+//    self.label.textColor = FNBDarkGreyColor;
     //Right, bottom corner alighnment
     self.label.textAlignment = NSTextAlignmentRight;
     

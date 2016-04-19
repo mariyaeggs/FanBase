@@ -18,6 +18,7 @@
 #import "FNBBandsInTownAPIClient.h"
 #import "FNBSeeAllNearbyEventsTableViewController.h"
 #import "FNBEventInfoVC.h"
+#import "FNBColorConstants.h"
 
 @interface FNBUserProfilePageTableViewController () <SideBarDelegate>
 
@@ -97,8 +98,8 @@
     
 
     //Gradient
-    self.view.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
-    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+    self.view.tintColor = FNBOffWhiteColor;
+    UIColor *gradientMaskLayer = FNBLightGreenColor;
     CAGradientLayer *gradientMask = [CAGradientLayer layer];
     gradientMask.frame = self.view.bounds;
     gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
@@ -308,7 +309,7 @@
     }];
 }
 - (IBAction)logoutTapped:(id)sender {
-    [FNBFirebaseClient logoutUser];
+//    [FNBFirebaseClient logoutUser];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
 }

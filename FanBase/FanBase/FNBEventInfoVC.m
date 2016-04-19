@@ -8,6 +8,7 @@
 
 #import "FNBEventInfoVC.h"
 #import "FNBArtistMainPageTableViewController.h"
+#import "FNBColorConstants.h"
 
 @interface FNBEventInfoVC ()
 
@@ -25,6 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Gradient
+    self.view.tintColor = FNBOffWhiteColor;
+    UIColor *gradientMaskLayer = FNBLightGreenColor;
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.view.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+    [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
     CLLocationDegrees latitude = [self.event.venue[@"latitude"] doubleValue];
     CLLocationDegrees longitude = [self.event.venue[@"longitude"] doubleValue];
     CLLocationCoordinate2D location2 = CLLocationCoordinate2DMake(latitude, longitude);
@@ -39,6 +48,7 @@
     [self.eventMapView setRegion:region animated:YES];
     [self.eventMapView addAnnotation:annot];
     
+
     
     self.eventTitle.text = self.event.eventTitle;
     self.eventVenue.text = self.event.venue[@"name"];
@@ -53,9 +63,15 @@
     
     NSURL *picURL = [NSURL URLWithString:self.event.artistImageURL];
     [self.artistImage setImageWithURL:picURL];
+    self.artistImage.hidden = YES;
     
-    
+}
 
+-(void)viewWillLayoutSubviews {
+    //make image circular
+    self.artistImage.layer.cornerRadius = self.artistImage.frame.size.width / 2.0;
+    self.artistImage.layer.masksToBounds = YES;
+    self.artistImage.hidden = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated {

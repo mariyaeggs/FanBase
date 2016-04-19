@@ -187,7 +187,6 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Loading Tweet" translatesAutoresizingMaskIntoConstraints="NO" id="dd4-sf-dtt">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="60"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -220,7 +219,6 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Loading Tweet" translatesAutoresizingMaskIntoConstraints="NO" id="gsL-ba-Rmo">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="60"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -253,7 +251,6 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="Loading Tweet" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-8P-P60">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="60"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -467,35 +464,28 @@
         <scene sceneID="8Oz-yp-h4F">
             <objects>
                 <tableViewController id="eR1-6I-BcT" customClass="FNBSeeMoreTweetsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" id="HsL-q8-1Er">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="HsL-q8-1Er">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="108" id="KBs-sR-EBd" customClass="FNBTwitterPostTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="108"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="99" id="KBs-sR-EBd" customClass="FNBTwitterPostTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBs-sR-EBd" id="jwg-9J-6Gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="107.5"/>
+
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">
-                                            <rect key="frame" x="96" y="34" width="496" height="60"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">
+                                            <rect key="frame" x="65" y="37" width="527" height="37"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </string>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <dataDetectorType key="dataDetectorTypes" link="YES" calendarEvent="YES"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-QZ-aiS">
-                                            <rect key="frame" x="8" y="14" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="sQ5-QZ-aiS" secondAttribute="height" multiplier="1:1" id="b7m-8p-h4r"/>
-                                                <constraint firstAttribute="width" constant="80" id="i97-mR-4bS"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB7-al-xyA">
-                                            <rect key="frame" x="98" y="14" width="454" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB7-al-xyA">
+                                            <rect key="frame" x="67" y="24" width="454" height="13"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="454" id="6Di-4N-mef"/>
                                             </constraints>
@@ -503,9 +493,14 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-QZ-aiS">
+                                            <rect key="frame" x="8" y="25" width="50" height="49"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="sQ5-QZ-aiS" secondAttribute="height" multiplier="1:1" id="b7m-8p-h4r"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="kxe-MV-M31" firstAttribute="width" secondItem="jwg-9J-6Gs" secondAttribute="width" multiplier="0.75" id="51x-Ww-9I4"/>
                                         <constraint firstItem="IB7-al-xyA" firstAttribute="leading" secondItem="sQ5-QZ-aiS" secondAttribute="trailing" constant="10" id="9vv-Ef-rMm"/>
                                         <constraint firstItem="kxe-MV-M31" firstAttribute="bottom" secondItem="sQ5-QZ-aiS" secondAttribute="bottom" id="Bte-0J-j2M"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="kxe-MV-M31" secondAttribute="trailing" id="FUH-d8-vb2"/>
@@ -513,14 +508,10 @@
                                         <constraint firstItem="IB7-al-xyA" firstAttribute="height" secondItem="sQ5-QZ-aiS" secondAttribute="height" multiplier="0.25" id="NY7-8s-G7P"/>
                                         <constraint firstItem="kxe-MV-M31" firstAttribute="top" secondItem="IB7-al-xyA" secondAttribute="bottom" id="RID-K8-9Y6"/>
                                         <constraint firstItem="IB7-al-xyA" firstAttribute="top" secondItem="sQ5-QZ-aiS" secondAttribute="top" id="kuw-2Y-jdS"/>
+                                        <constraint firstItem="sQ5-QZ-aiS" firstAttribute="height" secondItem="jwg-9J-6Gs" secondAttribute="height" multiplier="0.9" id="nah-GL-G45"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="sQ5-QZ-aiS" secondAttribute="leading" id="rai-Qs-emn"/>
                                         <constraint firstItem="sQ5-QZ-aiS" firstAttribute="centerY" secondItem="jwg-9J-6Gs" secondAttribute="centerY" id="tLs-VW-NVC"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="51x-Ww-9I4"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="userName" destination="IB7-al-xyA" id="p9s-Z7-jJg"/>

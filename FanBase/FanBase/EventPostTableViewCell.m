@@ -21,4 +21,13 @@
     // Configure the view for the selected state
 }
 
+// make images circular
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.artistImage.layer.cornerRadius = self.artistImage.frame.size.height /2;
+    self.artistImage.layer.masksToBounds = YES;
+    
+}
+
 @end
