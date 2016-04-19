@@ -357,7 +357,7 @@
             ((UILabel *)self.arrayOfTweetDateLabels[i]).text = [NSString stringWithFormat:@"%@ : %@", tweetsArray[i][@"user"][@"name"] , tweetsArray[i][@"created_at"]];
         }
     }
-
+    [self.tableView reloadData];
 }
 
 
@@ -374,23 +374,25 @@
             return 0;
        }
         
-                else if (self.currentArtist.tweetsArray.count > 0 && self.currentArtist.tweetsArray.count < 4){
-                    
-                   self.twitterFourthViewCell.textLabel.text = @"                    ";
-                }
-                    else if (self.currentArtist.tweetsArray.count >= 4){
-                        
-                        self.twitterFourthViewCell.textLabel.text = @"  See more...   ";
-                    
-                }
-        else if (cell == self.twitterSecondViewCell && self.currentArtist.tweetsArray.count < 2){
+                        else if (cell == self.twitterSecondViewCell && self.currentArtist.tweetsArray.count < 2){
             return 0;
         }
         
         else if (cell == self.twitterThirdViewCell && self.currentArtist.tweetsArray.count < 3){
             return 0;
         }
+       
         
+        else if (self.currentArtist.tweetsArray.count > 0 && self.currentArtist.tweetsArray.count < 4){
+            
+            self.twitterFourthViewCell.textLabel.text = @"                    ";
+        }
+        else if (self.currentArtist.tweetsArray.count >= 4){
+            
+            self.twitterFourthViewCell.textLabel.text = @"  See more...   ";
+            
+        }
+
     
     }
     
