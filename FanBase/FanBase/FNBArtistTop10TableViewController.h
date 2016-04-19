@@ -15,7 +15,6 @@
 @interface FNBArtistTop10TableViewController : UITableViewController
 @property (strong, nonatomic) NSString *recievedArtistSpotifyID; 
 
-
 @property (strong, nonatomic) AVPlayer *player;
 @property (nonatomic) BOOL  isMusicPlaying;
 

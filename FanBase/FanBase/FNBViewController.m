@@ -15,9 +15,9 @@
 #import <Firebase.h>
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
-
 // this is to segue to artistMainPage
 #import "FNBArtistMainPageTableViewController.h"
+
 
 @interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate>
 
@@ -41,12 +41,17 @@
 @property (nonatomic) BOOL searchFieldPopulated;
 @property (strong, nonatomic) NSArray *spotifyResultsArray;
 
+
 // Side Bar property
 @property (nonatomic,strong) SideBar *sideBar;
 
 @end
 
 @implementation FNBViewController
+
+
+static NSInteger const minimumImageHeight = 100;
+
 
 -(void)loadView
 {
@@ -124,7 +129,6 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-//    NSLog(@"this is from the search bar: %@", searchBar.text);
     self.searchFieldPopulated = YES;
     [FNBSpotifySearch getArrayOfMatchingArtistsFromSearch:searchBar.text withCompletionBlock:^(BOOL gotMatchingArtists, NSArray *matchingArtistsArray) {
         if (gotMatchingArtists) {
@@ -214,12 +218,19 @@
             //Compiles a dictionary in specific format
             for (NSString *artistName in snapshotValue) {
                 
-                // POTENTIAL PROBLEM: ARTIST NAME IS NOT COMING FROM ARTISTINFO[@"NAME"], SO THE DISPLAYED NAME DOES NOT HAVE /$() CHARACTERS
-                
                 NSDictionary *artistInfo = snapshotValue[artistName];
                 NSArray *images = artistInfo[@"images"];
-                NSDictionary *firstImage = images.firstObject;
-                NSString *imageURL = firstImage[@"url"];
+                
+                // get smallest image that is minimum height
+                NSMutableDictionary *selectedImage = [NSMutableDictionary new];
+                for (NSDictionary *imageDescription in images) {
+                    if ([imageDescription[@"height"] integerValue] > minimumImageHeight) {
+                        selectedImage = [imageDescription mutableCopy];
+                    }
+                }
+                NSString *imageURL = selectedImage[@"url"];
+//                NSDictionary *firstImage = images.firstObject;
+//                NSString *imageURL = firstImage[@"url"];
                 NSString *spotifyID = artistInfo[@"spotifyID"];
                 NSArray *genres = artistInfo[@"genres"];
                 
@@ -457,7 +468,8 @@
     
     // for search results
     if (self.searchFieldPopulated) {
-        NSLog(@"Search field populated");
+        [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+//        NSLog(@"Search field populated");
         NSString *artistNameFromSpotify = self.spotifyResultsArray[indexPath.row][@"name"];
         
         cell.artist = artistNameFromSpotify;
@@ -485,7 +497,7 @@
         
     }
     else {
-        NSLog(@"Search field NOT populated");
+//        NSLog(@"Search field NOT populated");
 
         UIView *view = [collectionView superview];
         FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];

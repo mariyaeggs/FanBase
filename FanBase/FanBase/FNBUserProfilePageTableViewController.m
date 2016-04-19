@@ -96,11 +96,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Gradient
+    self.view.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
+    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.view.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+    
+    [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
     // Call the sidebar menu function
     
     // Initialize side bar 
     self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
     self.sideBar.delegate = self;
+<<<<<<< HEAD
 
 
     // set the artistLabels and artistImageViews of the cells
@@ -109,9 +119,9 @@
     
     // create the artistLabels and artistImageViews of the cells
     
+=======
+>>>>>>> 2ba561f2043568c136da5bd915c57a81f5f7f642
 
-    
-    
     // create the artistLabels and artistImageViews of the cells
 
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];
@@ -160,7 +170,7 @@
                     [self getConcerts];
                     [self addListenersForLoggedInUser];
                     [self updateUserPicNameAndNumberOfArtists];
-                    [self.tableView reloadData];
+//                    [self.tableView reloadData];
                 }
             }];
             
@@ -266,7 +276,7 @@
 }
 - (IBAction)logoutTapped:(id)sender {
     [FNBFirebaseClient logoutUser];
-    // TODO: This does not bring up the login VC. IDK why. IT broadcasts successfully
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
 }
 
@@ -332,6 +342,8 @@
     [self.userImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     [self.blurredUserImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
+    [self.tableView reloadData];
+
 }
 
 - (void) updateUI {
@@ -374,6 +386,8 @@
             ((UILabel *)self.arrayOfArtistRankingLabels[i]).text = [NSString stringWithFormat:@"#%@ of %@", artistInfoArray[i][@"usersRank"], artistInfoArray[i][@"numberOfFollowers" ]];
         }
     }
+    [self.tableView reloadData];
+
 }
 
 
@@ -398,6 +412,8 @@
             ((UILabel *)self.arrayOfConcertDates[i]).text = ((FNBArtistEvent *)concertArray[i]).dateOfConcert;
         }
     }
+    [self.tableView reloadData];
+
 }
 
 
@@ -406,6 +422,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
     
     // Subscribed Artist Section
     if(cell == self.artist1TableViewCell && self.currentUser.detailedArtistInfoArray.count < 1)

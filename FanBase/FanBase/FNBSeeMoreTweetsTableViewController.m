@@ -19,9 +19,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    
+//    - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//    {
+//        return [indexPath row] * 20;
+//    
+//    
+//
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.receivedArtist.tweetsArray.count;
+
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -34,6 +43,8 @@
     
     cell.userName.text = [NSString stringWithFormat:@"%@",self.receivedArtist.tweetsArray[indexPath.row][@"user"][@"name"]];
     cell.userTweet.text = self.receivedArtist.tweetsArray[indexPath.row][@"text"];
+    
+    
     
     return cell;
 
