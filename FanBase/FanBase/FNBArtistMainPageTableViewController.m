@@ -50,6 +50,22 @@
 @property (weak, nonatomic) IBOutlet UITextView *tweet3ContentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *tweet3DateLabel;
 
+
+
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *twitterFirstViewCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *twitterSecondViewCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *twitterThirdViewCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *twitterFourthViewCell;
+
+
+
+
+
+
 // upcoming events section
 
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView1;
@@ -62,9 +78,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventLabelDate1;
 @property (weak, nonatomic) IBOutlet UILabel *eventLabelDate2;
 @property (weak, nonatomic) IBOutlet UILabel *eventLabelDate3;
-
-
 @property (strong,nonatomic) NSArray *events;
+
+
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsFirstCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsSecondCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsThirdCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsFourthCell;
+
+
 
 
 @end
@@ -128,26 +154,32 @@
             self.artistNameLabel.text = self.currentArtist.name;
             
             [FNBTwitterAPIClient generateTweetsForKeyword:self.currentArtist.name completion:^(NSArray *receivedTweetsArray) {
-                self.currentArtist.tweetsArray = receivedTweetsArray;
-                [self setTwitterCellsWithTweetsArray:receivedTweetsArray];
+               self.currentArtist.tweetsArray = receivedTweetsArray;
+//               // self.currentArtist.tweetsArray = @[
+//                                                   //@{ @"text": @"hiiii",
+//                                                      } ,
+//                                                   
+//                                                   @{ @"text": @"hiiii",
+//                                                      }
+//                                                   ];
+                [self setTwitterCellsWithTweetsArray:self.currentArtist.tweetsArray];
+
+
+               
             }];
             
-//            // get tweets
-//            [FNBTwitterAPIClient generateTweetsOfUsername:self.currentArtist.name completion:^(NSArray *returnedArray) {
-//                
-//                [self setTwitterCellsWithTweetsArray:returnedArray];
-//            }];
+            [FNBBandsInTownAPIClient generateEventsForArtist:self.currentArtist.name
+                                                  completion:^(NSArray *events) {
+                                                      
+                                                      self.events = events;
+                                                      
+                                                      
+                                                      [self.tableView reloadData];
+                                                  }];
+            
+
         }
     }];
-    
-    [FNBBandsInTownAPIClient generateEventsForArtist:self.currentArtist.name
-                                          completion:^(NSArray *events) {
-                                              
-                                              self.events = events;
-                                              
-                                             [self setEventCellsWithEventsArray:self.events];
-                                              
-                                          }];
     
     
     
@@ -301,7 +333,7 @@
 
 
 - (IBAction)chatRoomTapped:(id)sender {
-//    [self performSegueWithIdentifier:@"fanFeedSegue" sender:nil];
+
 }
 
 
@@ -328,47 +360,117 @@
 
 }
 
--(void) setEventCellsWithEventsArray: (NSArray *)events {
+
+ - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+
+    if (indexPath.section == 3){
+                if(cell == self.twitterFirstViewCell && self.currentArtist.tweetsArray.count < 1){
+            
+            
+            self.twitterFourthViewCell.textLabel.text = @"No tweets.";
+            return 0;
+       }
+        
+                else if (self.currentArtist.tweetsArray.count > 0 && self.currentArtist.tweetsArray.count < 4){
+                    
+                   self.twitterFourthViewCell.textLabel.text = @"                    ";
+                }
+                    else if (self.currentArtist.tweetsArray.count >= 4){
+                        
+                        self.twitterFourthViewCell.textLabel.text = @"  See more...   ";
+                    
+                }
+        else if (cell == self.twitterSecondViewCell && self.currentArtist.tweetsArray.count < 2){
+            return 0;
+        }
+        
+        else if (cell == self.twitterThirdViewCell && self.currentArtist.tweetsArray.count < 3){
+            return 0;
+        }
+        
     
-    
-    if (events.count > 0) {
-        // set up first event
-        FNBArtistEvent *event = events[0];
-        self.eventLabel1.text = event.eventTitle;
-        self.eventLabelDate1.text = event.dateOfConcert;
-        NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
-        NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
-        self.eventImageView1.image = [UIImage imageWithData:dataImage1];
     }
     
-    if (events.count > 1) {
-        // set up second event
-        FNBArtistEvent *event1 = events[1];
-        self.eventLabel2.text = event1.eventTitle;
-        self.eventLabelDate2.text = event1.dateOfConcert;
-        NSURL *imageURL2 = [NSURL URLWithString:event1.artistImageURL];
-        NSData *dataImage2 = [NSData dataWithContentsOfURL:imageURL2];
-        self.eventImageView2.image = [UIImage imageWithData:dataImage2];
+    
+    
+    else if (indexPath.section == 4) {
+        if (cell == self.upConcertsFirstCell && self.events.count < 1) {
+            self.upConcertsFourthCell.textLabel.text = @"No Upcoming Events.";
+            return 0;
+        }
+        
+        else if (cell == self.upConcertsSecondCell && self.events.count < 2) {
+            
+            return 0;
+            
+        }
+        
+        else if (cell == self.upConcertsThirdCell &&  self.events.count < 3) {
+            
+            return 0;
+            
+        }
+        
+        else if (cell == self.upConcertsFirstCell && self.events.count > 0){
+            
+            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            FNBArtistEvent *event = self.events[0];
+            self.eventLabel1.text = event.eventTitle;
+            self.eventLabelDate1.text = event.dateOfConcert;
+            NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
+            NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
+            self.eventImageView1.image = [UIImage imageWithData:dataImage1];
+            return 44;
+            
+        }
+        
+        
+        
+        else if (cell == self.upConcertsSecondCell && self.events.count > 1){
+            
+            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            FNBArtistEvent *event1 = self.events[1];
+            self.eventLabel2.text = event1.eventTitle;
+            self.eventLabelDate2.text = event1.dateOfConcert;
+            NSURL *imageURL2 = [NSURL URLWithString:event1.artistImageURL];
+            NSData *dataImage2 = [NSData dataWithContentsOfURL:imageURL2];
+            self.eventImageView2.image = [UIImage imageWithData:dataImage2];
+            return 44;
+            
+        }
+        
+        
+        else if (cell == self.upConcertsThirdCell && self.events.count > 2){
+            
+            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            FNBArtistEvent *event2 = self.events[2];
+            self.eventLabel3.text = event2.eventTitle;
+            self.eventLabelDate3.text = event2.dateOfConcert;
+            NSURL *imageURL3 = [NSURL URLWithString:event2.artistImageURL];
+            NSData *dataImage3 = [NSData dataWithContentsOfURL:imageURL3];
+            self.eventImageView3.image = [UIImage imageWithData:dataImage3];
+            return 44;
+            
+        }
     }
     
-    if (events.count > 2) {
-        // set up third event
-        FNBArtistEvent *event2 = events[2];
-        self.eventLabel3.text = event2.eventTitle;
-        self.eventLabelDate3.text = event2.dateOfConcert;
-        NSURL *imageURL3 = [NSURL URLWithString:event2.artistImageURL];
-        NSData *dataImage3 = [NSData dataWithContentsOfURL:imageURL3];
-        self.eventImageView3.image = [UIImage imageWithData:dataImage3];
+    // height of top cell
+    else if (indexPath.section == 0){
+        return 200;
     }
-    
-    
+    return 44;
+
 }
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Get the section number to determine what section has been selected
     NSInteger section = indexPath.section;
-    NSLog(@"printing indexpath.section%luXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",section);
+   
     // Get the header section text
     NSString *sectionHeaderTitle = [tableView headerViewForSection:section].textLabel.text;
     
