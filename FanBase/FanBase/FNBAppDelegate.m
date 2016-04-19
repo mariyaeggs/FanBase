@@ -27,6 +27,9 @@
 //    [self.window makeKeyAndVisible];
     
     [UILabel appearance].fis_substituteFontName = @"Avenir";
+    [UIButton appearance].tintColor = [UIColor blackColor];
+    self.window.tintColor = [UIColor blackColor];
+    
     
     return YES;
 }

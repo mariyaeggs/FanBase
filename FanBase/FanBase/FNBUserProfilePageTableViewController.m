@@ -102,7 +102,6 @@
     self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
     self.sideBar.delegate = self;
 
-    
     // create the artistLabels and artistImageViews of the cells
 
     self.arrayOfArtistLabels = @[self.artist1NameLabel, self.artist2NameLabel, self.artist3NameLabel, self.artist4NameLabel];

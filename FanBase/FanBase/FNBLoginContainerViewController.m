@@ -30,8 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
-    
     BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
 
 //    // Initialize side bar

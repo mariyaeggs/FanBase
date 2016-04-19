@@ -15,6 +15,7 @@
 @interface FNBArtistTop10TableViewController ()
 
 @property (nonatomic,strong) NSArray *topTrackCellFolder;
+@property (nonatomic,strong) NSString *previousUrl;
 
 @end
 
@@ -91,9 +92,17 @@
     NSString *reuseIdentifier = @"Cell";
     
     FNBArtistTop10Cell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    NSDictionary *song =  self.topTrackCellFolder[indexPath.row];
-    
+        NSDictionary *song =  self.topTrackCellFolder[indexPath.row];
+    if (self.isMusicPlaying && [self.previousUrl isEqualToString:song[@"previewSong"]]){
+        
+        [cell.play_pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+        
+    }
+    else {
+        [cell.play_pauseButton setTitle:@"Play" forState:UIControlStateNormal];
+
+        
+    }
     cell.TrackNameLabel.text = song[@"nameTrack"];
     cell.AlbumNameLabel.text = song[@"albumName"];
     cell.trackSampleURL = song[@"previewSong"];
@@ -121,28 +130,47 @@
 
 - (IBAction)play_pauseButton:(id)sender {
     
-    NSLog(@"HEYYYYYYY!");
     
     UIButton *playButton = sender;
+    NSLog(@"Value for sender%@",sender);
     UIView *cellContentView = [playButton superview];
     FNBArtistTop10Cell *cell = (FNBArtistTop10Cell*)[cellContentView superview];
     NSURL *url = [NSURL URLWithString:cell.trackSampleURL];
     self.player = [AVPlayer playerWithURL:url];
     
-    NSLog(@"self.isMusicPlaying: %@", self.isMusicPlaying ? @"YES" : @"NO");
-    if(!self.isMusicPlaying){
+        if(!self.isMusicPlaying){
         NSLog(@"playing");
         [playButton setTitle:@"Pause" forState:UIControlStateNormal];
         [self.player play];
-        
+        self.isMusicPlaying = !self.isMusicPlaying;
     
     }
     else {
-        NSLog(@"pausing");
-       [playButton setTitle:@"Play" forState:UIControlStateNormal];
-        [self.player pause];
         
+        if ([self.previousUrl isEqualToString:cell.trackSampleURL]){
+            [playButton setTitle:@"Play" forState:UIControlStateNormal];
+            [self.player pause];
+        self.isMusicPlaying = !self.isMusicPlaying;
+        }
+        
+        else{
+            
+            for (FNBArtistTop10Cell *tableCell in self.tableView.visibleCells){
+                
+                [tableCell.play_pauseButton setTitle:@"Play" forState:(UIControlStateNormal)];
+                
+                [self.player play];
+            
+            }
+            [playButton setTitle:@"Pause" forState:(UIControlStateNormal)];
+        }
+//        NSLog(@"pausing");
+//       [playButton setTitle:@"Play" forState:UIControlStateNormal];
+//        [self.player pause];
+//        
     }
-    self.isMusicPlaying = !self.isMusicPlaying;
+    
+    self.previousUrl = cell.trackSampleURL;
 }
+
 @end
