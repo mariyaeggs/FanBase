@@ -50,10 +50,6 @@
 //    self.sideBar.delegate = self;
 //    
     
-
-    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
-    //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
-    
     if (isNetworkAvailable) {
         [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
             // put a loading icon here
