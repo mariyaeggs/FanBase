@@ -30,14 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-<<<<<<< HEAD
-
     
     BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
-=======
-    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+    //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
 
->>>>>>> 4a46418bc050573b976e47d7e5085b05a3af0b77
 //    // Initialize side bar
 //    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
 //    self.sideBar.delegate = self;
