@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     NSLog(@"Outside client req");
     
     if ([self isForceTouchAvailable]) {

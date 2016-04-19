@@ -8,7 +8,7 @@
         <!--Discover Page-->
         <scene sceneID="2df-2y-fRU">
             <objects>
-                <tableViewController id="n4v-wa-sRe" userLabel="Discover Page" customClass="FNBViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="DiscoverPageID" storyboardIdentifier="DiscoverPageID" title="DiscoverPage" id="n4v-wa-sRe" userLabel="Discover Page" customClass="FNBViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="uiF-OV-nzp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
