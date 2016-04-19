@@ -9,6 +9,8 @@
 
 @implementation FNBUser
 
+static NSInteger const minimumArtistImageHeightForLabels = 50;
+
 
 -(instancetype)init{
     self = [super init];
@@ -47,11 +49,23 @@
         NSInteger currentUsersRank = [sortedArray indexOfObjectPassingTest:^BOOL(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
             return [[dict objectForKey:@"userID"] isEqual:self.userID];
         }];
+        
+        
+        // get smallest image that is minimum height
+        NSMutableDictionary *selectedImage = [NSMutableDictionary new];
+        for (NSDictionary *imageDescription in artist.imagesArray) {
+            if ([imageDescription[@"height"] integerValue] > minimumArtistImageHeightForLabels) {
+                selectedImage = [imageDescription mutableCopy];
+            }
+        }
+        NSString *imageURL = selectedImage[@"url"];
+        
+        
         NSDictionary *rankingDictionary = @{
                                             @"artistName" : artist.name ,
                                             @"usersRank" : @(currentUsersRank + 1),
                                             @"numberOfFollowers" : @(sortedArray.count),
-                                            @"artistImageURL" : artist.imagesArray[0][@"url"],
+                                            @"artistImageURL" : imageURL,
                                             @"artistSpotifyID" : artist.spotifyID
                                             };
         [arrayToFill addObject:rankingDictionary];
