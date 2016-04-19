@@ -120,7 +120,7 @@
         <!--Event InfoVC-->
         <scene sceneID="zx0-qf-jHm">
             <objects>
-                <viewController storyboardIdentifier="eventInfo" id="Mbf-AL-cdp" customClass="FNBEventInfoVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="eventInfo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mbf-AL-cdp" customClass="FNBEventInfoVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oqw-HR-e39"/>
                         <viewControllerLayoutGuide type="bottom" id="8S1-Fx-fDm"/>

@@ -7,8 +7,11 @@
 //
 
 #import "FNBFanFeedViewController.h"
+#import "FanBase-Bridging-Header.h"
+#import "Fanbase-Swift.h"
 
-@interface FNBFanFeedViewController ()
+
+@interface FNBFanFeedViewController () <SideBarDelegate>
 
 @property (strong, nonatomic) NSMutableArray<JSQMessage *> *messages;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImage;
@@ -30,6 +33,8 @@
 
 @property (strong, nonatomic) FNBUser *otherUser;
 
+
+
 @end
 
 @implementation FNBFanFeedViewController
@@ -47,6 +52,7 @@
 # pragma mark - Setup Methods
 
 - (void)viewDidLoad {
+    
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
     
@@ -79,7 +85,6 @@
     
     [self setupBubbles];
 }
-
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     [self observeMessages];

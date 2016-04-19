@@ -19,7 +19,12 @@
 //this is to segue to the fanFeedVC
 #import "FNBSeeMoreTweetsTableViewController.h"
 
-@interface FNBArtistMainPageTableViewController ()
+//Side bar menu import files
+#import "FanBase-Bridging-Header.h"
+#import "FanBase-Swift.h"
+
+@interface FNBArtistMainPageTableViewController () <SideBarDelegate>
+
 @property (strong, nonatomic) FNBArtist *currentArtist;
 @property (strong, nonatomic) FNBUser  *currentUser;
 @property (nonatomic) BOOL isUserLoggedIn;
@@ -65,6 +70,8 @@
 
 @property (strong,nonatomic) NSArray *events;
 
+@property (strong, nonatomic) SideBar *sideBar;
+
 
 @end
 
@@ -74,6 +81,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+    hamburgerButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
+    
+    // Call the sidebar menu function
+    
+    // Initialize side bar
+    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    self.sideBar.delegate = self;
 
 
     // load page assuming user is not logged in and not subscribed
@@ -151,9 +169,37 @@
     
     
 }
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
+    NSLog(@"%ld", (long)index);
+    
+    if ((long)index == 0) {
+        FNBArtistMainPageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:userProfileVC animated:YES];
+    } else if ((long)index == 1) {
+        FNBArtistMainPageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:discoverPageVC animated:YES];
+    } else if ((long)index == 2) {
+        FNBArtistMainPageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:eventsVC animated:YES];
+        
+    }
+}
 
-
-
+// If bar menu is tapped
+-(void)hamburgerButtonTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+    
+}
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
