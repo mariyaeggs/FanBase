@@ -9,6 +9,7 @@
 #import "FNBArtistMainPageTableViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBTwitterAPIClient.h"
+#import "FNBColorConstants.h"
 //this is to segue to the ArtistTop10
 #import "FNBArtistTop10TableViewController.h"
 #import "FNBBandsInTownAPIClient.h"
@@ -433,6 +434,10 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     [self.tableView reloadData];
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *v = (UITableViewHeaderFooterView *)view;
+    v.backgroundView.backgroundColor = FNBLightGreenColor;
+}
 
  - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 

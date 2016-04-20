@@ -18,11 +18,8 @@
 @interface FNBArtistTop10TableViewController () <SideBarDelegate>
 
 @property (nonatomic,strong) NSArray *topTrackCellFolder;
-
 @property (nonatomic,strong) NSString *previousUrl;
-
 @property (nonatomic,strong) SideBar *sideBar;
-
 
 @end
 

@@ -50,10 +50,6 @@
 //    self.sideBar.delegate = self;
 //    
     
-//
-//    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
-    //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
-    
     if (isNetworkAvailable) {
         [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
             // put a loading icon here
@@ -167,14 +163,4 @@
     [controller didMoveToParentViewController:self];
 }
 
-- (IBAction)hamburgerTapped:(id)sender {
-    
-    
-    
-    
-    [self.sideBar showSideBarMenu:YES];
-
-    
-    NSLog(@"HELLO YOU're TAPPED!!");
-}
 @end

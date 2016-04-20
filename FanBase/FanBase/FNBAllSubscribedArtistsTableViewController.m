@@ -16,7 +16,7 @@
 #import "FNBViewAllArtistsTableViewCell.h"
 #import "FanBase-Bridging-Header.h"
 #import "Fanbase-Swift.h"
-
+#import "FNBColorConstants.h"
 
 @interface FNBAllSubscribedArtistsTableViewController ()<SideBarDelegate>
 
@@ -31,6 +31,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    //Gradient
+    self.view.tintColor = FNBOffWhiteColor;
+    UIColor *gradientMaskLayer = FNBLightGreenColor;
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.view.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+    
+    [self.view.layer insertSublayer:gradientMask atIndex:0];
     
     //Initializes hamburger bar menu button
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
@@ -160,7 +169,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FNBViewAllArtistsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
+    cell.backgroundColor = [UIColor clearColor];
     
     
     cell.artistNameLabel.text = self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistName"];
@@ -193,6 +202,11 @@
             }
         }];
     }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *v = (UITableViewHeaderFooterView *)view;
+    v.backgroundView.backgroundColor = FNBLightGreenColor;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

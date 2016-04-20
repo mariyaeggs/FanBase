@@ -11,5 +11,6 @@
 @interface EventPostTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *artistImage;
 @property (strong, nonatomic) IBOutlet UILabel *eventTitle;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
