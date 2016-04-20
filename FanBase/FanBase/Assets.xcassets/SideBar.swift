@@ -135,7 +135,8 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         logoutButton.leftAnchor.constraintEqualToAnchor(sideBarContainerView.leftAnchor, constant: padding).active = true
         logoutButton.bottomAnchor.constraintEqualToAnchor(sideBarContainerView.bottomAnchor, constant: -(sideBarTableViewTopInset + padding)).active = true
         self.sideBarContainerView.layoutIfNeeded()
-    
+        
+        
     }
     
     func pressed(sender: UIButton!) {

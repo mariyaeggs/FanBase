@@ -7,9 +7,10 @@
 //
 
 #import "FNBCreateNewAccountViewController.h"
-
+#import "FNBColorConstants.h"
 
 @interface FNBCreateNewAccountViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
@@ -31,6 +32,14 @@
     
     self.containerView.layer.cornerRadius = 7.5;
     self.containerView.layer.masksToBounds = YES;
+    
+    
+    //colors
+    self.submitButton.backgroundColor = FNBDarkGreenColor;
+    [self.submitButton setTitleColor:FNBLightGreenColor forState:UIControlStateNormal];
+    self.cancelButton.backgroundColor = FNBDarkGreenColor;
+    [self.cancelButton setTitleColor:FNBLightGreenColor forState:UIControlStateNormal];
+    self.titleLabel.textColor = FNBDarkGreyColor;
     
     //Gradient
     self.view.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];

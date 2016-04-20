@@ -7,13 +7,16 @@
 //
 
 #import "FNBLoginViewController.h"
-
+#import "FNBColorConstants.h"
 
 @interface FNBLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *createAccountButton;
+@property (weak, nonatomic) IBOutlet UIButton *continueAsGuestButton;
+@property (weak, nonatomic) IBOutlet UILabel *userLoginLabel;
 
 @end
 
@@ -30,6 +33,11 @@
     self.loginButton.layer.cornerRadius = 5;
     self.loginButton.layer.masksToBounds = YES;
     
+    // colors
+    self.loginButton.backgroundColor = FNBDarkGreenColor;
+    [self.loginButton setTitleColor:FNBLightGreenColor forState:UIControlStateNormal];
+    self.userLoginLabel.textColor = FNBDarkGreyColor;
+     
     //Gradient
     self.view.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
     UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
@@ -38,6 +46,8 @@
     gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
+    
 }
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

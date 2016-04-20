@@ -21,7 +21,8 @@ class SideBarTableViewController: UITableViewController {
     // Items in the side bar to tap
     var tableData:Array<String> = []
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

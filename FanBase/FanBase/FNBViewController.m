@@ -99,16 +99,20 @@ static NSInteger const minimumImageHeight = 100;
     
     self.view.backgroundColor = [UIColor whiteColor];
 
-
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    if (self.currentUserIsLoggedIn) {
+        NSLog(@"current user is logged in");
+        //Initializes hamburger bar menu button
+        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+        hamburgerButton.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItem = hamburgerButton;
+        
+        // Initialize side bar
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
         self.sideBar.delegate = self;
+    }
+    
+    
+
 
     
     self.selectedArtist = @"";
@@ -180,6 +184,8 @@ static NSInteger const minimumImageHeight = 100;
 //            NSLog(@"this is the matching artists: %@", matchingArtistsArray);
             self.spotifyResultsArray = matchingArtistsArray;
             [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
         }
         else {
             NSLog(@"Did not get any matching artist from Spotify for your search: %@", searchBar.text);
@@ -192,6 +198,8 @@ static NSInteger const minimumImageHeight = 100;
         self.searchFieldPopulated = NO;
         NSLog(@"changed the self.searchfieldPopulated to: %d", self.searchFieldPopulated);
         [self.tableView reloadData];
+        [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
     }
 }
 
@@ -208,10 +216,6 @@ static NSInteger const minimumImageHeight = 100;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-    self.sideBar.delegate = self;
     
 
     //find if user is logged in, if so, get their subscribed users
@@ -240,6 +244,14 @@ static NSInteger const minimumImageHeight = 100;
             self.currentUserIsLoggedIn = NO;
         }
     }];
+    
+    // Initialize side bar
+    if (self.currentUserIsLoggedIn) {
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+        
+        self.sideBar.delegate = self;
+    }
+    
     
     self.content = [NSMutableDictionary new];
     
@@ -343,6 +355,8 @@ static NSInteger const minimumImageHeight = 100;
 //        NSLog(@"about to reloadtdata");
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+            
 //            NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
         }];
         
@@ -666,6 +680,8 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
+                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                 }];
             }
         }];
@@ -679,6 +695,8 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
+                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                 }];
                 
             }
