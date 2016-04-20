@@ -50,8 +50,8 @@
 //    self.sideBar.delegate = self;
 //    
     
-
-    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
+//
+//    BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
     //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
     
     if (isNetworkAvailable) {
