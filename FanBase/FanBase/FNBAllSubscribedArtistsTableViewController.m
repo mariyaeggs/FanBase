@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     //Gradient
     self.view.tintColor = FNBOffWhiteColor;
