@@ -99,16 +99,20 @@ static NSInteger const minimumImageHeight = 100;
     
     self.view.backgroundColor = [UIColor whiteColor];
 
-
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    if (self.currentUserIsLoggedIn) {
+        NSLog(@"current user is logged in");
+        //Initializes hamburger bar menu button
+        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+        hamburgerButton.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItem = hamburgerButton;
+        
+        // Initialize side bar
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
         self.sideBar.delegate = self;
+    }
+    
+    
+
 
     
     self.selectedArtist = @"";
@@ -213,11 +217,6 @@ static NSInteger const minimumImageHeight = 100;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-    
-    self.sideBar.delegate = self;
-    
 
     //find if user is logged in, if so, get their subscribed users
     self.currentUser = [[FNBUser alloc] init];
@@ -245,6 +244,14 @@ static NSInteger const minimumImageHeight = 100;
             self.currentUserIsLoggedIn = NO;
         }
     }];
+    
+    // Initialize side bar
+    if (self.currentUserIsLoggedIn) {
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+        
+        self.sideBar.delegate = self;
+    }
+    
     
     self.content = [NSMutableDictionary new];
     
