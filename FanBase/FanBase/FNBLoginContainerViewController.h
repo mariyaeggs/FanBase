@@ -10,4 +10,6 @@
 
 @interface FNBLoginContainerViewController : UIViewController
 
+- (IBAction)hamburgerTapped:(id)sender;
+
 @end

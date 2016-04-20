@@ -28,6 +28,8 @@
     gradientMask.frame = self.view.bounds;
     gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
     [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
+    
 
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

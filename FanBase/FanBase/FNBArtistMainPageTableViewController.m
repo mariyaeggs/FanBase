@@ -9,6 +9,7 @@
 #import "FNBArtistMainPageTableViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "FNBTwitterAPIClient.h"
+#import "FNBColorConstants.h"
 //this is to segue to the ArtistTop10
 #import "FNBArtistTop10TableViewController.h"
 #import "FNBBandsInTownAPIClient.h"
@@ -45,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *youSubscribedLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clickToAddArtistButton;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSubscribedUsersLabel;
+@property (strong, nonatomic) IBOutlet UIButton *chatButton;
 
 // tweet section
 @property (strong, nonatomic) NSArray *arrayOfTweetContentLabels;
@@ -110,18 +112,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.chatButton setEnabled:NO];
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-    // Call the sidebar menu function
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-    self.sideBar.delegate = self;
-
     //Gradient
     self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
     UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
@@ -135,7 +127,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     // load page assuming user is not logged in and not subscribed
     self.isUserSubscribedToArtist = NO;
     self.isUserLoggedIn = NO;
-   
     
     // make FNBUser for this VC
     self.currentUser = [[FNBUser alloc] init];
@@ -166,6 +157,21 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         }
     }];
     
+    //Initializes hamburger bar menu button
+    if (self.isUserLoggedIn) {
+        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+        hamburgerButton.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItem = hamburgerButton;
+        
+        
+        // Call the sidebar menu function
+        
+        // Initialize side bar
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+        self.sideBar.delegate = self;
+        
+        [self.chatButton setEnabled:YES];
+    }
     
     // set the tweetsLabels
     self.arrayOfTweetContentLabels = @[self.tweet1ContentTextView, self.tweet2ContentTextView, self.tweet3ContentTextView];
@@ -194,13 +200,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             
             [FNBTwitterAPIClient generateTweetsForKeyword:self.currentArtist.name completion:^(NSArray *receivedTweetsArray) {
                self.currentArtist.tweetsArray = receivedTweetsArray;
-//               // self.currentArtist.tweetsArray = @[
-//                                                   //@{ @"text": @"hiiii",
-//                                                      } ,
-//                                                   
-//                                                   @{ @"text": @"hiiii",
-//                                                      }
-//                                                   ];
+
                 [self setTwitterCellsWithTweetsArray:self.currentArtist.tweetsArray];
 
 
@@ -214,6 +214,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
                                                       
                                                       
                                                       [self.tableView reloadData];
+                                                      [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                                                   }];
             
 
@@ -431,8 +433,14 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         }
     }
     [self.tableView reloadData];
+    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *v = (UITableViewHeaderFooterView *)view;
+    v.backgroundView.backgroundColor = FNBLightGreenColor;
+}
 
  - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 

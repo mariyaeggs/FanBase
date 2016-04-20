@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="handsLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-pW-Yl9">
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-pW-Yl9">
                                 <rect key="frame" x="37" y="184" width="300" height="300"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.75686274509999996" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="handsLogo.png" width="3000" height="3019"/>
+        <image name="launchlogo" width="2291" height="2302"/>
     </resources>
 </document>

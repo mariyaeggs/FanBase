@@ -15,6 +15,7 @@
 #import <Firebase.h>
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
+#import "FNBColorConstants.h"
 // this is to segue to artistMainPage
 #import "FNBArtistMainPageTableViewController.h"
 
@@ -86,16 +87,32 @@ static NSInteger const minimumImageHeight = 100;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    //Gradient
+//    self.view.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
+//    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+//    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+//    gradientMask.frame = self.view.bounds;
+//    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+//    
+//    [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    if (self.currentUserIsLoggedIn) {
+        NSLog(@"current user is logged in");
+        //Initializes hamburger bar menu button
+        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+        hamburgerButton.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItem = hamburgerButton;
+        
+        // Initialize side bar
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
         self.sideBar.delegate = self;
+    }
+    
+    
+
 
     
     self.selectedArtist = @"";
@@ -167,6 +184,8 @@ static NSInteger const minimumImageHeight = 100;
 //            NSLog(@"this is the matching artists: %@", matchingArtistsArray);
             self.spotifyResultsArray = matchingArtistsArray;
             [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
         }
         else {
             NSLog(@"Did not get any matching artist from Spotify for your search: %@", searchBar.text);
@@ -179,6 +198,8 @@ static NSInteger const minimumImageHeight = 100;
         self.searchFieldPopulated = NO;
         NSLog(@"changed the self.searchfieldPopulated to: %d", self.searchFieldPopulated);
         [self.tableView reloadData];
+        [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
     }
 }
 
@@ -195,10 +216,6 @@ static NSInteger const minimumImageHeight = 100;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-    self.sideBar.delegate = self;
     
 
     //find if user is logged in, if so, get their subscribed users
@@ -227,6 +244,14 @@ static NSInteger const minimumImageHeight = 100;
             self.currentUserIsLoggedIn = NO;
         }
     }];
+    
+    // Initialize side bar
+    if (self.currentUserIsLoggedIn) {
+        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+        
+        self.sideBar.delegate = self;
+    }
+    
     
     self.content = [NSMutableDictionary new];
     
@@ -330,6 +355,8 @@ static NSInteger const minimumImageHeight = 100;
 //        NSLog(@"about to reloadtdata");
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+            
 //            NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
         }];
         
@@ -387,6 +414,7 @@ static NSInteger const minimumImageHeight = 100;
     static NSString *CellIdentifier = @"CellIdentifier";
     
     FNBTableViewCell *cell = (FNBTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.backgroundColor = [UIColor clearColor];
     
     if (!cell)
     {
@@ -394,6 +422,11 @@ static NSInteger const minimumImageHeight = 100;
     }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *v = (UITableViewHeaderFooterView *)view;
+    v.backgroundView.backgroundColor = FNBLightGreenColor;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(FNBTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -405,6 +438,8 @@ static NSInteger const minimumImageHeight = 100;
     [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0) animated:NO];
     
     [cell.collectionView registerClass:[FNBCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
+    
+    cell.collectionView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -498,6 +533,8 @@ static NSInteger const minimumImageHeight = 100;
     
     FNBCollectionViewCell *cell = (FNBCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor clearColor];
+    
     // for search results
     if (self.searchFieldPopulated) {
         [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
@@ -533,6 +570,8 @@ static NSInteger const minimumImageHeight = 100;
 
         UIView *view = [collectionView superview];
         FNBTableViewCell *tableViewCell = (FNBTableViewCell *)[view superview];
+        tableViewCell.backgroundColor = [UIColor clearColor];
+        
         NSIndexPath *ip = [self.tableView indexPathForCell:tableViewCell];
         NSInteger tableViewSection = ip.section;
         NSString *genre = self.genres[tableViewSection];
@@ -583,6 +622,7 @@ static NSInteger const minimumImageHeight = 100;
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (![scrollView isKindOfClass:[UICollectionView class]]) return;
+    scrollView.backgroundColor = [UIColor clearColor];
     
     CGFloat horizontalOffset = scrollView.contentOffset.x;
     
@@ -640,6 +680,8 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
+                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                 }];
             }
         }];
@@ -653,6 +695,8 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
+                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                 }];
                 
             }
