@@ -180,6 +180,8 @@ static NSInteger const minimumImageHeight = 100;
 //            NSLog(@"this is the matching artists: %@", matchingArtistsArray);
             self.spotifyResultsArray = matchingArtistsArray;
             [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
         }
         else {
             NSLog(@"Did not get any matching artist from Spotify for your search: %@", searchBar.text);
@@ -192,6 +194,8 @@ static NSInteger const minimumImageHeight = 100;
         self.searchFieldPopulated = NO;
         NSLog(@"changed the self.searchfieldPopulated to: %d", self.searchFieldPopulated);
         [self.tableView reloadData];
+        [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
     }
 }
 
@@ -669,6 +673,8 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
+                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                 }];
             }
         }];
@@ -682,6 +688,8 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
+                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                 }];
                 
             }

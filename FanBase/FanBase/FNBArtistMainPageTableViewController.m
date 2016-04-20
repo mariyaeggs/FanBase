@@ -215,6 +215,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
                                                       
                                                       
                                                       [self.tableView reloadData];
+                                                      [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
                                                   }];
             
 
@@ -432,6 +434,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         }
     }
     [self.tableView reloadData];
+    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
