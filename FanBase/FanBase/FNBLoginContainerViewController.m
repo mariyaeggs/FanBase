@@ -48,7 +48,8 @@
 //    // Initialize side bar
 //    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
 //    self.sideBar.delegate = self;
-//    
+//
+    [self showLoginVC]; return;
     
     if (isNetworkAvailable) {
         [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {

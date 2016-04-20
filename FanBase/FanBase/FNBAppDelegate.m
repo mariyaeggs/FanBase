@@ -8,6 +8,7 @@
 #import "FNBAppDelegate.h"
 #import "FNBViewController.h"
 #import "UILabel+SubstituteFont.h"
+#import "FNBColorConstants.h"
 
 @implementation FNBAppDelegate
 
@@ -27,7 +28,9 @@
 //    [self.window makeKeyAndVisible];
     
     [UILabel appearance].fis_substituteFontName = @"Avenir";
-    [UIButton appearance].tintColor = [UIColor blackColor];
+    [UIButton appearance].tintColor = FNBDarkGreenColor;
+    [[UIButton appearance] setTitleColor:FNBDarkGreenColor forState:UIControlStateNormal];
+    [UITextField appearance].tintColor = FNBDarkGreyColor;
     self.window.tintColor = [UIColor blackColor];
     
     
