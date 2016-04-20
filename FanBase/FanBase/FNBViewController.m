@@ -211,6 +211,7 @@ static NSInteger const minimumImageHeight = 100;
     
     // Initialize side bar
     self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    
     self.sideBar.delegate = self;
     
 
@@ -343,6 +344,8 @@ static NSInteger const minimumImageHeight = 100;
 //        NSLog(@"about to reloadtdata");
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+            
 //            NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
         }];
         
