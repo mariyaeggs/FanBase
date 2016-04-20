@@ -167,4 +167,14 @@
     [controller didMoveToParentViewController:self];
 }
 
+- (IBAction)hamburgerTapped:(id)sender {
+    
+    
+    
+    
+    [self.sideBar showSideBarMenu:YES];
+
+    
+    NSLog(@"HELLO YOU're TAPPED!!");
+}
 @end

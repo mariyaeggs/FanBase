@@ -36,6 +36,9 @@
                     <navigationItem key="navigationItem" id="mlB-ih-aZm">
                         <barButtonItem key="rightBarButtonItem" image="menu" id="L2s-NT-uTm">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="hamburgerTapped:" destination="Su4-9z-uRb" id="bzX-eq-Wor"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -417,7 +420,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBC-mv-r5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-804.5" y="-930.5"/>
+            <point key="canvasLocation" x="-731.5" y="-985.5"/>
         </scene>
     </scenes>
     <resources>
