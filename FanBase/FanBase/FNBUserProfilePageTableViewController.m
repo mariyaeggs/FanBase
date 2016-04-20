@@ -377,6 +377,8 @@
     [self.blurredUserImageView setImageWithURL:[NSURL URLWithString:self.currentUser.profileImageURL]];
     self.numberOfSubscribedArtistsLabel.text = [NSString stringWithFormat: @"Number of Artists: %lu", self.currentUser.artistsDictionary.count];
     [self.tableView reloadData];
+    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
 
 }
 
@@ -386,6 +388,8 @@
 
     self.tableView.tableFooterView = [UIView new];
     [self.tableView reloadData];
+    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
 }
 
 - (void) getConcerts {
@@ -421,6 +425,8 @@
         }
     }
     [self.tableView reloadData];
+    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
 
 }
 
@@ -447,6 +453,8 @@
         }
     }
     [self.tableView reloadData];
+    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+
 
 }
 

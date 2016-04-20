@@ -153,8 +153,8 @@
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52G-yc-wHc">
                                                     <rect key="frame" x="420" y="14" width="54" height="45"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="54" id="A3k-05-FQi"/>
-                                                        <constraint firstAttribute="height" constant="45" id="rHR-i4-onc"/>
+                                                        <constraint firstAttribute="width" constant="40" id="A3k-05-FQi"/>
+                                                        <constraint firstAttribute="height" constant="40" id="rHR-i4-onc"/>
                                                     </constraints>
                                                     <state key="normal" image="chat"/>
                                                     <connections>

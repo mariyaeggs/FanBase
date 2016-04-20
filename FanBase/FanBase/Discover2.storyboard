@@ -51,6 +51,7 @@
                                         <constraint firstItem="Okc-ir-a1l" firstAttribute="leading" secondItem="rIq-Vb-WWl" secondAttribute="leading" id="ySy-uh-gpH"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="collectionView" destination="Okc-ir-a1l" id="dEY-as-ypW"/>
                                 </connections>
