@@ -95,7 +95,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
     //Gradient
     self.view.tintColor = FNBOffWhiteColor;
@@ -105,6 +104,8 @@
     gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
+    [self updateUI];
     
     // Call the sidebar menu function
 
