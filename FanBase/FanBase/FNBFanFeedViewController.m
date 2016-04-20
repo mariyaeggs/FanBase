@@ -7,8 +7,11 @@
 //
 
 #import "FNBFanFeedViewController.h"
+#import "FanBase-Bridging-Header.h"
+#import "Fanbase-Swift.h"
 
-@interface FNBFanFeedViewController ()
+
+@interface FNBFanFeedViewController () <SideBarDelegate>
 
 @property (strong, nonatomic) NSMutableArray<JSQMessage *> *messages;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImage;
@@ -30,6 +33,8 @@
 
 @property (strong, nonatomic) FNBUser *otherUser;
 
+
+
 @end
 
 @implementation FNBFanFeedViewController
@@ -47,8 +52,11 @@
 # pragma mark - Setup Methods
 
 - (void)viewDidLoad {
+    
     NSLog(@"In viewDidLoad");
     [super viewDidLoad];
+    
+    self.collectionView.backgroundColor = [UIColor colorWithRed:230/255.0 green:255/255.0 blue:247.0/255 alpha:1.0];
     
     self.senderId = self.user.userID;
     self.senderDisplayName = self.user.userName;
@@ -79,7 +87,6 @@
     
     [self setupBubbles];
 }
-
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     [self observeMessages];
@@ -93,8 +100,8 @@
 
 -(void)setupBubbles {
     JSQMessagesBubbleImageFactory *factory = [[JSQMessagesBubbleImageFactory alloc] init];
-    self.outgoingBubbleImage = [factory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
-    self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+    self.outgoingBubbleImage = [factory outgoingMessagesBubbleImageWithColor:[UIColor colorWithRed:45.0/255 green:127.0/255 blue:102.0/255 alpha:1.0]];
+    self.incomingBubbleImage = [factory incomingMessagesBubbleImageWithColor:[UIColor colorWithRed:184.0/255 green:204.0/255 blue:198.0/255 alpha:1.0]];
 }
 
 # pragma mark - Delegate methods for collectionview

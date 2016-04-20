@@ -8,88 +8,6 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Main Container View Controller-->
-        <scene sceneID="nwh-Ix-YWE">
-            <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="ksl-cw-wQM" customClass="MainContainerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uT3-cK-J4j"/>
-                        <viewControllerLayoutGuide type="bottom" id="bPU-wT-h9K"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YPn-AY-6Bi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtP-bj-NQv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <connections>
-                                    <segue destination="PrD-BC-yfm" kind="embed" id="kTu-6C-r8L"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEz-gt-Cmp">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="667"/>
-                                <connections>
-                                    <segue destination="NQq-sU-RYr" kind="embed" id="pgz-2J-6K9"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="GEz-gt-Cmp" secondAttribute="trailing" constant="225" id="JSf-Qo-AbF"/>
-                            <constraint firstItem="bPU-wT-h9K" firstAttribute="top" secondItem="GEz-gt-Cmp" secondAttribute="bottom" id="NSD-zB-7wJ"/>
-                            <constraint firstItem="GEz-gt-Cmp" firstAttribute="leading" secondItem="YPn-AY-6Bi" secondAttribute="leading" id="dcK-bU-K5N"/>
-                            <constraint firstItem="GEz-gt-Cmp" firstAttribute="top" secondItem="YPn-AY-6Bi" secondAttribute="top" id="iFM-rw-5Kw"/>
-                            <constraint firstAttribute="trailing" secondItem="TtP-bj-NQv" secondAttribute="trailing" id="n1p-S8-v9m"/>
-                            <constraint firstItem="TtP-bj-NQv" firstAttribute="top" secondItem="YPn-AY-6Bi" secondAttribute="top" id="nrJ-44-GK0"/>
-                            <constraint firstItem="bPU-wT-h9K" firstAttribute="top" secondItem="TtP-bj-NQv" secondAttribute="bottom" id="uLB-Qa-sbI"/>
-                            <constraint firstItem="TtP-bj-NQv" firstAttribute="leading" secondItem="YPn-AY-6Bi" secondAttribute="leading" id="vCe-vL-yOa"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Wks-Pv-KsV">
-                        <barButtonItem key="rightBarButtonItem" image="menu" id="UcA-hA-7Fx">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="contentContainerView" destination="TtP-bj-NQv" id="poq-I3-pbj"/>
-                        <outlet property="sideMenuContainerView" destination="GEz-gt-Cmp" id="hhw-Bn-tox"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JKx-nm-jVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1149.5" y="339.5"/>
-        </scene>
-        <!--Side Bar Table View Controller-->
-        <scene sceneID="mlK-BQ-1vE">
-            <objects>
-                <tableViewController id="NQq-sU-RYr" customClass="SideBarTableViewController" customModule="FanBase" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zdh-Rd-4GS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gBh-bR-BzL">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBh-bR-BzL" id="Vu5-bY-DJd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="NQq-sU-RYr" id="A8F-Fh-daU"/>
-                            <outlet property="delegate" destination="NQq-sU-RYr" id="mlm-IC-ddF"/>
-                        </connections>
-                    </tableView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KEs-2V-PPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-569.5" y="378.5"/>
-        </scene>
         <!--Login Container View Controller-->
         <scene sceneID="7uZ-eH-2DH">
             <objects>
@@ -116,7 +34,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="mlB-ih-aZm">
-                        <barButtonItem key="rightBarButtonItem" image="menu" id="Tf5-LN-67j">
+                        <barButtonItem key="rightBarButtonItem" image="menu" id="L2s-NT-uTm">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
@@ -128,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu5-HW-gXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-179.5" y="-930.5"/>
+            <point key="canvasLocation" x="-219.5" y="-985.5"/>
         </scene>
         <!--Create New Account View Controller-->
         <scene sceneID="Tqx-AS-AIV">
@@ -279,7 +197,7 @@
         <!--UserPage-->
         <scene sceneID="7iY-2z-0Ro">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserPage" id="cGw-6Z-unj" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="UserPageID" storyboardName="UserPage" id="cGw-6Z-unj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDb-OP-9mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1576.5" y="-626"/>
@@ -366,7 +284,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="loginViewControllerID" id="BYZ-38-t0r" customClass="FNBLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="FNBLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

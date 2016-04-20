@@ -20,7 +20,12 @@
 #import "FNBSeeMoreTweetsTableViewController.h"
 #import "FNBArtistNewsTableViewController.h"
 
-@interface FNBArtistMainPageTableViewController ()
+//Side bar menu import files
+#import "FanBase-Bridging-Header.h"
+#import "FanBase-Swift.h"
+
+@interface FNBArtistMainPageTableViewController () <SideBarDelegate>
+
 @property (strong, nonatomic) FNBArtist *currentArtist;
 @property (strong, nonatomic) FNBUser  *currentUser;
 @property (nonatomic) BOOL isUserLoggedIn;
@@ -34,6 +39,7 @@
 // artist Top info
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredArtistImageView;
 
 // users info
 @property (weak, nonatomic) IBOutlet UILabel *youSubscribedLabel;
@@ -92,17 +98,40 @@
 
 
 
+@property (strong, nonatomic) SideBar *sideBar;
+
 
 @end
 
 @implementation FNBArtistMainPageTableViewController
 
+static NSInteger const minimumArtistImageHeightForLabels = 200;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+    hamburgerButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
+    
+    // Call the sidebar menu function
+    
+    // Initialize side bar
+    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+    self.sideBar.delegate = self;
 
+    //Gradient
+    self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
+    UIColor *gradientMaskLayer = [UIColor colorWithRed:184.0/255.0 green:204.0/255.0 blue:198.0/255.0 alpha:1.0];
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.tableView.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+    
+    [self.tableView.layer insertSublayer:gradientMask atIndex:0];
 
+    
     // load page assuming user is not logged in and not subscribed
     self.isUserSubscribedToArtist = NO;
     self.isUserLoggedIn = NO;
@@ -150,7 +179,17 @@
     self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
     [FNBFirebaseClient setPropertiesOfArtist:self.currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
         if (setPropertiesCompleted) {
-            [self.artistImageView setImageWithURL:[NSURL URLWithString:self.currentArtist.imagesArray[0][@"url"]]];
+            // get smallest image that is minimum height
+            NSMutableDictionary *selectedImage = [NSMutableDictionary new];
+            for (NSDictionary *imageDescription in self.currentArtist.imagesArray) {
+                if ([imageDescription[@"height"] integerValue] > minimumArtistImageHeightForLabels) {
+                    selectedImage = [imageDescription mutableCopy];
+                }
+            }
+            NSString *imageURL = selectedImage[@"url"];
+
+            [self.artistImageView setImageWithURL:[NSURL URLWithString:imageURL]];
+            [self.blurredArtistImageView setImageWithURL:[NSURL URLWithString:imageURL]];
             self.artistNameLabel.text = self.currentArtist.name;
             
             [FNBTwitterAPIClient generateTweetsForKeyword:self.currentArtist.name completion:^(NSArray *receivedTweetsArray) {
@@ -184,9 +223,37 @@
     
     
 }
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
+    NSLog(@"%ld", (long)index);
+    
+    if ((long)index == 0) {
+        FNBArtistMainPageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:userProfileVC animated:YES];
+    } else if ((long)index == 1) {
+        FNBArtistMainPageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:discoverPageVC animated:YES];
+    } else if ((long)index == 2) {
+        FNBArtistMainPageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:eventsVC animated:YES];
+        
+    }
+}
 
-
-
+// If bar menu is tapped
+-(void)hamburgerButtonTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+    
+}
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
@@ -371,7 +438,8 @@
 
 {
     UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-
+    cell.backgroundColor = [UIColor clearColor];
+    
     if (indexPath.section == 3){
                 if(cell == self.twitterFirstViewCell && self.currentArtist.tweetsArray.count < 1){
             
