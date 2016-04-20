@@ -13,6 +13,7 @@
 #import "FNBEventInfoVC.h"
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
+#import "FNBColorConstants.h"
 
 @interface FNBSeeAllNearbyEventsTableViewController () <SideBarDelegate>
 
@@ -24,6 +25,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Gradient
+    self.view.tintColor = FNBOffWhiteColor;
+    UIColor *gradientMaskLayer = FNBLightGreenColor;
+    CAGradientLayer *gradientMask = [CAGradientLayer layer];
+    gradientMask.frame = self.view.bounds;
+    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
+    
+    [self.view.layer insertSublayer:gradientMask atIndex:0];
     
     //Initializes hamburger bar menu button
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
@@ -94,6 +104,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FNBSeeAllNearbyEventsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor clearColor];
+    
     cell.eventDateLabel.text = ((FNBArtistEvent *)self.receivedConcertsArray[indexPath.row]).dateOfConcert;
     cell.eventTitleLabel.text = ((FNBArtistEvent *)self.receivedConcertsArray[indexPath.row]).eventTitle;
     [cell.eventImage setImageWithURL:[NSURL URLWithString: ((FNBArtistEvent *)self.receivedConcertsArray[indexPath.row]).artistImageURL]];
@@ -102,6 +115,10 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *v = (UITableViewHeaderFooterView *)view;
+    v.backgroundView.backgroundColor = FNBLightGreenColor;
+}
 
 
 @end
