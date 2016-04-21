@@ -58,24 +58,15 @@
 @property (weak, nonatomic) IBOutlet UITextView *tweet3ContentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *tweet3DateLabel;
 
-
-
-
+// tweets continued
 @property (weak, nonatomic) IBOutlet UITableViewCell *twitterFirstViewCell;
-
 @property (weak, nonatomic) IBOutlet UITableViewCell *twitterSecondViewCell;
-
 @property (weak, nonatomic) IBOutlet UITableViewCell *twitterThirdViewCell;
-
 @property (weak, nonatomic) IBOutlet UITableViewCell *twitterFourthViewCell;
 
 
-
-
-
-
 // upcoming events section
-
+@property (strong,nonatomic) NSArray *arrayOfEventImageViews;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView1;
 @property (weak, nonatomic) IBOutlet UILabel *eventLabel1;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView2;
@@ -89,17 +80,13 @@
 @property (strong,nonatomic) NSArray *events;
 
 
-
+//Concert cells
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsFirstCell;
-
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsSecondCell;
-
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsThirdCell;
-
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsFourthCell;
 
-
-
+// Slide out menu
 @property (strong, nonatomic) SideBar *sideBar;
 
 
@@ -171,9 +158,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         // Initialize side bar
         self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
         self.sideBar.delegate = self;
-        
+    
         [self.chatButton setEnabled:YES];
-//    }
     
     // set the tweetsLabels
     self.arrayOfTweetContentLabels = @[self.tweet1ContentTextView, self.tweet2ContentTextView, self.tweet3ContentTextView];
@@ -183,6 +169,21 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     self.artistImageView.layer.cornerRadius = self.artistImageView.frame.size.height /2 ,
     self.artistImageView.layer.masksToBounds = YES;
     
+    // Set event images array
+    self.arrayOfEventImageViews = @[self.eventImageView1, self.eventImageView2, self.eventImageView3];
+    
+    // Make event images circular
+    
+    self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.height/2; 
+    //self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.width/2,
+    self.eventImageView1.layer.masksToBounds = YES;
+    
+    self.eventImageView2.layer.cornerRadius = self.eventImageView2.frame.size.height/2,
+    self.eventImageView2.layer.masksToBounds = YES;
+    
+    self.eventImageView3.layer.cornerRadius = self.eventImageView3.frame.size.height/2,
+    self.eventImageView3.layer.masksToBounds = YES;
+
     // create FNBArtist from receivedName
     self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
     [FNBFirebaseClient setPropertiesOfArtist:self.currentArtist FromDatabaseWithCompletionBlock:^(BOOL setPropertiesCompleted) {
@@ -219,12 +220,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
                                                       [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
                                                   }];
-            
-
         }
     }];
-    
-    
     
 }
 // Side bar delegate method implementation
@@ -289,9 +286,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     [super viewWillDisappear:animated];
     [self.artistRef removeAllObservers];
 }
-
-
-
 - (void) checkIfUser:(FNBUser *)user isSubscribedToArtistName:(NSString *)receivedArtistName {
     // check if artist has user as a subscribed Users
     // start with no (if subscribed artists is nil)
@@ -549,7 +543,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     return 44;
 
 }
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
