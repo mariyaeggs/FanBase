@@ -12,5 +12,6 @@
 @interface FNBSeeMoreTweetsTableViewController : UITableViewController
 
 @property (strong, nonatomic) FNBArtist *receivedArtist;
+@property (nonatomic) BOOL isUserLoggedIn;
 
 @end

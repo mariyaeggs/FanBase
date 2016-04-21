@@ -18,7 +18,7 @@
 #import "Fanbase-Swift.h"
 #import "FNBColorConstants.h"
 
-@interface FNBAllSubscribedArtistsTableViewController ()<SideBarDelegate>
+@interface FNBAllSubscribedArtistsTableViewController ()
 
 @property (strong, nonatomic) FNBUser *currentUser;
 @property (strong, nonatomic) Firebase *userRef;

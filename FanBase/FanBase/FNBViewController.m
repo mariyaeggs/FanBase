@@ -20,7 +20,7 @@
 #import "FNBArtistMainPageTableViewController.h"
 
 
-@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate, UIScrollViewDelegate>
+@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UIScrollViewDelegate>
 
 @property (nonatomic,strong) NSArray *imageArray;
 @property (nonatomic, strong) NSArray *genres;
@@ -42,9 +42,6 @@
 @property (nonatomic) BOOL searchFieldPopulated;
 @property (strong, nonatomic) NSArray *spotifyResultsArray;
 
-
-// Side Bar property
-//@property (nonatomic,strong) SideBar *sideBar;
 
 @end
 

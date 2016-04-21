@@ -25,7 +25,7 @@
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
 
-@interface FNBArtistMainPageTableViewController () <SideBarDelegate>
+@interface FNBArtistMainPageTableViewController ()
 
 @property (strong, nonatomic) FNBArtist *currentArtist;
 @property (strong, nonatomic) FNBUser  *currentUser;
@@ -452,6 +452,9 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     else if (indexPath.section == 4) {
         if (cell == self.upConcertsFirstCell && self.events.count < 1) {
             self.upConcertsFourthCell.textLabel.text = @"No Upcoming Events.";
+            self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryNone;
+
+           self.upConcertsFourthCell.userInteractionEnabled = NO;
             return 0;
         }
         
@@ -463,11 +466,16 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsThirdCell &&  self.events.count < 3) {
             
-            return 0;
             
-        }
+            
+            return 0;
+            }
+        
+        
+        
         
         else if (cell == self.upConcertsFirstCell && self.events.count > 0){
+            
             
             self.upConcertsFourthCell.textLabel.text = @"See more...";
             FNBArtistEvent *event = self.events[0];
@@ -476,6 +484,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
             NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
             self.eventImageView1.image = [UIImage imageWithData:dataImage1];
+
             return 44;
             
         }
@@ -484,7 +493,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsSecondCell && self.events.count > 1){
             
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event1 = self.events[1];
             self.eventLabel2.text = event1.eventTitle;
             self.eventLabelDate2.text = event1.dateOfConcert;
@@ -497,8 +506,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         
         else if (cell == self.upConcertsThirdCell && self.events.count > 2){
-            
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+//            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event2 = self.events[2];
             self.eventLabel3.text = event2.eventTitle;
             self.eventLabelDate3.text = event2.dateOfConcert;
@@ -507,13 +516,25 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             self.eventImageView3.image = [UIImage imageWithData:dataImage3];
             return 44;
             
+            
+                
+            
         }
+        else if (cell == self.upConcertsFourthCell && self.events.count > 3){
+            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            return 44;
+
+        }
+    
     }
     
     // height of top cell
     else if (indexPath.section == 0){
         return 200;
     }
+    
+    
     return 44;
 
 }
@@ -546,7 +567,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             // Create an instance of FNBEventInfoVC (view controller)
             // Use UIStoryboard class/type to create the instance
             FNBEventInfoVC *eventInfoVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"eventInfo"];
-            
+            eventInfoVC.isUserLoggedIn = self.isUserLoggedIn;
             // Assign event value to property on eventInfoVC
             eventInfoVC.event = event;
             
@@ -560,6 +581,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         FNBArtistNewsTableViewController *eventsViewController = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"artistNews"];
         // Assign event value to property on eventInfoVC
         eventsViewController.eventsArray = self.events;
+        eventsViewController.isUserLoggedIn = self.isUserLoggedIn;
         // Push eventInfoVC in my windows
         
         [self.navigationController pushViewController:eventsViewController animated:YES];
@@ -572,6 +594,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"artistTop10Segue"]) {
         FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
+        nextVC.isUserLoggedIn = self.isUserLoggedIn;
         nextVC.recievedArtistSpotifyID = self.currentArtist.spotifyID;
     }
     else if ([segue.identifier isEqualToString:@"fanFeedSegue"]) {
@@ -582,6 +605,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     else if ([segue.identifier isEqualToString:@"seeMoreTweetsSegue"]) {
         FNBSeeMoreTweetsTableViewController *nextVC = [segue destinationViewController];
         nextVC.receivedArtist = self.currentArtist;
+        nextVC.isUserLoggedIn = self.isUserLoggedIn;
     }
 }
 
