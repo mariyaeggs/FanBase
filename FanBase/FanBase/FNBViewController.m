@@ -20,7 +20,7 @@
 #import "FNBArtistMainPageTableViewController.h"
 
 
-@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate>
+@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate, UIScrollViewDelegate>
 
 @property (nonatomic,strong) NSArray *imageArray;
 @property (nonatomic, strong) NSArray *genres;
@@ -127,6 +127,7 @@ static NSInteger const minimumImageHeight = 100;
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
 }
+
 // Side bar delegate method implementation
 -(void)didSelectButtonAtIndex:(NSInteger)index {
     
@@ -621,7 +622,10 @@ static NSInteger const minimumImageHeight = 100;
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (![scrollView isKindOfClass:[UICollectionView class]]) return;
+    if (![scrollView isKindOfClass:[UICollectionView class]]) {
+        return;
+    }
+    
     scrollView.backgroundColor = [UIColor clearColor];
     
     CGFloat horizontalOffset = scrollView.contentOffset.x;
