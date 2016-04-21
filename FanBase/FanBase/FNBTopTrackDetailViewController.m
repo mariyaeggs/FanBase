@@ -12,7 +12,7 @@
 #import "FanBase-Swift.h"
 
 
-@interface FNBTopTrackDetailViewController () <SideBarDelegate>
+@interface FNBTopTrackDetailViewController () 
 
 @property (strong, nonatomic) AVPlayer *player;
 @property (nonatomic) BOOL  isMusicPlaying;

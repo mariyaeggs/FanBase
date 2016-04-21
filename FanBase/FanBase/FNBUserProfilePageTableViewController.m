@@ -20,7 +20,7 @@
 #import "FNBEventInfoVC.h"
 #import "FNBColorConstants.h"
 
-@interface FNBUserProfilePageTableViewController () <SideBarDelegate>
+@interface FNBUserProfilePageTableViewController () 
 
 @property (strong, nonatomic) FNBUser *currentUser;
 

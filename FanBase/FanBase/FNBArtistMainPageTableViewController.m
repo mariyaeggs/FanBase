@@ -25,7 +25,7 @@
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
 
-@interface FNBArtistMainPageTableViewController () <SideBarDelegate>
+@interface FNBArtistMainPageTableViewController ()
 
 @property (strong, nonatomic) FNBArtist *currentArtist;
 @property (strong, nonatomic) FNBUser  *currentUser;

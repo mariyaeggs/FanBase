@@ -11,7 +11,7 @@
 #import "Fanbase-Swift.h"
 
 
-@interface FNBFanFeedViewController () <SideBarDelegate>
+@interface FNBFanFeedViewController () 
 
 @property (strong, nonatomic) NSMutableArray<JSQMessage *> *messages;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImage;

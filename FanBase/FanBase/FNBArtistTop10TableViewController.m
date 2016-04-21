@@ -15,7 +15,7 @@
 #import "Fanbase-Swift.h"
 
 
-@interface FNBArtistTop10TableViewController () <SideBarDelegate>
+@interface FNBArtistTop10TableViewController ()
 
 @property (nonatomic,strong) NSArray *topTrackCellFolder;
 @property (nonatomic,strong) NSString *previousUrl;

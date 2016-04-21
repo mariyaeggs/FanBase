@@ -15,7 +15,7 @@
 #import "FanBase-Swift.h"
 #import "FNBColorConstants.h"
 
-@interface FNBSeeAllNearbyEventsTableViewController () <SideBarDelegate>
+@interface FNBSeeAllNearbyEventsTableViewController () 
 
 //@property (nonatomic,strong)SideBar *sideBar;
 

@@ -26,7 +26,7 @@
 #import "Fanbase-Swift.h"
 
 
-@interface FNBFanFeedViewController : JSQMessagesViewController <SideBarDelegate>
+@interface FNBFanFeedViewController : JSQMessagesViewController 
 
 @property (strong, nonatomic) NSString *senderId;
 @property (strong, nonatomic) NSString *senderDisplayName;
