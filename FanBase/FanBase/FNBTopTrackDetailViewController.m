@@ -24,13 +24,12 @@
 
 - (void)viewDidLoad {
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-//    
-//    // Initialize side bar
-//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//    self.sideBar.delegate = self;
+    if (self.isUserLoggedIn) {
+        //Initializes hamburger bar menu button
+        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+        self.navigationItem.rightBarButtonItem = hamburgerButton;
+    }
+
 
     
     [super viewDidLoad];

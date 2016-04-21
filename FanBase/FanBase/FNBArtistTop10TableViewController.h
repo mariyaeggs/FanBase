@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) AVPlayer *player;
 @property (nonatomic) BOOL  isMusicPlaying;
+@property (nonatomic) BOOL  isUserLoggedIn;
 
 
 

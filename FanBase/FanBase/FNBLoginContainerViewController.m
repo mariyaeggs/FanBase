@@ -42,13 +42,14 @@
     
     self.sideBarAllocatted = NO;
 
+    // problem: this method doesn't get called again after user logs in once
     [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
         if (isAuthenticatedUser) {
-            // Call the sidebar menu function
             // Initialize side bar
             self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Logout"]];
             self.sideBar.delegate = self;
             self.sideBarAllocatted = YES;
+            self.sideBar.displayGestureRecognizer.enabled = YES;
         }
         else {
             if (self.sideBarAllocatted) {

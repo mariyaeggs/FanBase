@@ -35,9 +35,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
+    if (self.isUserLoggedIn) {
+        //Initializes hamburger bar menu button
+        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+        self.navigationItem.rightBarButtonItem = hamburgerButton;
+    }
+    
 
     
 
@@ -170,6 +173,7 @@
     detailVC.albumName = song[@"albumName"];
     detailVC.trackName = song[@"nameTrack"];
     detailVC.trackUrl = song[@"trackUrl"];
+    detailVC.isUserLoggedIn = self.isUserLoggedIn;
 }
 
 - (IBAction)play_pauseButton:(id)sender {

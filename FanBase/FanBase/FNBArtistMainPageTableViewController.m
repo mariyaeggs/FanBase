@@ -543,7 +543,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             // Create an instance of FNBEventInfoVC (view controller)
             // Use UIStoryboard class/type to create the instance
             FNBEventInfoVC *eventInfoVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"eventInfo"];
-            
+            eventInfoVC.isUserLoggedIn = self.isUserLoggedIn;
             // Assign event value to property on eventInfoVC
             eventInfoVC.event = event;
             
@@ -557,6 +557,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         FNBArtistNewsTableViewController *eventsViewController = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"artistNews"];
         // Assign event value to property on eventInfoVC
         eventsViewController.eventsArray = self.events;
+        eventsViewController.isUserLoggedIn = self.isUserLoggedIn;
         // Push eventInfoVC in my windows
         
         [self.navigationController pushViewController:eventsViewController animated:YES];
@@ -569,6 +570,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"artistTop10Segue"]) {
         FNBArtistTop10TableViewController *nextVC = [segue destinationViewController];
+        nextVC.isUserLoggedIn = self.isUserLoggedIn;
         nextVC.recievedArtistSpotifyID = self.currentArtist.spotifyID;
     }
     else if ([segue.identifier isEqualToString:@"fanFeedSegue"]) {
@@ -579,6 +581,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     else if ([segue.identifier isEqualToString:@"seeMoreTweetsSegue"]) {
         FNBSeeMoreTweetsTableViewController *nextVC = [segue destinationViewController];
         nextVC.receivedArtist = self.currentArtist;
+        nextVC.isUserLoggedIn = self.isUserLoggedIn;
     }
 }
 

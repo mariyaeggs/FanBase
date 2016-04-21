@@ -88,6 +88,8 @@
 @property (nonatomic, strong) SideBar *sideBar;
 
 @property (strong, nonatomic) NSString *selectedArtistSpotifyIDToSendToNextVC;
+
+@property (nonatomic) BOOL isUserLoggedIn;
 @end
 
 @implementation FNBUserProfilePageTableViewController
@@ -106,18 +108,11 @@
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
     [self updateUI];
-    
-    // Call the sidebar menu function
+
 
     //Initializes hamburger bar menu button
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
     self.navigationItem.rightBarButtonItem = hamburgerButton;
-//
-//    
-//    // Initialize side bar
-//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//    self.sideBar.delegate = self;
-    
 
 
     // create the artistLabels and artistImageViews of the cells
@@ -153,46 +148,24 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 
-//// If bar menu is tapped
-//-(void)hamburgerButtonTapped:(id)sender {
-//    
-//    if (self.sideBar.isSideBarOpen) {
-//        [self.sideBar showSideBarMenu:NO];
-//    } else {
-//        [self.sideBar showSideBarMenu:YES];
-//    }
-//    
-//}
-//// Side bar delegate method implementation
-//-(void)didSelectButtonAtIndex:(NSInteger)index {
-//    
-//    NSLog(@"%ld", (long)index);
-//    
-//    if ((long)index == 0) {
-//        FNBUserProfilePageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:userProfileVC animated:YES];
-//    } else if ((long)index == 1) {
-//        FNBUserProfilePageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:discoverPageVC animated:YES];
-//    } else if ((long)index == 2) {
-//        FNBUserProfilePageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:eventsVC animated:YES];
-//        
-//    }
-//}
 
+// hide nav bar
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 
+    self.isUserLoggedIn = NO;
+    
     // check if user is logged in or guest
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         if (isAuthenticUser) {
+            self.isUserLoggedIn = YES;
             // set user info, and then get a detailed array of the artists the user is subscribed to
             
             self.currentUser = [[FNBUser alloc] init];
@@ -222,20 +195,6 @@
     return 15;
 }
 
-// hide nav bar
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-}
-
-// show nav bar before leaving page
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    
-//    [self.navigationController setNavigationBarHidden:NO];
-
-//    [self.userRef removeAllObservers];
-}
 
 - (void) addListenersForLoggedInUser {
     // start listening to changes in the username, userProfileImage, or artistDictionary
@@ -513,7 +472,7 @@
         // Create an instance of FNBEventInfoVC (view controller)
         // Use UIStoryboard class/type to create the instance
         FNBEventInfoVC *eventInfoVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil] instantiateViewControllerWithIdentifier:@"eventInfo"];
-        
+        eventInfoVC.isUserLoggedIn = self.isUserLoggedIn;
         // Assign event value to property on eventInfoVC
         eventInfoVC.event = selectedEvent;
         

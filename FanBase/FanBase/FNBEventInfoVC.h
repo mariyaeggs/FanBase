@@ -17,5 +17,5 @@
 @interface FNBEventInfoVC : UIViewController
 
 @property (strong, nonatomic) FNBArtistEvent *event;
-
+@property (nonatomic) BOOL isUserLoggedIn;
 @end
