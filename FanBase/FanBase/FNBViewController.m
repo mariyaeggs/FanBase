@@ -99,22 +99,22 @@ static NSInteger const minimumImageHeight = 100;
     
     self.view.backgroundColor = [UIColor whiteColor];
 
-    if (self.currentUserIsLoggedIn) {
-        NSLog(@"current user is logged in");
+//    if (self.currentUserIsLoggedIn) {
+//        NSLog(@"current user is logged in");
+    
+    
+          //NOTE: THE If-LOOP USER LOGGEDIN BREAKS THE SIDE BAR? THE SIDE BAR DOES NOT RELOAD OR DISMISS UPON MOVING TO THE OTHER PAGES. LOOKS MESSY(?)
+    
         //Initializes hamburger bar menu button
         UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
         hamburgerButton.tintColor = [UIColor blackColor];
         self.navigationItem.rightBarButtonItem = hamburgerButton;
-        
+    
         // Initialize side bar
         self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
         self.sideBar.delegate = self;
-    }
     
-    
-
-
-    
+//        }
     self.selectedArtist = @"";
     
     self.searchFieldPopulated = NO;
@@ -134,7 +134,7 @@ static NSInteger const minimumImageHeight = 100;
     NSLog(@"\n\nINDEX:%li", index);
 
     if ((long)index == 0) {
-        FNBViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        FNBViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:userProfileVC animated:YES];
     } else if ((long)index == 1) {

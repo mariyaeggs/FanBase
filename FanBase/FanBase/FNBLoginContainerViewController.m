@@ -72,7 +72,14 @@
         [self showInternetBadVC];
     }
 }
-
+- (IBAction)hamburgerTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+}
 
 //// Side bar delegate method implementation
 //-(void)didSelectButtonAtIndex:(NSInteger)index {

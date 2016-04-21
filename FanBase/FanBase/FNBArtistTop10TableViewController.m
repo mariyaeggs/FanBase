@@ -102,7 +102,7 @@
     NSLog(@"%ld", (long)index);
     
     if ((long)index == 0) {
-        FNBArtistTop10TableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        FNBArtistTop10TableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:userProfileVC animated:YES];
     } else if ((long)index == 1) {

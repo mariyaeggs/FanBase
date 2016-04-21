@@ -78,18 +78,17 @@
     NSLog(@"%ld", (long)index);
     
     if ((long)index == 0) {
-        FNBAllSubscribedArtistsTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        FNBArtistMainPageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:userProfileVC animated:YES];
     } else if ((long)index == 1) {
-        FNBAllSubscribedArtistsTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+        FNBArtistMainPageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:discoverPageVC animated:YES];
     } else if ((long)index == 2) {
-        FNBAllSubscribedArtistsTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+        FNBArtistMainPageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
         // Push eventInfoVC in my window
-    [self.navigationController pushViewController:eventsVC animated:YES];
-
+        [self.navigationController pushViewController:eventsVC animated:YES];
     }
 }
 

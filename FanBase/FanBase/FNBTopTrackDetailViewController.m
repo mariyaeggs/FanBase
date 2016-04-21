@@ -83,7 +83,7 @@
     NSLog(@"%ld", (long)index);
     
     if ((long)index == 0) {
-        FNBTopTrackDetailViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        FNBTopTrackDetailViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:userProfileVC animated:YES];
     } else if ((long)index == 1) {
@@ -94,10 +94,8 @@
         FNBTopTrackDetailViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:eventsVC animated:YES];
-        
     }
 }
-
 
 // If bar menu is tapped
 -(void)hamburgerButtonTapped:(id)sender {
