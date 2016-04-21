@@ -52,9 +52,12 @@
 # pragma mark - Setup Methods
 
 - (void)viewDidLoad {
-    
-    NSLog(@"In viewDidLoad");
     [super viewDidLoad];
+    
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
+
     
     self.collectionView.backgroundColor = [UIColor colorWithRed:230/255.0 green:255/255.0 blue:247.0/255 alpha:1.0];
     
@@ -93,9 +96,9 @@
     [self observeTyping];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)hamburgerButtonTapped:(id)sender {
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 
 -(void)setupBubbles {

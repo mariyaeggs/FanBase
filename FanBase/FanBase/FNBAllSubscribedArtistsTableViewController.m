@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) FNBUser *currentUser;
 @property (strong, nonatomic) Firebase *userRef;
-@property (strong, nonatomic) SideBar *sideBar;
+//@property (strong, nonatomic) SideBar *sideBar;
 
 @end
 
@@ -31,6 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
     
     //Gradient
     self.view.tintColor = FNBOffWhiteColor;
@@ -41,15 +45,15 @@
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-    
-        // Initialize side bar
-        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-        self.sideBar.delegate = self;
+//    //Initializes hamburger bar menu button
+//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+//    hamburgerButton.tintColor = [UIColor blackColor];
+//    self.navigationItem.rightBarButtonItem = hamburgerButton;
+//    
+//    
+//        // Initialize side bar
+//        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+//        self.sideBar.delegate = self;
     
     
     // set user info, and then get a detailed array of the artists the user is subscribed to
@@ -72,36 +76,6 @@
     }];
 }
 
-// Side bar delegate method implementation
--(void)didSelectButtonAtIndex:(NSInteger)index {
-    
-    NSLog(@"%ld", (long)index);
-    
-    if ((long)index == 0) {
-        FNBArtistMainPageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:userProfileVC animated:YES];
-    } else if ((long)index == 1) {
-        FNBArtistMainPageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:discoverPageVC animated:YES];
-    } else if ((long)index == 2) {
-        FNBArtistMainPageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:eventsVC animated:YES];
-    }
-}
-
- //If bar menu is tapped
--(void)hamburgerButtonTapped:(id)sender {
-    
-    if (self.sideBar.isSideBarOpen) {
-        [self.sideBar showSideBarMenu:NO];
-    } else {
-        [self.sideBar showSideBarMenu:YES];
-    }
-    
-}
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -147,7 +121,10 @@
     [self.userRef removeAllObservers];
 }
 
-
+-(void)hamburgerButtonTapped:(id)sender {
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
+}
 
 - (void) updateUI {
     

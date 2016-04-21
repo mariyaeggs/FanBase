@@ -44,7 +44,7 @@
 
 
 // Side Bar property
-@property (nonatomic,strong) SideBar *sideBar;
+//@property (nonatomic,strong) SideBar *sideBar;
 
 @end
 
@@ -96,25 +96,16 @@ static NSInteger const minimumImageHeight = 100;
 //    gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
 //    
 //    [self.view.layer insertSublayer:gradientMask atIndex:0];
+
+
+
+    
+    
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
 
-//    if (self.currentUserIsLoggedIn) {
-//        NSLog(@"current user is logged in");
-    
-    
-          //NOTE: THE If-LOOP USER LOGGEDIN BREAKS THE SIDE BAR? THE SIDE BAR DOES NOT RELOAD OR DISMISS UPON MOVING TO THE OTHER PAGES. LOOKS MESSY(?)
-    
-        //Initializes hamburger bar menu button
-        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-        hamburgerButton.tintColor = [UIColor blackColor];
-        self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-        // Initialize side bar
-        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-        self.sideBar.delegate = self;
-    
-//        }
+
     self.selectedArtist = @"";
     
     self.searchFieldPopulated = NO;
@@ -128,35 +119,41 @@ static NSInteger const minimumImageHeight = 100;
     self.tableView.tableHeaderView = self.searchBar;
 }
 
-// Side bar delegate method implementation
--(void)didSelectButtonAtIndex:(NSInteger)index {
-    
-    NSLog(@"\n\nINDEX:%li", index);
+//// Side bar delegate method implementation
+//-(void)didSelectButtonAtIndex:(NSInteger)index {
+//    
+//    NSLog(@"\n\nINDEX:%li", index);
+//
+//    if ((long)index == 0) {
+//        FNBViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:userProfileVC animated:YES];
+//    } else if ((long)index == 1) {
+//        FNBViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:discoverPageVC animated:YES];
+//    } else if ((long)index == 2) {
+//        FNBViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:eventsVC animated:YES];
+//    } 
+//}
+//
+//// If bar menu is tapped
+//-(void)hamburgerButtonTapped:(id)sender {
+//    
+//    if (self.sideBar.isSideBarOpen) {
+//        [self.sideBar showSideBarMenu:NO];
+//    } else {
+//        [self.sideBar showSideBarMenu:YES];
+//    }
+//    
+//}
 
-    if ((long)index == 0) {
-        FNBViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:userProfileVC animated:YES];
-    } else if ((long)index == 1) {
-        FNBViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:discoverPageVC animated:YES];
-    } else if ((long)index == 2) {
-        FNBViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:eventsVC animated:YES];
-    } 
-}
 
-// If bar menu is tapped
 -(void)hamburgerButtonTapped:(id)sender {
-    
-    if (self.sideBar.isSideBarOpen) {
-        [self.sideBar showSideBarMenu:NO];
-    } else {
-        [self.sideBar showSideBarMenu:YES];
-    }
-    
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 
 // create a tapGestureRecognizer to dismiss keyboard when click out of searchBar
@@ -185,7 +182,7 @@ static NSInteger const minimumImageHeight = 100;
 //            NSLog(@"this is the matching artists: %@", matchingArtistsArray);
             self.spotifyResultsArray = matchingArtistsArray;
             [self.tableView reloadData];
-            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+//            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
         }
         else {
@@ -199,7 +196,7 @@ static NSInteger const minimumImageHeight = 100;
         self.searchFieldPopulated = NO;
         NSLog(@"changed the self.searchfieldPopulated to: %d", self.searchFieldPopulated);
         [self.tableView reloadData];
-        [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+//        [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
     }
 }
@@ -225,7 +222,10 @@ static NSInteger const minimumImageHeight = 100;
         if (isAuthenticUser) {
             NSLog(@"user is logged in");
             self.currentUserIsLoggedIn = YES;
-            
+
+                //Initializes hamburger bar menu button
+                UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+                self.navigationItem.rightBarButtonItem = hamburgerButton;
             // set properties of user from Firebase
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                 if (completedSettingUsersProperties) {
@@ -246,12 +246,12 @@ static NSInteger const minimumImageHeight = 100;
         }
     }];
     
-    // Initialize side bar
-    if (self.currentUserIsLoggedIn) {
-        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-        
-        self.sideBar.delegate = self;
-    }
+//    // Initialize side bar
+//    if (self.currentUserIsLoggedIn) {
+//        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+//        
+//        self.sideBar.delegate = self;
+//    }
     
     
     self.content = [NSMutableDictionary new];
@@ -356,7 +356,7 @@ static NSInteger const minimumImageHeight = 100;
 //        NSLog(@"about to reloadtdata");
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
-            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+//            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
             
 //            NSLog(@"%llu", dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)));
         }];
@@ -684,7 +684,7 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
-                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+//                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
                 }];
             }
@@ -699,7 +699,7 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
-                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
+//                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
                 }];
                 
