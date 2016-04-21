@@ -515,11 +515,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbp-dT-VDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="203" y="176"/>
-=======
-            <point key="canvasLocation" x="208" y="167"/>
->>>>>>> mariyabranch
         </scene>
         <!--FNBArtistTop10-->
         <scene sceneID="Flh-kE-2SX">
