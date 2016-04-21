@@ -452,7 +452,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     else if (indexPath.section == 4) {
         if (cell == self.upConcertsFirstCell && self.events.count < 1) {
             self.upConcertsFourthCell.textLabel.text = @"No Upcoming Events.";
-            
+            self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryNone;
+
            self.upConcertsFourthCell.userInteractionEnabled = NO;
             return 0;
         }
@@ -483,6 +484,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
             NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
             self.eventImageView1.image = [UIImage imageWithData:dataImage1];
+
             return 44;
             
         }
@@ -520,6 +522,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         }
         else if (cell == self.upConcertsFourthCell && self.events.count > 3){
             self.upConcertsFourthCell.userInteractionEnabled = YES;
+            self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return 44;
 
         }
