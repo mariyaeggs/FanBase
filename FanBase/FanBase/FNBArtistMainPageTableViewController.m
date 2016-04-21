@@ -504,7 +504,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         
         else if (cell == self.upConcertsThirdCell && self.events.count > 2){
-            self.upConcertsFourthCell.userInteractionEnabled = YES;
+//            self.upConcertsFourthCell.userInteractionEnabled = YES;
             self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event2 = self.events[2];
             self.eventLabel3.text = event2.eventTitle;
@@ -518,8 +518,11 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
                 
             
         }
-    
-    
+        else if (cell == self.upConcertsFourthCell && self.events.count > 3){
+            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            return 44;
+
+        }
     
     }
     
