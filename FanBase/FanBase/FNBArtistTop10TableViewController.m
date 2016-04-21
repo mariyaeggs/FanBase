@@ -91,6 +91,12 @@
 //    return YES;
 //}
 // Side bar delegate method implementation
+
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.player pause];
+}
+
 -(void)didSelectButtonAtIndex:(NSInteger)index {
     
     NSLog(@"%ld", (long)index);
@@ -223,17 +229,17 @@
             
             for (FNBArtistTop10Cell *tableCell in self.tableView.visibleCells){
                 
-                [tableCell.play_pauseButton setTitle:@"Play" forState:(UIControlStateNormal)];
+//                [tableCell.play_pauseButton setTitle:@"Play" forState:(UIControlStateNormal)];
                 
+                [tableCell.play_pauseButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
                 [self.player play];
             
             }
-            [playButton setTitle:@"Pause" forState:(UIControlStateNormal)];
+            
+            [playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+//            [playButton setTitle:@"Pause" forState:(UIControlStateNormal)];
         }
-//        NSLog(@"pausing");
-//       [playButton setTitle:@"Play" forState:UIControlStateNormal];
-//        [self.player pause];
-//        
+  
     }
     
     self.previousUrl = cell.trackSampleURL;
