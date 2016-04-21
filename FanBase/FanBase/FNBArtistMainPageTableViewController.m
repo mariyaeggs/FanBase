@@ -495,7 +495,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
             NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
             self.eventImageView1.image = [UIImage imageWithData:dataImage1];
-
+            //Height 
             return 44;
             
         }
