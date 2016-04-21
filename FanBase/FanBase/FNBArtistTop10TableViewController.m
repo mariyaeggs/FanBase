@@ -19,7 +19,7 @@
 
 @property (nonatomic,strong) NSArray *topTrackCellFolder;
 @property (nonatomic,strong) NSString *previousUrl;
-@property (nonatomic,strong) SideBar *sideBar;
+//@property (nonatomic,strong) SideBar *sideBar;
 
 @end
 
@@ -35,10 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
+//    //Initializes hamburger bar menu button
+//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+//    hamburgerButton.tintColor = [UIColor blackColor];
+//    self.navigationItem.rightBarButtonItem = hamburgerButton;
     
 
     //Gradient
@@ -52,9 +52,9 @@
     
 //    self.tableView.backgroundColor = [UIColor blueColor];
 
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-    self.sideBar.delegate = self;
+//    // Initialize side bar
+//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+//    self.sideBar.delegate = self;
     
     self.isMusicPlaying = NO;
 
@@ -91,36 +91,36 @@
 //    return YES;
 //}
 // Side bar delegate method implementation
--(void)didSelectButtonAtIndex:(NSInteger)index {
-    
-    NSLog(@"%ld", (long)index);
-    
-    if ((long)index == 0) {
-        FNBArtistTop10TableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:userProfileVC animated:YES];
-    } else if ((long)index == 1) {
-        FNBArtistTop10TableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:discoverPageVC animated:YES];
-    } else if ((long)index == 2) {
-        FNBArtistTop10TableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:eventsVC animated:YES];
-        
-    }
-}
-
-// If bar menu is tapped
--(void)hamburgerButtonTapped:(id)sender {
-    
-    if (self.sideBar.isSideBarOpen) {
-        [self.sideBar showSideBarMenu:NO];
-    } else {
-        [self.sideBar showSideBarMenu:YES];
-    }
-    
-}
+//-(void)didSelectButtonAtIndex:(NSInteger)index {
+//    
+//    NSLog(@"%ld", (long)index);
+//    
+//    if ((long)index == 0) {
+//        FNBArtistTop10TableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:userProfileVC animated:YES];
+//    } else if ((long)index == 1) {
+//        FNBArtistTop10TableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:discoverPageVC animated:YES];
+//    } else if ((long)index == 2) {
+//        FNBArtistTop10TableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:eventsVC animated:YES];
+//        
+//    }
+//}
+//
+//// If bar menu is tapped
+//-(void)hamburgerButtonTapped:(id)sender {
+//    
+//    if (self.sideBar.isSideBarOpen) {
+//        [self.sideBar showSideBarMenu:NO];
+//    } else {
+//        [self.sideBar showSideBarMenu:YES];
+//    }
+//    
+//}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

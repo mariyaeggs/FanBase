@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) AVPlayer *player;
 @property (nonatomic) BOOL  isMusicPlaying;
-@property (nonatomic,strong) SideBar *sideBar;
+//@property (nonatomic,strong) SideBar *sideBar;
 
 @end
 
@@ -24,14 +24,14 @@
 
 - (void)viewDidLoad {
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-    self.sideBar.delegate = self;
+//    //Initializes hamburger bar menu button
+//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
+//    hamburgerButton.tintColor = [UIColor blackColor];
+//    self.navigationItem.rightBarButtonItem = hamburgerButton;
+//    
+//    // Initialize side bar
+//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
+//    self.sideBar.delegate = self;
 
     
     [super viewDidLoad];
@@ -78,37 +78,37 @@
 
 }
 // Side bar delegate method implementation
--(void)didSelectButtonAtIndex:(NSInteger)index {
-    
-    NSLog(@"%ld", (long)index);
-    
-    if ((long)index == 0) {
-        FNBTopTrackDetailViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:userProfileVC animated:YES];
-    } else if ((long)index == 1) {
-        FNBTopTrackDetailViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:discoverPageVC animated:YES];
-    } else if ((long)index == 2) {
-        FNBTopTrackDetailViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:eventsVC animated:YES];
-        
-    }
-}
-
-
-// If bar menu is tapped
--(void)hamburgerButtonTapped:(id)sender {
-    
-    if (self.sideBar.isSideBarOpen) {
-        [self.sideBar showSideBarMenu:NO];
-    } else {
-        [self.sideBar showSideBarMenu:YES];
-    }
-    
-}
+//-(void)didSelectButtonAtIndex:(NSInteger)index {
+//    
+//    NSLog(@"%ld", (long)index);
+//    
+//    if ((long)index == 0) {
+//        FNBTopTrackDetailViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:userProfileVC animated:YES];
+//    } else if ((long)index == 1) {
+//        FNBTopTrackDetailViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:discoverPageVC animated:YES];
+//    } else if ((long)index == 2) {
+//        FNBTopTrackDetailViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+//        // Push eventInfoVC in my window
+//        [self.navigationController pushViewController:eventsVC animated:YES];
+//        
+//    }
+//}
+//
+//
+//// If bar menu is tapped
+//-(void)hamburgerButtonTapped:(id)sender {
+//    
+//    if (self.sideBar.isSideBarOpen) {
+//        [self.sideBar showSideBarMenu:NO];
+//    } else {
+//        [self.sideBar showSideBarMenu:YES];
+//    }
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

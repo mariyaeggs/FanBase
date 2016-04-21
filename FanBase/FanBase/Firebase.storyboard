@@ -33,11 +33,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="mlB-ih-aZm">
-                        <barButtonItem key="rightBarButtonItem" image="menu" id="L2s-NT-uTm">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="mlB-ih-aZm"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -350,7 +346,4 @@
             <point key="canvasLocation" x="-804.5" y="-930.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="menu" width="32" height="32"/>
-    </resources>
 </document>
