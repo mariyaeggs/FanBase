@@ -24,6 +24,8 @@
 @property (nonatomic, strong) SideBar *sideBar;
 @property (nonatomic) BOOL sideBarAllocatted;
 
+@property (strong, nonatomic) UIViewController *setRootViewController;
+
 @end
 
 @implementation FNBLoginContainerViewController 
@@ -152,7 +154,10 @@
     FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
     
     [self setEmbeddedViewController:userVC];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (userVC != [self.navigationController.viewControllers objectAtIndex:0]) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+
+    }
 
 }
 

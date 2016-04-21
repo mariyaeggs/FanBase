@@ -175,11 +175,13 @@ static NSInteger const minimumImageHeight = 100;
     [searchBar resignFirstResponder];
     self.searchFieldPopulated = YES;
     [FNBSpotifySearch getArrayOfMatchingArtistsFromSearch:searchBar.text withCompletionBlock:^(BOOL gotMatchingArtists, NSArray *matchingArtistsArray) {
+    
+        FNBTableViewCell *collectionViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+       [collectionViewCell.collectionView setContentOffset:CGPointZero animated:NO];
+        
         if (gotMatchingArtists) {
-//            NSLog(@"this is the matching artists: %@", matchingArtistsArray);
             self.spotifyResultsArray = matchingArtistsArray;
             [self.tableView reloadData];
-//            [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
         }
         else {
@@ -193,8 +195,6 @@ static NSInteger const minimumImageHeight = 100;
         self.searchFieldPopulated = NO;
         NSLog(@"changed the self.searchfieldPopulated to: %d", self.searchFieldPopulated);
         [self.tableView reloadData];
-//        [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
-
     }
 }
 
@@ -242,13 +242,6 @@ static NSInteger const minimumImageHeight = 100;
             self.currentUserIsLoggedIn = NO;
         }
     }];
-    
-//    // Initialize side bar
-//    if (self.currentUserIsLoggedIn) {
-//        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//        
-//        self.sideBar.delegate = self;
-//    }
     
     
     self.content = [NSMutableDictionary new];
@@ -361,15 +354,6 @@ static NSInteger const minimumImageHeight = 100;
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Error in discoverPage: %@", error.description);
     }];
-}
-//-(BOOL)prefersStatusBarHidden {
-//    
-//    return YES;
-//}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDataSource Methods
@@ -535,7 +519,7 @@ static NSInteger const minimumImageHeight = 100;
     
     // for search results
     if (self.searchFieldPopulated) {
-        [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+//        [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 //        NSLog(@"Search field populated");
         NSString *artistNameFromSpotify = self.spotifyResultsArray[indexPath.row][@"name"];
         

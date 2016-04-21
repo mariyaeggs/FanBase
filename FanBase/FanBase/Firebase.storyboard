@@ -353,4 +353,7 @@
             <point key="canvasLocation" x="-731.5" y="-985.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="32" height="32"/>
+    </resources>
 </document>

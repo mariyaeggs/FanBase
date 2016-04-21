@@ -99,10 +99,6 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsFourthCell;
 
 
-
-//@property (strong, nonatomic) SideBar *sideBar;
-
-
 @end
 
 @implementation FNBArtistMainPageTableViewController
