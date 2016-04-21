@@ -452,6 +452,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     else if (indexPath.section == 4) {
         if (cell == self.upConcertsFirstCell && self.events.count < 1) {
             self.upConcertsFourthCell.textLabel.text = @"No Upcoming Events.";
+            
+           self.upConcertsFourthCell.userInteractionEnabled = NO;
             return 0;
         }
         
@@ -463,11 +465,16 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsThirdCell &&  self.events.count < 3) {
             
-            return 0;
             
-        }
+            
+            return 0;
+            }
+        
+        
+        
         
         else if (cell == self.upConcertsFirstCell && self.events.count > 0){
+            
             
             self.upConcertsFourthCell.textLabel.text = @"See more...";
             FNBArtistEvent *event = self.events[0];
@@ -484,7 +491,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsSecondCell && self.events.count > 1){
             
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event1 = self.events[1];
             self.eventLabel2.text = event1.eventTitle;
             self.eventLabelDate2.text = event1.dateOfConcert;
@@ -497,8 +504,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         
         else if (cell == self.upConcertsThirdCell && self.events.count > 2){
-            
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+//            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event2 = self.events[2];
             self.eventLabel3.text = event2.eventTitle;
             self.eventLabelDate3.text = event2.dateOfConcert;
@@ -507,13 +514,24 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             self.eventImageView3.image = [UIImage imageWithData:dataImage3];
             return 44;
             
+            
+                
+            
         }
+        else if (cell == self.upConcertsFourthCell && self.events.count > 3){
+            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            return 44;
+
+        }
+    
     }
     
     // height of top cell
     else if (indexPath.section == 0){
         return 200;
     }
+    
+    
     return 44;
 
 }
