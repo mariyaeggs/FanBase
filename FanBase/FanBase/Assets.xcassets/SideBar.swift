@@ -34,7 +34,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     let sideBarTableViewController:SideBarTableViewController = SideBarTableViewController()
     
     // Adds origin view 
-    var originView:UIView! = nil
+    var originView:UIView!
     
     // Adds an animator for side bar bouncing
     var animator:UIDynamicAnimator!
@@ -82,6 +82,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     // Sets up side bar menu function with no parameters
     func setUpSideBarMenu() {
         // Adds frame to side bar menu
+//        sideBarContainerView.frame = CGRectMake(-barWidth-1, originView.frame.origin.y, barWidth, originView.frame.size.height)
         sideBarContainerView.frame = CGRectMake(-barWidth-1, originView.frame.origin.y, barWidth, originView.frame.size.height)
        // sideBarContainerView.frame = CGRectMake(400, originView.frame.origin.y, barWidth, originView.frame.size.height)
 
@@ -94,11 +95,11 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         originView.addSubview(sideBarContainerView)
         
         // Adds blur to the side bar menu
-        let blurSideBarView:UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light))
-        
-        // Adds frame to blue view 
-        blurSideBarView.frame = sideBarContainerView.bounds
-        sideBarContainerView.addSubview(blurSideBarView)
+//        let blurSideBarView:UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light))
+//        
+//        // Adds frame to blue view 
+//        blurSideBarView.frame = sideBarContainerView.bounds
+//        sideBarContainerView.addSubview(blurSideBarView)
         
         sideBarTableViewController.delegate = self
         sideBarTableViewController.tableView.frame = sideBarContainerView.bounds
@@ -117,27 +118,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         sideBarTableViewController.tableView.reloadData()
         sideBarContainerView.addSubview(sideBarTableViewController.tableView)
         
-//        // Initialize button
-//        let logoutButton = UIButton()
-//        
-//        // Set up button properties and size
-//        logoutButton.setTitle("Logout", forState: .Normal)
-//        logoutButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
-//        let size:CGSize = logoutButton.intrinsicContentSize()
-//        logoutButton.frame = CGRectMake(0, 0, size.width, size.height)
-//        
-//        // Add target function for button
-//        logoutButton.addTarget(self, action: #selector(SideBar.pressed(_:)), forControlEvents: .TouchUpInside)
-//        
-//        // Add button to container view
-//        sideBarContainerView.addSubview(logoutButton)
-//        
-//        // Add constraints to button with padding
-//        let padding:CGFloat = 10
-//        logoutButton.translatesAutoresizingMaskIntoConstraints = false;
-//        logoutButton.leftAnchor.constraintEqualToAnchor(sideBarContainerView.leftAnchor, constant: padding).active = true
-//        logoutButton.bottomAnchor.constraintEqualToAnchor(sideBarContainerView.bottomAnchor, constant: -(sideBarTableViewTopInset + padding)).active = true
-//        self.sideBarContainerView.layoutIfNeeded()
+
         
         
     }
@@ -180,7 +161,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     
     // Bool function checks to see if side bar should be open
     func showSideBarMenu(shouldOpen:Bool) {
-        
+    
         // First remove all animators from dynamic animators
         animator.removeAllBehaviors()
         
@@ -223,11 +204,13 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         let sideBarBehavior:UIDynamicItemBehavior = UIDynamicItemBehavior(items:[sideBarContainerView])
         sideBarBehavior.elasticity = 0.3
         animator.addBehavior(sideBarBehavior)
-
+        
+        
     }
     
     func sideBarControlDidSelectRow(indexPath: NSIndexPath) {
         // When user selects button at indexPath.row
         delegate?.didSelectButtonAtIndex(indexPath.row)
+        
     }
 }

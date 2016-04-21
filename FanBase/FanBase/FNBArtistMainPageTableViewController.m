@@ -114,9 +114,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     [super viewDidLoad];
     [self.chatButton setEnabled:YES];
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
     
     //Gradient
     self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
@@ -138,6 +135,9 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         if (isAuthenticUser) {
             NSLog(@"you are an auth user");
+            //Initializes hamburger bar menu button
+            UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+            self.navigationItem.rightBarButtonItem = hamburgerButton;
             self.isUserLoggedIn = YES;
             //Set the properties of this user
             [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL updateHappened) {
@@ -161,21 +161,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         }
     }];
     
-//    //Initializes hamburger bar menu button
-//    if (self.isUserLoggedIn) {
-//        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-//        hamburgerButton.tintColor = [UIColor blackColor];
-//        self.navigationItem.rightBarButtonItem = hamburgerButton;
-//        
-//        
-//        // Call the sidebar menu function
-//        
-//        // Initialize side bar
-//        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//        self.sideBar.delegate = self;
-//        
-//        [self.chatButton setEnabled:YES];
-//    }
+
     
     // set the tweetsLabels
     self.arrayOfTweetContentLabels = @[self.tweet1ContentTextView, self.tweet2ContentTextView, self.tweet3ContentTextView];
@@ -229,37 +215,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     
     
 }
-//// Side bar delegate method implementation
-//-(void)didSelectButtonAtIndex:(NSInteger)index {
-//    
-//    NSLog(@"%ld", (long)index);
-//    
-//    if ((long)index == 0) {
-//        FNBArtistMainPageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:userProfileVC animated:YES];
-//    } else if ((long)index == 1) {
-//        FNBArtistMainPageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:discoverPageVC animated:YES];
-//    } else if ((long)index == 2) {
-//        FNBArtistMainPageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:eventsVC animated:YES];
-//        
-//    }
-//}
-//
-//// If bar menu is tapped
-//-(void)hamburgerButtonTapped:(id)sender {
-//    
-//    if (self.sideBar.isSideBarOpen) {
-//        [self.sideBar showSideBarMenu:NO];
-//    } else {
-//        [self.sideBar showSideBarMenu:YES];
-//    }
-//    
-//}
+
 
 -(void)hamburgerButtonTapped:(id)sender {
     NSLog(@"Hamburger pressed and posting notification");

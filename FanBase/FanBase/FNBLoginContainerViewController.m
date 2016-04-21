@@ -46,7 +46,7 @@
         if (isAuthenticatedUser) {
             // Call the sidebar menu function
             // Initialize side bar
-            self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events", @"Logout"]];
+            self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Logout"]];
             self.sideBar.delegate = self;
             self.sideBarAllocatted = YES;
         }
@@ -82,7 +82,14 @@
         [self showInternetBadVC];
     }
 }
-
+- (IBAction)hamburgerTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+}
 
 // If bar menu is tapped
 -(void)hamburgerButtonTapped:(id)sender {
@@ -103,9 +110,9 @@
         [self showUserMainPageVC];
     } else if ((long)index == 1) {
         [self showDiscoverPageVC];
+//    } else if ((long)index == 2) {
+//        [self showEventsNearMeVC];
     } else if ((long)index == 2) {
-        [self showEventsNearMeVC];
-    } else if ((long)index == 3) {
         [self handleUserLoggedOutNotification:nil];
     }
     [self.sideBar showSideBarMenu:NO];

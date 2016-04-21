@@ -96,36 +96,14 @@
 //    return YES;
 //}
 // Side bar delegate method implementation
-//-(void)didSelectButtonAtIndex:(NSInteger)index {
-//    
-//    NSLog(@"%ld", (long)index);
-//    
-//    if ((long)index == 0) {
-//        FNBArtistTop10TableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:userProfileVC animated:YES];
-//    } else if ((long)index == 1) {
-//        FNBArtistTop10TableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:discoverPageVC animated:YES];
-//    } else if ((long)index == 2) {
-//        FNBArtistTop10TableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:eventsVC animated:YES];
-//        
-//    }
-//}
-//
-//// If bar menu is tapped
-//-(void)hamburgerButtonTapped:(id)sender {
-//    
-//    if (self.sideBar.isSideBarOpen) {
-//        [self.sideBar showSideBarMenu:NO];
-//    } else {
-//        [self.sideBar showSideBarMenu:YES];
-//    }
-//    
-//}
+
+
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.player pause];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -228,17 +206,17 @@
             
             for (FNBArtistTop10Cell *tableCell in self.tableView.visibleCells){
                 
-                [tableCell.play_pauseButton setTitle:@"Play" forState:(UIControlStateNormal)];
+//                [tableCell.play_pauseButton setTitle:@"Play" forState:(UIControlStateNormal)];
                 
+                [tableCell.play_pauseButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
                 [self.player play];
             
             }
-            [playButton setTitle:@"Pause" forState:(UIControlStateNormal)];
+            
+            [playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+//            [playButton setTitle:@"Pause" forState:(UIControlStateNormal)];
         }
-//        NSLog(@"pausing");
-//       [playButton setTitle:@"Play" forState:UIControlStateNormal];
-//        [self.player pause];
-//        
+  
     }
     
     self.previousUrl = cell.trackSampleURL;

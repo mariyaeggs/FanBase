@@ -26,14 +26,7 @@ class SideBarTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
-    }
+}
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -61,10 +54,13 @@ class SideBarTableViewController: UITableViewController {
             let selectedView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: cell!.frame.size.width, height: cell!.frame.size.height))
             
             // Adjust view
-            selectedView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.3)
+//            selectedView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.3)
             
+            
+            selectedView.backgroundColor = UIColor.grayColor()
+
             // Add selectedView to cell 
-            cell!.selectedBackgroundView = selectedView
+//            cell!.selectedBackgroundView = selectedView
             
         }
         

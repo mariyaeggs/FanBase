@@ -95,7 +95,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
     //Gradient
     self.view.tintColor = FNBOffWhiteColor;
@@ -105,6 +104,8 @@
     gradientMask.colors = @[(id)gradientMaskLayer.CGColor,(id)[UIColor clearColor].CGColor];
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
+    
+    [self updateUI];
     
     // Call the sidebar menu function
 
@@ -117,7 +118,6 @@
 //    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
 //    self.sideBar.delegate = self;
     
-
 
 
     // create the artistLabels and artistImageViews of the cells
@@ -148,6 +148,7 @@
 }
 
 -(void)hamburgerButtonTapped:(id)sender {
+
     NSLog(@"Hamburger pressed and posting notification");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
@@ -182,6 +183,7 @@
 //        
 //    }
 //}
+
 
 
 

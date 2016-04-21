@@ -41,52 +41,37 @@
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
-//    //Initializes hamburger bar menu button
-//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-//    hamburgerButton.tintColor = [UIColor blackColor];
-//    self.navigationItem.rightBarButtonItem = hamburgerButton;
-//    
-//    // Initialize side bar
-//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//    self.sideBar.delegate = self;
-//}
-//// Side bar delegate method implementation
-//-(void)didSelectButtonAtIndex:(NSInteger)index {
-//    
-//    NSLog(@"%ld", (long)index);
-//    
-//    if ((long)index == 0) {
-//        FNBSeeAllNearbyEventsTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:userProfileVC animated:YES];
-//    } else if ((long)index == 1) {
-//        FNBSeeAllNearbyEventsTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:discoverPageVC animated:YES];
-//    } else if ((long)index == 2) {
-//        FNBSeeAllNearbyEventsTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-//        // Push eventInfoVC in my window
-//        [self.navigationController pushViewController:eventsVC animated:YES];
-//        
-//    }
 }
 
 
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
+    NSLog(@"%ld", (long)index);
+    
+    if ((long)index == 0) {
+        FNBSeeAllNearbyEventsTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:userProfileVC animated:YES];
+    } else if ((long)index == 1) {
+        FNBSeeAllNearbyEventsTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:discoverPageVC animated:YES];
+    } else if ((long)index == 2) {
+        FNBSeeAllNearbyEventsTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
+        // Push eventInfoVC in my window
+        [self.navigationController pushViewController:eventsVC animated:YES];
+    }
+}
+
+
+// If bar menu is tapped
 -(void)hamburgerButtonTapped:(id)sender {
     NSLog(@"Hamburger pressed and posting notification");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 
-//// If bar menu is tapped
-//-(void)hamburgerButtonTapped:(id)sender {
-//    
-//    if (self.sideBar.isSideBarOpen) {
-//        [self.sideBar showSideBarMenu:NO];
-//    } else {
-//        [self.sideBar showSideBarMenu:YES];
-//    }
-//    
-//}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         FNBArtistEvent *selectedEvent = self.receivedConcertsArray[indexPath.row];
         
