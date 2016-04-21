@@ -20,7 +20,7 @@
 #import "FNBArtistMainPageTableViewController.h"
 
 
-@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate>
+@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, SideBarDelegate, UIScrollViewDelegate>
 
 @property (nonatomic,strong) NSArray *imageArray;
 @property (nonatomic, strong) NSArray *genres;
@@ -99,22 +99,22 @@ static NSInteger const minimumImageHeight = 100;
     
     self.view.backgroundColor = [UIColor whiteColor];
 
-    if (self.currentUserIsLoggedIn) {
-        NSLog(@"current user is logged in");
+//    if (self.currentUserIsLoggedIn) {
+//        NSLog(@"current user is logged in");
+    
+    
+          //NOTE: THE If-LOOP USER LOGGEDIN BREAKS THE SIDE BAR? THE SIDE BAR DOES NOT RELOAD OR DISMISS UPON MOVING TO THE OTHER PAGES. LOOKS MESSY(?)
+    
         //Initializes hamburger bar menu button
         UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
         hamburgerButton.tintColor = [UIColor blackColor];
         self.navigationItem.rightBarButtonItem = hamburgerButton;
-        
+    
         // Initialize side bar
         self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
         self.sideBar.delegate = self;
-    }
     
-    
-
-
-    
+//        }
     self.selectedArtist = @"";
     
     self.searchFieldPopulated = NO;
@@ -127,13 +127,14 @@ static NSInteger const minimumImageHeight = 100;
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
 }
+
 // Side bar delegate method implementation
 -(void)didSelectButtonAtIndex:(NSInteger)index {
     
     NSLog(@"\n\nINDEX:%li", index);
 
     if ((long)index == 0) {
-        FNBViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        FNBViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:userProfileVC animated:YES];
     } else if ((long)index == 1) {
@@ -621,7 +622,10 @@ static NSInteger const minimumImageHeight = 100;
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (![scrollView isKindOfClass:[UICollectionView class]]) return;
+    if (![scrollView isKindOfClass:[UICollectionView class]]) {
+        return;
+    }
+    
     scrollView.backgroundColor = [UIColor clearColor];
     
     CGFloat horizontalOffset = scrollView.contentOffset.x;

@@ -119,16 +119,9 @@
     self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
     self.sideBar.delegate = self;
 
-
-
-
     // set the artistLabels and artistImageViews of the cells
-
-    
     
     // create the artistLabels and artistImageViews of the cells
-    
-
 
     // create the artistLabels and artistImageViews of the cells
 
@@ -173,7 +166,7 @@
     NSLog(@"%ld", (long)index);
     
     if ((long)index == 0) {
-        FNBUserProfilePageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
+        FNBUserProfilePageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:userProfileVC animated:YES];
     } else if ((long)index == 1) {
@@ -187,10 +180,6 @@
         
     }
 }
-
-
-
-
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 

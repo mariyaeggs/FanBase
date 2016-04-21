@@ -37,7 +37,7 @@
                         <barButtonItem key="rightBarButtonItem" image="menu" id="L2s-NT-uTm">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="hamburgerTapped:" destination="Su4-9z-uRb" id="bzX-eq-Wor"/>
+                                <action selector="hamburgerTapped:" destination="Su4-9z-uRb" id="qPH-YA-jxr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -67,7 +67,7 @@
                                 <rect key="frame" x="30" y="195" width="540" height="210"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-Da-bqo">
-                                        <rect key="frame" x="8" y="116.5" width="524" height="30"/>
+                                        <rect key="frame" x="8" y="117" width="524" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
@@ -83,7 +83,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQE-iU-PXt">
-                                        <rect key="frame" x="8" y="157.5" width="78" height="42"/>
+                                        <rect key="frame" x="8" y="158" width="78" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oQE-iU-PXt" secondAttribute="height" multiplier="13:7" id="L9U-KK-6tF"/>
                                         </constraints>
@@ -97,7 +97,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTf-UO-Ytt">
-                                        <rect key="frame" x="454" y="157.5" width="78" height="42"/>
+                                        <rect key="frame" x="454" y="158" width="78" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="iTf-UO-Ytt" secondAttribute="height" multiplier="13:7" id="nUG-uS-WoK"/>
                                         </constraints>
@@ -211,26 +211,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B68-5q-gMG">
                                 <rect key="frame" x="30" y="166" width="540" height="210"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UD-jn-ucn">
-                                        <rect key="frame" x="8" y="13.5" width="132" height="37"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UD-jn-ucn">
+                                        <rect key="frame" x="8" y="14" width="132" height="37"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="27"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jj8-Yu-DWx">
-                                        <rect key="frame" x="8" y="63.5" width="524" height="31"/>
+                                        <rect key="frame" x="8" y="64" width="524" height="31"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4MO-7Z-SWQ">
-                                        <rect key="frame" x="8" y="110.5" width="524" height="31.5"/>
+                                        <rect key="frame" x="8" y="111" width="524" height="31"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kn6-Sb-w9I" userLabel="Buttons Container View">
-                                        <rect key="frame" x="8" y="157.5" width="524" height="42"/>
+                                        <rect key="frame" x="8" y="158" width="524" height="42"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAy-F9-HbK">
                                                 <rect key="frame" x="0.0" y="4" width="63" height="34"/>
