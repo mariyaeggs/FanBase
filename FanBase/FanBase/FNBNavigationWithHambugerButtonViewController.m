@@ -8,7 +8,7 @@
 
 #import "FNBNavigationWithHambugerButtonViewController.h"
 
-@interface FNBNavigationWithHambugerButtonViewController ()
+@interface FNBNavigationWithHambugerButtonViewController () <UINavigationControllerDelegate>
 
 @end
 
@@ -16,19 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-        //Initializes hamburger bar menu button
-        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
     
-
-        
-        self.navigationItem.rightBarButtonItem = hamburgerButton;
+    self.delegate = self;
 
 }
 
--(void)hamburgerButtonTapped:(id)sender {
-    NSLog(@"Hamburger pressed in the custom navigation controller");
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    viewController.navigationItem.rightBarButtonItem = hamburgerButton;
+}
 
+-(void)hamburgerButtonTapped:(id)sender {
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 
 @end

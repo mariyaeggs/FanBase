@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property (nonatomic, strong) SideBar *sideBar;
-
+@property (nonatomic) BOOL sideBarAllocatted;
 
 @end
 
@@ -36,16 +36,28 @@
     //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
 
 
-//    Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
     self.navigationItem.rightBarButtonItem = hamburgerButton;
-
     
-    // Call the sidebar menu function
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events", @"Logout"]];
-    self.sideBar.delegate = self;
+    self.sideBarAllocatted = NO;
+
+    [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
+        if (isAuthenticatedUser) {
+            // Call the sidebar menu function
+            // Initialize side bar
+            self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events", @"Logout"]];
+            self.sideBar.delegate = self;
+            self.sideBarAllocatted = YES;
+        }
+        else {
+            if (self.sideBarAllocatted) {
+                self.sideBar.displayGestureRecognizer.enabled = NO;
+            }
+        }
+             
+    }];
+
 
     
     
@@ -101,12 +113,7 @@
 
 -(void)handleHamburgerButtonNotification:(NSNotification *)notification {
     
-    NSLog(@"We got hamburgers?");
-    if (self.sideBar.isSideBarOpen) {
-        [self.sideBar showSideBarMenu:NO];
-    } else {
-        [self.sideBar showSideBarMenu:YES];
-    }
+    [self hamburgerButtonTapped:nil];
 }
 
 -(void)handleUserLoggedInNotification:(NSNotification *)notification
@@ -126,6 +133,9 @@
     //    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
     [self setEmbeddedViewController:loginVC];
     [self.navigationController popToRootViewControllerAnimated:YES];
+    if (self.sideBarAllocatted) {
+        self.sideBar.displayGestureRecognizer.enabled = NO;
+    }
 }
 
 

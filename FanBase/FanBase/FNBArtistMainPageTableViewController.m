@@ -112,7 +112,11 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.chatButton setEnabled:NO];
+    [self.chatButton setEnabled:YES];
+    
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
     
     //Gradient
     self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
@@ -256,6 +260,12 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 //    }
 //    
 //}
+
+-(void)hamburgerButtonTapped:(id)sender {
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     

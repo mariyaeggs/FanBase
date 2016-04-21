@@ -44,11 +44,15 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     // Booleans to check if side bar is open/closed
     var isSideBarOpen:Bool = false
     
+    var displayGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: nil, action: #selector(manageSwipe))
+
     
     // Initializer allocates memory
     override init() {
         super.init()
     }
+    
+    
     // Custom initializer passes source view
     init(sourceView:UIView, sideBarItems:Array<String>) {
         super.init()
@@ -63,7 +67,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         animator = UIDynamicAnimator(referenceView: originView)
         
         // Right swipe gesture displays menu
-        let displayGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
+        displayGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
         originView.addGestureRecognizer(displayGestureRecognizer)
         
         print("Swiped")

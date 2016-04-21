@@ -24,10 +24,9 @@
 
 - (void)viewDidLoad {
     
-//    //Initializes hamburger bar menu button
-//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-//    hamburgerButton.tintColor = [UIColor blackColor];
-//    self.navigationItem.rightBarButtonItem = hamburgerButton;
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
 //    
 //    // Initialize side bar
 //    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
@@ -73,9 +72,9 @@
 
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-
+-(void)hamburgerButtonTapped:(id)sender {
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 // Side bar delegate method implementation
 //-(void)didSelectButtonAtIndex:(NSInteger)index {
