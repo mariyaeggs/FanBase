@@ -218,33 +218,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     
     
 }
-<<<<<<< HEAD
-// Side bar delegate method implementation
--(void)didSelectButtonAtIndex:(NSInteger)index {
-    
-    NSLog(@"%ld", (long)index);
-    
-    if ((long)index == 0) {
-        FNBArtistMainPageTableViewController *userProfileVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil] instantiateViewControllerWithIdentifier:@"UserPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:userProfileVC animated:YES];
-    } else if ((long)index == 1) {
-        FNBArtistMainPageTableViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:discoverPageVC animated:YES];
-    } else if ((long)index == 2) {
-        NSLog(@"Just pushed XXXXXXXXX  XXXXXXXX  XXXXXXXXXX");
-        FNBArtistMainPageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
-        // Push eventInfoVC in my window
-        [self.navigationController pushViewController:eventsVC animated:YES];
-            }
-    
-
-
-
-}
-=======
->>>>>>> master
 
 
 -(void)hamburgerButtonTapped:(id)sender {
