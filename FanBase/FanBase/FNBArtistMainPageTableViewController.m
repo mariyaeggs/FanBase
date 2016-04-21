@@ -86,15 +86,9 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsThirdCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsFourthCell;
 
-<<<<<<< HEAD
-
-
 //@property (strong, nonatomic) SideBar *sideBar;
-=======
 // Slide out menu
 @property (strong, nonatomic) SideBar *sideBar;
->>>>>>> mariyabranch
-
 
 @end
 
@@ -154,12 +148,10 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         }
     }];
     
-<<<<<<< HEAD
     if (self.isUserLoggedIn) {
         [self.chatButton setEnabled:YES];
     }
 
-=======
     //NOTE: THE If-LOOP USER LOGGEDIN BREAKS THE SIDE BAR? THE SIDE BAR DOES NOT RELOAD OR DISMISS UPON MOVING TO THE OTHER PAGES. LOOKS MESSY(?)
     
     //Initializes hamburger bar menu button
@@ -176,7 +168,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         self.sideBar.delegate = self;
     
         [self.chatButton setEnabled:YES];
->>>>>>> mariyabranch
     
     // set the tweetsLabels
     self.arrayOfTweetContentLabels = @[self.tweet1ContentTextView, self.tweet2ContentTextView, self.tweet3ContentTextView];
