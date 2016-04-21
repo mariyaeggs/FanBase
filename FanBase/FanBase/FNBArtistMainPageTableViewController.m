@@ -112,7 +112,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.chatButton setEnabled:YES];
+    [self.chatButton setEnabled:NO];
     
     
     //Gradient
