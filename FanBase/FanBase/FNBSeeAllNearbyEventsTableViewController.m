@@ -17,7 +17,7 @@
 
 @interface FNBSeeAllNearbyEventsTableViewController () <SideBarDelegate>
 
-@property (nonatomic,strong)SideBar *sideBar;
+//@property (nonatomic,strong)SideBar *sideBar;
 
 @end
 
@@ -25,6 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
     
     //Gradient
     self.view.tintColor = FNBOffWhiteColor;
@@ -35,15 +41,9 @@
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
-    //Initializes hamburger bar menu button
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-    hamburgerButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = hamburgerButton;
-    
-    // Initialize side bar
-    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-    self.sideBar.delegate = self;
 }
+
+
 // Side bar delegate method implementation
 -(void)didSelectButtonAtIndex:(NSInteger)index {
     
@@ -67,14 +67,11 @@
 
 // If bar menu is tapped
 -(void)hamburgerButtonTapped:(id)sender {
-    
-    if (self.sideBar.isSideBarOpen) {
-        [self.sideBar showSideBarMenu:NO];
-    } else {
-        [self.sideBar showSideBarMenu:YES];
-    }
-    
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         FNBArtistEvent *selectedEvent = self.receivedConcertsArray[indexPath.row];
         

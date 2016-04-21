@@ -13,8 +13,8 @@
 #import "FNBNoInternetVCViewController.h"
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
-
-
+#import "FNBViewController.h"
+#import "FNBSeeAllNearbyEventsTableViewController.h"
 
 @interface FNBLoginContainerViewController () <SideBarDelegate>
 
@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property (nonatomic, strong) SideBar *sideBar;
-
+@property (nonatomic) BOOL sideBarAllocatted;
 
 @end
 
@@ -37,18 +37,28 @@
 
 
     //Initializes hamburger bar menu button
-//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-//    hamburgerButton.tintColor = [UIColor blackColor];
-//    self.navigationItem.rightBarButtonItem = hamburgerButton;
-//
-//    
-//    // Call the sidebar menu function
-//    
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
+    
+    self.sideBarAllocatted = NO;
 
-//    // Initialize side bar
-//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//    self.sideBar.delegate = self;
-//
+    [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
+        if (isAuthenticatedUser) {
+            // Call the sidebar menu function
+            // Initialize side bar
+            self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Logout"]];
+            self.sideBar.delegate = self;
+            self.sideBarAllocatted = YES;
+        }
+        else {
+            if (self.sideBarAllocatted) {
+                self.sideBar.displayGestureRecognizer.enabled = NO;
+            }
+        }
+             
+    }];
+
+
     
     
     if (isNetworkAvailable) {
@@ -81,28 +91,38 @@
     }
 }
 
-//// Side bar delegate method implementation
-//-(void)didSelectButtonAtIndex:(NSInteger)index {
-//    
-//    
-//}
-//
-//// If bar menu is tapped
-//-(void)hamburgerButtonTapped:(id)sender {
-//    
-//    if (self.sideBar.isSideBarOpen) {
-//        [self.sideBar showSideBarMenu:NO];
-//    } else {
-//        [self.sideBar showSideBarMenu:YES];
-//    }
-//    
-//}
+// If bar menu is tapped
+-(void)hamburgerButtonTapped:(id)sender {
+    
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    } else {
+        [self.sideBar showSideBarMenu:YES];
+    }
+    
+}
+// Side bar delegate method implementation
+-(void)didSelectButtonAtIndex:(NSInteger)index {
+    
+    NSLog(@"%ld", (long)index);
+    
+    if ((long)index == 0) {
+        [self showUserMainPageVC];
+    } else if ((long)index == 1) {
+        [self showDiscoverPageVC];
+//    } else if ((long)index == 2) {
+//        [self showEventsNearMeVC];
+    } else if ((long)index == 2) {
+        [self handleUserLoggedOutNotification:nil];
+    }
+    [self.sideBar showSideBarMenu:NO];
+}
 
 -(void)handleHamburgerButtonNotification:(NSNotification *)notification {
     
-    NSLog(@"We got hamburgers?");
-    [self.sideBar showSideBarMenu:YES];
+    [self hamburgerButtonTapped:nil];
 }
+
 -(void)handleUserLoggedInNotification:(NSNotification *)notification
 {
     [self showUserMainPageVC];
@@ -120,16 +140,36 @@
     //    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
     [self setEmbeddedViewController:loginVC];
     [self.navigationController popToRootViewControllerAnimated:YES];
+    if (self.sideBarAllocatted) {
+        self.sideBar.displayGestureRecognizer.enabled = NO;
+    }
 }
 
-- (void)showUserMainPageVC {
 
+- (void)showUserMainPageVC {
     UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"UserPage" bundle:nil];
-//    UINavigationController *nextNavController = [nextStoryboard instantiateViewControllerWithIdentifier:@"userPageNavControllerID"];
-//    FNBUserProfilePageTableViewController *userVC = nextNavController.viewControllers[0];
     FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
     
     [self setEmbeddedViewController:userVC];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
+}
+
+
+- (void)showDiscoverPageVC {
+    FNBViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+    [self setEmbeddedViewController:discoverPageVC];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
+
+- (void)showEventsNearMeVC {
+    FNBSeeAllNearbyEventsTableViewController *upcomingEventsVC = [[UIStoryboard storyboardWithName:@"UserPage" bundle:nil]instantiateViewControllerWithIdentifier:@"myEvents"];
+    // TODO: get the user's events
+    upcomingEventsVC.receivedConcertsArray = @[];
+    [self setEmbeddedViewController:upcomingEventsVC];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 - (void) showInternetBadVC {

@@ -38,11 +38,8 @@
                                                     <blurEffect style="light"/>
                                                 </visualEffectView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-2e-Orb">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="232" y="34" width="135" height="136"/>
-=======
+
                                                     <rect key="frame" x="231" y="34" width="137" height="137"/>
->>>>>>> mariyabranch
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="4v2-2e-Orb" secondAttribute="height" multiplier="1:1" id="UJ0-Wq-FPK"/>
                                                     </constraints>
@@ -285,11 +282,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-<<<<<<< HEAD
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="HOZ-m8-v8P">
-=======
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="See More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="HOZ-m8-v8P">
->>>>>>> mariyabranch
                                                     <rect key="frame" x="13" y="0.0" width="284" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -315,11 +308,7 @@
                                         <rect key="frame" x="0.0" y="713" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nSG-J2-b2r" id="kYI-nf-cis">
-<<<<<<< HEAD
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
-=======
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
->>>>>>> mariyabranch
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NWZ-QW-poT">
@@ -367,11 +356,7 @@
                                         <rect key="frame" x="0.0" y="757" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vl7-x0-ZIg" id="5go-LJ-jra">
-<<<<<<< HEAD
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
-=======
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
->>>>>>> mariyabranch
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-c1-pn9">
@@ -419,11 +404,7 @@
                                         <rect key="frame" x="0.0" y="801" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ndV-Cr-anu" id="ITE-gE-tmM">
-<<<<<<< HEAD
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
-=======
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
->>>>>>> mariyabranch
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CiZ-Pd-VhJ">
@@ -477,13 +458,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-<<<<<<< HEAD
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="eK2-LM-5SH">
-                                                    <rect key="frame" x="13" y="0.0" width="284" height="43"/>
-=======
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="See More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="eK2-LM-5SH">
                                                     <rect key="frame" x="13" y="0.0" width="284" height="44"/>
->>>>>>> mariyabranch
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -571,14 +547,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBs-sR-EBd" id="jwg-9J-6Gs">
-<<<<<<< HEAD
-
-                                    
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="98.5"/>
-
-=======
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
->>>>>>> mariyabranch
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">

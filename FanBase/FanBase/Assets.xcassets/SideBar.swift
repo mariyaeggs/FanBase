@@ -44,16 +44,20 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
     // Booleans to check if side bar is open/closed
     var isSideBarOpen:Bool = false
     
+    var displayGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: nil, action: #selector(manageSwipe))
+
     
     // Initializer allocates memory
     override init() {
         super.init()
     }
+    
+    
     // Custom initializer passes source view
     init(sourceView:UIView, sideBarItems:Array<String>) {
         super.init()
         //origin view is the source view 
-        originView = sourceView
+        originView = UIApplication.sharedApplication().keyWindow
         sideBarTableViewController.tableData = sideBarItems
         
         // Sets up side bar manu before adding gestures
@@ -63,7 +67,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         animator = UIDynamicAnimator(referenceView: originView)
         
         // Right swipe gesture displays menu
-        let displayGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
+        displayGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(manageSwipe))
         originView.addGestureRecognizer(displayGestureRecognizer)
         
         print("Swiped")
@@ -83,7 +87,7 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
        // sideBarContainerView.frame = CGRectMake(400, originView.frame.origin.y, barWidth, originView.frame.size.height)
 
         // Background color of side bar menu
-        sideBarContainerView.backgroundColor = UIColor.grayColor()
+        sideBarContainerView.backgroundColor = UIColor.init(red: 230.0/255.0, green: 255.0/255.0, blue: 247.0/255.0, alpha: 1)
        
         // Confines subviews to bounds of the view
         sideBarContainerView.clipsToBounds = false
@@ -114,44 +118,24 @@ class SideBar: NSObject, SideBarTableViewControllerDelegate {
         sideBarTableViewController.tableView.reloadData()
         sideBarContainerView.addSubview(sideBarTableViewController.tableView)
         
-        // Initialize logout button
-        let logoutButton = UIButton()
-        
-        // Set up button properties and size
-        logoutButton.setTitle("Logout", forState: .Normal)
-        logoutButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        let size:CGSize = logoutButton.intrinsicContentSize()
-        logoutButton.frame = CGRectMake(0, 0, size.width, size.height)
-        
-        // Add target function for button
-        logoutButton.addTarget(self, action: #selector(SideBar.pressed(_:)), forControlEvents: .TouchUpInside)
-        
-        // Add button to container view
-        sideBarContainerView.addSubview(logoutButton)
-        
-        // Add constraints to button with padding
-        let padding:CGFloat = 30
-        logoutButton.translatesAutoresizingMaskIntoConstraints = false;
-        logoutButton.leftAnchor.constraintEqualToAnchor(sideBarContainerView.leftAnchor, constant: padding).active = true
-        logoutButton.bottomAnchor.constraintEqualToAnchor(sideBarContainerView.bottomAnchor, constant: -(sideBarTableViewTopInset + padding)).active = true
-        self.sideBarContainerView.layoutIfNeeded()
+
         
         
     }
     
-    func pressed(sender: UIButton!) {
-        print("Logout successful in the swift file!")
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("UserDidLogOutNotification", object: nil)
-        
-        //[[NSNotificationCenter defaultCenter] postNotificationName:"UserDidLogOutNotification" object:nil];
-
-//        let storyboard = UIStoryboard(name:"Firebase", bundle: NSBundle.mainBundle())
-//        let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginViewControllerID")
-//        UIApplication.sharedApplication().keyWindow?.rootViewController = loginVC
+//    func pressed(sender: UIButton!) {
+//        print("Logout successful in the swift file!")
 //        
-}
-    // Function manages swipe gesture 
+//        NSNotificationCenter.defaultCenter().postNotificationName("UserDidLogOutNotification", object: nil)
+//        
+//        //[[NSNotificationCenter defaultCenter] postNotificationName:"UserDidLogOutNotification" object:nil];
+//
+////        let storyboard = UIStoryboard(name:"Firebase", bundle: NSBundle.mainBundle())
+////        let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginViewControllerID")
+////        UIApplication.sharedApplication().keyWindow?.rootViewController = loginVC
+////        
+//}
+    // Function manages swipe gesture
     func manageSwipe(recognizer:UISwipeGestureRecognizer) {
         
         print("About to swipe")

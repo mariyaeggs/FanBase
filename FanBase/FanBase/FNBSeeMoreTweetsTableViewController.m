@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //Initializes hamburger bar menu button
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = hamburgerButton;
     
     //Gradient
     self.view.tintColor = FNBOffWhiteColor;
@@ -52,6 +55,11 @@
     
     return cell;
 
+}
+
+-(void)hamburgerButtonTapped:(id)sender {
+    NSLog(@"Hamburger pressed and posting notification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 
 @end
