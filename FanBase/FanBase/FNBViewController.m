@@ -97,11 +97,14 @@ static NSInteger const minimumImageHeight = 100;
 //    
 //    [self.view.layer insertSublayer:gradientMask atIndex:0];
 
+
+
     
     
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+
 
     self.selectedArtist = @"";
     

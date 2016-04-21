@@ -161,6 +161,9 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         }
     }];
     
+    if (self.isUserLoggedIn) {
+        [self.chatButton setEnabled:YES];
+    }
 
     
     // set the tweetsLabels
