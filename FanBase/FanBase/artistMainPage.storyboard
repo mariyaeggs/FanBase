@@ -515,7 +515,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbp-dT-VDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="208" y="392"/>
+            <point key="canvasLocation" x="203" y="176"/>
         </scene>
         <!--FNBArtistTop10-->
         <scene sceneID="Flh-kE-2SX">
@@ -546,10 +546,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBs-sR-EBd" id="jwg-9J-6Gs">
-
-                                    
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="98.5"/>
-
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">

@@ -241,10 +241,15 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:discoverPageVC animated:YES];
     } else if ((long)index == 2) {
+        NSLog(@"Just pushed XXXXXXXXX  XXXXXXXX  XXXXXXXXXX");
         FNBArtistMainPageTableViewController *eventsVC = [[UIStoryboard storyboardWithName:@"FNBArtistNews" bundle:nil]instantiateViewControllerWithIdentifier:@"eventInfo"];
         // Push eventInfoVC in my window
         [self.navigationController pushViewController:eventsVC animated:YES];
-    }
+            }
+    
+
+
+
 }
 
 // If bar menu is tapped
@@ -484,6 +489,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     else if (indexPath.section == 4) {
         if (cell == self.upConcertsFirstCell && self.events.count < 1) {
             self.upConcertsFourthCell.textLabel.text = @"No Upcoming Events.";
+            
+           self.upConcertsFourthCell.userInteractionEnabled = NO;
             return 0;
         }
         
@@ -495,11 +502,16 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsThirdCell &&  self.events.count < 3) {
             
-            return 0;
             
-        }
+            
+            return 0;
+            }
+        
+        
+        
         
         else if (cell == self.upConcertsFirstCell && self.events.count > 0){
+            
             
             self.upConcertsFourthCell.textLabel.text = @"See more...";
             FNBArtistEvent *event = self.events[0];
@@ -516,7 +528,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsSecondCell && self.events.count > 1){
             
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event1 = self.events[1];
             self.eventLabel2.text = event1.eventTitle;
             self.eventLabelDate2.text = event1.dateOfConcert;
@@ -529,8 +541,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         
         else if (cell == self.upConcertsThirdCell && self.events.count > 2){
-            
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event2 = self.events[2];
             self.eventLabel3.text = event2.eventTitle;
             self.eventLabelDate3.text = event2.dateOfConcert;
@@ -539,13 +551,21 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             self.eventImageView3.image = [UIImage imageWithData:dataImage3];
             return 44;
             
+            
+                
+            
         }
+    
+    
+    
     }
     
     // height of top cell
     else if (indexPath.section == 0){
         return 200;
     }
+    
+    
     return 44;
 
 }
