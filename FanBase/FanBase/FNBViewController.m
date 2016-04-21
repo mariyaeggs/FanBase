@@ -99,8 +99,8 @@ static NSInteger const minimumImageHeight = 100;
     
     self.view.backgroundColor = [UIColor whiteColor];
 
-//    if (self.currentUserIsLoggedIn) {
-//        NSLog(@"current user is logged in");
+    if (self.currentUserIsLoggedIn) {
+        NSLog(@"current user is logged in");
     
     
           //NOTE: THE If-LOOP USER LOGGEDIN BREAKS THE SIDE BAR? THE SIDE BAR DOES NOT RELOAD OR DISMISS UPON MOVING TO THE OTHER PAGES. LOOKS MESSY(?)
@@ -114,7 +114,7 @@ static NSInteger const minimumImageHeight = 100;
         self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
         self.sideBar.delegate = self;
     
-//        }
+        }
     self.selectedArtist = @"";
     
     self.searchFieldPopulated = NO;

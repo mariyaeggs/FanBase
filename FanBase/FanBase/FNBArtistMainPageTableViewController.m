@@ -160,7 +160,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     //NOTE: THE If-LOOP USER LOGGEDIN BREAKS THE SIDE BAR? THE SIDE BAR DOES NOT RELOAD OR DISMISS UPON MOVING TO THE OTHER PAGES. LOOKS MESSY(?)
     
     //Initializes hamburger bar menu button
-//    if (self.isUserLoggedIn) {
+    if (self.isUserLoggedIn) {
         UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
         hamburgerButton.tintColor = [UIColor blackColor];
         self.navigationItem.rightBarButtonItem = hamburgerButton;
@@ -173,7 +173,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         self.sideBar.delegate = self;
         
         [self.chatButton setEnabled:YES];
-//    }
+    }
     
     // set the tweetsLabels
     self.arrayOfTweetContentLabels = @[self.tweet1ContentTextView, self.tweet2ContentTextView, self.tweet3ContentTextView];
