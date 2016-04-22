@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSString *recievedArtistSpotifyID; 
 
 @property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) AVPlayerItem *playerItem;
 @property (nonatomic) BOOL  isMusicPlaying;
 @property (nonatomic) BOOL  isUserLoggedIn;
 

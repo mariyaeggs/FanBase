@@ -28,7 +28,7 @@
 -(void) viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
+    [self.tableView reloadData];    
 
 }
 
@@ -40,9 +40,6 @@
         UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
         self.navigationItem.rightBarButtonItem = hamburgerButton;
     }
-    
-
-    
 
     //Gradient
     self.tableView.tintColor = [UIColor colorWithRed:230.0/255.0 green:255.0/255.0 blue:247.0/255.0 alpha:1.0];
@@ -53,21 +50,12 @@
     
     [self.tableView.layer insertSublayer:gradientMask atIndex:0];
     
-//    self.tableView.backgroundColor = [UIColor blueColor];
-
-//    // Initialize side bar
-//    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//    self.sideBar.delegate = self;
+    //Set isMusicPlaying
     
     self.isMusicPlaying = NO;
 
-    
-
-    // dummy data (this is AC/DC Sptify ID)
-    //    self.recievedArtistSpotifyID = @"711MCceyCBcFnzjGY4Q7Un";
     self.topTrackCellFolder = [NSMutableArray new];
     [FNBSpotifyAPIclient getTopTracksOfSpotifyID:self.recievedArtistSpotifyID WithCompletionBlock:^(BOOL success, NSArray *topTracks) {
-//        NSLog(@"Inside API CLIENT");
         if (success) {
             self.topTrackCellFolder = topTracks;
             
@@ -84,22 +72,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HamburgerButtonNotification" object:nil];
 }
 
-//   [FNBSpotifyAPIclient getTopTracksWithCompletionBlock:^(BOOL success, NSArray *topTracks) {
-//      NSLog(@"Inside API CLIENT");
-//             if (success) {
-//                 self.topTrackCellFolder = topTracks;
-//
-//           [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//            [self.tableView reloadData];
-//           }];
-//      }   }];
-//}
-//-(BOOL)prefersStatusBarHidden {
-//    
-//    return YES;
-//}
-// Side bar delegate method implementation
-
 
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -110,43 +82,30 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    //#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    ////#warning Incomplete implementation, return the number of rows
-    //    TopTrack *arraySize = [TopTrack new];
-    //
-    //
-    //    NSLog(@"self.topTrackCellFolder.count %@",arraySize.trackName);
+
     return self.topTrackCellFolder.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-
-//    NSLog(@"Anybody here?"); 
-
-
     NSString *reuseIdentifier = @"Cell";
-    
+
     FNBArtistTop10Cell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
         NSDictionary *song =  self.topTrackCellFolder[indexPath.row];
     if (self.isMusicPlaying && [self.previousUrl isEqualToString:song[@"previewSong"]]){
         
-//        [cell.play_pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
         [cell.play_pauseButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
         
     }
     else {
-//        [cell.play_pauseButton setTitle:@"Play" forState:UIControlStateNormal];
         [cell.play_pauseButton setImage:[UIImage imageNamed:@"play"]
                                forState:UIControlStateNormal];
 
-        
     }
     cell.TrackNameLabel.text = song[@"nameTrack"];
     cell.AlbumNameLabel.text = song[@"albumName"];
@@ -178,52 +137,55 @@
 
 - (IBAction)play_pauseButton:(id)sender {
     
-    
     UIButton *playButton = sender;
-    NSLog(@"Value for sender%@",sender);
     UIView *cellContentView = [playButton superview];
     FNBArtistTop10Cell *cell = (FNBArtistTop10Cell*)[cellContentView superview];
     NSURL *url = [NSURL URLWithString:cell.trackSampleURL];
-    self.player = [AVPlayer playerWithURL:url];
+    self.playerItem = [AVPlayerItem playerItemWithURL:url];
     
-        if(!self.isMusicPlaying){
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
+    
+    self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+    
+    if(!self.isMusicPlaying){
         NSLog(@"playing");
         [playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
-//        [playButton setTitle:@"Pause" forState:UIControlStateNormal];
         [self.player play];
         self.isMusicPlaying = !self.isMusicPlaying;
-    
+
     }
     else {
-        NSLog(@"pausing");
-        [playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-//       [playButton setTitle:@"Play" forState:UIControlStateNormal];
-        [self.player pause];
+//        [playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+//        [self.player pause];
         
         if ([self.previousUrl isEqualToString:cell.trackSampleURL]){
-            [playButton setTitle:@"Play" forState:UIControlStateNormal];
+            NSLog(@"PreviousURL isEqual to trackSampleURL");
+            [playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
             [self.player pause];
-        self.isMusicPlaying = !self.isMusicPlaying;
+            self.isMusicPlaying = !self.isMusicPlaying;
         }
-        
-        else{
-            
+    
+        else {
             for (FNBArtistTop10Cell *tableCell in self.tableView.visibleCells){
-                
-//                [tableCell.play_pauseButton setTitle:@"Play" forState:(UIControlStateNormal)];
-                
                 [tableCell.play_pauseButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-                [self.player play];
-            
+                
             }
             
             [playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
-//            [playButton setTitle:@"Pause" forState:(UIControlStateNormal)];
+            [self.player play];
+            
         }
-  
     }
-    
     self.previousUrl = cell.trackSampleURL;
 }
+
+-(void)itemDidFinishPlaying:(NSNotification *)notification {
+    for (FNBArtistTop10Cell *tableCell in self.tableView.visibleCells){
+        [self.player pause];
+        NSLog(@"pause");
+        [tableCell.play_pauseButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    }
+}
+
 
 @end
