@@ -478,7 +478,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             //Height
             
             // CHANGE HERE
-            return 58;
+            return 40;
             
         }
         
@@ -493,7 +493,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL2 = [NSURL URLWithString:event1.artistImageURL];
             NSData *dataImage2 = [NSData dataWithContentsOfURL:imageURL2];
             self.eventImageView2.image = [UIImage imageWithData:dataImage2];
-            return 58;
+            return 40;
             
         }
         
@@ -507,7 +507,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL3 = [NSURL URLWithString:event2.artistImageURL];
             NSData *dataImage3 = [NSData dataWithContentsOfURL:imageURL3];
             self.eventImageView3.image = [UIImage imageWithData:dataImage3];
-            return 58;
+            return 40;
             
             
                 
@@ -516,7 +516,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         else if (cell == self.upConcertsFourthCell && self.events.count > 3){
             self.upConcertsFourthCell.userInteractionEnabled = YES;
             self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            return 58;
+            return 40;
 
         }
     
@@ -528,7 +528,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     }
     
     
-    return 58;
+    return 40;
 
 }
 
