@@ -486,7 +486,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         
         else if (cell == self.upConcertsFirstCell && self.events.count > 0){
-            
+            //MADE CHANGE HERE
             
             self.upConcertsFourthCell.textLabel.text = @"See more...";
             FNBArtistEvent *event = self.events[0];
@@ -495,8 +495,10 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
             NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
             self.eventImageView1.image = [UIImage imageWithData:dataImage1];
-            //Height 
-            return 44;
+            //Height
+            
+            // CHANGE HERE
+            return 60;
             
         }
         
@@ -511,7 +513,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL2 = [NSURL URLWithString:event1.artistImageURL];
             NSData *dataImage2 = [NSData dataWithContentsOfURL:imageURL2];
             self.eventImageView2.image = [UIImage imageWithData:dataImage2];
-            return 44;
+            return 60;
             
         }
         
@@ -525,7 +527,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL3 = [NSURL URLWithString:event2.artistImageURL];
             NSData *dataImage3 = [NSData dataWithContentsOfURL:imageURL3];
             self.eventImageView3.image = [UIImage imageWithData:dataImage3];
-            return 44;
+            return 60;
             
             
                 
@@ -534,7 +536,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         else if (cell == self.upConcertsFourthCell && self.events.count > 3){
             self.upConcertsFourthCell.userInteractionEnabled = YES;
             self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            return 44;
+            return 60;
 
         }
     
@@ -546,7 +548,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     }
     
     
-    return 44;
+    return 60;
 
 }
 
