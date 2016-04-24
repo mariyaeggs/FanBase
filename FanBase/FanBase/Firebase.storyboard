@@ -63,7 +63,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Yw-vb-lT9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="sso-Jy-Y5I">
+                                <rect key="frame" x="30" y="30" width="540" height="540"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sso-Jy-Y5I" secondAttribute="height" multiplier="1:1" id="PMP-I4-B7y"/>
+                                </constraints>
+                            </imageView>
+                            <view alpha="0.96999999999999997" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Yw-vb-lT9">
                                 <rect key="frame" x="30" y="195" width="540" height="210"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-Da-bqo">
@@ -133,9 +139,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sso-Jy-Y5I" firstAttribute="centerY" secondItem="yQZ-4D-qly" secondAttribute="centerY" id="KCh-7R-2UX"/>
                             <constraint firstItem="1Yw-vb-lT9" firstAttribute="width" secondItem="yQZ-4D-qly" secondAttribute="width" multiplier="0.9" id="UjY-O4-UWP"/>
+                            <constraint firstItem="sso-Jy-Y5I" firstAttribute="width" secondItem="yQZ-4D-qly" secondAttribute="width" multiplier="0.9" id="aAS-ld-asQ"/>
                             <constraint firstItem="1Yw-vb-lT9" firstAttribute="centerY" secondItem="yQZ-4D-qly" secondAttribute="centerY" id="bey-Pa-ndC"/>
                             <constraint firstItem="1Yw-vb-lT9" firstAttribute="centerX" secondItem="yQZ-4D-qly" secondAttribute="centerX" id="wtx-Ba-zln"/>
+                            <constraint firstItem="sso-Jy-Y5I" firstAttribute="centerX" secondItem="yQZ-4D-qly" secondAttribute="centerX" id="yMi-8R-gaW"/>
                             <constraint firstItem="1Yw-vb-lT9" firstAttribute="height" secondItem="yQZ-4D-qly" secondAttribute="height" multiplier="0.35" id="z7N-el-YH5"/>
                         </constraints>
                     </view>
@@ -208,7 +217,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B68-5q-gMG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-gQ-ZQE">
+                                <rect key="frame" x="136" y="95" width="329" height="261"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ph3-gQ-ZQE" secondAttribute="height" multiplier="1:1" id="N0R-id-ueL"/>
+                                </constraints>
+                            </imageView>
+                            <view alpha="0.96999999999999997" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B68-5q-gMG">
                                 <rect key="frame" x="30" y="166" width="540" height="210"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UD-jn-ucn">
@@ -303,6 +318,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ph3-gQ-ZQE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="7sH-V0-Qdc"/>
+                            <constraint firstItem="ph3-gQ-ZQE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WeC-e2-I9G"/>
+                            <constraint firstItem="ph3-gQ-ZQE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xlc-Ui-fmY"/>
                             <constraint firstItem="B68-5q-gMG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-29" id="bB3-K4-8mn"/>
                             <constraint firstItem="B68-5q-gMG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fwU-lw-47t"/>
                             <constraint firstItem="B68-5q-gMG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.35" id="nPL-en-1qd"/>
@@ -354,6 +372,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="launchlogo" width="2291" height="2302"/>
         <image name="menu" width="32" height="32"/>
     </resources>
 </document>

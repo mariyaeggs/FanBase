@@ -86,9 +86,6 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsThirdCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *upConcertsFourthCell;
 
-//@property (strong, nonatomic) SideBar *sideBar;
-// Slide out menu
-@property (strong, nonatomic) SideBar *sideBar;
 
 @end
 
@@ -152,22 +149,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         [self.chatButton setEnabled:YES];
     }
 
-    //NOTE: THE If-LOOP USER LOGGEDIN BREAKS THE SIDE BAR? THE SIDE BAR DOES NOT RELOAD OR DISMISS UPON MOVING TO THE OTHER PAGES. LOOKS MESSY(?)
-    
-    //Initializes hamburger bar menu button
-//    if (self.isUserLoggedIn) {
-        UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-        hamburgerButton.tintColor = [UIColor blackColor];
-        self.navigationItem.rightBarButtonItem = hamburgerButton;
-        
-        
-        // Call the sidebar menu function
-        
-        // Initialize side bar
-        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-        self.sideBar.delegate = self;
-    
-        [self.chatButton setEnabled:YES];
     
     // set the tweetsLabels
     self.arrayOfTweetContentLabels = @[self.tweet1ContentTextView, self.tweet2ContentTextView, self.tweet3ContentTextView];

@@ -24,6 +24,8 @@
 @property (nonatomic, strong) SideBar *sideBar;
 @property (nonatomic) BOOL sideBarAllocatted;
 
+//@property (strong, nonatomic) UIViewController *setRootViewController;
+
 @end
 
 @implementation FNBLoginContainerViewController 
@@ -152,14 +154,15 @@
     FNBUserProfilePageTableViewController *userVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"UserPageID"];
     
     [self setEmbeddedViewController:userVC];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-
+    [self.navigationController.view setNeedsLayout];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 
 - (void)showDiscoverPageVC {
     FNBViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
     [self setEmbeddedViewController:discoverPageVC];
+    [self.navigationController.view setNeedsLayout];
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
@@ -169,6 +172,7 @@
     // TODO: get the user's events
     upcomingEventsVC.receivedConcertsArray = @[];
     [self setEmbeddedViewController:upcomingEventsVC];
+    [self.navigationController.view setNeedsLayout];
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }

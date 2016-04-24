@@ -28,7 +28,6 @@
 		A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */; };
 		A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */; };
 		A190B9F91CC6ABB300D4CA36 /* FNBColorConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F81CC6ABB300D4CA36 /* FNBColorConstants.m */; };
-		A1BA06011CC83098000268BA /* FNBNavigationWithHambugerButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BA06001CC83098000268BA /* FNBNavigationWithHambugerButtonViewController.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
 		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
@@ -112,8 +111,6 @@
 		A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewCell.m; sourceTree = "<group>"; };
 		A190B9F71CC6ABB300D4CA36 /* FNBColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBColorConstants.h; sourceTree = "<group>"; };
 		A190B9F81CC6ABB300D4CA36 /* FNBColorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBColorConstants.m; sourceTree = "<group>"; };
-		A1BA05FF1CC83098000268BA /* FNBNavigationWithHambugerButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBNavigationWithHambugerButtonViewController.h; sourceTree = "<group>"; };
-		A1BA06001CC83098000268BA /* FNBNavigationWithHambugerButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBNavigationWithHambugerButtonViewController.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
 		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
@@ -296,8 +293,6 @@
 				A1E7A9411CAC49FE00A9B968 /* FNBArtist.h */,
 				A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */,
 				A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */,
-				A1BA05FF1CC83098000268BA /* FNBNavigationWithHambugerButtonViewController.h */,
-				A1BA06001CC83098000268BA /* FNBNavigationWithHambugerButtonViewController.m */,
 				A1E7A93E1CAC28B300A9B968 /* ViewControllers */,
 			);
 			name = FirebaseFiles;
@@ -598,7 +593,6 @@
 				EDF056A51CBEA0F400B457CF /* SideBar.swift in Sources */,
 				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
 				ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */,
-				A1BA06011CC83098000268BA /* FNBNavigationWithHambugerButtonViewController.m in Sources */,
 				BD3913341CBD371D009E7437 /* FNBFanFeedViewController.m in Sources */,
 				EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */,
 				325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */,

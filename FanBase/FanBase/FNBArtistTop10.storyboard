@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JHd-CA-YFa" id="l6X-6V-10a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albumname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ei-cP-SLQ">
@@ -48,6 +48,7 @@
                                                 <constraint firstAttribute="width" secondItem="15p-oR-8gb" secondAttribute="height" multiplier="1:1" id="Tzc-Bs-Tiq"/>
                                                 <constraint firstAttribute="width" constant="39" id="sdx-lM-4gE"/>
                                             </constraints>
+                                            <color key="tintColor" red="0.1764705882352941" green="0.49803921568627452" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal" title="Play" image="play"/>
                                             <connections>
                                                 <action selector="play_pauseButton:" destination="Lot-if-2dA" eventType="touchUpInside" id="W8H-mj-EVx"/>
