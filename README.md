@@ -1,5 +1,6 @@
 
-# FanBase is an ecosystem for music lovers. 
+# FanBase 
+FanBase is an ecosystem for music lovers. 
 Users can subscribe to their favorite artist and interact with other fans. 
 
 Features Include:
