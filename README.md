@@ -11,3 +11,5 @@ Features Include:
 + View Nearby Artist Concerts
 + See Latest Tweets About Artists
 + Check Concert Ticket Availability
+
+![alt tag](FanBaseGIF.gif)
