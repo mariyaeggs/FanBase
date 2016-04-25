@@ -161,17 +161,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     // Set event images array
     self.arrayOfEventImageViews = @[self.eventImageView1, self.eventImageView2, self.eventImageView3];
     
-    // Make event images circular
-    
-    self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.height/2; 
-    //self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.width/2,
-    self.eventImageView1.layer.masksToBounds = YES;
-    
-    self.eventImageView2.layer.cornerRadius = self.eventImageView2.frame.size.height/2,
-    self.eventImageView2.layer.masksToBounds = YES;
-    
-    self.eventImageView3.layer.cornerRadius = self.eventImageView3.frame.size.height/2,
-    self.eventImageView3.layer.masksToBounds = YES;
 
     // create FNBArtist from receivedName
     self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
@@ -214,6 +203,19 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     
 }
 
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    // Make event images circular
+    self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.width/2;
+    self.eventImageView1.layer.masksToBounds = YES;
+    
+    self.eventImageView2.layer.cornerRadius = self.eventImageView2.frame.size.height/2,
+    self.eventImageView2.layer.masksToBounds = YES;
+    
+    self.eventImageView3.layer.cornerRadius = self.eventImageView3.frame.size.height/2,
+    self.eventImageView3.layer.masksToBounds = YES;
+}
 
 -(void)hamburgerButtonTapped:(id)sender {
     NSLog(@"Hamburger pressed and posting notification");
