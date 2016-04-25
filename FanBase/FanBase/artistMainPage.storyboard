@@ -526,11 +526,11 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBs-sR-EBd" id="jwg-9J-6Gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="62.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">
-                                            <rect key="frame" x="66" y="19" width="526" height="38"/>
+                                            <rect key="frame" x="66" y="21" width="526" height="36"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </string>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -558,7 +558,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="kxe-MV-M31" secondAttribute="trailing" id="FUH-d8-vb2"/>
                                         <constraint firstItem="kxe-MV-M31" firstAttribute="leading" secondItem="IB7-al-xyA" secondAttribute="leading" constant="-2" id="KhF-8A-yWZ"/>
                                         <constraint firstItem="IB7-al-xyA" firstAttribute="height" secondItem="sQ5-QZ-aiS" secondAttribute="height" multiplier="0.25" id="NY7-8s-G7P"/>
-                                        <constraint firstItem="kxe-MV-M31" firstAttribute="top" secondItem="IB7-al-xyA" secondAttribute="bottom" id="RID-K8-9Y6"/>
+                                        <constraint firstItem="kxe-MV-M31" firstAttribute="top" secondItem="IB7-al-xyA" secondAttribute="bottom" constant="2" id="RID-K8-9Y6"/>
                                         <constraint firstItem="IB7-al-xyA" firstAttribute="top" secondItem="sQ5-QZ-aiS" secondAttribute="top" id="kuw-2Y-jdS"/>
                                         <constraint firstItem="sQ5-QZ-aiS" firstAttribute="height" secondItem="jwg-9J-6Gs" secondAttribute="height" multiplier="0.8" id="nah-GL-G45"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="sQ5-QZ-aiS" secondAttribute="leading" id="rai-Qs-emn"/>

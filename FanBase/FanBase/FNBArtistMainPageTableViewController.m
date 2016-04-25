@@ -442,7 +442,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             return 44;
         }
         else {
-            return 70;
+            return 75;
         }
         
 
