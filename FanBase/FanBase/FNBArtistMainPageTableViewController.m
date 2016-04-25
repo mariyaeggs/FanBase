@@ -440,7 +440,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     }
     
     
-    
+    //Upcoming concert table view dimensions
     else if (indexPath.section == 4) {
         if (cell == self.upConcertsFirstCell && self.events.count < 1) {
             self.upConcertsFourthCell.textLabel.text = @"No Upcoming Events.";
@@ -467,8 +467,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         
         else if (cell == self.upConcertsFirstCell && self.events.count > 0){
-            
-            
+        
             self.upConcertsFourthCell.textLabel.text = @"See more...";
             FNBArtistEvent *event = self.events[0];
             self.eventLabel1.text = event.eventTitle;
@@ -476,7 +475,9 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             NSURL *imageURL1 = [NSURL URLWithString:event.artistImageURL];
             NSData *dataImage1 = [NSData dataWithContentsOfURL:imageURL1];
             self.eventImageView1.image = [UIImage imageWithData:dataImage1];
-
+            //Height
+            
+            // CHANGE HERE
             return 44;
             
         }
@@ -521,7 +522,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     
     }
     
-    // height of top cell
+    // height of top cell with main artist page
     else if (indexPath.section == 0){
         return 200;
     }
