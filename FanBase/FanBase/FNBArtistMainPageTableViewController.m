@@ -412,7 +412,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     cell.backgroundColor = [UIColor clearColor];
     
     if (indexPath.section == 3){
-                if(cell == self.twitterFirstViewCell && self.currentArtist.tweetsArray.count < 1){
+            if(cell == self.twitterFirstViewCell && self.currentArtist.tweetsArray.count < 1){
             
             
             self.twitterFourthViewCell.textLabel.text = @"No tweets.";
@@ -437,6 +437,14 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             self.twitterFourthViewCell.textLabel.text = @"  See more...   ";
             
         }
+        
+        if (cell == self.twitterFourthViewCell) {
+            return 44;
+        }
+        else {
+            return 70;
+        }
+        
 
     
     }
@@ -470,7 +478,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsFirstCell && self.events.count > 0){
         
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+//            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            
             FNBArtistEvent *event = self.events[0];
             self.eventLabel1.text = event.eventTitle;
             self.eventLabelDate1.text = event.dateOfConcert;
@@ -488,7 +497,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsSecondCell && self.events.count > 1){
             
-            self.upConcertsFourthCell.textLabel.text = @" See more...";
+//            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event1 = self.events[1];
             self.eventLabel2.text = event1.eventTitle;
             self.eventLabelDate2.text = event1.dateOfConcert;
@@ -502,7 +511,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsThirdCell && self.events.count > 2){
 //            self.upConcertsFourthCell.userInteractionEnabled = YES;
-            self.upConcertsFourthCell.textLabel.text = @" See more...";
+//            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event2 = self.events[2];
             self.eventLabel3.text = event2.eventTitle;
             self.eventLabelDate3.text = event2.dateOfConcert;
@@ -516,10 +525,17 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             
         }
         else if (cell == self.upConcertsFourthCell && self.events.count > 3){
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             self.upConcertsFourthCell.userInteractionEnabled = YES;
             self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return 44;
 
+        }
+        else if (cell == self.upConcertsFourthCell && self.events.count <= 3 && self.events.count > 0){
+            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            return 0;
+            
         }
     
     }
