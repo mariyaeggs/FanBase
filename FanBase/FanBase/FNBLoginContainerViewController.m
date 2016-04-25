@@ -13,7 +13,7 @@
 #import "FNBNoInternetVCViewController.h"
 #import "FanBase-Bridging-Header.h"
 #import "FanBase-Swift.h"
-#import "FNBViewController.h"
+#import "FNBDiscoverPageViewController.h"
 #import "FNBSeeAllNearbyEventsTableViewController.h"
 
 @interface FNBLoginContainerViewController () <SideBarDelegate>
@@ -160,7 +160,7 @@
 
 
 - (void)showDiscoverPageVC {
-    FNBViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
+    FNBDiscoverPageViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
     [self setEmbeddedViewController:discoverPageVC];
     [self.navigationController.view setNeedsLayout];
     [self.navigationController popToRootViewControllerAnimated:YES];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class FNBViewController;
+@class FNBDiscoverPageViewController;
 
 @interface FNBAppDelegate : UIResponder <UIApplicationDelegate>
 

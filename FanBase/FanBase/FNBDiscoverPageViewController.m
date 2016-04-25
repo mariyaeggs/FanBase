@@ -5,7 +5,7 @@
 //  Created by Mariya Eggensperger on 4/6/16.
 
 
-#import "FNBViewController.h"
+#import "FNBDiscoverPageViewController.h"
 #import "FNBCollectionViewCell.h"
 #import "FNBTableViewCell.h"
 #import <AFNetworking/AFNetworking.h>
@@ -20,7 +20,7 @@
 #import "FNBArtistMainPageTableViewController.h"
 
 
-@interface FNBViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UIScrollViewDelegate>
+@interface FNBDiscoverPageViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UIScrollViewDelegate>
 
 @property (nonatomic,strong) NSArray *imageArray;
 @property (nonatomic, strong) NSArray *genres;
@@ -45,7 +45,7 @@
 
 @end
 
-@implementation FNBViewController
+@implementation FNBDiscoverPageViewController
 
 
 static NSInteger const minimumImageHeight = 100;

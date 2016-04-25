@@ -6,7 +6,7 @@
 //
 
 #import "FNBAppDelegate.h"
-#import "FNBViewController.h"
+#import "FNBDiscoverPageViewController.h"
 #import "UILabel+SubstituteFont.h"
 #import "FNBColorConstants.h"
 
