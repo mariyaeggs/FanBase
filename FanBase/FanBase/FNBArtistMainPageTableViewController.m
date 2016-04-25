@@ -522,7 +522,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     
     }
     
-    // height of top cell
+    // height of top cell with main artist page
     else if (indexPath.section == 0){
         return 200;
     }
