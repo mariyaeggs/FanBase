@@ -193,7 +193,6 @@ static NSInteger const minimumImageHeight = 100;
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (self.searchFieldPopulated && searchBar.text.length == 0) {
         self.searchFieldPopulated = NO;
-        NSLog(@"changed the self.searchfieldPopulated to: %d", self.searchFieldPopulated);
         [self.tableView reloadData];
     }
 }
@@ -665,7 +664,6 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
-//                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
                 }];
             }
@@ -680,7 +678,6 @@ static NSInteger const minimumImageHeight = 100;
                 [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
                     // make this reload just the cell
                     [self.tableView reloadData];
-//                    [self.view bringSubviewToFront:self.sideBar.sideBarContainerView];
 
                 }];
                 
