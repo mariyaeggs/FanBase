@@ -161,17 +161,6 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     // Set event images array
     self.arrayOfEventImageViews = @[self.eventImageView1, self.eventImageView2, self.eventImageView3];
     
-    // Make event images circular
-    
-    self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.height/2; 
-    //self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.width/2,
-    self.eventImageView1.layer.masksToBounds = YES;
-    
-    self.eventImageView2.layer.cornerRadius = self.eventImageView2.frame.size.height/2,
-    self.eventImageView2.layer.masksToBounds = YES;
-    
-    self.eventImageView3.layer.cornerRadius = self.eventImageView3.frame.size.height/2,
-    self.eventImageView3.layer.masksToBounds = YES;
 
     // create FNBArtist from receivedName
     self.currentArtist = [[FNBArtist alloc] initWithName:self.receivedArtistName];
@@ -214,6 +203,19 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     
 }
 
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    // Make event images circular
+    self.eventImageView1.layer.cornerRadius = self.eventImageView1.frame.size.width/2;
+    self.eventImageView1.layer.masksToBounds = YES;
+    
+    self.eventImageView2.layer.cornerRadius = self.eventImageView2.frame.size.height/2,
+    self.eventImageView2.layer.masksToBounds = YES;
+    
+    self.eventImageView3.layer.cornerRadius = self.eventImageView3.frame.size.height/2,
+    self.eventImageView3.layer.masksToBounds = YES;
+}
 
 -(void)hamburgerButtonTapped:(id)sender {
     NSLog(@"Hamburger pressed and posting notification");
@@ -410,7 +412,7 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
     cell.backgroundColor = [UIColor clearColor];
     
     if (indexPath.section == 3){
-                if(cell == self.twitterFirstViewCell && self.currentArtist.tweetsArray.count < 1){
+            if(cell == self.twitterFirstViewCell && self.currentArtist.tweetsArray.count < 1){
             
             
             self.twitterFourthViewCell.textLabel.text = @"No tweets.";
@@ -435,6 +437,14 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             self.twitterFourthViewCell.textLabel.text = @"  See more...   ";
             
         }
+        
+        if (cell == self.twitterFourthViewCell) {
+            return 44;
+        }
+        else {
+            return 75;
+        }
+        
 
     
     }
@@ -468,7 +478,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsFirstCell && self.events.count > 0){
         
-            self.upConcertsFourthCell.textLabel.text = @"See more...";
+//            self.upConcertsFourthCell.textLabel.text = @"See more...";
+            
             FNBArtistEvent *event = self.events[0];
             self.eventLabel1.text = event.eventTitle;
             self.eventLabelDate1.text = event.dateOfConcert;
@@ -478,7 +489,8 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
             //Height
             
             // CHANGE HERE
-            return 40;
+
+            return 44;
             
         }
         
@@ -486,49 +498,58 @@ static NSInteger const minimumArtistImageHeightForLabels = 200;
         
         else if (cell == self.upConcertsSecondCell && self.events.count > 1){
             
-            self.upConcertsFourthCell.textLabel.text = @" See more...";
+//            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event1 = self.events[1];
             self.eventLabel2.text = event1.eventTitle;
             self.eventLabelDate2.text = event1.dateOfConcert;
             NSURL *imageURL2 = [NSURL URLWithString:event1.artistImageURL];
             NSData *dataImage2 = [NSData dataWithContentsOfURL:imageURL2];
             self.eventImageView2.image = [UIImage imageWithData:dataImage2];
-            return 40;
+
+            return 44;
             
         }
         
         
         else if (cell == self.upConcertsThirdCell && self.events.count > 2){
 //            self.upConcertsFourthCell.userInteractionEnabled = YES;
-            self.upConcertsFourthCell.textLabel.text = @" See more...";
+//            self.upConcertsFourthCell.textLabel.text = @" See more...";
             FNBArtistEvent *event2 = self.events[2];
             self.eventLabel3.text = event2.eventTitle;
             self.eventLabelDate3.text = event2.dateOfConcert;
             NSURL *imageURL3 = [NSURL URLWithString:event2.artistImageURL];
             NSData *dataImage3 = [NSData dataWithContentsOfURL:imageURL3];
             self.eventImageView3.image = [UIImage imageWithData:dataImage3];
-            return 40;
+
+            return 44;
             
             
                 
             
         }
         else if (cell == self.upConcertsFourthCell && self.events.count > 3){
+            self.upConcertsFourthCell.textLabel.text = @" See more...";
             self.upConcertsFourthCell.userInteractionEnabled = YES;
             self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            return 40;
 
+            return 44;
+
+        }
+        else if (cell == self.upConcertsFourthCell && self.events.count <= 3 && self.events.count > 0){
+            self.upConcertsFourthCell.userInteractionEnabled = YES;
+            self.upConcertsFourthCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            return 0;
+            
         }
     
     }
     
-    // height of top cell
+    // height of top cell with main artist page
     else if (indexPath.section == 0){
         return 200;
     }
     
-    
-    return 40;
+    return 44;
 
 }
 

@@ -55,17 +55,10 @@
 		BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E401CB6A1E900BEDE01 /* FNBArtistEvent.m */; };
 		BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18E431CB6AEA900BEDE01 /* FNBEventInfoVC.m */; };
 		BDFEF35E1CC59CFB00863A17 /* UILabel+SubstituteFont.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFEF35D1CC59CFB00863A17 /* UILabel+SubstituteFont.m */; };
-		ED1787B81CB85B80008B12D9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B41CB85B80008B12D9 /* Constants.m */; };
-		ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787B61CB85B80008B12D9 /* CVCell.m */; };
-		ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */; };
-		ED1787BF1CB85B8C008B12D9 /* DiscoverPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */; };
-		ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */; };
-		ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */; };
-		ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1787C41CB85BF7008B12D9 /* APIClient.m */; };
 		ED3436201CC673D000EA95BA /* SideMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED34361F1CC673D000EA95BA /* SideMenuConstants.m */; };
 		EDD4EEBB1CB85A7400D7576E /* Discover2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */; };
 		EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */; };
-		EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */; };
+		EDD4EEBD1CB85A7400D7576E /* FNBDiscoverPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBA1CB85A7400D7576E /* FNBDiscoverPageViewController.m */; };
 		EDD4EEC21CB85A9900D7576E /* FNBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */; };
 		EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */; };
 		EDE7E97F1CC51926006BB29B /* handsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE7E97E1CC51926006BB29B /* handsLogo.png */; };
@@ -161,25 +154,13 @@
 		BDFEF35C1CC59CFB00863A17 /* UILabel+SubstituteFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+SubstituteFont.h"; sourceTree = "<group>"; };
 		BDFEF35D1CC59CFB00863A17 /* UILabel+SubstituteFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SubstituteFont.m"; sourceTree = "<group>"; };
 		C5851181C3ED88D6FA8A8B4F /* Pods-FanBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBase.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBase/Pods-FanBase.release.xcconfig"; sourceTree = "<group>"; };
-		ED1787B31CB85B80008B12D9 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = FanBase/Constants.h; sourceTree = "<group>"; };
-		ED1787B41CB85B80008B12D9 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = FanBase/Constants.m; sourceTree = "<group>"; };
-		ED1787B51CB85B80008B12D9 /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CVCell.h; path = FanBase/CVCell.h; sourceTree = "<group>"; };
-		ED1787B61CB85B80008B12D9 /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CVCell.m; path = FanBase/CVCell.m; sourceTree = "<group>"; };
-		ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscoverCollectionViewCell.xib; path = FanBase/DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
-		ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DiscoverPage.storyboard; path = FanBase/DiscoverPage.storyboard; sourceTree = "<group>"; };
-		ED1787BC1CB85B8C008B12D9 /* FNBAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNBAPIClient.h; path = FanBase/FNBAPIClient.h; sourceTree = "<group>"; };
-		ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNBAPIClient.m; path = FanBase/FNBAPIClient.m; sourceTree = "<group>"; };
-		ED1787BE1CB85B8C008B12D9 /* FNBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNBDiscoverViewController.h; path = FanBase/FNBDiscoverViewController.h; sourceTree = "<group>"; };
-		ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNBDiscoverViewController.m; path = FanBase/FNBDiscoverViewController.m; sourceTree = "<group>"; };
-		ED1787C31CB85BF7008B12D9 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = FanBase/APIClient.h; sourceTree = "<group>"; };
-		ED1787C41CB85BF7008B12D9 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = FanBase/APIClient.m; sourceTree = "<group>"; };
 		ED34361E1CC673D000EA95BA /* SideMenuConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuConstants.h; sourceTree = "<group>"; };
 		ED34361F1CC673D000EA95BA /* SideMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuConstants.m; sourceTree = "<group>"; };
 		EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover2.storyboard; sourceTree = "<group>"; };
 		EDD4EEB71CB85A7400D7576E /* FNBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBAppDelegate.h; sourceTree = "<group>"; };
 		EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBAppDelegate.m; sourceTree = "<group>"; };
-		EDD4EEB91CB85A7400D7576E /* FNBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBViewController.h; sourceTree = "<group>"; };
-		EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBViewController.m; sourceTree = "<group>"; };
+		EDD4EEB91CB85A7400D7576E /* FNBDiscoverPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBDiscoverPageViewController.h; sourceTree = "<group>"; };
+		EDD4EEBA1CB85A7400D7576E /* FNBDiscoverPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBDiscoverPageViewController.m; sourceTree = "<group>"; };
 		EDD4EEBE1CB85A9900D7576E /* FNBCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBCollectionViewCell.h; sourceTree = "<group>"; };
 		EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBCollectionViewCell.m; sourceTree = "<group>"; };
 		EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBTableViewCell.h; sourceTree = "<group>"; };
@@ -283,6 +264,20 @@
 			name = SpotifyArtistSearchFiles;
 			sourceTree = "<group>";
 		};
+		A1BA06021CCE5CAA000268BA /* Discover Page */ = {
+			isa = PBXGroup;
+			children = (
+				EDD4EEBE1CB85A9900D7576E /* FNBCollectionViewCell.h */,
+				EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */,
+				EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */,
+				EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */,
+				EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */,
+				EDD4EEB91CB85A7400D7576E /* FNBDiscoverPageViewController.h */,
+				EDD4EEBA1CB85A7400D7576E /* FNBDiscoverPageViewController.m */,
+			);
+			name = "Discover Page";
+			sourceTree = "<group>";
+		};
 		A1E7A92C1CAC281600A9B968 /* FirebaseFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,23 +332,16 @@
 		BD0A5A7F1CAAFCF300FFF623 /* FanBase */ = {
 			isa = PBXGroup;
 			children = (
-				EDD4EEBE1CB85A9900D7576E /* FNBCollectionViewCell.h */,
-				EDD4EEBF1CB85A9900D7576E /* FNBCollectionViewCell.m */,
-				EDD4EEC01CB85A9900D7576E /* FNBTableViewCell.h */,
-				EDD4EEC11CB85A9900D7576E /* FNBTableViewCell.m */,
-				EDD4EEB61CB85A7400D7576E /* Discover2.storyboard */,
 				EDD4EEB71CB85A7400D7576E /* FNBAppDelegate.h */,
 				EDD4EEB81CB85A7400D7576E /* FNBAppDelegate.m */,
-				EDD4EEB91CB85A7400D7576E /* FNBViewController.h */,
-				EDD4EEBA1CB85A7400D7576E /* FNBViewController.m */,
 				BDFEF35C1CC59CFB00863A17 /* UILabel+SubstituteFont.h */,
 				BDFEF35D1CC59CFB00863A17 /* UILabel+SubstituteFont.m */,
+				A1BA06021CCE5CAA000268BA /* Discover Page */,
 				A14E4E5C1CB7F3AC0034FBFB /* ArtistMainPage */,
 				325FEC9D1CB6DB96009F5F27 /* Top10 */,
 				BD3116C81CB5A8F100C47570 /* FanFeed */,
 				BD3116C71CB5A8CB00C47570 /* ArtistNews */,
 				BD3116C61CB5A8A700C47570 /* APIs */,
-				ED77300B1CB2DD63001C48DB /* Discover Page */,
 				A14E4E421CB408D90034FBFB /* UserPage */,
 				A14F2D7D1CADC4250093D187 /* SpotifyArtistSearchFiles */,
 				A1E7A92C1CAC281600A9B968 /* FirebaseFiles */,
@@ -422,26 +410,6 @@
 				BD3913321CBD371D009E7437 /* FNBFanFeedViewController.m */,
 			);
 			name = FanFeed;
-			sourceTree = "<group>";
-		};
-		ED77300B1CB2DD63001C48DB /* Discover Page */ = {
-			isa = PBXGroup;
-			children = (
-				ED1787C31CB85BF7008B12D9 /* APIClient.h */,
-				ED1787C41CB85BF7008B12D9 /* APIClient.m */,
-				ED1787BB1CB85B8C008B12D9 /* DiscoverPage.storyboard */,
-				ED1787BC1CB85B8C008B12D9 /* FNBAPIClient.h */,
-				ED1787BD1CB85B8C008B12D9 /* FNBAPIClient.m */,
-				ED1787BE1CB85B8C008B12D9 /* FNBDiscoverViewController.h */,
-				ED1787C11CB85B94008B12D9 /* FNBDiscoverViewController.m */,
-				ED1787B31CB85B80008B12D9 /* Constants.h */,
-				ED1787B41CB85B80008B12D9 /* Constants.m */,
-				ED1787B51CB85B80008B12D9 /* CVCell.h */,
-				ED1787B61CB85B80008B12D9 /* CVCell.m */,
-				ED1787B71CB85B80008B12D9 /* DiscoverCollectionViewCell.xib */,
-			);
-			name = "Discover Page";
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -520,9 +488,7 @@
 				EDE7E97F1CC51926006BB29B /* handsLogo.png in Resources */,
 				BD0A5A8B1CAAFCF300FFF623 /* Main.storyboard in Resources */,
 				A1E7A9401CAC28D500A9B968 /* Firebase.storyboard in Resources */,
-				ED1787BA1CB85B80008B12D9 /* DiscoverCollectionViewCell.xib in Resources */,
 				BD3913331CBD371D009E7437 /* FanFeed.storyboard in Resources */,
-				ED1787BF1CB85B8C008B12D9 /* DiscoverPage.storyboard in Resources */,
 				325FECAE1CB6DC64009F5F27 /* FNBArtistTop10.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,7 +550,6 @@
 			files = (
 				BD8506051CC59E4F00276722 /* FNBBandsInTownAPIClient.m in Sources */,
 				BD0A5A881CAAFCF300FFF623 /* ViewController.m in Sources */,
-				ED1787C51CB85BF7008B12D9 /* APIClient.m in Sources */,
 				BD565F061CC577ED00820734 /* FNBNoInternetVCViewController.m in Sources */,
 				A190B9F91CC6ABB300D4CA36 /* FNBColorConstants.m in Sources */,
 				BD3116C51CB5A88D00C47570 /* NSURL+QueryString.m in Sources */,
@@ -592,7 +557,6 @@
 				A1E7A93C1CAC28A900A9B968 /* FNBUserDetailsViewController.m in Sources */,
 				EDF056A51CBEA0F400B457CF /* SideBar.swift in Sources */,
 				A14E4E471CB4110B0034FBFB /* FNBUserProfilePageTableViewController.m in Sources */,
-				ED1787C21CB85B94008B12D9 /* FNBDiscoverViewController.m in Sources */,
 				BD3913341CBD371D009E7437 /* FNBFanFeedViewController.m in Sources */,
 				EDD4EEBC1CB85A7400D7576E /* FNBAppDelegate.m in Sources */,
 				325FECAC1CB6DC37009F5F27 /* FNBTopTrackDetailViewController.m in Sources */,
@@ -603,17 +567,15 @@
 				EDD4EEC31CB85A9900D7576E /* FNBTableViewCell.m in Sources */,
 				A103C1811CBC1184001FA3D5 /* FNBLoginContainerViewController.m in Sources */,
 				A14E4E4A1CB584320034FBFB /* FNBAllSubscribedArtistsTableViewController.m in Sources */,
-				EDD4EEBD1CB85A7400D7576E /* FNBViewController.m in Sources */,
+				EDD4EEBD1CB85A7400D7576E /* FNBDiscoverPageViewController.m in Sources */,
 				BDE18E441CB6AEA900BEDE01 /* FNBEventInfoVC.m in Sources */,
 				BD3116C21CB5A88600C47570 /* FNBTwitterPostTableViewCell.m in Sources */,
 				A1E7A9431CAC49FE00A9B968 /* FNBArtist.m in Sources */,
-				ED1787C01CB85B8C008B12D9 /* FNBAPIClient.m in Sources */,
 				ED3436201CC673D000EA95BA /* SideMenuConstants.m in Sources */,
 				BDFEF35E1CC59CFB00863A17 /* UILabel+SubstituteFont.m in Sources */,
 				BD3116C11CB5A88600C47570 /* FNBTwitterAPIClient.m in Sources */,
 				325FECAA1CB6DC37009F5F27 /* FNBSpotifyAPIclient.m in Sources */,
 				A190B9ED1CC007E900D4CA36 /* FNBSeeMoreTweetsTableViewController.m in Sources */,
-				ED1787B81CB85B80008B12D9 /* Constants.m in Sources */,
 				A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */,
 				BD0A5A821CAAFCF300FFF623 /* main.m in Sources */,
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
@@ -622,7 +584,6 @@
 				BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */,
 				325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,
-				ED1787B91CB85B80008B12D9 /* CVCell.m in Sources */,
 				325FECA81CB6DC37009F5F27 /* FNBArtistTop10Cell.m in Sources */,
 				BDE18E411CB6A1E900BEDE01 /* FNBArtistEvent.m in Sources */,
 				BD3116B61CB5A87D00C47570 /* FNBArtistNewsTableViewController.m in Sources */,
@@ -748,11 +709,12 @@
 				INFOPLIST_FILE = FanBase/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-pizza";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FanBase/FanBase-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -763,14 +725,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = FanBase/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatironschool.FanBase;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-pizza";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FanBase/FanBase-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -30,8 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
+
     //Initializes hamburger bar menu button
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
     self.navigationItem.rightBarButtonItem = hamburgerButton;
@@ -45,17 +45,7 @@
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
-//    //Initializes hamburger bar menu button
-//    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonSystemItemDone target:self action:@selector(hamburgerButtonTapped:)];
-//    hamburgerButton.tintColor = [UIColor blackColor];
-//    self.navigationItem.rightBarButtonItem = hamburgerButton;
-//    
-//    
-//        // Initialize side bar
-//        self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Events"]];
-//        self.sideBar.delegate = self;
-    
-    
+
     // set user info, and then get a detailed array of the artists the user is subscribed to
     self.currentUser = [[FNBUser alloc] init];
     [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
@@ -152,7 +142,8 @@
     cell.usersRankLabel.text = [NSString stringWithFormat:@"#%@ of %@", self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"usersRank"], self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"numberOfFollowers"]];
     [cell.artistImageView setImageWithURL:[NSURL URLWithString:self.currentUser.rankingAndImagesForEachArtist[indexPath.row][@"artistImageURL"]]];
 
-    
+    // hide points labels
+    cell.usersRankLabel.hidden = YES;
 
     return cell;
 }

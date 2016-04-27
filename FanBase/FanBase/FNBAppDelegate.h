@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class FNBViewController;
+@class FNBDiscoverPageViewController;
 
 @interface FNBAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic,strong) UIWindow *window;
 
 @property (nonatomic,strong) UINavigationController *viewController; 
-
 
 @end

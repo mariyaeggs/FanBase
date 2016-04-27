@@ -107,6 +107,12 @@
     
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
+    // hide the points labels
+    self.artist1XOfTotalFans.hidden = YES;
+    self.artist2XOfTotalFans.hidden = YES;
+    self.artist3XOfTotalFans.hidden = YES;
+    self.artist4XOfTotalFans.hidden = YES;
+    
     [self updateUI];
 
 

@@ -63,7 +63,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="sso-Jy-Y5I">
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="sso-Jy-Y5I">
                                 <rect key="frame" x="30" y="30" width="540" height="540"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sso-Jy-Y5I" secondAttribute="height" multiplier="1:1" id="PMP-I4-B7y"/>
@@ -217,7 +217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-gQ-ZQE">
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-gQ-ZQE">
                                 <rect key="frame" x="136" y="95" width="329" height="261"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ph3-gQ-ZQE" secondAttribute="height" multiplier="1:1" id="N0R-id-ueL"/>
