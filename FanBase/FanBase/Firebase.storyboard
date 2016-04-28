@@ -164,7 +164,6 @@
         <!--View Controller-->
         <scene sceneID="hW3-aQ-wwN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sag-7K-uMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Btp-c0-9gw" customClass="EULAViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jQ6-Tz-VVo"/>
@@ -178,7 +177,7 @@
                                 <rect key="frame" x="163" y="467" width="49" height="30"/>
                                 <state key="normal" title="I Agree"/>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NBS-wK-T7p">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBS-wK-T7p">
                                 <rect key="frame" x="20" y="74" width="335" height="312"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -236,6 +235,7 @@ FanBase shall not be obligated to indemnify or defend you with respect to any th
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sag-7K-uMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1557.5" y="-367.5"/>
         </scene>
