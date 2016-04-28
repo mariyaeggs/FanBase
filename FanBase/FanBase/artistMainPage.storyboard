@@ -187,14 +187,14 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Loading Tweet" translatesAutoresizingMaskIntoConstraints="NO" id="dd4-sf-dtt">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="8BT-2C-jFl">
-                                                    <rect key="frame" x="13" y="52" width="600" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="8BT-2C-jFl">
+                                                    <rect key="frame" x="13" y="60" width="600" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -202,7 +202,7 @@
                                                 <constraint firstAttribute="leadingMargin" secondItem="8BT-2C-jFl" secondAttribute="leading" constant="-5" id="1aS-jy-p7S"/>
                                                 <constraint firstItem="dd4-sf-dtt" firstAttribute="height" secondItem="Jmj-gR-6U2" secondAttribute="height" multiplier="0.75" id="KBk-db-Bxq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="8BT-2C-jFl" secondAttribute="bottom" id="Lda-aO-dNb"/>
-                                                <constraint firstItem="8BT-2C-jFl" firstAttribute="top" secondItem="dd4-sf-dtt" secondAttribute="bottom" constant="-8" id="NBW-lQ-ueG"/>
+                                                <constraint firstItem="8BT-2C-jFl" firstAttribute="top" secondItem="dd4-sf-dtt" secondAttribute="bottom" id="NBW-lQ-ueG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dd4-sf-dtt" secondAttribute="trailing" id="WeM-XQ-IUo"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="dd4-sf-dtt" secondAttribute="leading" id="YBX-ke-bXT"/>
                                                 <constraint firstAttribute="topMargin" secondItem="dd4-sf-dtt" secondAttribute="top" constant="8" id="qoe-6R-6km"/>
@@ -219,14 +219,14 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="Loading Tweet" translatesAutoresizingMaskIntoConstraints="NO" id="gsL-ba-Rmo">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZdQ-XC-88W">
-                                                    <rect key="frame" x="13" y="52" width="600" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZdQ-XC-88W">
+                                                    <rect key="frame" x="13" y="60" width="600" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -238,7 +238,7 @@
                                                 <constraint firstAttribute="topMargin" secondItem="gsL-ba-Rmo" secondAttribute="top" constant="8" id="fnN-R5-mHH"/>
                                                 <constraint firstItem="gsL-ba-Rmo" firstAttribute="height" secondItem="VpG-kF-TaK" secondAttribute="height" multiplier="0.75" id="nDu-Ql-jiq"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gsL-ba-Rmo" secondAttribute="trailing" id="uzf-va-BRa"/>
-                                                <constraint firstItem="ZdQ-XC-88W" firstAttribute="top" secondItem="gsL-ba-Rmo" secondAttribute="bottom" constant="-8" id="xI9-3l-joa"/>
+                                                <constraint firstItem="ZdQ-XC-88W" firstAttribute="top" secondItem="gsL-ba-Rmo" secondAttribute="bottom" id="xI9-3l-joa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -251,14 +251,14 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="Loading Tweet" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-8P-P60">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="EMd-TR-RcO">
-                                                    <rect key="frame" x="13" y="52" width="600" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="EMd-TR-RcO">
+                                                    <rect key="frame" x="13" y="60" width="600" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -266,7 +266,7 @@
                                                 <constraint firstAttribute="topMargin" secondItem="a5k-8P-P60" secondAttribute="top" constant="8" id="6v5-6i-ci2"/>
                                                 <constraint firstItem="EMd-TR-RcO" firstAttribute="width" secondItem="bNX-5o-5w4" secondAttribute="width" id="B4J-Ap-D53"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="EMd-TR-RcO" secondAttribute="leading" constant="-5" id="Egk-mM-XEX"/>
-                                                <constraint firstItem="EMd-TR-RcO" firstAttribute="top" secondItem="a5k-8P-P60" secondAttribute="bottom" constant="-8" id="QoE-z7-4AF"/>
+                                                <constraint firstItem="EMd-TR-RcO" firstAttribute="top" secondItem="a5k-8P-P60" secondAttribute="bottom" id="QoE-z7-4AF"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="a5k-8P-P60" secondAttribute="leading" id="g6k-Ke-k7f"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="a5k-8P-P60" secondAttribute="trailing" id="gNv-p4-Pud"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="EMd-TR-RcO" secondAttribute="bottom" id="kNB-zS-tvr"/>
@@ -517,36 +517,36 @@
         <scene sceneID="8Oz-yp-h4F">
             <objects>
                 <tableViewController id="eR1-6I-BcT" customClass="FNBSeeMoreTweetsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="HsL-q8-1Er">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="HsL-q8-1Er">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="99" id="KBs-sR-EBd" customClass="FNBTwitterPostTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="99"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="63" id="KBs-sR-EBd" customClass="FNBTwitterPostTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBs-sR-EBd" id="jwg-9J-6Gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="62.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">
-                                            <rect key="frame" x="65" y="37" width="527" height="37"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-MV-M31">
+                                            <rect key="frame" x="66" y="21" width="526" height="36"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <dataDetectorType key="dataDetectorTypes" link="YES" calendarEvent="YES"/>
                                         </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB7-al-xyA">
-                                            <rect key="frame" x="67" y="24" width="454" height="13"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB7-al-xyA">
+                                            <rect key="frame" x="68" y="7" width="454" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="454" id="6Di-4N-mef"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-QZ-aiS">
-                                            <rect key="frame" x="8" y="25" width="50" height="49"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-QZ-aiS">
+                                            <rect key="frame" x="8" y="7" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="sQ5-QZ-aiS" secondAttribute="height" multiplier="1:1" id="b7m-8p-h4r"/>
                                             </constraints>
@@ -558,9 +558,9 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="kxe-MV-M31" secondAttribute="trailing" id="FUH-d8-vb2"/>
                                         <constraint firstItem="kxe-MV-M31" firstAttribute="leading" secondItem="IB7-al-xyA" secondAttribute="leading" constant="-2" id="KhF-8A-yWZ"/>
                                         <constraint firstItem="IB7-al-xyA" firstAttribute="height" secondItem="sQ5-QZ-aiS" secondAttribute="height" multiplier="0.25" id="NY7-8s-G7P"/>
-                                        <constraint firstItem="kxe-MV-M31" firstAttribute="top" secondItem="IB7-al-xyA" secondAttribute="bottom" id="RID-K8-9Y6"/>
+                                        <constraint firstItem="kxe-MV-M31" firstAttribute="top" secondItem="IB7-al-xyA" secondAttribute="bottom" constant="2" id="RID-K8-9Y6"/>
                                         <constraint firstItem="IB7-al-xyA" firstAttribute="top" secondItem="sQ5-QZ-aiS" secondAttribute="top" id="kuw-2Y-jdS"/>
-                                        <constraint firstItem="sQ5-QZ-aiS" firstAttribute="height" secondItem="jwg-9J-6Gs" secondAttribute="height" multiplier="0.9" id="nah-GL-G45"/>
+                                        <constraint firstItem="sQ5-QZ-aiS" firstAttribute="height" secondItem="jwg-9J-6Gs" secondAttribute="height" multiplier="0.8" id="nah-GL-G45"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="sQ5-QZ-aiS" secondAttribute="leading" id="rai-Qs-emn"/>
                                         <constraint firstItem="sQ5-QZ-aiS" firstAttribute="centerY" secondItem="jwg-9J-6Gs" secondAttribute="centerY" id="tLs-VW-NVC"/>
                                     </constraints>
