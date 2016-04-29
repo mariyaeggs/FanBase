@@ -174,17 +174,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wti-JS-rfs">
-                                <rect key="frame" x="163" y="467" width="49" height="30"/>
+                                <rect key="frame" x="163" y="586" width="49" height="30"/>
                                 <state key="normal" title="I Agree"/>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBS-wK-T7p">
-                                <rect key="frame" x="20" y="74" width="335" height="312"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBS-wK-T7p">
+                                <rect key="frame" x="20" y="40" width="335" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="356" id="NLd-pN-MJf"/>
-                                    <constraint firstAttribute="width" constant="335" id="RA6-a3-w2T"/>
-                                </constraints>
-                                <mutableString key="text">FanBase App End User License Agreement
+                                <string key="text">FanBase App End User License Agreement
 
 This End User License Agreement (“Agreement”) is between you and FanBase and governs use of this app made available through the Apple App Store. By installing the FanBase App, you agree to be bound by this Agreement and understand that there is no tolerance for objectionable content. If you do not agree with the terms and conditions of this Agreement, you are not entitled to use the FanBase App. 
 
@@ -216,24 +212,27 @@ FanBase, not Apple, is responsible for addressing any claims by you relating to 
 
 9. Third Party Intellectual Property Claims
 FanBase shall not be obligated to indemnify or defend you with respect to any third party claim arising out or relating to the FanBase App. To the extent FanBase is required to provide indemnification by applicable law, FanBase, not Apple, shall be solely responsible for the investigation, defense, settlement and discharge of any claim that the FanBase App or your use of it infringes any third party intellectual property right.
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wti-JS-rfs" firstAttribute="centerY" secondItem="u9v-UJ-I3Q" secondAttribute="centerY" constant="148.5" id="Bqa-jp-T84"/>
+                            <constraint firstItem="wti-JS-rfs" firstAttribute="centerY" secondItem="u9v-UJ-I3Q" secondAttribute="centerY" multiplier="1.8" id="Bqa-jp-T84"/>
                             <constraint firstAttribute="trailing" secondItem="NBS-wK-T7p" secondAttribute="trailing" constant="20" id="Mf4-uN-G5A"/>
-                            <constraint firstItem="Ycu-rB-V5P" firstAttribute="top" secondItem="NBS-wK-T7p" secondAttribute="bottom" constant="237" id="Rxo-He-Jme"/>
                             <constraint firstItem="NBS-wK-T7p" firstAttribute="leading" secondItem="u9v-UJ-I3Q" secondAttribute="leading" constant="20" id="UFD-fn-oNx"/>
-                            <constraint firstItem="NBS-wK-T7p" firstAttribute="top" secondItem="jQ6-Tz-VVo" secondAttribute="bottom" constant="54" id="mt2-cA-jLx"/>
+                            <constraint firstItem="NBS-wK-T7p" firstAttribute="top" secondItem="jQ6-Tz-VVo" secondAttribute="bottom" constant="20" id="mt2-cA-jLx"/>
                             <constraint firstItem="wti-JS-rfs" firstAttribute="centerX" secondItem="u9v-UJ-I3Q" secondAttribute="centerX" id="pke-yI-WxK"/>
+                            <constraint firstItem="wti-JS-rfs" firstAttribute="top" secondItem="NBS-wK-T7p" secondAttribute="bottom" constant="30" id="soG-kS-b46"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="connectedTextView" destination="NBS-wK-T7p" id="esk-YK-3Jy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-7K-uMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

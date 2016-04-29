@@ -10,7 +10,9 @@
 
 @interface EULAViewController : ViewController {
     
-    UITextView *EULATextView; 
+    UITextView *EULATextView;
+    
+    
 }
 
 @end
