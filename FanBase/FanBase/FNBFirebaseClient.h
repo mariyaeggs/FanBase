@@ -13,6 +13,8 @@
 #import "FNBArtist.h"
 #import "FNBSpotifySearch.h"
 #import <SystemConfiguration/SystemConfiguration.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface FNBFirebaseClient : NSObject
 
@@ -25,6 +27,7 @@
 + (void) checkUntilUserisAuthenticatedWithCompletionBlock:(void  (^)(BOOL isAuthenticatedUser))block;
 
 #pragma mark - User Methods
++ (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock;
 + (void) createANewUserInDatabaseWithEmail:(NSString *)email Password:(NSString *)password;
 + (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL completedSettingUsersProperties))completionBlockOfLoggedInUser;
 + (void) changeUserNameOfUser: (FNBUser *)user toName:(NSString *)inputtedUserName withCompletionBlock: (void (^) (BOOL completedChangingUserName))completionBlockOfChangeUserName;

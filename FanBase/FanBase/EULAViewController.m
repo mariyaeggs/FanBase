@@ -29,5 +29,9 @@
     
     [super viewDidLoad];
 }
+- (IBAction)agreeTapped:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserAgreedToEULA" object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
