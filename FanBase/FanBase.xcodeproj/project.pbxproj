@@ -28,6 +28,7 @@
 		A190B9F01CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9EF1CC581C200D4CA36 /* FNBSeeAllNearbyEventsTableViewController.m */; };
 		A190B9F61CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */; };
 		A190B9F91CC6ABB300D4CA36 /* FNBColorConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A190B9F81CC6ABB300D4CA36 /* FNBColorConstants.m */; };
+		A1BC22D01CD7D5B400C714C2 /* FNBFacebookLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC22CF1CD7D5B400C714C2 /* FNBFacebookLoginViewController.m */; };
 		A1E7A92F1CAC282F00A9B968 /* FNBFirebaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */; };
 		A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9311CAC284700A9B968 /* FNBUser.m */; };
 		A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A9361CAC28A900A9B968 /* FNBLoginViewController.m */; };
@@ -105,6 +106,8 @@
 		A190B9F51CC5848500D4CA36 /* FNBSeeAllNearbyEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBSeeAllNearbyEventsTableViewCell.m; sourceTree = "<group>"; };
 		A190B9F71CC6ABB300D4CA36 /* FNBColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBColorConstants.h; sourceTree = "<group>"; };
 		A190B9F81CC6ABB300D4CA36 /* FNBColorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBColorConstants.m; sourceTree = "<group>"; };
+		A1BC22CE1CD7D5B400C714C2 /* FNBFacebookLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFacebookLoginViewController.h; sourceTree = "<group>"; };
+		A1BC22CF1CD7D5B400C714C2 /* FNBFacebookLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFacebookLoginViewController.m; sourceTree = "<group>"; };
 		A1E7A92D1CAC282F00A9B968 /* FNBFirebaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBFirebaseClient.h; sourceTree = "<group>"; };
 		A1E7A92E1CAC282F00A9B968 /* FNBFirebaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNBFirebaseClient.m; sourceTree = "<group>"; };
 		A1E7A9301CAC284700A9B968 /* FNBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNBUser.h; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				A1E7A9411CAC49FE00A9B968 /* FNBArtist.h */,
 				A1E7A9421CAC49FE00A9B968 /* FNBArtist.m */,
 				A1E7A93F1CAC28D500A9B968 /* Firebase.storyboard */,
+				A1BC22CE1CD7D5B400C714C2 /* FNBFacebookLoginViewController.h */,
+				A1BC22CF1CD7D5B400C714C2 /* FNBFacebookLoginViewController.m */,
 				ED963A4A1CD2908B00EE4857 /* EULAViewController.h */,
 				ED963A4B1CD2908B00EE4857 /* EULAViewController.m */,
 				A1E7A93E1CAC28B300A9B968 /* ViewControllers */,
@@ -587,6 +592,7 @@
 				A1E7A93B1CAC28A900A9B968 /* FNBLoginViewController.m in Sources */,
 				EDF056A31CBE8AA300B457CF /* SideBarTableViewController.swift in Sources */,
 				325FECAB1CB6DC37009F5F27 /* FNBSpotifyTopTracks.m in Sources */,
+				A1BC22D01CD7D5B400C714C2 /* FNBFacebookLoginViewController.m in Sources */,
 				BD3116B91CB5A87D00C47570 /* FNBEventCollectionViewCell.m in Sources */,
 				325FECA91CB6DC37009F5F27 /* FNBArtistTop10TableViewController.m in Sources */,
 				A1E7A9321CAC284700A9B968 /* FNBUser.m in Sources */,

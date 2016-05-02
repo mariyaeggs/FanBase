@@ -25,9 +25,12 @@
 + (void) checkOnceIfUserIsAuthenticatedWithCompletionBlock: (void (^) (BOOL isAuthenticUser))blockOfAuthUserCheck;
 // use when waiting for a user to sign in
 + (void) checkUntilUserisAuthenticatedWithCompletionBlock:(void  (^)(BOOL isAuthenticatedUser))block;
+//+ (void) checkIfNewUserWithFacebookAuthData:(FAuthData *)authData withCompletion: (void (^) (BOOL isNewUser))block;
+//+ (void) addNewUserToDatabaseWithFacebookAuthData: (FAuthData *) authData withCompletion: (void (^) (BOOL completed))block;
++ (void) handleFacebookLoginWithResult:(FBSDKLoginManagerLoginResult *)facebookResult error:(NSError *)facebookError withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock;
 
 #pragma mark - User Methods
-+ (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock;
+//+ (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock;
 + (void) createANewUserInDatabaseWithEmail:(NSString *)email Password:(NSString *)password;
 + (void) setPropertiesOfLoggedInUserToUser: (FNBUser *)user withCompletionBlock: (void (^) (BOOL completedSettingUsersProperties))completionBlockOfLoggedInUser;
 + (void) changeUserNameOfUser: (FNBUser *)user toName:(NSString *)inputtedUserName withCompletionBlock: (void (^) (BOOL completedChangingUserName))completionBlockOfChangeUserName;

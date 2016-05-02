@@ -174,7 +174,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wti-JS-rfs">
-                                <rect key="frame" x="163" y="585.5" width="49" height="30"/>
+                                <rect key="frame" x="163" y="586" width="49" height="30"/>
                                 <state key="normal" title="I Agree"/>
                                 <connections>
                                     <action selector="agreeTapped:" destination="Btp-c0-9gw" eventType="touchUpInside" id="fry-zE-aaw"/>
@@ -420,7 +420,7 @@ FanBase shall not be obligated to indemnify or defend you with respect to any th
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="-45"/>
+            <point key="canvasLocation" x="960" y="-9"/>
         </scene>
         <!--Discover2-->
         <scene sceneID="JiP-52-9XA">
@@ -428,7 +428,7 @@ FanBase shall not be obligated to indemnify or defend you with respect to any th
                 <viewControllerPlaceholder storyboardName="Discover2" id="XYr-oA-eTp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uP7-dh-Bdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="847.5" y="738"/>
+            <point key="canvasLocation" x="447.5" y="438"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NjH-Nw-cZV">
@@ -450,9 +450,78 @@ FanBase shall not be obligated to indemnify or defend you with respect to any th
             </objects>
             <point key="canvasLocation" x="-731.5" y="-985.5"/>
         </scene>
+        <!--Facebook Login View Controller-->
+        <scene sceneID="iUR-8k-ViY">
+            <objects>
+                <viewController storyboardIdentifier="FBLoginViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5eT-yR-V4c" customClass="FNBFacebookLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EvH-iK-olb"/>
+                        <viewControllerLayoutGuide type="bottom" id="jVy-KJ-waG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qwm-gF-vpb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchlogo" translatesAutoresizingMaskIntoConstraints="NO" id="J8A-Gm-PST">
+                                <rect key="frame" x="30" y="30" width="540" height="540"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="J8A-Gm-PST" secondAttribute="height" multiplier="1:1" id="RLI-CQ-sKC"/>
+                                </constraints>
+                            </imageView>
+                            <view alpha="0.97000002861022949" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bF-We-XTA">
+                                <rect key="frame" x="30" y="211" width="540" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zkf-xW-Yvr">
+                                        <rect key="frame" x="8" y="-1" width="132" height="38"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="27"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4MO-WQ-eoZ">
+                                        <rect key="frame" x="209" y="36" width="121" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Continue As Guest">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="XYr-oA-eTp" kind="show" id="NOz-6P-trF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4MO-WQ-eoZ" firstAttribute="centerX" secondItem="5bF-We-XTA" secondAttribute="centerX" id="9ka-uz-IJ6"/>
+                                    <constraint firstItem="Zkf-xW-Yvr" firstAttribute="leading" secondItem="5bF-We-XTA" secondAttribute="leadingMargin" id="hCu-rQ-met"/>
+                                    <constraint firstItem="4MO-WQ-eoZ" firstAttribute="centerY" secondItem="5bF-We-XTA" secondAttribute="centerY" multiplier="0.8" id="jbf-EO-nIv"/>
+                                    <constraint firstItem="Zkf-xW-Yvr" firstAttribute="centerY" secondItem="5bF-We-XTA" secondAttribute="centerY" multiplier="0.3" id="mdZ-eK-v6q"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J8A-Gm-PST" firstAttribute="width" secondItem="qwm-gF-vpb" secondAttribute="width" multiplier="0.9" id="K7W-8L-jul"/>
+                            <constraint firstItem="5bF-We-XTA" firstAttribute="centerY" secondItem="qwm-gF-vpb" secondAttribute="centerY" constant="-29" id="KeX-ay-gtB"/>
+                            <constraint firstItem="5bF-We-XTA" firstAttribute="centerX" secondItem="qwm-gF-vpb" secondAttribute="centerX" id="UUO-bW-1Xb"/>
+                            <constraint firstItem="5bF-We-XTA" firstAttribute="height" secondItem="qwm-gF-vpb" secondAttribute="height" multiplier="0.2" id="YxJ-ff-wGX"/>
+                            <constraint firstItem="5bF-We-XTA" firstAttribute="width" secondItem="qwm-gF-vpb" secondAttribute="width" multiplier="0.9" id="buT-ns-DRB"/>
+                            <constraint firstItem="J8A-Gm-PST" firstAttribute="centerY" secondItem="qwm-gF-vpb" secondAttribute="centerY" id="eMO-dJ-mdg"/>
+                            <constraint firstItem="J8A-Gm-PST" firstAttribute="centerX" secondItem="qwm-gF-vpb" secondAttribute="centerX" id="tJV-Fb-bcn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HOf-ym-t84"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ujE-Y2-8LL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-64" y="125"/>
+        </scene>
     </scenes>
     <resources>
         <image name="launchlogo" width="2291" height="2302"/>
         <image name="menu" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NOz-6P-trF"/>
+    </inferredMetricsTieBreakers>
 </document>

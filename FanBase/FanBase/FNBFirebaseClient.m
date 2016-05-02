@@ -28,41 +28,75 @@
 
 #pragma mark - User Login Methods
 
-+ (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock{
+//+ (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock{
+//    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://fanbaseflatiron.firebaseIO.com"];
+//    FBSDKLoginManager *facebookLogin = [[FBSDKLoginManager alloc] init];
+////    [facebookLogin logInWithReadPermissions:@[@"email"] fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
+//    [facebookLogin logInWithReadPermissions:nil fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
+//        if (facebookError) {
+//            NSLog(@"Facebook login failed. Error: %@", facebookError);
+//        } else if (facebookResult.isCancelled) {
+//            NSLog(@"Facebook login got cancelled.");
+//        } else {
+//            NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+//            [ref authWithOAuthProvider:@"facebook" token:accessToken
+//                   withCompletionBlock:^(NSError *error, FAuthData *authData) {
+//                       if (error) {
+//                           NSLog(@"Login failed. %@", error);
+//                       } else {
+//                           NSLog(@"Logged in! %@", authData.providerData[@"displayName"]);
+//                           // check if user exists in database
+//                           [self checkIfNewUserWithFacebookAuthData:authData withCompletion:^(BOOL isNewUser) {
+//                               if (isNewUser) {
+//                                   [self addNewUserToDatabaseWithFacebookAuthData:authData withCompletion:^(BOOL completed) {
+//                                       if (completed) {
+//                                           completionBlock(YES, YES);
+//                                       }
+//                                   }];
+//                               }
+//                               else {
+//                                   completionBlock(YES, NO);
+//                               }
+//                           }];
+//                       }
+//                   }];
+//        }
+//    }];
+//}
+
++ (void) handleFacebookLoginWithResult:(FBSDKLoginManagerLoginResult *)facebookResult error:(NSError *)facebookError withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock{
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://fanbaseflatiron.firebaseIO.com"];
-    FBSDKLoginManager *facebookLogin = [[FBSDKLoginManager alloc] init];
-//    [facebookLogin logInWithReadPermissions:@[@"email"] fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
-    [facebookLogin logInWithReadPermissions:nil fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
-        if (facebookError) {
-            NSLog(@"Facebook login failed. Error: %@", facebookError);
-        } else if (facebookResult.isCancelled) {
-            NSLog(@"Facebook login got cancelled.");
-        } else {
-            NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
-            [ref authWithOAuthProvider:@"facebook" token:accessToken
-                   withCompletionBlock:^(NSError *error, FAuthData *authData) {
-                       if (error) {
-                           NSLog(@"Login failed. %@", error);
-                       } else {
-                           NSLog(@"Logged in! %@", authData.providerData[@"displayName"]);
-                           // check if user exists in database
-                           [self checkIfNewUserWithFacebookAuthData:authData withCompletion:^(BOOL isNewUser) {
-                               if (isNewUser) {
-                                   [self addNewUserToDatabaseWithFacebookAuthData:authData withCompletion:^(BOOL completed) {
-                                       if (completed) {
-                                           completionBlock(YES, YES);
-                                       }
-                                   }];
-                               }
-                               else {
-                                   completionBlock(YES, NO);
-                               }
-                           }];
-                       }
-                   }];
-        }
-    }];
+    if (facebookError) {
+        NSLog(@"Facebook login failed. Error: %@", facebookError);
+    } else if (facebookResult.isCancelled) {
+        NSLog(@"Facebook login got cancelled.");
+    } else {
+        NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+        [ref authWithOAuthProvider:@"facebook" token:accessToken
+               withCompletionBlock:^(NSError *error, FAuthData *authData) {
+                   if (error) {
+                       NSLog(@"Login failed. %@", error);
+                   } else {
+                       NSLog(@"Logged in! %@", authData.providerData[@"displayName"]);
+                       // check if user exists in database
+                       [self checkIfNewUserWithFacebookAuthData:authData withCompletion:^(BOOL isNewUser) {
+                           if (isNewUser) {
+                               [self addNewUserToDatabaseWithFacebookAuthData:authData withCompletion:^(BOOL completed) {
+                                   if (completed) {
+                                       completionBlock(YES, YES);
+                                   }
+                               }];
+                           }
+                           else {
+                               completionBlock(YES, NO);
+                           }
+                       }];
+                   }
+               }];
+    }
+
 }
+
 
 // for FB login: check if user exists in database
 + (void) checkIfNewUserWithFacebookAuthData:(FAuthData *)authData withCompletion: (void (^) (BOOL isNewUser))block{

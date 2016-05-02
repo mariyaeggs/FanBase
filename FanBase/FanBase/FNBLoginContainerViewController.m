@@ -15,7 +15,7 @@
 #import "FanBase-Swift.h"
 #import "FNBDiscoverPageViewController.h"
 #import "FNBSeeAllNearbyEventsTableViewController.h"
-
+#import "EULAViewController.h"
 
 @interface FNBLoginContainerViewController () <SideBarDelegate>
 
@@ -33,8 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
+        
     BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
 
     //Initializes hamburger bar menu button
@@ -73,7 +72,7 @@
                 [self showUserMainPageVC];
             }
             else {
-                [self showLoginVC];
+                [self showFacebookLoginPageVC];
             }
         }];
         
@@ -84,6 +83,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleHamburgerButtonNotification:) name:@"HamburgerButtonNotification" object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAgreedToEULA:) name:@"UserAgreedToEULA" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNewUserLoggedIn:) name:@"NewUserNotification" object:nil];
 
     }
     else {
@@ -138,28 +139,32 @@
 
 -(void)handleUserLoggedOutNotification:(NSNotification *)notification
 {
-    [FNBFirebaseClient logoutUser]; 
-    [self showLoginVC];
+    [FNBFirebaseClient logoutUser];
+    [[FBSDKLoginManager new] logOut];
+    [self showFacebookLoginPageVC];
 }
 
+- (void)handleNewUserLoggedIn:(NSNotificationCenter *)notification {
+    [self showEULAVC];
+}
 - (void)handleAgreedToEULA:(NSNotificationCenter *)notification {
     [self showUserMainPageVC];
 }
-- (void) showLoginVC {
-    // for FB login
-    [FNBFirebaseClient showFacebookLoginScreenOnVC:self withCompletion:^(BOOL finishedFBLogin, BOOL isANewUser) {
-        if (finishedFBLogin) {
-            if (isANewUser) {
-                // show EULA VC
-                UIViewController *EULAVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"EULAVC"] ;
-                [self presentViewController:EULAVC animated:YES completion:nil];
-            }
-            else {
-                [self showUserMainPageVC];
-            }
-            
-        }
-    }];
+//- (void) showLoginVC {
+//    // for FB login
+//    [FNBFirebaseClient showFacebookLoginScreenOnVC:self withCompletion:^(BOOL finishedFBLogin, BOOL isANewUser) {
+//        if (finishedFBLogin) {
+//            if (isANewUser) {
+//                // show EULA VC
+//                UIViewController *EULAVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"EULAVC"] ;
+//                [self presentViewController:EULAVC animated:YES completion:nil];
+//            }
+//            else {
+//                [self showUserMainPageVC];
+//            }
+//            
+//        }
+//    }];
 
 //    FNBLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewControllerID"] ;
 //    //    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
@@ -168,7 +173,7 @@
 //    if (self.sideBarAllocatted) {
 //        self.sideBar.displayGestureRecognizer.enabled = NO;
 //    }
-}
+//}
 
 
 - (void)showUserMainPageVC {
@@ -180,6 +185,21 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
+- (void)showFacebookLoginPageVC {
+    UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"Firebase" bundle:nil];
+    FNBUserProfilePageTableViewController *FBLoginVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"FBLoginViewControllerID"];
+    [self setEmbeddedViewController:FBLoginVC];
+    [self.navigationController.view setNeedsLayout];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
+
+- (void) showEULAVC {
+    UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"Firebase" bundle:nil];
+     EULAViewController *EULAVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"EULAVC"];
+    [self setEmbeddedViewController:EULAVC];
+    [self.navigationController.view setNeedsLayout];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
 
 - (void)showDiscoverPageVC {
     FNBDiscoverPageViewController *discoverPageVC = [[UIStoryboard storyboardWithName:@"Discover2" bundle:nil]instantiateViewControllerWithIdentifier:@"DiscoverPageID"];
