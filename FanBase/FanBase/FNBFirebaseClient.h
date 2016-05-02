@@ -26,8 +26,8 @@
 // use when waiting for a user to sign in
 + (void) checkUntilUserisAuthenticatedWithCompletionBlock:(void  (^)(BOOL isAuthenticatedUser))block;
 //+ (void) checkIfNewUserWithFacebookAuthData:(FAuthData *)authData withCompletion: (void (^) (BOOL isNewUser))block;
-//+ (void) addNewUserToDatabaseWithFacebookAuthData: (FAuthData *) authData withCompletion: (void (^) (BOOL completed))block;
-+ (void) handleFacebookLoginWithResult:(FBSDKLoginManagerLoginResult *)facebookResult error:(NSError *)facebookError withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock;
++ (void) addNewUserToDatabaseWithFacebookAuthData: (FAuthData *) authData withCompletion: (void (^) (BOOL completed))block;
++ (void) handleFacebookLoginWithResult:(FBSDKLoginManagerLoginResult *)facebookResult error:(NSError *)facebookError withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser, id authData))completionBlock;
 
 #pragma mark - User Methods
 //+ (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock;

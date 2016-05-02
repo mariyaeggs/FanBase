@@ -44,10 +44,10 @@
 
 -(void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:
 (FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
-    [FNBFirebaseClient handleFacebookLoginWithResult:result error:error withCompletion:^(BOOL finishedFBLogin, BOOL isANewUser) {
+    [FNBFirebaseClient handleFacebookLoginWithResult:result error:error withCompletion:^(BOOL finishedFBLogin, BOOL isANewUser, id authData) {
         if (finishedFBLogin) {
             if (isANewUser) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"NewUserNotification" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NewUserNotification" object:authData];
             }
             else {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];

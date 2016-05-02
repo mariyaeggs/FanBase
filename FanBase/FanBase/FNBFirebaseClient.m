@@ -64,7 +64,7 @@
 //    }];
 //}
 
-+ (void) handleFacebookLoginWithResult:(FBSDKLoginManagerLoginResult *)facebookResult error:(NSError *)facebookError withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock{
++ (void) handleFacebookLoginWithResult:(FBSDKLoginManagerLoginResult *)facebookResult error:(NSError *)facebookError withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser, id authData))completionBlock{
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://fanbaseflatiron.firebaseIO.com"];
     if (facebookError) {
         NSLog(@"Facebook login failed. Error: %@", facebookError);
@@ -81,14 +81,10 @@
                        // check if user exists in database
                        [self checkIfNewUserWithFacebookAuthData:authData withCompletion:^(BOOL isNewUser) {
                            if (isNewUser) {
-                               [self addNewUserToDatabaseWithFacebookAuthData:authData withCompletion:^(BOOL completed) {
-                                   if (completed) {
-                                       completionBlock(YES, YES);
-                                   }
-                               }];
+                               completionBlock(YES, YES, authData);
                            }
                            else {
-                               completionBlock(YES, NO);
+                               completionBlock(YES, NO, authData);
                            }
                        }];
                    }

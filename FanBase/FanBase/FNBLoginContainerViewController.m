@@ -40,27 +40,30 @@
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
     self.navigationItem.rightBarButtonItem = hamburgerButton;
     
-    self.sideBarAllocatted = NO;
+//    self.sideBarAllocatted = NO;
 
-    // problem: this method doesn't get called again after user logs in once
-    [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
-        if (isAuthenticatedUser) {
-            // Initialize side bar
-            self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Logout"]];
-            self.sideBar.delegate = self;
-            self.sideBarAllocatted = YES;
-            self.sideBar.displayGestureRecognizer.enabled = YES;
-        }
-        else {
-            if (self.sideBarAllocatted) {
-                self.sideBar.displayGestureRecognizer.enabled = NO;
-            }
-            
-            
+    // Initialize side bar
+    self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Logout"]];
+    self.sideBar.delegate = self;
 
-        }
-             
-    }];
+//    [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
+//        if (isAuthenticatedUser) {
+//            // Initialize side bar
+//            self.sideBar = [[SideBar alloc] initWithSourceView:self.view sideBarItems:@[@"Profile", @"Discover", @"Logout"]];
+//            self.sideBar.delegate = self;
+//            self.sideBarAllocatted = YES;
+//            self.sideBar.displayGestureRecognizer.enabled = YES;
+//        }
+//        else {
+//            if (self.sideBarAllocatted) {
+//                self.sideBar.displayGestureRecognizer.enabled = NO;
+//            }
+//            
+//            
+//
+//        }
+//             
+//    }];
 
 
     
@@ -134,21 +137,40 @@
 
 -(void)handleUserLoggedInNotification:(NSNotification *)notification
 {
+    [self setMenuEnableBasedOnUserLogin];
     [self showUserMainPageVC];
 }
 
 -(void)handleUserLoggedOutNotification:(NSNotification *)notification
 {
+    // if menu open, close it
+    if (self.sideBar.isSideBarOpen) {
+        [self.sideBar showSideBarMenu:NO];
+    }
     [FNBFirebaseClient logoutUser];
     [[FBSDKLoginManager new] logOut];
+
     [self showFacebookLoginPageVC];
 }
 
-- (void)handleNewUserLoggedIn:(NSNotificationCenter *)notification {
-    [self showEULAVC];
+- (void)handleNewUserLoggedIn:(NSNotification *)notification {
+    // disable the hamburger button and the side menu
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.sideBar.displayGestureRecognizer.enabled = NO;
+
+    [self showEULAVCWithAuthData:notification.object];
 }
-- (void)handleAgreedToEULA:(NSNotificationCenter *)notification {
-    [self showUserMainPageVC];
+- (void)handleAgreedToEULA:(NSNotification *)notification {
+    // enable the hamburger button and the side menu
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.sideBar.displayGestureRecognizer.enabled = YES;
+
+    FAuthData *authdata = notification.object;
+    // add user to database
+    [FNBFirebaseClient addNewUserToDatabaseWithFacebookAuthData:authdata withCompletion:^(BOOL completed) {
+        [self showUserMainPageVC];
+    }];
+    
 }
 //- (void) showLoginVC {
 //    // for FB login
@@ -186,6 +208,8 @@
 }
 
 - (void)showFacebookLoginPageVC {
+    [self setMenuEnableBasedOnUserLogin];
+
     UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"Firebase" bundle:nil];
     FNBUserProfilePageTableViewController *FBLoginVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"FBLoginViewControllerID"];
     [self setEmbeddedViewController:FBLoginVC];
@@ -193,9 +217,10 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
-- (void) showEULAVC {
+- (void) showEULAVCWithAuthData:(FBSDKLoginManagerLoginResult *) authdata {
     UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"Firebase" bundle:nil];
      EULAViewController *EULAVC = [nextStoryboard instantiateViewControllerWithIdentifier:@"EULAVC"];
+    EULAVC.authdata = authdata;
     [self setEmbeddedViewController:EULAVC];
     [self.navigationController.view setNeedsLayout];
     [self.navigationController popToRootViewControllerAnimated:NO];
@@ -222,6 +247,19 @@
 - (void) showInternetBadVC {
     FNBNoInternetVCViewController *nextVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"NoInternet"];
     [self setEmbeddedViewController:nextVC];
+}
+
+- (void) setMenuEnableBasedOnUserLogin {
+    [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticatedUser) {
+        if (isAuthenticatedUser) {
+            self.sideBar.displayGestureRecognizer.enabled = YES;
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+        }
+        else {
+            self.sideBar.displayGestureRecognizer.enabled = NO;
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+        }
+    }];
 }
 
 #pragma mark Child VC from Tim

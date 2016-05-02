@@ -7,12 +7,10 @@
 //
 
 #import "ViewController.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-@interface EULAViewController : ViewController {
-    
-    UITextView *EULATextView;
-    
-    
-}
+@interface EULAViewController : ViewController
+@property (strong, nonatomic) FBSDKLoginManagerLoginResult *authdata;
 
 @end
