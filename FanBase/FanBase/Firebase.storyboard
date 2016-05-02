@@ -184,7 +184,7 @@
                                     <constraint firstAttribute="height" constant="356" id="NLd-pN-MJf"/>
                                     <constraint firstAttribute="width" constant="335" id="RA6-a3-w2T"/>
                                 </constraints>
-                                <mutableString key="text">FanBase App End User License Agreement
+                                <string key="text">FanBase App End User License Agreement
 
 This End User License Agreement (“Agreement”) is between you and FanBase and governs use of this app made available through the Apple App Store. By installing the FanBase App, you agree to be bound by this Agreement and understand that there is no tolerance for objectionable content. If you do not agree with the terms and conditions of this Agreement, you are not entitled to use the FanBase App. 
 
@@ -216,7 +216,7 @@ FanBase, not Apple, is responsible for addressing any claims by you relating to 
 
 9. Third Party Intellectual Property Claims
 FanBase shall not be obligated to indemnify or defend you with respect to any third party claim arising out or relating to the FanBase App. To the extent FanBase is required to provide indemnification by applicable law, FanBase, not Apple, shall be solely responsible for the investigation, defense, settlement and discharge of any claim that the FanBase App or your use of it infringes any third party intellectual property right.
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
