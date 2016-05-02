@@ -189,8 +189,8 @@
     }];
 }
 
-// Helper method for setPropertiesOfLoggedInUserToUser.
-// This method sets the properties of the FNBUser once.
+ //Helper method for setPropertiesOfLoggedInUserToUser.
+ //This method sets the properties of the FNBUser once.
 + (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL finishedSettingUsersProperties))completionBlock {
     //    NSLog(@"this is the uid: %@", uid);
     Firebase *usersRef = [self getUserFirebaseRef];
@@ -198,10 +198,10 @@
     
     // This block gets called once for this users data
     [newUserRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        //        NSLog(@"Snapshot of Users values: %@", snapshot.value);
+                NSLog(@"Snapshot of Users values: %@", snapshot.value);
         user.email = snapshot.value[@"email"];
         user.userID = snapshot.value[@"UID"];
-        //        user.password = snapshot.value[@"password"];
+        //user.password = snapshot.value[@"password"];
         user.artistsDictionary = snapshot.value[@"artistsDictionary"];
         user.profileImageURL = snapshot.value[@"profileImageURL"];
         user.userName = snapshot.value[@"userName"];
