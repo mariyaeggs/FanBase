@@ -8,6 +8,12 @@
 
 #import "EULAViewController.h"
 
+@interface EULAViewController()
+@property (weak, nonatomic) IBOutlet UITextView *connectedTextView;
+
+
+@end
+
 @implementation EULAViewController
 
 
@@ -15,14 +21,17 @@
     
     [super viewDidAppear:animated];
     
-    // Edit any UITextView Content here programmatically and set constraints if necessary
+    [self.connectedTextView flashScrollIndicators];
 
 }
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+}
+- (IBAction)agreeTapped:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserAgreedToEULA" object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

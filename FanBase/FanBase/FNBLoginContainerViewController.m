@@ -16,6 +16,7 @@
 #import "FNBDiscoverPageViewController.h"
 #import "FNBSeeAllNearbyEventsTableViewController.h"
 
+
 @interface FNBLoginContainerViewController () <SideBarDelegate>
 
 //Outlet for main containerView in storyboard
@@ -35,8 +36,6 @@
 
     
     BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
-    //BOOL isNetworkAvailable = [FNBFirebaseClient isNetworkAvailable];
-
 
     //Initializes hamburger bar menu button
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStyleDone target:self action:@selector(hamburgerButtonTapped:)];
@@ -57,6 +56,9 @@
             if (self.sideBarAllocatted) {
                 self.sideBar.displayGestureRecognizer.enabled = NO;
             }
+            
+            
+
         }
              
     }];
@@ -80,6 +82,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserLoggedOutNotification:) name:@"UserDidLogOutNotification" object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleHamburgerButtonNotification:) name:@"HamburgerButtonNotification" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAgreedToEULA:) name:@"UserAgreedToEULA" object:nil];
+
     }
     else {
         [self showInternetBadVC];
@@ -137,15 +142,32 @@
     [self showLoginVC];
 }
 
+- (void)handleAgreedToEULA:(NSNotificationCenter *)notification {
+    [self showUserMainPageVC];
+}
 - (void) showLoginVC {
-    NSLog(@"starting to show the login VC");
-    FNBLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewControllerID"] ;
-    //    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
-    [self setEmbeddedViewController:loginVC];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    if (self.sideBarAllocatted) {
-        self.sideBar.displayGestureRecognizer.enabled = NO;
-    }
+    // for FB login
+    [FNBFirebaseClient showFacebookLoginScreenOnVC:self withCompletion:^(BOOL finishedFBLogin, BOOL isANewUser) {
+        if (finishedFBLogin) {
+            if (isANewUser) {
+                // show EULA VC
+                UIViewController *EULAVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"EULAVC"] ;
+                [self presentViewController:EULAVC animated:YES completion:nil];
+            }
+            else {
+                [self showUserMainPageVC];
+            }
+            
+        }
+    }];
+
+//    FNBLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Firebase" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewControllerID"] ;
+//    //    FNBLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginViewControllerID"];
+//    [self setEmbeddedViewController:loginVC];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+//    if (self.sideBarAllocatted) {
+//        self.sideBar.displayGestureRecognizer.enabled = NO;
+//    }
 }
 
 

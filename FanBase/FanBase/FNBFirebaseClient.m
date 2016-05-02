@@ -28,6 +28,70 @@
 
 #pragma mark - User Login Methods
 
++ (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock{
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://fanbaseflatiron.firebaseIO.com"];
+    FBSDKLoginManager *facebookLogin = [[FBSDKLoginManager alloc] init];
+    [facebookLogin logInWithReadPermissions:@[@"email"] fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
+        if (facebookError) {
+            NSLog(@"Facebook login failed. Error: %@", facebookError);
+        } else if (facebookResult.isCancelled) {
+            NSLog(@"Facebook login got cancelled.");
+        } else {
+            NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+            [ref authWithOAuthProvider:@"facebook" token:accessToken
+                   withCompletionBlock:^(NSError *error, FAuthData *authData) {
+                       if (error) {
+                           NSLog(@"Login failed. %@", error);
+                       } else {
+                           NSLog(@"Logged in! %@", authData.providerData[@"displayName"]);
+                           // check if user exists in database
+                           [self checkIfNewUserWithFacebookAuthData:authData withCompletion:^(BOOL isNewUser) {
+                               if (isNewUser) {
+                                   [self addNewUserToDatabaseWithFacebookAuthData:authData withCompletion:^(BOOL completed) {
+                                       if (completed) {
+                                           completionBlock(YES, YES);
+                                       }
+                                   }];
+                               }
+                               else {
+                                   completionBlock(YES, NO);
+                               }
+                           }];
+                       }
+                   }];
+        }
+    }];
+}
+
+// for FB login: check if user exists in database
++ (void) checkIfNewUserWithFacebookAuthData:(FAuthData *)authData withCompletion: (void (^) (BOOL isNewUser))block{
+    Firebase *usersRef = [self getUserFirebaseRef];
+    Firebase *specificUserRef = [usersRef childByAppendingPath:authData.uid];
+    [specificUserRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if ([snapshot.value isKindOfClass:[NSMutableDictionary class]]) {
+            NSLog(@"This user already exists in our databse");
+            block(FALSE);
+        }
+        else {
+            NSLog(@"this is a new user");
+            block(TRUE);
+        }
+    }];
+}
+
+// for FB login: create user in database using FB info
+// helper method for creating a new user
++ (void) addNewUserToDatabaseWithFacebookAuthData: (FAuthData *) authData withCompletion: (void (^) (BOOL completed))block{
+    Firebase *usersRef = [self getUserFirebaseRef];
+    Firebase *newUserRef = [usersRef childByAppendingPath:authData.uid];
+    
+    // this is what the initial user gets as values
+    NSDictionary *initialUserValues = @{@"UID" : authData.uid, @"email": authData.providerData[@"email"] , @"userName" : authData.providerData[@"displayName"], @"profileImageURL" : authData.providerData[@"profileImageURL"], @"artistsDictionary" : [NSMutableDictionary new]};
+    [newUserRef setValue:initialUserValues withCompletionBlock:^(NSError *error, Firebase *ref) {
+        block(YES);
+    }];
+}
+
 + (void) loginWithEmail:(NSString *)email Password:(NSString *)password {
     Firebase *ref = [self getBaseFirebaseRef];
     [ref authUser:email password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
@@ -78,7 +142,6 @@
 
 
 #pragma mark - User Methods
-
 
 // helper method for creating a new user
 // this method creates new user, and passes email, password, UID, and a completion bool to the block
