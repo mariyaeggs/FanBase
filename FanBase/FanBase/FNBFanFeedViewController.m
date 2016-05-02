@@ -26,6 +26,8 @@
 @property (strong, nonatomic) Firebase *artistSpecificRef;
 @property (strong, nonatomic) Firebase *userIsTypingRef;
 @property (strong, nonatomic) Firebase *usersRef;
+@property (strong, nonatomic) Firebase *reportUserRef;
+@property (strong, nonatomic) Firebase *reportContentRef;
 
 @property (assign, nonatomic) BOOL localTyping;
 @property (assign, nonatomic) BOOL isTyping;
@@ -86,6 +88,13 @@
     self.usersRef = [[Firebase alloc] init];
     self.usersRef = [self.rootRef childByAppendingPath:@"users"];
     
+    self.reportUserRef = [[Firebase alloc] init];
+    self.reportUserRef = [self.rootRef childByAppendingPath:@"reported users"];
+    
+    self.reportContentRef = [[Firebase alloc] init];
+    self.reportContentRef = [self.rootRef childByAppendingPath:@"reported content"];
+    
+    
     self.title = [NSString stringWithFormat:@"FanFeed // %@", self.artist.name];
     
     [self setupBubbles];
@@ -133,39 +142,6 @@
     JSQMessage *message = self.messages[indexPath.item];
     
     JSQMessagesAvatarImage *image = [JSQMessagesAvatarImageFactory avatarImageWithUserInitials:[[message.senderDisplayName substringToIndex:1] uppercaseString] backgroundColor:[UIColor lightGrayColor] textColor:[UIColor blackColor] font:[UIFont fontWithName:@"Helvetica" size:8.0] diameter:10];
-    
-//    if ([message.senderId isEqualToString:self.senderId]) {
-//        UIImage *regImage = [JSQMessagesAvatarImageFactory circularAvatarImage:self.senderAvatar withDiameter:10];
-//        JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:regImage];
-//        return image;
-//    }
-////    NSDictionary *userInfo = [NSDictionary new];
-//    Firebase *userRef = [self.usersRef childByAppendingPath:self.user.userID];
-////    FQuery *query = [self.usersRef queryEqualToValue:self.user.userID];
-//    
-//    [userRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        NSLog(@"SnapShot: %@", snapshot);
-//        
-//        NSLog(@"Snapshot value: %@",snapshot.value);
-//        NSDictionary *snap = snapshot.value;
-//        NSLog(@"NSDictionary snap: %@",snap);
-//        
-//        self.otherUser.profileImageURL = [snap valueForKey:];
-//        
-//        NSLog(@"%@", self.otherUser.profileImageURL);
-//    
-//    }];
-//    
-//    
-//    UIImage *regImageNonCircle = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.otherUser.profileImageURL]]];
-//    NSLog(@"UIImage: %@", regImageNonCircle);
-//    if (regImageNonCircle != nil) {
-//        UIImage *regImage = [JSQMessagesAvatarImageFactory circularAvatarImage:regImageNonCircle withDiameter:10];
-//        JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarWithImage:regImage];
-//        return image;
-//    }
-//    
-////    JSQMessagesAvatarImage *image = [JSQMessagesAvatarImage avatarImageWithPlaceholder:[UIImage imageNamed:@"anonymous-avatar"]];
 
     return image;
 }
@@ -276,6 +252,81 @@
     self.isTyping = NO;
     
     [self finishSendingMessage];
+}
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Tapped avatar!");
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"REPORT USER" message:@"Would you like to report user?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *report = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Report action here");
+        
+        Firebase *reportRef = self.reportUserRef.childByAutoId;
+        JSQMessage *currentMess = self.messages[indexPath.item];
+        NSDictionary *reportUserItem = @{
+                                         @"reporterID":self.user.userID,
+                                         @"reporterName":self.user.userName,
+                                         @"channel":self.artist.name,
+                                         @"reportedID":currentMess.senderId,
+                                         @"reportedUserName":currentMess.senderDisplayName
+                                         };
+        
+        [reportRef setValue:reportUserItem];
+        
+        UIAlertController *followUpAlert = [UIAlertController alertControllerWithTitle:@"Thanks!" message:@"We have recorded your report, and will follow up with this in the next 24 hours." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [followUpAlert addAction:ok];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self presentViewController:followUpAlert animated:nil completion:nil];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Nope!" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"It's alright");
+    }];
+    
+    [alertController addAction:report];
+    [alertController addAction:cancel];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Tapped message bubble!");
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Report content" message:@"Would you like to report this as inappropriate content?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *report = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Report action here");
+        
+        Firebase *reportRef = self.reportContentRef.childByAutoId;
+        JSQMessage *currentMess = self.messages[indexPath.item];
+        NSDictionary *reportContentItem = @{
+                                         @"reporterID":self.user.userID,
+                                         @"reporterName":self.user.userName,
+                                         @"channel":self.artist.name,
+                                         @"reported content":currentMess.text,
+                                         @"reportedID":currentMess.senderId,
+                                         @"reportedUserName":currentMess.senderDisplayName
+                                         };
+        
+        [reportRef setValue:reportContentItem];
+        
+        UIAlertController *followUpAlert = [UIAlertController alertControllerWithTitle:@"Thanks!" message:@"We'll follow up with this in the next 24 hours." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [followUpAlert addAction:ok];
+        [self presentViewController:followUpAlert animated:nil completion:nil];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Nope!" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"It's alright");
+    }];
+    
+    [alertController addAction:report];
+    [alertController addAction:cancel];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 # pragma mark - Observation methods
