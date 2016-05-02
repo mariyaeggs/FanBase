@@ -163,34 +163,34 @@
 
 
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-
-    self.isUserLoggedIn = NO;
-    
-    // check if user is logged in or guest
-    [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
-        if (isAuthenticUser) {
-            self.isUserLoggedIn = YES;
-            // set user info, and then get a detailed array of the artists the user is subscribed to
-            
-            self.currentUser = [[FNBUser alloc] init];
-            [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
-                if (completedSettingUsersProperties) {
-                    [self getConcerts];
-                    [self addListenersForLoggedInUser];
-                    [self updateUserPicNameAndNumberOfArtists];
-//                    [self.tableView reloadData];
-                }
-            }];
-            
-        }
-        
-        else {
-            NSLog(@"This is a guest in the User Profile Page");
-        }
-    }];
-}
+//-(void)viewDidAppear:(BOOL)animated{
+//    [super viewDidAppear:animated];
+//
+//    self.isUserLoggedIn = NO;
+//    
+//    // check if user is logged in or guest
+//    [FNBFirebaseClient checkOnceIfUserIsAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
+//        if (isAuthenticUser) {
+//            self.isUserLoggedIn = YES;
+//            // set user info, and then get a detailed array of the artists the user is subscribed to
+//            
+//            self.currentUser = [[FNBUser alloc] init];
+//            [FNBFirebaseClient setPropertiesOfLoggedInUserToUser:self.currentUser withCompletionBlock:^(BOOL completedSettingUsersProperties) {
+//                if (completedSettingUsersProperties) {
+//                    [self getConcerts];
+//                    [self addListenersForLoggedInUser];
+//                    [self updateUserPicNameAndNumberOfArtists];
+////                    [self.tableView reloadData];
+//                }
+//            }];
+//            
+//        }
+//        
+//        else {
+//            NSLog(@"This is a guest in the User Profile Page");
+//        }
+//    }];
+//}
 
 // sets height of each section header
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
