@@ -590,16 +590,8 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N6W-7C-emY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="TvV-QY-dRS" userLabel="UserName Double Tap">
-                    <connections>
-                        <action selector="userNameDoubleTapped:" destination="i3H-E2-t3h" id="rnw-c3-RCG"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="Wbo-Ws-yMr" userLabel="ProfilePic Double Tap">
-                    <connections>
-                        <action selector="profilePictureDoubleTapped:" destination="i3H-E2-t3h" id="gJb-c8-Dmk"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="TvV-QY-dRS" userLabel="UserName Double Tap"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Wbo-Ws-yMr" userLabel="ProfilePic Double Tap"/>
             </objects>
             <point key="canvasLocation" x="1417" y="-46"/>
         </scene>

@@ -276,30 +276,30 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogOutNotification" object:nil];
 }
 
-- (IBAction)userNameDoubleTapped:(id)sender {
-    // pull up an alert to change userName
-    UIAlertController *changeNameAlert = [UIAlertController alertControllerWithTitle:@"Change Username" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [changeNameAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = NSLocalizedString(@"Username Placeholder", @"Username");
-        [textField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    }];
-    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *username = changeNameAlert.textFields.firstObject;
-//        NSLog(@"this is the username: %@", username.text);
-        // change the userName in the Database
-        [FNBFirebaseClient changeUserNameOfUser:self.currentUser toName:username.text withCompletionBlock:^(BOOL completedChangingUserName) {
-            if (completedChangingUserName) {
-                [self updateUI];
-            }
-        }];
-    }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    [changeNameAlert addAction:submitAction];
-    [changeNameAlert addAction:cancel];
-    submitAction.enabled = NO;
-    [self presentViewController:changeNameAlert animated:YES completion:nil];
-    
-}
+//- (IBAction)userNameDoubleTapped:(id)sender {
+//    // pull up an alert to change userName
+//    UIAlertController *changeNameAlert = [UIAlertController alertControllerWithTitle:@"Change Username" message:nil preferredStyle:UIAlertControllerStyleAlert];
+//    [changeNameAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//        textField.placeholder = NSLocalizedString(@"Username Placeholder", @"Username");
+//        [textField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+//    }];
+//    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        UITextField *username = changeNameAlert.textFields.firstObject;
+////        NSLog(@"this is the username: %@", username.text);
+//        // change the userName in the Database
+//        [FNBFirebaseClient changeUserNameOfUser:self.currentUser toName:username.text withCompletionBlock:^(BOOL completedChangingUserName) {
+//            if (completedChangingUserName) {
+//                [self updateUI];
+//            }
+//        }];
+//    }];
+//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+//    [changeNameAlert addAction:submitAction];
+//    [changeNameAlert addAction:cancel];
+//    submitAction.enabled = NO;
+//    [self presentViewController:changeNameAlert animated:YES completion:nil];
+//    
+//}
 // makes Submit button disabled unless there is text in the textField
 - (void) alertTextFieldDidChange:(UITextField *)sender {
     UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
@@ -309,29 +309,29 @@
         submitAction.enabled = userName.text.length > 0;
     }
 }
-- (IBAction)profilePictureDoubleTapped:(id)sender {
-    // pull up an alert to change profilePic
-    UIAlertController *changeProfilePictureAlert = [UIAlertController alertControllerWithTitle:@"Change Profile Picture" message:@"Enter URL:" preferredStyle:UIAlertControllerStyleAlert];
-    [changeProfilePictureAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = NSLocalizedString(@"Image URL Placeholder", @"Image URL (make sure its https");
-        [textField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    }];
-    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *imageURLTextField = changeProfilePictureAlert.textFields.firstObject;
-
-        // change the profilePicURL in the Database
-        [FNBFirebaseClient changeProfilePictureURLOfUser:self.currentUser toURL:imageURLTextField.text withCompletionBlock:^(BOOL completedChangingProfilePicURL) {
-            if (completedChangingProfilePicURL) {
-                [self updateUI];
-            }
-        }];
-    }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    [changeProfilePictureAlert addAction:submitAction];
-    [changeProfilePictureAlert addAction:cancel];
-    submitAction.enabled = NO;
-    [self presentViewController:changeProfilePictureAlert animated:YES completion:nil];
-}
+//- (IBAction)profilePictureDoubleTapped:(id)sender {
+//    // pull up an alert to change profilePic
+//    UIAlertController *changeProfilePictureAlert = [UIAlertController alertControllerWithTitle:@"Change Profile Picture" message:@"Enter URL:" preferredStyle:UIAlertControllerStyleAlert];
+//    [changeProfilePictureAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//        textField.placeholder = NSLocalizedString(@"Image URL Placeholder", @"Image URL (make sure its https");
+//        [textField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+//    }];
+//    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        UITextField *imageURLTextField = changeProfilePictureAlert.textFields.firstObject;
+//
+//        // change the profilePicURL in the Database
+//        [FNBFirebaseClient changeProfilePictureURLOfUser:self.currentUser toURL:imageURLTextField.text withCompletionBlock:^(BOOL completedChangingProfilePicURL) {
+//            if (completedChangingProfilePicURL) {
+//                [self updateUI];
+//            }
+//        }];
+//    }];
+//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+//    [changeProfilePictureAlert addAction:submitAction];
+//    [changeProfilePictureAlert addAction:cancel];
+//    submitAction.enabled = NO;
+//    [self presentViewController:changeProfilePictureAlert animated:YES completion:nil];
+//}
 
 -(void) updateUserPicNameAndNumberOfArtists {
     self.userNameLabel.text = self.currentUser.userName;
