@@ -31,7 +31,8 @@
 + (void) showFacebookLoginScreenOnVC:(UIViewController *)VC withCompletion:  (void (^) (BOOL finishedFBLogin, BOOL isANewUser))completionBlock{
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://fanbaseflatiron.firebaseIO.com"];
     FBSDKLoginManager *facebookLogin = [[FBSDKLoginManager alloc] init];
-    [facebookLogin logInWithReadPermissions:@[@"email"] fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
+//    [facebookLogin logInWithReadPermissions:@[@"email"] fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
+    [facebookLogin logInWithReadPermissions:nil fromViewController:VC handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
         if (facebookError) {
             NSLog(@"Facebook login failed. Error: %@", facebookError);
         } else if (facebookResult.isCancelled) {
@@ -86,7 +87,8 @@
     Firebase *newUserRef = [usersRef childByAppendingPath:authData.uid];
     
     // this is what the initial user gets as values
-    NSDictionary *initialUserValues = @{@"UID" : authData.uid, @"email": authData.providerData[@"email"] , @"userName" : authData.providerData[@"displayName"], @"profileImageURL" : authData.providerData[@"profileImageURL"], @"artistsDictionary" : [NSMutableDictionary new]};
+//    NSDictionary *initialUserValues = @{@"UID" : authData.uid, @"email": authData.providerData[@"email"] , @"userName" : authData.providerData[@"displayName"], @"profileImageURL" : authData.providerData[@"profileImageURL"], @"artistsDictionary" : [NSMutableDictionary new]};
+    NSDictionary *initialUserValues = @{@"UID" : authData.uid, @"userName" : authData.providerData[@"displayName"], @"profileImageURL" : authData.providerData[@"profileImageURL"], @"artistsDictionary" : [NSMutableDictionary new]};
     [newUserRef setValue:initialUserValues withCompletionBlock:^(NSError *error, Firebase *ref) {
         block(YES);
     }];
@@ -189,8 +191,8 @@
     }];
 }
 
- //Helper method for setPropertiesOfLoggedInUserToUser.
- //This method sets the properties of the FNBUser once.
+// Helper method for setPropertiesOfLoggedInUserToUser.
+// This method sets the properties of the FNBUser once.
 + (void) setPropertiesOfUser: (FNBUser *)user WithUID:(NSString *)uid withCompletionBlock: (void (^) (BOOL finishedSettingUsersProperties))completionBlock {
     //    NSLog(@"this is the uid: %@", uid);
     Firebase *usersRef = [self getUserFirebaseRef];
@@ -198,10 +200,9 @@
     
     // This block gets called once for this users data
     [newUserRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                NSLog(@"Snapshot of Users values: %@", snapshot.value);
-        user.email = snapshot.value[@"email"];
+//        user.email = snapshot.value[@"email"];
         user.userID = snapshot.value[@"UID"];
-        //user.password = snapshot.value[@"password"];
+        //        user.password = snapshot.value[@"password"];
         user.artistsDictionary = snapshot.value[@"artistsDictionary"];
         user.profileImageURL = snapshot.value[@"profileImageURL"];
         user.userName = snapshot.value[@"userName"];
