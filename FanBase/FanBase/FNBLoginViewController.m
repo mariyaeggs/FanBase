@@ -9,6 +9,7 @@
 #import "FNBLoginViewController.h"
 #import "FNBColorConstants.h"
 
+
 @interface FNBLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -48,9 +49,12 @@
     [self.view.layer insertSublayer:gradientMask atIndex:0];
     
     
+    
 }
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    
     
     [FNBFirebaseClient checkUntilUserisAuthenticatedWithCompletionBlock:^(BOOL isAuthenticUser) {
         //if the user is an authenticated user, segue to next screen
@@ -59,6 +63,7 @@
 //            [self performSegueWithIdentifier:@"loginSuccessfulSegue" sender:nil];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDidLogInNotification" object:nil];
         }
+        
     }];
 
 }

@@ -9,6 +9,8 @@ target 'FanBase' do
 	pod 'JSQMessagesViewController'
 	pod 'Firebase'
 	pod 'AFNetworking', '~> 3.0'
+       pod 'FBSDKCoreKit'
+       pod 'FBSDKLoginKit' 
 
 end
 
